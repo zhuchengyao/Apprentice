@@ -82,6 +82,10 @@ class KnowledgePoint(Base):
     explanation: Mapped[str] = mapped_column(Text)
     difficulty: Mapped[int] = mapped_column(Integer, default=1)
     order_index: Mapped[int] = mapped_column(Integer)
+    image_urls: Mapped[str | None] = mapped_column(Text, nullable=True)
+    illustration: Mapped[str | None] = mapped_column(Text, nullable=True)
+    question: Mapped[str | None] = mapped_column(Text, nullable=True)
+    mastered_at: Mapped[datetime | None] = mapped_column(DateTime, nullable=True)
     embedding: Mapped[list[float] | None] = mapped_column(Vector(1536), nullable=True)
     created_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow)
 

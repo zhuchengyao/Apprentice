@@ -45,12 +45,32 @@ export const useStudyStore = create<StudyState>((set, get) => ({
   streamContent: "",
   isStreaming: false,
 
-  setSession: (session) =>
+  setSession: (session) => {
+    // Find the first non-mastered KP to focus on
+    const startIndex = session.knowledge_points.findIndex((kp) => !kp.mastered);
+    const activeIndex = startIndex >= 0 ? startIndex : 0;
+
     set({
       session,
-      activeKPIndex: 0,
-      cardStates: session.knowledge_points.map(() => makeEmptyCardState()),
-    }),
+      activeKPIndex: activeIndex,
+      cardStates: session.knowledge_points.map((kp) => {
+        if (kp.mastered) {
+          return {
+            status: "completed" as const,
+            illustration: kp.illustration || "",
+            question: kp.question || "",
+            userAnswer: "(previously completed)",
+            feedback: { quality: 5, feedback: "Previously mastered." },
+            deepenText: "",
+            secondQuestion: "",
+            secondAnswer: "",
+            secondFeedback: null,
+          };
+        }
+        return makeEmptyCardState();
+      }),
+    });
+  },
 
   setActiveKP: (index) => set({ activeKPIndex: index }),
 

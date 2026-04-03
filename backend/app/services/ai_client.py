@@ -2,7 +2,9 @@
 Unified AI client that supports both Anthropic (Claude) and OpenAI providers.
 """
 
+import base64
 import logging
+import os
 from collections.abc import AsyncGenerator
 from enum import Enum
 
@@ -16,18 +18,46 @@ class AIProvider(str, Enum):
     OPENAI = "openai"
 
 
-# Default models per provider
-DEFAULT_MODELS = {
-    AIProvider.ANTHROPIC: "claude-sonnet-4-20250514",
-    AIProvider.OPENAI: "gpt-4o",
+# ── Model Registry ──────────────────────────────────────────────
+# Maps each provider to its available models.
+# First model in the list is the default for that provider.
+# To add a new model, just append it to the appropriate list.
+MODEL_REGISTRY: dict[AIProvider, list[str]] = {
+    AIProvider.ANTHROPIC: [
+        "claude-sonnet-4-6",
+        "claude-opus-4-6",
+        "claude-haiku-4-5-20251001",
+    ],
+    AIProvider.OPENAI: [
+        "gpt-5.4",
+        "gpt-5.4-mini",
+        "gpt-5.4-nano",
+    ],
+}
+
+# Reverse lookup: model name → provider
+_MODEL_TO_PROVIDER: dict[str, AIProvider] = {
+    model: provider
+    for provider, models in MODEL_REGISTRY.items()
+    for model in models
 }
 
 
+def get_available_models() -> dict[str, list[str]]:
+    """Return the full registry for display / API use."""
+    return {p.value: models for p, models in MODEL_REGISTRY.items()}
+
+
 def _resolve_provider_model(
-    provider: AIProvider | None, model: str | None
+    provider: AIProvider | None = None, model: str | None = None
 ) -> tuple[AIProvider, str]:
-    provider = provider or AIProvider(settings.ai_provider)
-    model = model or settings.ai_model or DEFAULT_MODELS[provider]
+    model = model or settings.ai_model
+    if model not in _MODEL_TO_PROVIDER:
+        available = ", ".join(_MODEL_TO_PROVIDER.keys())
+        raise ValueError(
+            f"Unknown model '{model}'. Available models: {available}"
+        )
+    provider = provider or _MODEL_TO_PROVIDER[model]
     return provider, model
 
 
@@ -67,6 +97,57 @@ async def chat_completion_stream(
         raise ValueError(f"Unsupported AI provider: {provider}")
 
 
+def build_image_content_blocks(image_paths: list[str]) -> list[dict]:
+    """Build multimodal content blocks from image file paths.
+
+    Returns a list of dicts suitable for both Anthropic and OpenAI vision APIs.
+    Format returned is Anthropic-style; callers convert for OpenAI if needed.
+    """
+    blocks = []
+    for path in image_paths:
+        if not os.path.isfile(path):
+            continue
+        ext = os.path.splitext(path)[1].lstrip(".").lower()
+        media_type_map = {
+            "png": "image/png",
+            "jpg": "image/jpeg",
+            "jpeg": "image/jpeg",
+            "gif": "image/gif",
+            "webp": "image/webp",
+        }
+        media_type = media_type_map.get(ext, "image/png")
+        with open(path, "rb") as f:
+            data = base64.standard_b64encode(f.read()).decode("utf-8")
+        blocks.append({
+            "type": "image",
+            "source": {
+                "type": "base64",
+                "media_type": media_type,
+                "data": data,
+            },
+        })
+    return blocks
+
+
+def _to_openai_content(content) -> list[dict]:
+    """Convert Anthropic-style content blocks to OpenAI format."""
+    if isinstance(content, str):
+        return [{"type": "text", "text": content}]
+    parts = []
+    for block in content:
+        if block.get("type") == "text":
+            parts.append({"type": "text", "text": block["text"]})
+        elif block.get("type") == "image":
+            source = block["source"]
+            parts.append({
+                "type": "image_url",
+                "image_url": {
+                    "url": f"data:{source['media_type']};base64,{source['data']}",
+                },
+            })
+    return parts
+
+
 # --- Non-streaming implementations ---
 
 
@@ -86,10 +167,17 @@ async def _openai_chat(messages: list[dict], max_tokens: int, model: str) -> str
     from openai import AsyncOpenAI
 
     client = AsyncOpenAI(api_key=settings.openai_api_key)
+    # Convert multimodal content blocks for OpenAI
+    oai_messages = []
+    for msg in messages:
+        if isinstance(msg.get("content"), list):
+            oai_messages.append({"role": msg["role"], "content": _to_openai_content(msg["content"])})
+        else:
+            oai_messages.append(msg)
     response = await client.chat.completions.create(
         model=model,
         max_completion_tokens=max_tokens,
-        messages=messages,
+        messages=oai_messages,
     )
     return response.choices[0].message.content.strip()
 
@@ -118,10 +206,17 @@ async def _openai_stream(
     from openai import AsyncOpenAI
 
     client = AsyncOpenAI(api_key=settings.openai_api_key)
+    # Convert multimodal content blocks for OpenAI
+    oai_messages = []
+    for msg in messages:
+        if isinstance(msg.get("content"), list):
+            oai_messages.append({"role": msg["role"], "content": _to_openai_content(msg["content"])})
+        else:
+            oai_messages.append(msg)
     response = await client.chat.completions.create(
         model=model,
         max_completion_tokens=max_tokens,
-        messages=messages,
+        messages=oai_messages,
         stream=True,
     )
     async for chunk in response:

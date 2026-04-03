@@ -5,8 +5,12 @@ import { useStudyStore } from "@/stores/study-store";
 
 const API_BASE = process.env.NEXT_PUBLIC_API_URL || "/api";
 
+const MAX_RECONNECT_RETRIES = 3;
+const RECONNECT_DELAY_MS = 2000;
+
 export function useStudySession() {
   const eventSourceRef = useRef<EventSource | null>(null);
+  const retryCountRef = useRef(0);
   const store = useStudyStore;
 
   const connect = useCallback((sessionId: string) => {
@@ -20,6 +24,9 @@ export function useStudySession() {
     eventSourceRef.current = es;
 
     es.addEventListener("state_change", (e) => {
+      // Reset retry count on successful event
+      retryCountRef.current = 0;
+
       const { state, current_kp_index } = JSON.parse(e.data);
       const s = store.getState();
 
@@ -83,8 +90,11 @@ export function useStudySession() {
     });
 
     es.addEventListener("waiting_advance", () => {
-      // Agent is done with current KP, waiting for next
-      // Card status is already set via kp_complete
+      // Legacy — kept for compatibility
+    });
+
+    es.addEventListener("waiting", () => {
+      // Agent is idle, waiting for user to select a KP or answer
     });
 
     es.addEventListener("kp_complete", (e) => {
@@ -95,6 +105,13 @@ export function useStudySession() {
     es.addEventListener("error", () => {
       store.getState().setStreaming(false);
       es.close();
+      eventSourceRef.current = null;
+
+      // Auto-reconnect (backend will reconstruct the agent from DB state)
+      if (retryCountRef.current < MAX_RECONNECT_RETRIES) {
+        retryCountRef.current++;
+        setTimeout(() => connect(sessionId), RECONNECT_DELAY_MS);
+      }
     });
 
     es.addEventListener("done", () => {

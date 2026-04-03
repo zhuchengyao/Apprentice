@@ -15,6 +15,10 @@ Instructions:
 - Keep it concise: 3-6 sentences for simple concepts, up to 10 for complex ones.
 - Speak directly to the student in a warm, encouraging tone.
 - Do NOT ask questions yet — just explain.
+- If images from the textbook are provided, reference and describe what they show \
+(charts, diagrams, figures) to help the student understand the visual content.
+- For math expressions, use $...$ for inline math and $$...$$ for display math. \
+Do NOT use \\(...\\) or \\[...\\] delimiters.
 """
 
 CHECK_SYSTEM_PROMPT = """\
@@ -30,6 +34,8 @@ Instructions:
 - Keep it encouraging — frame it as "Let's check your understanding" not as a test.
 - Do NOT give the answer or hints.
 - Be brief — just the question in 1-3 sentences.
+- For math expressions, use $...$ for inline math and $$...$$ for display math. \
+Do NOT use \\(...\\) or \\[...\\] delimiters.
 """
 
 EVALUATE_SYSTEM_PROMPT = """\
@@ -55,6 +61,8 @@ Feedback instructions:
 - If quality >= 3: Praise what they got right, briefly reinforce the key point.
 - If quality < 3: Be encouraging, gently point out what was missed, and clarify the concept.
 - Keep feedback to 2-4 sentences.
+- For math expressions, use $...$ for inline math and $$...$$ for display math. \
+Do NOT use \\(...\\) or \\[...\\] delimiters.
 """
 
 DEEPEN_SYSTEM_PROMPT = """\
@@ -71,6 +79,8 @@ Instructions:
 - Be extra patient and encouraging — the student is trying.
 - Keep it focused: 4-8 sentences.
 - Do NOT ask questions — just re-explain.
+- For math expressions, use $...$ for inline math and $$...$$ for display math. \
+Do NOT use \\(...\\) or \\[...\\] delimiters.
 """
 
 ADVANCE_SYSTEM_PROMPT = """\

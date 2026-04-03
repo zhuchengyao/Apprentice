@@ -4,7 +4,8 @@ import { useEffect, useState } from "react";
 import { use } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowLeft, Loader2, GraduationCap, AlertCircle } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { ArrowLeft, Loader2, GraduationCap, AlertCircle, Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ChapterTree } from "@/components/book/chapter-tree";
@@ -20,9 +21,23 @@ export default function BookOverviewPage({
   params: Promise<{ bookId: string }>;
 }) {
   const { bookId } = use(params);
+  const router = useRouter();
   const [book, setBook] = useState<BookDetail | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [deleting, setDeleting] = useState(false);
+
+  const handleDelete = async () => {
+    if (!confirm("Delete this book? This cannot be undone.")) return;
+    setDeleting(true);
+    try {
+      await api.delete(`/books/${bookId}`);
+      router.push("/library");
+    } catch {
+      setDeleting(false);
+      alert("Failed to delete book.");
+    }
+  };
 
   useEffect(() => {
     let interval: NodeJS.Timeout | null = null;
@@ -115,11 +130,22 @@ export default function BookOverviewPage({
               <p className="mt-1 text-sm text-muted-foreground">by {book.author}</p>
             )}
           </div>
-          <Badge
-            variant={book.status === "ready" ? "default" : book.status === "error" ? "destructive" : "secondary"}
-          >
-            {book.status}
-          </Badge>
+          <div className="flex items-center gap-2">
+            <Badge
+              variant={book.status === "ready" ? "default" : book.status === "error" ? "destructive" : "secondary"}
+            >
+              {book.status}
+            </Badge>
+            <Button
+              variant="ghost"
+              size="icon"
+              className="text-muted-foreground hover:text-destructive"
+              onClick={handleDelete}
+              disabled={deleting}
+            >
+              {deleting ? <Loader2 className="h-4 w-4 animate-spin" /> : <Trash2 className="h-4 w-4" />}
+            </Button>
+          </div>
         </div>
 
         {/* Processing state */}

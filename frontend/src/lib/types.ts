@@ -63,6 +63,10 @@ export interface KnowledgePointDetail {
   concept: string;
   explanation: string;
   difficulty: number;
+  mastered?: boolean;
+  illustration?: string;
+  question?: string;
+  image_urls?: string[];
 }
 
 export type KPCardStatus =

@@ -6,8 +6,7 @@ class Settings(BaseSettings):
     redis_url: str = "redis://localhost:6379"
     anthropic_api_key: str = ""
     openai_api_key: str = ""
-    ai_provider: str = "anthropic"  # "anthropic" or "openai"
-    ai_model: str = ""  # override default model, leave empty to use provider default
+    ai_model: str = "claude-sonnet-4-6"  # must match a model in MODEL_REGISTRY
     upload_dir: str = "./uploads"
     cors_origins: list[str] = ["http://localhost:3000"]
 

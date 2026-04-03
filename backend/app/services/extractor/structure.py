@@ -16,6 +16,8 @@ Rules:
 - If there is no clear chapter structure, create logical groupings by topic.
 - Keep chapter/section titles concise but descriptive.
 - For each section, include the raw text content that belongs to it.
+- IMPORTANT: If the content contains image references like ![...](/api/images/...), preserve them \
+exactly as-is in the section content. These are figures, charts, and diagrams from the original book.
 
 Return valid JSON only, no markdown fencing:
 {
@@ -38,6 +40,15 @@ Return valid JSON only, no markdown fencing:
 """
 
 
+def _build_page_text(page) -> str:
+    """Build text for a single page, interleaving text and image references."""
+    parts = [page.text]
+    if page.images:
+        for img in page.images:
+            parts.append(f"\n![Figure from page {page.page_number}]({img.image_url})")
+    return "\n".join(parts)
+
+
 def _build_book_text(parsed: ParsedBook, max_chars: int = 150000) -> str:
     """Build a text representation of the book for the LLM, truncated to fit context."""
     parts = []
@@ -53,7 +64,8 @@ def _build_book_text(parsed: ParsedBook, max_chars: int = 150000) -> str:
     total_chars = sum(len(p) for p in parts)
 
     for page in parsed.pages:
-        page_text = f"\n--- Page {page.page_number} ---\n{page.text}"
+        page_content = _build_page_text(page)
+        page_text = f"\n--- Page {page.page_number} ---\n{page_content}"
         if total_chars + len(page_text) > max_chars:
             parts.append(f"\n[... truncated at page {page.page_number}, {parsed.total_pages - page.page_number} pages remaining ...]")
             break

@@ -19,6 +19,10 @@ class KnowledgePointBrief(BaseModel):
     concept: str
     explanation: str
     difficulty: int
+    mastered: bool = False
+    illustration: str = ""
+    question: str = ""
+    image_urls: list[str] = []
 
 
 class StudySessionResponse(BaseModel):

@@ -4,7 +4,12 @@
       "Bash(npx next:*)",
       "Bash(curl:*)",
       "Bash(git status:*)",
-      "Bash(git config:*)"
+      "Bash(git config:*)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "Bash(PGPASSWORD=apprentice psql:*)",
+      "Bash(python -m alembic revision --autogenerate -m \"add illustration cache to knowledge_points\")",
+      "Bash(python:*)",
+      "Bash(npx tsc:*)"
     ]
   }
 }

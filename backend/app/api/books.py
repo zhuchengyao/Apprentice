@@ -120,10 +120,13 @@ async def get_book(book_id: str, db: AsyncSession = Depends(get_db)):
                     explanation=kp.explanation,
                     difficulty=kp.difficulty,
                     order_index=kp.order_index,
+                    mastery_level=1.0 if kp.mastered_at else 0.0,
                 )
                 for kp in section.knowledge_points
             ]
             total_kps += len(kps)
+            mastered_in_section = sum(1 for kp in section.knowledge_points if kp.mastered_at)
+            sec_progress = mastered_in_section / len(kps) if kps else 0.0
             sections_resp.append(
                 SectionResponse(
                     id=str(section.id),
@@ -132,8 +135,14 @@ async def get_book(book_id: str, db: AsyncSession = Depends(get_db)):
                     order_index=section.order_index,
                     summary=section.summary,
                     knowledge_points=kps,
+                    progress=sec_progress,
                 )
             )
+        ch_kp_total = sum(len(s.knowledge_points) for s in sections_resp)
+        ch_kp_mastered = sum(
+            sum(1 for kp in sec.knowledge_points if kp.mastery_level > 0)
+            for sec in sections_resp
+        )
         chapters_resp.append(
             ChapterResponse(
                 id=str(chapter.id),
@@ -142,8 +151,16 @@ async def get_book(book_id: str, db: AsyncSession = Depends(get_db)):
                 order_index=chapter.order_index,
                 summary=chapter.summary,
                 sections=sections_resp,
+                progress=ch_kp_mastered / ch_kp_total if ch_kp_total else 0.0,
             )
         )
+
+    total_mastered = sum(
+        1 for ch in book.chapters
+        for sec in ch.sections
+        for kp in sec.knowledge_points
+        if kp.mastered_at
+    )
 
     return BookDetailResponse(
         id=str(book.id),
@@ -154,6 +171,8 @@ async def get_book(book_id: str, db: AsyncSession = Depends(get_db)):
         total_pages=book.total_pages,
         status=book.status.value,
         total_knowledge_points=total_kps,
+        mastered_knowledge_points=total_mastered,
+        progress=total_mastered / total_kps if total_kps else 0.0,
         created_at=book.created_at,
         updated_at=book.updated_at,
         chapters=chapters_resp,
@@ -169,6 +188,88 @@ async def get_book_status(book_id: str, db: AsyncSession = Depends(get_db)):
     if not row:
         raise HTTPException(status_code=404, detail="Book not found")
     return {"status": row[0].value, "error": row[1]}
+
+
+@router.post("/{book_id}/reprocess-images")
+async def reprocess_images(book_id: str, db: AsyncSession = Depends(get_db)):
+    """Re-extract images from a book's PDF and rebuild section content with image refs.
+
+    Deletes existing KPs so they are re-extracted (with image awareness) on next study.
+    """
+    import asyncio
+    from app.services.parser.pdf_parser import parse_pdf
+
+    result = await db.execute(
+        select(Book)
+        .where(Book.id == uuid.UUID(book_id))
+        .options(
+            selectinload(Book.chapters)
+            .selectinload(Chapter.sections)
+            .selectinload(Section.knowledge_points)
+        )
+    )
+    book = result.scalar_one_or_none()
+    if not book:
+        raise HTTPException(status_code=404, detail="Book not found")
+    if book.file_type != "pdf":
+        raise HTTPException(status_code=400, detail="Only PDF books can be reprocessed")
+    if not os.path.exists(book.file_path):
+        raise HTTPException(status_code=400, detail="PDF file not found on disk")
+
+    # Re-parse with image extraction (run in thread to avoid blocking async loop)
+    loop = asyncio.get_running_loop()
+    parsed = await loop.run_in_executor(
+        None, lambda: parse_pdf(book.file_path, book_id=str(book.id))
+    )
+
+    # Build page → image URL mapping
+    from app.tasks.processing import _page_matches_section
+    page_images: dict[int, list[str]] = {}
+    page_texts: dict[int, str] = {}
+    for page in parsed.pages:
+        text = page.text.strip()
+        if text:
+            page_texts[page.page_number] = text
+        for img in page.images:
+            page_images.setdefault(page.page_number, []).append(img.image_url)
+
+    total_images = len(parsed.images)
+    kps_deleted = 0
+
+    for chapter in book.chapters:
+        for section in chapter.sections:
+            raw = section.content_raw or ""
+            # Strip any previous injected images
+            marker = "\n\n---\n## Book Figures\n"
+            if marker in raw:
+                raw = raw[:raw.index(marker)]
+
+            # Match images to this section using page text overlap
+            matched = []
+            for page_num in sorted(page_images.keys()):
+                if page_num not in page_texts:
+                    continue
+                if _page_matches_section(page_texts[page_num], raw):
+                    for url in page_images[page_num]:
+                        matched.append(f"![Figure from page {page_num}]({url})")
+
+            if matched and "/api/images/" not in raw:
+                section.content_raw = raw + "\n\n" + "\n\n".join(matched)
+            else:
+                section.content_raw = raw
+
+            for kp in section.knowledge_points:
+                await db.delete(kp)
+                kps_deleted += 1
+
+    await db.commit()
+
+    return {
+        "status": "ok",
+        "images_extracted": total_images,
+        "kps_deleted": kps_deleted,
+        "message": f"Extracted {total_images} images. Deleted {kps_deleted} KPs — they will be re-generated with figure awareness on next study.",
+    }
 
 
 @router.delete("/{book_id}")

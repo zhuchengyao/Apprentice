@@ -45,9 +45,9 @@ export function StudySessionClient({ initialSession }: StudySessionClientProps) 
 
       setActiveKP(index);
 
-      // If this KP is pending and is beyond the current agent position, tell the agent to advance
-      if (card.status === "pending") {
-        sendMessage(session.id, `advance:${index}`);
+      // Tell the agent which KP the user selected (skip if already completed)
+      if (card.status !== "completed") {
+        sendMessage(session.id, `select:${index}`);
       }
     },
     [session, cardStates, setActiveKP, sendMessage],

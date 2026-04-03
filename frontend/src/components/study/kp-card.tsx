@@ -4,7 +4,7 @@ import { useState } from "react";
 import { cn } from "@/lib/utils";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Send, CheckCircle, ChevronDown, ChevronRight, BookOpen, Lightbulb, MessageSquare, Loader2 } from "lucide-react";
+import { Send, CheckCircle, ChevronDown, ChevronRight, BookOpen, Lightbulb, MessageSquare, Loader2, Image as ImageIcon } from "lucide-react";
 import { Markdown } from "@/components/ui/markdown";
 import type { KnowledgePointDetail, KPCardState } from "@/lib/types";
 
@@ -117,6 +117,26 @@ export function KPCard({
             <Markdown>{kp.explanation}</Markdown>
           </div>
         </div>
+
+        {/* Associated Figures */}
+        {kp.image_urls && kp.image_urls.length > 0 && (
+          <div className="space-y-1.5">
+            <div className="flex items-center gap-1.5 text-xs font-medium text-muted-foreground uppercase tracking-wide">
+              <ImageIcon className="h-3.5 w-3.5" />
+              Figures
+            </div>
+            <div className="flex flex-wrap gap-2">
+              {kp.image_urls.map((url, i) => (
+                <img
+                  key={i}
+                  src={url}
+                  alt={`Figure ${i + 1} for ${kp.concept}`}
+                  className="rounded-lg border max-h-64 object-contain bg-white"
+                />
+              ))}
+            </div>
+          </div>
+        )}
 
         {/* AI Illustration */}
         {(cardState.illustration || (isStreaming && streamTarget === "illustration")) && (

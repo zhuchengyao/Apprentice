@@ -8,6 +8,7 @@ import {
   BookOpen,
   Lightbulb,
   GraduationCap,
+  CheckCircle,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
@@ -55,6 +56,11 @@ function SectionItem({
         <span className="flex-1 truncate font-medium">{section.title}</span>
         <span className="text-xs text-muted-foreground">
           {kpCount} concept{kpCount !== 1 ? "s" : ""}
+          {section.progress > 0 && (
+            <span className="ml-1 text-green-600">
+              · {Math.round(section.progress * 100)}%
+            </span>
+          )}
         </span>
       </button>
 
@@ -79,7 +85,11 @@ function SectionItem({
                   key={kp.id}
                   className="flex items-start gap-2 rounded-md px-3 py-1.5 ml-2"
                 >
-                  <Lightbulb className="mt-0.5 h-3 w-3 shrink-0 text-muted-foreground" />
+                  {kp.mastery_level > 0 ? (
+                    <CheckCircle className="mt-0.5 h-3 w-3 shrink-0 text-green-600" />
+                  ) : (
+                    <Lightbulb className="mt-0.5 h-3 w-3 shrink-0 text-muted-foreground" />
+                  )}
                   <div className="min-w-0 flex-1">
                     <p className="text-xs font-medium">{kp.concept}</p>
                     <p className="mt-0.5 text-[11px] text-muted-foreground line-clamp-2">
