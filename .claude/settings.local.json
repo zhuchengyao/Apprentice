@@ -9,7 +9,12 @@
       "Bash(PGPASSWORD=apprentice psql:*)",
       "Bash(python -m alembic revision --autogenerate -m \"add illustration cache to knowledge_points\")",
       "Bash(python:*)",
-      "Bash(npx tsc:*)"
+      "Bash(npx tsc:*)",
+      "WebSearch",
+      "WebFetch(domain:pymupdf.readthedocs.io)",
+      "Bash(python3 -c \"import fitz; print\\(fitz.__version__\\); print\\(hasattr\\(fitz.Page, 'get_drawings'\\)\\); print\\(hasattr\\(fitz.Page, 'cluster_drawings'\\)\\)\")",
+      "Bash(python3 -c ':*)",
+      "Bash(git:*)"
     ]
   }
 }
