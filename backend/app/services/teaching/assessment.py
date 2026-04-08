@@ -31,6 +31,7 @@ async def assess_response(
     response_text = await chat_completion(
         messages=[{"role": "user", "content": prompt}],
         max_tokens=512,
+        caller="assessment",
     )
 
     # Strip markdown fencing if present

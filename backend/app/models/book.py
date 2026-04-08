@@ -1,9 +1,9 @@
 import enum
 import uuid
-from datetime import datetime
+from datetime import UTC, datetime
 
 from pgvector.sqlalchemy import Vector
-from sqlalchemy import String, Text, Integer, Float, ForeignKey, DateTime
+from sqlalchemy import Boolean, String, Text, Integer, Float, ForeignKey, DateTime, UniqueConstraint
 from sqlalchemy import Enum as SAEnum
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import Mapped, mapped_column, relationship
@@ -31,11 +31,14 @@ class Book(Base):
     total_pages: Mapped[int] = mapped_column(Integer, default=0)
     status: Mapped[BookStatus] = mapped_column(SAEnum(BookStatus), default=BookStatus.uploading)
     error_message: Mapped[str | None] = mapped_column(Text, nullable=True)
-    created_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow)
-    updated_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+    created_at: Mapped[datetime] = mapped_column(DateTime, default=lambda: datetime.now(UTC).replace(tzinfo=None))
+    updated_at: Mapped[datetime] = mapped_column(DateTime, default=lambda: datetime.now(UTC).replace(tzinfo=None), onupdate=lambda: datetime.now(UTC).replace(tzinfo=None))
 
     chapters: Mapped[list["Chapter"]] = relationship(
         back_populates="book", cascade="all, delete-orphan", order_by="Chapter.order_index"
+    )
+    pages: Mapped[list["BookPage"]] = relationship(
+        back_populates="book", cascade="all, delete-orphan", order_by="BookPage.page_number"
     )
 
 
@@ -46,8 +49,11 @@ class Chapter(Base):
     book_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("books.id", ondelete="CASCADE"))
     title: Mapped[str] = mapped_column(String(500))
     order_index: Mapped[int] = mapped_column(Integer)
+    start_page: Mapped[int] = mapped_column(Integer, default=1)
+    end_page: Mapped[int] = mapped_column(Integer, default=1)
+    processed: Mapped[bool] = mapped_column(Boolean, default=False)
     summary: Mapped[str | None] = mapped_column(Text, nullable=True)
-    created_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow)
+    created_at: Mapped[datetime] = mapped_column(DateTime, default=lambda: datetime.now(UTC).replace(tzinfo=None))
 
     book: Mapped["Book"] = relationship(back_populates="chapters")
     sections: Mapped[list["Section"]] = relationship(
@@ -65,7 +71,7 @@ class Section(Base):
     content_raw: Mapped[str | None] = mapped_column(Text, nullable=True)
     content_markdown: Mapped[str | None] = mapped_column(Text, nullable=True)
     summary: Mapped[str | None] = mapped_column(Text, nullable=True)
-    created_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow)
+    created_at: Mapped[datetime] = mapped_column(DateTime, default=lambda: datetime.now(UTC).replace(tzinfo=None))
 
     chapter: Mapped["Chapter"] = relationship(back_populates="sections")
     knowledge_points: Mapped[list["KnowledgePoint"]] = relationship(
@@ -87,6 +93,21 @@ class KnowledgePoint(Base):
     question: Mapped[str | None] = mapped_column(Text, nullable=True)
     mastered_at: Mapped[datetime | None] = mapped_column(DateTime, nullable=True)
     embedding: Mapped[list[float] | None] = mapped_column(Vector(1536), nullable=True)
-    created_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow)
+    created_at: Mapped[datetime] = mapped_column(DateTime, default=lambda: datetime.now(UTC).replace(tzinfo=None))
 
     section: Mapped["Section"] = relationship(back_populates="knowledge_points")
+
+
+class BookPage(Base):
+    __tablename__ = "book_pages"
+    __table_args__ = (
+        UniqueConstraint("book_id", "page_number", name="uq_book_pages_book_page"),
+    )
+
+    id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    book_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("books.id", ondelete="CASCADE"))
+    page_number: Mapped[int] = mapped_column(Integer, index=True)
+    html_content: Mapped[str] = mapped_column(Text)
+    created_at: Mapped[datetime] = mapped_column(DateTime, default=lambda: datetime.now(UTC).replace(tzinfo=None))
+
+    book: Mapped["Book"] = relationship(back_populates="pages")

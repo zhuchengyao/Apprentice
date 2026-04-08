@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from datetime import datetime, timedelta
+from datetime import UTC, datetime, timedelta
 
 
 @dataclass
@@ -37,7 +37,7 @@ def sm2_algorithm(
     ease_factor = ease_factor + (0.1 - (5 - quality) * (0.08 + (5 - quality) * 0.02))
     ease_factor = max(1.3, ease_factor)
 
-    next_review = datetime.utcnow() + timedelta(days=interval_days)
+    next_review = datetime.now(UTC).replace(tzinfo=None) + timedelta(days=interval_days)
 
     return SM2Result(
         ease_factor=ease_factor,

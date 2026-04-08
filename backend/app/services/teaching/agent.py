@@ -175,6 +175,7 @@ class TeachingAgent:
         async for chunk in chat_completion_stream(
             messages=[{"role": "user", "content": content}],
             max_tokens=2048,
+            caller="teaching_agent",
         ):
             collected.append(chunk)
             yield {"event": "token", "data": chunk}

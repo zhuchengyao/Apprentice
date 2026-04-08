@@ -128,3 +128,101 @@
     @apply font-sans;
   }
 }
+
+/* ── Book reading view ────────────────────────────────────── */
+/* NOTE: Do NOT set line-height on .book-page — it breaks KaTeX
+   bracket alignment in matrices. Use margin/padding for spacing. */
+
+.book-page h1,
+.book-page h2,
+.book-page h3,
+.book-page h4,
+.book-page h5,
+.book-page h6 {
+  margin-top: 2em;
+  margin-bottom: 0.8em;
+}
+
+.book-page h1 { font-size: 1.75em; }
+.book-page h2 { font-size: 1.45em; }
+.book-page h3 { font-size: 1.2em; }
+
+.book-page p {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+
+.book-page figure {
+  margin-top: 1.8em;
+  margin-bottom: 1.8em;
+}
+
+.book-page figcaption {
+  margin-top: 0.6em;
+  font-size: 0.875em;
+  color: var(--muted-foreground);
+}
+
+.book-page ul,
+.book-page ol {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+
+.book-page li {
+  margin-top: 0.3em;
+  margin-bottom: 0.3em;
+}
+
+.book-page table {
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
+
+.book-page blockquote {
+  margin-top: 1.2em;
+  margin-bottom: 1.2em;
+  padding-left: 1em;
+  border-left: 3px solid var(--border);
+}
+
+.book-page pre {
+  margin-top: 1.2em;
+  margin-bottom: 1.2em;
+}
+
+/* Inline SVG diagrams (exclude KaTeX internal SVGs) */
+.book-page > svg,
+.book-page p > svg,
+.book-page div > svg,
+.book-page figure > svg {
+  display: block;
+  margin: 1.5em auto;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Isolate KaTeX from Tailwind prose interference */
+.book-page .katex {
+  line-height: initial;
+  font-size: 1em;
+}
+.book-page .katex-display {
+  line-height: initial;
+  margin: 1em 0;
+}
+.book-page .katex-mathml {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  clip: rect(0 0 0 0) !important;
+  padding: 0 !important;
+  border: 0 !important;
+}
+
+/* Page-to-page boundary: subtle divider */
+.book-page + .book-page {
+  padding-top: 0.5em;
+  border-top: 1px solid var(--border);
+}

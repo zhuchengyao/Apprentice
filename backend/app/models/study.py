@@ -1,5 +1,5 @@
 import uuid
-from datetime import datetime
+from datetime import UTC, datetime
 
 from sqlalchemy import Float, ForeignKey, DateTime, JSON
 from sqlalchemy.dialects.postgresql import UUID
@@ -15,7 +15,7 @@ class StudySession(Base):
     user_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("users.id", ondelete="CASCADE"))
     book_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("books.id", ondelete="CASCADE"))
     section_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("sections.id", ondelete="CASCADE"))
-    started_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow)
+    started_at: Mapped[datetime] = mapped_column(DateTime, default=lambda: datetime.now(UTC).replace(tzinfo=None))
     ended_at: Mapped[datetime | None] = mapped_column(DateTime, nullable=True)
     interactions: Mapped[dict | None] = mapped_column(JSON, nullable=True)
     mastery_before: Mapped[float] = mapped_column(Float, default=0.0)

@@ -37,6 +37,9 @@ def _book_to_response(book: Book) -> BookResponse:
     )
 
 
+MAX_UPLOAD_SIZE = 500 * 1024 * 1024  # 500 MB
+
+
 @router.post("/upload", response_model=BookResponse)
 async def upload_book(
     background_tasks: BackgroundTasks,
@@ -52,9 +55,15 @@ async def upload_book(
     file_id = str(uuid.uuid4())
     file_path = os.path.join(settings.upload_dir, f"{file_id}{file_ext}")
 
+    total_size = 0
     async with aiofiles.open(file_path, "wb") as f:
-        content = await file.read()
-        await f.write(content)
+        while chunk := await file.read(1024 * 1024):  # 1 MB chunks
+            total_size += len(chunk)
+            if total_size > MAX_UPLOAD_SIZE:
+                await f.close()
+                os.remove(file_path)
+                raise HTTPException(status_code=413, detail="File too large (max 500 MB)")
+            await f.write(chunk)
 
     book = Book(
         title=os.path.splitext(file.filename or "Untitled")[0],
@@ -76,17 +85,23 @@ async def list_books(db: AsyncSession = Depends(get_db)):
     result = await db.execute(select(Book).order_by(Book.created_at.desc()))
     books = result.scalars().all()
 
+    # Batch-fetch KP counts for all books in one query
+    book_ids = [b.id for b in books]
+    kp_counts: dict = {}
+    if book_ids:
+        kp_result = await db.execute(
+            select(Chapter.book_id, func.count(KnowledgePoint.id))
+            .join(Section, Section.chapter_id == Chapter.id)
+            .join(KnowledgePoint, KnowledgePoint.section_id == Section.id)
+            .where(Chapter.book_id.in_(book_ids))
+            .group_by(Chapter.book_id)
+        )
+        kp_counts = dict(kp_result.all())
+
     responses = []
     for b in books:
         resp = _book_to_response(b)
-        # Count KPs for this book
-        kp_count = await db.execute(
-            select(func.count(KnowledgePoint.id))
-            .join(Section)
-            .join(Chapter)
-            .where(Chapter.book_id == b.id)
-        )
-        resp.total_knowledge_points = kp_count.scalar() or 0
+        resp.total_knowledge_points = kp_counts.get(b.id, 0)
         responses.append(resp)
 
     return BookListResponse(books=responses)
@@ -149,6 +164,9 @@ async def get_book(book_id: str, db: AsyncSession = Depends(get_db)):
                 book_id=str(chapter.book_id),
                 title=chapter.title,
                 order_index=chapter.order_index,
+                start_page=chapter.start_page,
+                end_page=chapter.end_page,
+                processed=chapter.processed,
                 summary=chapter.summary,
                 sections=sections_resp,
                 progress=ch_kp_mastered / ch_kp_total if ch_kp_total else 0.0,
@@ -274,12 +292,18 @@ async def reprocess_images(book_id: str, db: AsyncSession = Depends(get_db)):
 
 @router.delete("/{book_id}")
 async def delete_book(book_id: str, db: AsyncSession = Depends(get_db)):
+    import shutil
+
     result = await db.execute(select(Book).where(Book.id == uuid.UUID(book_id)))
     book = result.scalar_one_or_none()
     if not book:
         raise HTTPException(status_code=404, detail="Book not found")
     if os.path.exists(book.file_path):
         os.remove(book.file_path)
+    # Clean up extracted images
+    image_dir = os.path.join(settings.upload_dir, "images", str(book.id))
+    if os.path.isdir(image_dir):
+        shutil.rmtree(image_dir)
     await db.delete(book)
     await db.commit()
     return {"status": "deleted"}

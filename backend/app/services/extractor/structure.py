@@ -217,6 +217,7 @@ async def extract_structure(parsed: ParsedBook) -> dict:
             }
         ],
         max_tokens=8192,
+        caller="structure_extraction",
     )
 
     outline = _parse_llm_json(response_text)

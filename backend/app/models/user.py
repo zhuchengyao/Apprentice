@@ -1,5 +1,5 @@
 import uuid
-from datetime import datetime, date
+from datetime import UTC, date, datetime
 
 from sqlalchemy import String, Integer, Float, ForeignKey, DateTime, Date
 from sqlalchemy.dialects.postgresql import UUID
@@ -14,7 +14,7 @@ class User(Base):
     id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
     email: Mapped[str] = mapped_column(String(500), unique=True)
     name: Mapped[str] = mapped_column(String(500))
-    created_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow)
+    created_at: Mapped[datetime] = mapped_column(DateTime, default=lambda: datetime.now(UTC).replace(tzinfo=None))
 
 
 class UserProgress(Base):
@@ -29,7 +29,7 @@ class UserProgress(Base):
     repetitions: Mapped[int] = mapped_column(Integer, default=0)
     next_review_at: Mapped[datetime | None] = mapped_column(DateTime, nullable=True)
     last_studied_at: Mapped[datetime | None] = mapped_column(DateTime, nullable=True)
-    updated_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+    updated_at: Mapped[datetime] = mapped_column(DateTime, default=lambda: datetime.now(UTC).replace(tzinfo=None), onupdate=lambda: datetime.now(UTC).replace(tzinfo=None))
 
 
 class UserStreak(Base):

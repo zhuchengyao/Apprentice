@@ -5,7 +5,7 @@ import { use } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
-import { ArrowLeft, Loader2, GraduationCap, AlertCircle, Trash2 } from "lucide-react";
+import { ArrowLeft, Loader2, GraduationCap, BookOpen, AlertCircle, Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ChapterTree } from "@/components/book/chapter-tree";
@@ -176,16 +176,22 @@ export default function BookOverviewPage({
             </div>
 
             {/* Start studying CTA */}
-            {firstSection && (
-              <div className="mt-6">
+            <div className="mt-6 flex gap-3">
+              <Link href={`/book/${bookId}/read`}>
+                <Button size="lg" variant="outline" className="gap-2">
+                  <BookOpen className="h-5 w-5" />
+                  Read book
+                </Button>
+              </Link>
+              {firstSection && (
                 <Link href={`/book/${bookId}/study/${firstSection.id}`}>
                   <Button size="lg" className="gap-2">
                     <GraduationCap className="h-5 w-5" />
                     Start studying
                   </Button>
                 </Link>
-              </div>
-            )}
+              )}
+            </div>
 
             {/* Chapter tree */}
             <div className="mt-8">

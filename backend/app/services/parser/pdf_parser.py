@@ -341,6 +341,67 @@ def _extract_vector_figures(
     return figures
 
 
+@dataclass
+class PdfMetadata:
+    """Lightweight metadata extracted without processing page content."""
+    title: str
+    author: str
+    total_pages: int
+    toc: list[tuple[int, str, int]]  # (level, title, page)
+
+
+def parse_pdf_metadata(file_path: str) -> PdfMetadata:
+    """Fast metadata-only parse: title, author, page count, TOC. No image extraction."""
+    doc = fitz.open(file_path)
+    title = doc.metadata.get("title", "") or ""
+    author = doc.metadata.get("author", "") or ""
+    toc = [(level, t, page) for level, t, page in doc.get_toc()]
+    total_pages = len(doc)
+    doc.close()
+    return PdfMetadata(title=title, author=author, total_pages=total_pages, toc=toc)
+
+
+def parse_pdf_pages(
+    file_path: str,
+    book_id: str,
+    start_page: int = 1,
+    end_page: int | None = None,
+) -> list[ParsedPage]:
+    """Parse a range of pages with text + image extraction.
+
+    Args:
+        file_path: path to the PDF file
+        book_id: used for image output directory
+        start_page: 1-based start page (inclusive)
+        end_page: 1-based end page (inclusive), None = last page
+    """
+    doc = fitz.open(file_path)
+    if end_page is None:
+        end_page = len(doc)
+
+    image_dir = os.path.join(settings.upload_dir, "images", book_id)
+    os.makedirs(image_dir, exist_ok=True)
+
+    pages: list[ParsedPage] = []
+    for i in range(start_page - 1, min(end_page, len(doc))):
+        page = doc[i]
+        page_number = i + 1
+        text = page.get_text("text")
+
+        page_images = _extract_page_images(doc, page, page_number, image_dir, book_id)
+        vector_images = _extract_vector_figures(
+            page, page_number, image_dir, book_id,
+            raster_start_index=len(page_images),
+        )
+        page_images.extend(vector_images)
+
+        if text.strip() or page_images:
+            pages.append(ParsedPage(page_number=page_number, text=text, images=page_images))
+
+    doc.close()
+    return pages
+
+
 def parse_pdf(file_path: str, book_id: str | None = None) -> ParsedBook:
     doc = fitz.open(file_path)
 

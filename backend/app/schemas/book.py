@@ -32,6 +32,9 @@ class ChapterResponse(BaseModel):
     book_id: str
     title: str
     order_index: int
+    start_page: int = 1
+    end_page: int = 1
+    processed: bool = False
     summary: str | None = None
     sections: list[SectionResponse] = []
     progress: float = 0.0
@@ -62,3 +65,16 @@ class BookDetailResponse(BookResponse):
 
 class BookListResponse(BaseModel):
     books: list[BookResponse]
+
+
+class BookPageResponse(BaseModel):
+    page_number: int
+    html_content: str
+
+    model_config = {"from_attributes": True}
+
+
+class BookPagesResponse(BaseModel):
+    book_id: str
+    total_pages: int
+    pages: list[BookPageResponse]

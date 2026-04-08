@@ -24,6 +24,9 @@ export interface Chapter {
   book_id: string;
   title: string;
   order_index: number;
+  start_page: number;
+  end_page: number;
+  processed: boolean;
   summary: string | null;
   sections: Section[];
   progress: number;
@@ -88,6 +91,24 @@ export interface KPCardState {
   secondQuestion: string;
   secondAnswer: string;
   secondFeedback: { quality: number; feedback: string } | null;
+}
+
+export interface BookPage {
+  page_number: number;
+  html_content: string;
+}
+
+export interface BookPagesResponse {
+  book_id: string;
+  total_pages: number;
+  pages: BookPage[];
+}
+
+export interface ChapterProgress {
+  chapter_id: string;
+  processed: boolean;
+  pages_done: number;
+  pages_total: number;
 }
 
 export interface ProgressOverview {

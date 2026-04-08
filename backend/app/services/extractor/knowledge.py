@@ -89,6 +89,7 @@ async def extract_knowledge_points(section_title: str, section_content: str) -> 
     response_text = await chat_completion(
         messages=[{"role": "user", "content": message_content}],
         max_tokens=4096,
+        caller="kp_extraction",
     )
 
     if response_text.startswith("```"):

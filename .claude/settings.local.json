@@ -14,7 +14,10 @@
       "WebFetch(domain:pymupdf.readthedocs.io)",
       "Bash(python3 -c \"import fitz; print\\(fitz.__version__\\); print\\(hasattr\\(fitz.Page, 'get_drawings'\\)\\); print\\(hasattr\\(fitz.Page, 'cluster_drawings'\\)\\)\")",
       "Bash(python3 -c ':*)",
-      "Bash(git:*)"
+      "Bash(git:*)",
+      "Bash(pnpm add:*)",
+      "Bash(node:*)",
+      "Bash(python3:*)"
     ]
   }
 }

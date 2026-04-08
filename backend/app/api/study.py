@@ -3,7 +3,7 @@ import logging
 import os
 import re
 import uuid
-from datetime import datetime
+from datetime import UTC, datetime
 from typing import Callable, Awaitable
 
 from fastapi import APIRouter, Depends, HTTPException
@@ -125,7 +125,7 @@ def _make_save_callbacks(
         await _save_kp_field(kp_id, "question", text)
 
     async def save_mastery(kp_id: str) -> None:
-        await _save_kp_field(kp_id, "mastered_at", datetime.utcnow())
+        await _save_kp_field(kp_id, "mastered_at", datetime.now(UTC).replace(tzinfo=None))
 
     async def save_state(sid: str, current_kp_index: int) -> None:
         async with async_session() as session:
@@ -233,16 +233,29 @@ async def create_session(
     if not kps:
         raise HTTPException(status_code=400, detail="Section has no knowledge points")
 
-    # Create DB session
-    study_session = StudySession(
-        user_id=DEFAULT_USER_ID,
-        book_id=book_id,
-        section_id=section_id,
-        started_at=datetime.utcnow(),
+    # Reuse existing active session for this section if one exists
+    existing_result = await db.execute(
+        select(StudySession)
+        .where(
+            StudySession.section_id == section_id,
+            StudySession.book_id == book_id,
+            StudySession.ended_at.is_(None),
+        )
+        .order_by(StudySession.started_at.desc())
+        .limit(1)
     )
-    db.add(study_session)
-    await db.commit()
-    await db.refresh(study_session)
+    study_session = existing_result.scalar_one_or_none()
+
+    if not study_session:
+        study_session = StudySession(
+            user_id=DEFAULT_USER_ID,
+            book_id=book_id,
+            section_id=section_id,
+            started_at=datetime.now(UTC).replace(tzinfo=None),
+        )
+        db.add(study_session)
+        await db.commit()
+        await db.refresh(study_session)
 
     session_id = str(study_session.id)
 
