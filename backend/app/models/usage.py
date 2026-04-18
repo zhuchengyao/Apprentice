@@ -1,7 +1,7 @@
 import uuid
 from datetime import UTC, datetime
 
-from sqlalchemy import Float, Integer, String, DateTime
+from sqlalchemy import Float, ForeignKey, Integer, String, DateTime
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import Mapped, mapped_column
 
@@ -14,6 +14,7 @@ class ApiUsage(Base):
     __tablename__ = "api_usage"
 
     id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    user_id: Mapped[uuid.UUID | None] = mapped_column(ForeignKey("users.id", ondelete="SET NULL"), nullable=True, index=True)
     model: Mapped[str] = mapped_column(String(100), index=True)
     provider: Mapped[str] = mapped_column(String(50))
     caller: Mapped[str] = mapped_column(String(100), index=True)  # e.g. "vision_converter", "teaching_agent"

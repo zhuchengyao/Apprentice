@@ -31,6 +31,13 @@ markdown syntax). Only associate images that genuinely illustrate the specific c
 all images with every KP. Use an empty list [] if no images are relevant. Max 5 images per KP.
 - You may also mention figures in the explanation text itself for context.
 - For math expressions, use $...$ for inline math and $$...$$ for display math.
+- CRITICAL — source_anchor: For each KP, include a "source_anchor" field: a short verbatim \
+quote (15–80 characters) copied EXACTLY from the section content that marks where this KP is \
+introduced or most clearly discussed. The anchor will be used to locate the passage in the \
+original text via substring search, so it MUST appear character-for-character in the section \
+content — do not paraphrase, translate, or alter punctuation/whitespace. Prefer the opening \
+words of the sentence or paragraph that first introduces the concept. If no single span in \
+the text cleanly corresponds to the KP, use an empty string "".
 
 Return valid JSON only, no markdown fencing:
 {
@@ -40,7 +47,8 @@ Return valid JSON only, no markdown fencing:
       "explanation": "Clear explanation of this concept...",
       "difficulty": 2,
       "order_index": 0,
-      "image_refs": ["/api/images/book_id/filename.png"]
+      "image_refs": ["/api/images/book_id/filename.png"],
+      "source_anchor": "verbatim quote from the section content"
     }
   ],
   "section_summary": "A 1-2 sentence summary of what this section covers."

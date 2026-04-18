@@ -8,14 +8,65 @@ from sqlalchemy.orm import selectinload
 from sse_starlette.sse import EventSourceResponse
 
 from app.database import get_db
+from app.dependencies import get_current_user
 from app.models.book import Book, BookPage, Chapter
+from app.models.user import User
 from app.schemas.book import BookPageResponse, BookPagesResponse, ChapterResponse
 
 router = APIRouter()
 
 
+async def _get_user_book(
+    book_id: str, current_user: User, db: AsyncSession
+) -> Book:
+    """Load a book owned by current_user, or raise 404."""
+    result = await db.execute(
+        select(Book).where(
+            Book.id == uuid.UUID(book_id),
+            Book.user_id == current_user.id,
+        )
+    )
+    book = result.scalar_one_or_none()
+    if not book:
+        raise HTTPException(status_code=404, detail="Book not found")
+    return book
+
+
+async def _get_user_chapter(
+    book_id: str,
+    chapter_id: str,
+    current_user: User,
+    db: AsyncSession,
+    *,
+    load_book: bool = False,
+) -> Chapter:
+    """Load a chapter whose parent book is owned by current_user, or raise 404."""
+    query = (
+        select(Chapter)
+        .join(Book, Book.id == Chapter.book_id)
+        .where(
+            Chapter.id == uuid.UUID(chapter_id),
+            Chapter.book_id == uuid.UUID(book_id),
+            Book.user_id == current_user.id,
+        )
+    )
+    if load_book:
+        query = query.options(selectinload(Chapter.book))
+    result = await db.execute(query)
+    chapter = result.scalar_one_or_none()
+    if not chapter:
+        raise HTTPException(status_code=404, detail="Chapter not found")
+    return chapter
+
+
 @router.get("/{book_id}/pages/{page_number}", response_model=BookPageResponse)
-async def get_page(book_id: str, page_number: int, db: AsyncSession = Depends(get_db)):
+async def get_page(
+    book_id: str,
+    page_number: int,
+    db: AsyncSession = Depends(get_db),
+    current_user: User = Depends(get_current_user),
+):
+    await _get_user_book(book_id, current_user, db)
     result = await db.execute(
         select(BookPage)
         .where(BookPage.book_id == uuid.UUID(book_id), BookPage.page_number == page_number)
@@ -32,11 +83,9 @@ async def get_pages(
     start: int = Query(1, ge=1),
     end: int = Query(None, ge=1),
     db: AsyncSession = Depends(get_db),
+    current_user: User = Depends(get_current_user),
 ):
-    book_result = await db.execute(select(Book).where(Book.id == uuid.UUID(book_id)))
-    book = book_result.scalar_one_or_none()
-    if not book:
-        raise HTTPException(status_code=404, detail="Book not found")
+    book = await _get_user_book(book_id, current_user, db)
 
     query = (
         select(BookPage)
@@ -61,16 +110,12 @@ async def get_chapter_pages(
     book_id: str,
     chapter_id: str,
     db: AsyncSession = Depends(get_db),
+    current_user: User = Depends(get_current_user),
 ):
     """Return all HTML pages belonging to a chapter."""
-    result = await db.execute(
-        select(Chapter)
-        .where(Chapter.id == uuid.UUID(chapter_id), Chapter.book_id == uuid.UUID(book_id))
-        .options(selectinload(Chapter.book))
+    chapter = await _get_user_chapter(
+        book_id, chapter_id, current_user, db, load_book=True
     )
-    chapter = result.scalar_one_or_none()
-    if not chapter:
-        raise HTTPException(status_code=404, detail="Chapter not found")
 
     pages_result = await db.execute(
         select(BookPage)
@@ -95,17 +140,10 @@ async def get_chapter_progress(
     book_id: str,
     chapter_id: str,
     db: AsyncSession = Depends(get_db),
+    current_user: User = Depends(get_current_user),
 ):
     """Return processing progress for a chapter (pages done vs total)."""
-    result = await db.execute(
-        select(Chapter).where(
-            Chapter.id == uuid.UUID(chapter_id),
-            Chapter.book_id == uuid.UUID(book_id),
-        )
-    )
-    chapter = result.scalar_one_or_none()
-    if not chapter:
-        raise HTTPException(status_code=404, detail="Chapter not found")
+    chapter = await _get_user_chapter(book_id, chapter_id, current_user, db)
 
     pages_total = max(chapter.end_page - chapter.start_page + 1, 0)
 
@@ -133,20 +171,13 @@ async def process_chapter_endpoint(
     force: bool = Query(False, description="Force reprocess: delete existing pages and redo"),
     background_tasks: BackgroundTasks = None,
     db: AsyncSession = Depends(get_db),
+    current_user: User = Depends(get_current_user),
 ):
     """Start processing a chapter in the background. Returns immediately.
 
     Use ?force=true to delete existing pages and reprocess from scratch.
     """
-    result = await db.execute(
-        select(Chapter).where(
-            Chapter.id == uuid.UUID(chapter_id),
-            Chapter.book_id == uuid.UUID(book_id),
-        )
-    )
-    chapter = result.scalar_one_or_none()
-    if not chapter:
-        raise HTTPException(status_code=404, detail="Chapter not found")
+    chapter = await _get_user_chapter(book_id, chapter_id, current_user, db)
 
     pages_total = max(chapter.end_page - chapter.start_page + 1, 0)
 
@@ -203,6 +234,7 @@ async def reprocess_page(
     book_id: str,
     page_number: int,
     db: AsyncSession = Depends(get_db),
+    current_user: User = Depends(get_current_user),
 ):
     """Re-convert a single page via vision model (costs one API call)."""
     import os
@@ -211,10 +243,7 @@ async def reprocess_page(
     from app.config import settings
     from app.services.parser.vision_converter import convert_page_batch
 
-    result = await db.execute(select(Book).where(Book.id == uuid.UUID(book_id)))
-    book = result.scalar_one_or_none()
-    if not book:
-        raise HTTPException(status_code=404, detail="Book not found")
+    book = await _get_user_book(book_id, current_user, db)
 
     if page_number < 1 or page_number > book.total_pages:
         raise HTTPException(status_code=400, detail=f"Page must be 1–{book.total_pages}")
@@ -253,10 +282,12 @@ async def list_figures(
     book_id: str,
     page_number: int,
     db: AsyncSession = Depends(get_db),
+    current_user: User = Depends(get_current_user),
 ):
     """List all figure images on a page with their filenames and URLs."""
     import re
 
+    await _get_user_book(book_id, current_user, db)
     result = await db.execute(
         select(BookPage).where(
             BookPage.book_id == uuid.UUID(book_id),
@@ -297,6 +328,7 @@ async def fix_figure(
     bottom: float | None = Query(None, ge=0, le=100),
     right: float | None = Query(None, ge=0, le=100),
     db: AsyncSession = Depends(get_db),
+    current_user: User = Depends(get_current_user),
 ):
     """Fix a single figure's screenshot.
 
@@ -317,18 +349,19 @@ async def fix_figure(
     from app.config import settings
     from app.services.parser.vision_converter import _render_figure_region
 
-    result = await db.execute(select(Book).where(Book.id == uuid.UUID(book_id)))
-    book = result.scalar_one_or_none()
-    if not book:
-        raise HTTPException(status_code=404, detail="Book not found")
+    book = await _get_user_book(book_id, current_user, db)
 
     if page_number < 1 or page_number > book.total_pages:
         raise HTTPException(status_code=400, detail=f"Page must be 1–{book.total_pages}")
 
-    image_dir = os.path.join(settings.upload_dir, "images", book_id)
-    filepath = os.path.join(image_dir, filename)
-    if not os.path.isfile(filepath):
+    from pathlib import Path
+    image_dir = Path(settings.upload_dir).resolve() / "images" / book_id
+    filepath = (image_dir / filename).resolve()
+    if not filepath.is_relative_to(image_dir):
+        raise HTTPException(status_code=400, detail="Invalid filename")
+    if not filepath.is_file():
         raise HTTPException(status_code=404, detail=f"Image file '{filename}' not found")
+    filepath = str(filepath)
 
     has_manual_coords = all(v is not None for v in (top, left, bottom, right))
 
@@ -395,17 +428,10 @@ async def stream_chapter_progress(
     book_id: str,
     chapter_id: str,
     db: AsyncSession = Depends(get_db),
+    current_user: User = Depends(get_current_user),
 ):
     """SSE endpoint that streams chapter processing progress until complete."""
-    result = await db.execute(
-        select(Chapter).where(
-            Chapter.id == uuid.UUID(chapter_id),
-            Chapter.book_id == uuid.UUID(book_id),
-        )
-    )
-    chapter = result.scalar_one_or_none()
-    if not chapter:
-        raise HTTPException(status_code=404, detail="Chapter not found")
+    chapter = await _get_user_chapter(book_id, chapter_id, current_user, db)
 
     pages_total = max(chapter.end_page - chapter.start_page + 1, 0)
     book_uuid = uuid.UUID(book_id)

@@ -1,4 +1,5 @@
 import asyncio
+import json
 import logging
 import os
 
@@ -9,9 +10,15 @@ from sqlalchemy.orm import selectinload
 from sqlalchemy.pool import NullPool
 
 from app.config import settings
-from app.models.book import Book, BookPage, BookStatus, Chapter
+from app.models.book import Book, BookPage, BookStatus, Chapter, Section, KnowledgePoint
+from app.services.ai_context import ai_user_context
+from app.services.extractor.illustration import generate_illustrations_batch
+from app.services.extractor.knowledge import extract_knowledge_points
 from app.services.parser.pdf_parser import parse_pdf_metadata
 from app.services.parser.vision_converter import convert_page_batch
+
+ILLUSTRATION_MIN_DIFFICULTY = 2
+ILLUSTRATION_CONCURRENCY = 4
 
 logger = logging.getLogger(__name__)
 
@@ -154,10 +161,115 @@ async def process_chapter(
         logger.info("Chapter '%s': %d/%d pages done", chapter.title, done, total)
 
     doc.close()
+
+    try:
+        await _extract_chapter_knowledge(db, chapter, book)
+    except Exception as e:
+        logger.error(
+            "KP extraction failed for chapter '%s' (%s): %s — continuing without KPs",
+            chapter.title, chapter.id, e,
+        )
+
     chapter.processed = True
     await db.flush()
 
     logger.info("Chapter '%s' complete (%d pages)", chapter.title, total)
+
+
+async def _extract_chapter_knowledge(
+    db: AsyncSession,
+    chapter: Chapter,
+    book: Book,
+):
+    """Pull all converted pages for a chapter, extract KPs, persist Section + KPs.
+
+    Creates one synthetic Section per chapter to preserve the current
+    Chapter → Section → KP model. Idempotent: skips if KPs already exist
+    for this chapter.
+    """
+    existing = await db.execute(
+        select(Section.id).where(Section.chapter_id == chapter.id).limit(1)
+    )
+    if existing.scalar_one_or_none() is not None:
+        logger.info("Chapter '%s' already has a Section — skipping KP extraction", chapter.title)
+        return
+
+    pages_result = await db.execute(
+        select(BookPage)
+        .where(
+            BookPage.book_id == book.id,
+            BookPage.page_number >= chapter.start_page,
+            BookPage.page_number <= chapter.end_page,
+        )
+        .order_by(BookPage.page_number)
+    )
+    pages = pages_result.scalars().all()
+    if not pages:
+        logger.warning("No pages found for chapter '%s' — skipping KP extraction", chapter.title)
+        return
+
+    content = "\n\n".join(p.html_content for p in pages if p.html_content)
+    if not content.strip():
+        logger.warning("Empty content for chapter '%s' — skipping KP extraction", chapter.title)
+        return
+
+    result = await extract_knowledge_points(chapter.title, content)
+    kps = result.get("knowledge_points") or []
+    if not kps:
+        logger.warning("No KPs returned for chapter '%s'", chapter.title)
+        return
+
+    section = Section(
+        chapter_id=chapter.id,
+        title=chapter.title,
+        order_index=0,
+        content_markdown=content,
+        summary=result.get("section_summary"),
+    )
+    db.add(section)
+    await db.flush()
+
+    # Decide which KPs get an illustration before inserting — skip trivial
+    # facts (difficulty == 1) to hold down token cost; the heavier concepts
+    # are exactly where a visual pays off most.
+    illustration_targets = [
+        (
+            idx,
+            (kp.get("concept") or "")[:300],
+            (kp.get("explanation") or "")[:2000],
+        )
+        for idx, kp in enumerate(kps)
+        if int(kp.get("difficulty") or 1) >= ILLUSTRATION_MIN_DIFFICULTY
+        and (kp.get("concept") or "").strip()
+    ]
+    illustrations: dict[int, dict] = {}
+    if illustration_targets:
+        specs = await generate_illustrations_batch(
+            [(c, e) for _, c, e in illustration_targets],
+            concurrency=ILLUSTRATION_CONCURRENCY,
+        )
+        for (idx, _, _), spec in zip(illustration_targets, specs):
+            if spec:
+                illustrations[idx] = spec
+
+    for idx, kp in enumerate(kps):
+        image_refs = kp.get("image_refs") or []
+        image_urls = json.dumps(image_refs) if image_refs else None
+        db.add(KnowledgePoint(
+            section_id=section.id,
+            concept=(kp.get("concept") or "")[:500],
+            explanation=kp.get("explanation") or "",
+            difficulty=int(kp.get("difficulty") or 1),
+            order_index=int(kp.get("order_index", idx)),
+            image_urls=image_urls,
+            source_anchor=kp.get("source_anchor") or None,
+            illustration=illustrations.get(idx),
+        ))
+    await db.flush()
+    logger.info(
+        "Chapter '%s': extracted %d KPs (%d illustrated)",
+        chapter.title, len(kps), len(illustrations),
+    )
 
 
 # ---------------------------------------------------------------------------
@@ -184,8 +296,10 @@ async def _process_chapter_standalone(chapter_id: str):
             if not chapter or chapter.processed:
                 return
 
+            user_id = str(chapter.book.user_id) if chapter.book.user_id else None
             try:
-                await process_chapter(db, chapter)
+                with ai_user_context(user_id):
+                    await process_chapter(db, chapter)
                 await db.commit()
             except Exception as e:
                 logger.error("Chapter processing failed for %s: %s", chapter_id, e)

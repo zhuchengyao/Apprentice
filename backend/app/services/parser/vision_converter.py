@@ -150,7 +150,6 @@ async def relocate_figure(
     b64 = base64.b64encode(page_png).decode()
 
     messages = [
-        {"role": "system", "content": RELOCATE_PROMPT.format(description=description)},
         {
             "role": "user",
             "content": [
@@ -163,7 +162,10 @@ async def relocate_figure(
         },
     ]
 
-    raw = await chat_completion(messages, max_tokens=64, model=model, caller="figure_relocate")
+    raw = await chat_completion(
+        messages, max_tokens=64, model=model, caller="figure_relocate",
+        system=RELOCATE_PROMPT.format(description=description),
+    )
     parts = [float(x.strip()) for x in raw.strip().split(",")]
     if len(parts) != 4:
         raise ValueError(f"Expected 4 coordinates, got: {raw}")
@@ -553,8 +555,15 @@ async def _convert_single_page(
     """Send one page image to the vision model and return (page_number, raw_html)."""
     b64 = base64.b64encode(page_png).decode()
 
+    system_blocks = [
+        {
+            "type": "text",
+            "text": SYSTEM_PROMPT,
+            "cache_control": {"type": "ephemeral"},
+        },
+    ]
+
     messages = [
-        {"role": "system", "content": SYSTEM_PROMPT},
         {
             "role": "user",
             "content": [
@@ -579,7 +588,7 @@ async def _convert_single_page(
         for attempt in range(1, max_retries + 2):
             try:
                 logger.info("Vision converting page %d (attempt %d)…", page_number, attempt)
-                raw = await chat_completion(messages, max_tokens=16384, model=model, caller="vision_converter")
+                raw = await chat_completion(messages, max_tokens=16384, model=model, caller="vision_converter", system=system_blocks)
                 html = _strip_code_fences(raw)
                 logger.info("Page %d done (%d chars)", page_number, len(html))
                 return page_number, html

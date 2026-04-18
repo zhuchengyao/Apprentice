@@ -9,7 +9,9 @@ from sqlalchemy.orm import selectinload
 
 from app.config import settings
 from app.database import get_db
+from app.dependencies import get_current_user
 from app.models.book import Book, BookStatus, Chapter, Section, KnowledgePoint
+from app.models.user import User
 from app.schemas.book import (
     BookResponse,
     BookListResponse,
@@ -45,10 +47,23 @@ async def upload_book(
     background_tasks: BackgroundTasks,
     file: UploadFile = File(...),
     db: AsyncSession = Depends(get_db),
+    current_user: User = Depends(get_current_user),
 ):
-    allowed_types = ["application/pdf", "application/epub+zip", "text/plain"]
+    # Currently only PDFs actually make it through _process_book; surface that
+    # to the client up front instead of accepting upload → failing in the task.
+    allowed_types = ["application/pdf"]
     if file.content_type not in allowed_types:
-        raise HTTPException(status_code=400, detail=f"File type {file.content_type} not supported")
+        raise HTTPException(
+            status_code=400,
+            detail=f"File type {file.content_type} not supported (only PDF)",
+        )
+
+    # Pre-check credits BEFORE touching disk or inserting a DB row. If the user
+    # has no balance, we don't want to leak a file or an orphan Book record.
+    from app.services.billing import check_credits_or_raise
+    await check_credits_or_raise(
+        db, current_user.id, model="gpt-5.4", max_tokens=4096
+    )
 
     os.makedirs(settings.upload_dir, exist_ok=True)
     file_ext = os.path.splitext(file.filename or "upload")[1]
@@ -56,23 +71,34 @@ async def upload_book(
     file_path = os.path.join(settings.upload_dir, f"{file_id}{file_ext}")
 
     total_size = 0
-    async with aiofiles.open(file_path, "wb") as f:
-        while chunk := await file.read(1024 * 1024):  # 1 MB chunks
-            total_size += len(chunk)
-            if total_size > MAX_UPLOAD_SIZE:
-                await f.close()
-                os.remove(file_path)
-                raise HTTPException(status_code=413, detail="File too large (max 500 MB)")
-            await f.write(chunk)
+    try:
+        async with aiofiles.open(file_path, "wb") as f:
+            while chunk := await file.read(1024 * 1024):  # 1 MB chunks
+                total_size += len(chunk)
+                if total_size > MAX_UPLOAD_SIZE:
+                    raise HTTPException(
+                        status_code=413, detail="File too large (max 500 MB)"
+                    )
+                await f.write(chunk)
+    except BaseException:
+        if os.path.exists(file_path):
+            os.remove(file_path)
+        raise
 
     book = Book(
+        user_id=current_user.id,
         title=os.path.splitext(file.filename or "Untitled")[0],
         file_path=file_path,
         file_type=file_ext.lstrip("."),
         status=BookStatus.uploading,
     )
     db.add(book)
-    await db.commit()
+    try:
+        await db.commit()
+    except BaseException:
+        if os.path.exists(file_path):
+            os.remove(file_path)
+        raise
     await db.refresh(book)
 
     background_tasks.add_task(process_book, str(book.id))
@@ -81,8 +107,15 @@ async def upload_book(
 
 
 @router.get("", response_model=BookListResponse)
-async def list_books(db: AsyncSession = Depends(get_db)):
-    result = await db.execute(select(Book).order_by(Book.created_at.desc()))
+async def list_books(
+    db: AsyncSession = Depends(get_db),
+    current_user: User = Depends(get_current_user),
+):
+    result = await db.execute(
+        select(Book)
+        .where(Book.user_id == current_user.id)
+        .order_by(Book.created_at.desc())
+    )
     books = result.scalars().all()
 
     # Batch-fetch KP counts for all books in one query
@@ -108,10 +141,14 @@ async def list_books(db: AsyncSession = Depends(get_db)):
 
 
 @router.get("/{book_id}", response_model=BookDetailResponse)
-async def get_book(book_id: str, db: AsyncSession = Depends(get_db)):
+async def get_book(
+    book_id: str,
+    db: AsyncSession = Depends(get_db),
+    current_user: User = Depends(get_current_user),
+):
     result = await db.execute(
         select(Book)
-        .where(Book.id == uuid.UUID(book_id))
+        .where(Book.id == uuid.UUID(book_id), Book.user_id == current_user.id)
         .options(
             selectinload(Book.chapters)
             .selectinload(Chapter.sections)
@@ -198,9 +235,14 @@ async def get_book(book_id: str, db: AsyncSession = Depends(get_db)):
 
 
 @router.get("/{book_id}/status")
-async def get_book_status(book_id: str, db: AsyncSession = Depends(get_db)):
+async def get_book_status(
+    book_id: str,
+    db: AsyncSession = Depends(get_db),
+    current_user: User = Depends(get_current_user),
+):
     result = await db.execute(
-        select(Book.status, Book.error_message).where(Book.id == uuid.UUID(book_id))
+        select(Book.status, Book.error_message)
+        .where(Book.id == uuid.UUID(book_id), Book.user_id == current_user.id)
     )
     row = result.one_or_none()
     if not row:
@@ -209,17 +251,18 @@ async def get_book_status(book_id: str, db: AsyncSession = Depends(get_db)):
 
 
 @router.post("/{book_id}/reprocess-images")
-async def reprocess_images(book_id: str, db: AsyncSession = Depends(get_db)):
-    """Re-extract images from a book's PDF and rebuild section content with image refs.
-
-    Deletes existing KPs so they are re-extracted (with image awareness) on next study.
-    """
+async def reprocess_images(
+    book_id: str,
+    db: AsyncSession = Depends(get_db),
+    current_user: User = Depends(get_current_user),
+):
+    """Re-extract images from a book's PDF and rebuild section content with image refs."""
     import asyncio
     from app.services.parser.pdf_parser import parse_pdf
 
     result = await db.execute(
         select(Book)
-        .where(Book.id == uuid.UUID(book_id))
+        .where(Book.id == uuid.UUID(book_id), Book.user_id == current_user.id)
         .options(
             selectinload(Book.chapters)
             .selectinload(Chapter.sections)
@@ -234,13 +277,11 @@ async def reprocess_images(book_id: str, db: AsyncSession = Depends(get_db)):
     if not os.path.exists(book.file_path):
         raise HTTPException(status_code=400, detail="PDF file not found on disk")
 
-    # Re-parse with image extraction (run in thread to avoid blocking async loop)
     loop = asyncio.get_running_loop()
     parsed = await loop.run_in_executor(
         None, lambda: parse_pdf(book.file_path, book_id=str(book.id))
     )
 
-    # Build page → image URL mapping
     from app.tasks.processing import _page_matches_section
     page_images: dict[int, list[str]] = {}
     page_texts: dict[int, str] = {}
@@ -257,12 +298,10 @@ async def reprocess_images(book_id: str, db: AsyncSession = Depends(get_db)):
     for chapter in book.chapters:
         for section in chapter.sections:
             raw = section.content_raw or ""
-            # Strip any previous injected images
             marker = "\n\n---\n## Book Figures\n"
             if marker in raw:
                 raw = raw[:raw.index(marker)]
 
-            # Match images to this section using page text overlap
             matched = []
             for page_num in sorted(page_images.keys()):
                 if page_num not in page_texts:
@@ -291,16 +330,21 @@ async def reprocess_images(book_id: str, db: AsyncSession = Depends(get_db)):
 
 
 @router.delete("/{book_id}")
-async def delete_book(book_id: str, db: AsyncSession = Depends(get_db)):
+async def delete_book(
+    book_id: str,
+    db: AsyncSession = Depends(get_db),
+    current_user: User = Depends(get_current_user),
+):
     import shutil
 
-    result = await db.execute(select(Book).where(Book.id == uuid.UUID(book_id)))
+    result = await db.execute(
+        select(Book).where(Book.id == uuid.UUID(book_id), Book.user_id == current_user.id)
+    )
     book = result.scalar_one_or_none()
     if not book:
         raise HTTPException(status_code=404, detail="Book not found")
     if os.path.exists(book.file_path):
         os.remove(book.file_path)
-    # Clean up extracted images
     image_dir = os.path.join(settings.upload_dir, "images", str(book.id))
     if os.path.isdir(image_dir):
         shutil.rmtree(image_dir)
