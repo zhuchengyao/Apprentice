@@ -26,10 +26,29 @@ function normalizeLatex(text: string): string {
 
 interface MarkdownProps {
   children: string;
+  /** Render inline — strip block-level wrappers so the output can live inside
+   *  an <h3>, <p>, <span>, etc. Useful for titles or short labels that may
+   *  still contain math or other markdown. */
+  inline?: boolean;
 }
 
-export function Markdown({ children }: MarkdownProps) {
+export function Markdown({ children, inline = false }: MarkdownProps) {
   const normalized = normalizeLatex(children);
+  if (inline) {
+    return (
+      <ReactMarkdown
+        remarkPlugins={remarkPlugins}
+        rehypePlugins={rehypePlugins}
+        components={{
+          // Paragraphs would introduce block elements inside inline parents
+          // (invalid HTML: <h3><p>…</p></h3>). Unwrap to the raw children.
+          p: ({ children }) => <>{children}</>,
+        }}
+      >
+        {normalized}
+      </ReactMarkdown>
+    );
+  }
   return (
     <ReactMarkdown
       remarkPlugins={remarkPlugins}

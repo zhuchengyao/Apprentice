@@ -90,7 +90,7 @@ async def extract_knowledge_points(section_title: str, section_content: str) -> 
 
     if image_paths:
         content_blocks: list[dict] = [{"type": "text", "text": section_text}]
-        content_blocks.extend(build_image_content_blocks(image_paths[:10]))  # cap at 10 images
+        content_blocks.extend(await build_image_content_blocks(image_paths[:10]))  # cap at 10 images
         message_content: str | list[dict] = content_blocks
     else:
         message_content = section_text

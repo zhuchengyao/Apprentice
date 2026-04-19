@@ -5,6 +5,7 @@ import type {
   AnswerResponse,
   QuestionsResponse,
   QuizQuestion,
+  ScopeSummary,
   StudyAttempt,
   StudyPhase,
   StudySession,
@@ -29,6 +30,9 @@ interface StudySessionState {
   totalScopes: number;
   currentQuestionIndex: number;
 
+  scopes: ScopeSummary[];
+  maxScopeReached: number;
+
   questions: QuizQuestion[];
   attempts: StudyAttempt[];
   feedback: QuestionFeedback | null;
@@ -52,6 +56,7 @@ interface StudySessionState {
   ) => void;
   advanceQuestion: () => void;
   advanceScope: (session: StudySession, done: boolean) => void;
+  gotoScope: (session: StudySession) => void;
   setExplanation: (text: string, streaming: boolean) => void;
   appendExplanation: (chunk: string) => void;
   completeExplanation: () => void;
@@ -69,6 +74,8 @@ const initialState = {
   currentScopeIndex: 0,
   totalScopes: 0,
   currentQuestionIndex: 0,
+  scopes: [] as ScopeSummary[],
+  maxScopeReached: 0,
   questions: [],
   attempts: [],
   feedback: null,
@@ -95,6 +102,8 @@ export const useStudySessionStore = create<StudySessionState>((set) => ({
         currentScopeIndex: session.current_scope_index,
         totalScopes: session.total_scopes,
         currentQuestionIndex: session.current_question_index,
+        scopes: session.scopes,
+        maxScopeReached: session.max_scope_reached,
         attempts: session.attempts,
         scopeScore: { correct, total: session.attempts.length },
         feedback: null,
@@ -174,12 +183,42 @@ export const useStudySessionStore = create<StudySessionState>((set) => ({
         currentScopeIndex: session.current_scope_index,
         totalScopes: session.total_scopes,
         currentQuestionIndex: session.current_question_index,
+        scopes: session.scopes,
+        maxScopeReached: session.max_scope_reached,
         questions: [],
         attempts: session.attempts,
         feedback: null,
         scopeScore: { correct, total: session.attempts.length },
         explanation: "",
         explanationStreaming: false,
+        explanationComplete: false,
+      };
+    }),
+
+  // Jump to a previously-reached scope for review. Mirrors advanceScope's
+  // reset semantics (clear cached questions/explanation so the reviewed
+  // scope's content is loaded fresh) but uses the session payload as-is
+  // since the server has already placed us in `feedback`.
+  gotoScope: (session) =>
+    set(() => {
+      const correct = session.attempts.filter((a) => a.correct).length;
+      return {
+        session,
+        phase: session.phase,
+        currentScopeIndex: session.current_scope_index,
+        totalScopes: session.total_scopes,
+        currentQuestionIndex: session.current_question_index,
+        scopes: session.scopes,
+        maxScopeReached: session.max_scope_reached,
+        questions: [],
+        attempts: session.attempts,
+        feedback: null,
+        scopeScore: { correct, total: session.attempts.length },
+        explanation: "",
+        explanationStreaming: false,
+        // Reviewed scope already has a complete explanation history server-
+        // side; let ExplanationPanel decide whether to re-stream based on
+        // its cache-aware mount effect.
         explanationComplete: false,
       };
     }),

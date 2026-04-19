@@ -299,32 +299,41 @@ async def chat_completion_stream(
 
 # ── Helpers ────────────────────────────────────────────────────
 
-def build_image_content_blocks(image_paths: list[str]) -> list[dict]:
-    """Build multimodal content blocks from image file paths."""
-    blocks = []
-    for path in image_paths:
-        if not os.path.isfile(path):
-            continue
-        ext = os.path.splitext(path)[1].lstrip(".").lower()
-        media_type_map = {
-            "png": "image/png",
-            "jpg": "image/jpeg",
-            "jpeg": "image/jpeg",
-            "gif": "image/gif",
-            "webp": "image/webp",
-        }
-        media_type = media_type_map.get(ext, "image/png")
-        with open(path, "rb") as f:
-            data = base64.standard_b64encode(f.read()).decode("utf-8")
-        blocks.append({
-            "type": "image",
-            "source": {
-                "type": "base64",
-                "media_type": media_type,
-                "data": data,
-            },
-        })
-    return blocks
+_IMAGE_MEDIA_TYPES = {
+    "png": "image/png",
+    "jpg": "image/jpeg",
+    "jpeg": "image/jpeg",
+    "gif": "image/gif",
+    "webp": "image/webp",
+}
+
+
+def _read_image_block(path: str) -> dict | None:
+    if not os.path.isfile(path):
+        return None
+    ext = os.path.splitext(path)[1].lstrip(".").lower()
+    with open(path, "rb") as f:
+        data = base64.standard_b64encode(f.read()).decode("utf-8")
+    return {
+        "type": "image",
+        "source": {
+            "type": "base64",
+            "media_type": _IMAGE_MEDIA_TYPES.get(ext, "image/png"),
+            "data": data,
+        },
+    }
+
+
+async def build_image_content_blocks(image_paths: list[str]) -> list[dict]:
+    """Build multimodal content blocks from image file paths.
+
+    Reads happen off-thread — file I/O + base64 of 10 figure-sized PNGs
+    would otherwise block the event loop for tens of ms per request.
+    """
+    blocks = await asyncio.gather(
+        *(asyncio.to_thread(_read_image_block, p) for p in image_paths)
+    )
+    return [b for b in blocks if b is not None]
 
 
 def _to_openai_content(content) -> list[dict]:

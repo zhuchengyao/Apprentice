@@ -36,7 +36,6 @@ from app.models.study import (
 )
 from app.models.tutor import TutorConversation
 from app.models.user import User
-from app.services.ai_client import chat_completion_stream
 from app.services.ai_context import ai_user_context
 from app.services.billing import check_credits_or_raise
 from app.services.learning.mastery import (
@@ -52,11 +51,10 @@ from app.services.teaching.context import (
     load_kp_list_text,
     load_student_block,
 )
-from app.services.teaching.errors import (
-    TutorLLMError,
-    TutorPersistError,
-    log_stream_failure,
-    stream_error_payload,
+from app.services.teaching.streaming import (
+    iter_llm_chunks,
+    save_session,
+    wrap_sse_errors,
 )
 from app.services.teaching.prompts import (
     TUTOR_STATIC_RULES,
@@ -81,6 +79,11 @@ EXPLAIN_DONE_PAYLOAD_CAP = 20_000
 # inspect when deciding scope-complete. plan.count is 2-5; this is generous.
 SCOPE_QUESTION_FETCH_CAP = 50
 
+# Cap for per-scope attempt fetches. A user may retry a scope, but bounded
+# at 2× the question cap above covers even aggressive retry behavior
+# without letting a malformed row set pin arbitrary memory.
+SCOPE_ATTEMPT_FETCH_CAP = 100
+
 # Generous token budgets for reasoning models (gpt-5-class) where a large
 # fraction of `max_completion_tokens` is spent on internal reasoning that
 # never becomes output content. A tight budget causes zero-content streams.
@@ -103,6 +106,13 @@ class ScopeView(BaseModel):
     source_anchors: list[str]
 
 
+class ScopeSummary(BaseModel):
+    """Lightweight scope entry for the session-wide scope selector."""
+    index: int
+    title: str
+    anchor_hint: str
+
+
 class AttemptView(BaseModel):
     question_id: str
     chosen_option: str
@@ -118,8 +128,14 @@ class SessionResponse(BaseModel):
     total_scopes: int
     current_question_index: int
     scope: ScopeView | None
+    scopes: list[ScopeSummary]
+    max_scope_reached: int
     attempts: list[AttemptView]
     completed_at: str | None
+
+
+class GotoScopeRequest(BaseModel):
+    scope_index: int
 
 
 class QuestionView(BaseModel):
@@ -221,6 +237,7 @@ async def _attempts_for_scope(
             QuizAttempt.scope_index == scope_index,
         )
         .order_by(QuizAttempt.answered_at)
+        .limit(SCOPE_ATTEMPT_FETCH_CAP)
     )
     return list(result.scalars().all())
 
@@ -233,6 +250,39 @@ def _attempt_views(attempts: list[QuizAttempt]) -> list[AttemptView]:
             correct=a.correct,
         )
         for a in attempts
+    ]
+
+
+async def _max_scope_reached(
+    db: AsyncSession, session: StudySession
+) -> int:
+    """Furthest scope index the user has ever been on.
+
+    Derived from (a) the current position and (b) the highest scope_index any
+    attempt has recorded — so jumping back via /goto-scope doesn't lose the
+    user's forward reach. For completed sessions every scope is reachable.
+    """
+    plan = session.scope_plan or []
+    if session.phase == StudyPhase.done and plan:
+        return len(plan) - 1
+    result = await db.execute(
+        select(func.max(QuizAttempt.scope_index)).where(
+            QuizAttempt.session_id == session.id
+        )
+    )
+    max_attempt = result.scalar_one_or_none() or 0
+    return max(session.current_scope_index, int(max_attempt))
+
+
+def _scope_summaries(session: StudySession) -> list[ScopeSummary]:
+    plan = session.scope_plan or []
+    return [
+        ScopeSummary(
+            index=i,
+            title=(scope.get("title") or "").strip() or f"Scope {i + 1}",
+            anchor_hint=(scope.get("anchor_hint") or "")[:120],
+        )
+        for i, scope in enumerate(plan)
     ]
 
 
@@ -252,6 +302,8 @@ async def _session_response(
         total_scopes=len(plan),
         current_question_index=session.current_question_index,
         scope=_scope_view(session, kps_by_id),
+        scopes=_scope_summaries(session),
+        max_scope_reached=await _max_scope_reached(db, session),
         attempts=_attempt_views(attempts),
         completed_at=session.completed_at.isoformat() if session.completed_at else None,
     )
@@ -486,7 +538,7 @@ async def advance_to_explain(
     )
     system_blocks = [
         {"type": "text", "text": TUTOR_STATIC_RULES},
-        {"type": "text", "text": context_text, "cache_control": {"type": "ephemeral"}},
+        {"type": "text", "text": context_text, "cache_control": {"type": "ephemeral", "ttl": "1h"}},
         {"type": "text", "text": student_block, "cache_control": {"type": "ephemeral"}},
         {"type": "text", "text": task_text},
     ]
@@ -513,67 +565,55 @@ async def advance_to_explain(
         session.phase = StudyPhase.explain
         await db.commit()
 
-    async def event_stream():
+    async def body():
         with ai_user_context(user_id_str):
             collected: list[str] = []
             collected_size = 0
-            try:
-                try:
-                    async for chunk in chat_completion_stream(
-                        messages=[{"role": "user", "content": "请开始。"}],
-                        max_tokens=EXPLAIN_MAX_TOKENS,
-                        model=settings.tutor_model,
-                        caller="study_explain",
-                        system=system_blocks,
-                    ):
-                        # Stream every token to the client; cap what we keep
-                        # in memory for the final `done` payload so a runaway
-                        # response doesn't pin a large string per request.
-                        if collected_size < EXPLAIN_DONE_PAYLOAD_CAP:
-                            collected.append(chunk)
-                            collected_size += len(chunk)
-                        yield {"event": "token", "data": chunk}
-                except Exception as e:
-                    raise TutorLLMError() from e
+            async for chunk in iter_llm_chunks(
+                messages=[{"role": "user", "content": "请开始。"}],
+                max_tokens=EXPLAIN_MAX_TOKENS,
+                model=settings.tutor_model,
+                caller="study_explain",
+                system=system_blocks,
+            ):
+                # Stream every token to the client; cap what we keep in
+                # memory for the final `done` payload so a runaway response
+                # doesn't pin a large string per request.
+                if collected_size < EXPLAIN_DONE_PAYLOAD_CAP:
+                    collected.append(chunk)
+                    collected_size += len(chunk)
+                yield {"event": "token", "data": chunk}
 
-                full_text = "".join(collected)
-                if collected_size >= EXPLAIN_DONE_PAYLOAD_CAP:
-                    full_text = full_text[:EXPLAIN_DONE_PAYLOAD_CAP] + "\n\n[…]"
+            full_text = "".join(collected)
+            if collected_size >= EXPLAIN_DONE_PAYLOAD_CAP:
+                full_text = full_text[:EXPLAIN_DONE_PAYLOAD_CAP] + "\n\n[…]"
 
-                try:
-                    from app.database import async_session
-                    async with async_session() as save_db:
-                        # Atomic phase transition: only one concurrent stream
-                        # for this session "wins" the EXPLAIN→PRACTICE flip,
-                        # avoiding double-advance if the user opened the
-                        # session in two tabs.
-                        result = await save_db.execute(
-                            update(StudySession)
-                            .where(
-                                StudySession.id == session_id_uuid,
-                                StudySession.phase == StudyPhase.explain,
-                            )
-                            .values(phase=StudyPhase.practice)
-                        )
-                        if result.rowcount:
-                            for kp_id in exposed_kp_ids:
-                                await record_kp_exposure(save_db, user_uuid, kp_id)
-                        await save_db.commit()
-                except Exception as e:
-                    raise TutorPersistError() from e
+            async with save_session() as save_db:
+                # Atomic phase transition: only one concurrent stream for
+                # this session "wins" the EXPLAIN→PRACTICE flip, avoiding
+                # double-advance if the user opened the session in two tabs.
+                result = await save_db.execute(
+                    update(StudySession)
+                    .where(
+                        StudySession.id == session_id_uuid,
+                        StudySession.phase == StudyPhase.explain,
+                    )
+                    .values(phase=StudyPhase.practice)
+                )
+                if result.rowcount:
+                    for kp_id in exposed_kp_ids:
+                        await record_kp_exposure(save_db, user_uuid, kp_id)
+                await save_db.commit()
 
-                yield {
-                    "event": "done",
-                    "data": json.dumps({
-                        "content": full_text,
-                        "next_phase": StudyPhase.practice.value,
-                    }),
-                }
-            except Exception as e:
-                log_stream_failure(logger, "study_explain", e)
-                yield {"event": "error", "data": stream_error_payload(e)}
+            yield {
+                "event": "done",
+                "data": json.dumps({
+                    "content": full_text,
+                    "next_phase": StudyPhase.practice.value,
+                }),
+            }
 
-    return EventSourceResponse(event_stream())
+    return EventSourceResponse(wrap_sse_errors("study_explain", body()))
 
 
 @router.get("/sessions/{session_id}/questions", response_model=QuestionsResponse)
@@ -770,3 +810,41 @@ async def advance_to_next_scope(
         session=await _session_response(session, db, _kp_index_by_id(all_kps)),
         done=done,
     )
+
+
+@router.post("/sessions/{session_id}/goto-scope", response_model=SessionResponse)
+async def goto_scope(
+    session_id: str,
+    body: GotoScopeRequest,
+    db: AsyncSession = Depends(get_db),
+    current_user: User = Depends(get_current_user),
+):
+    """Jump `current_scope_index` to a previously-reached scope for review.
+
+    Lands the session in FEEDBACK so the student sees the scope recap first;
+    from there the phase stepper lets them step back through PRACTICE →
+    EXPLAIN → READ without having to re-complete the quiz (answers are
+    idempotent per scope). Blocked for scope indices the user has not
+    actually reached yet.
+    """
+    session = await _load_session(session_id, current_user, db)
+    plan = session.scope_plan or []
+    target = body.scope_index
+    if target < 0 or target >= len(plan):
+        raise HTTPException(status_code=400, detail="scope_index out of range")
+
+    max_reached = await _max_scope_reached(db, session)
+    if target > max_reached:
+        raise HTTPException(status_code=400, detail="Scope not yet reached")
+
+    session.current_scope_index = target
+    session.phase = StudyPhase.feedback
+    # Point at end-of-quiz so FeedbackCard renders without triggering the
+    # practice-loading path. The per-scope /questions endpoint re-normalizes
+    # current_question_index if the user later steps back to practice.
+    session.current_question_index = 0
+    await db.commit()
+    await db.refresh(session)
+
+    all_kps = await get_chapter_knowledge_points(session.chapter_id, db)
+    return await _session_response(session, db, _kp_index_by_id(all_kps))

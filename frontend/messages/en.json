@@ -388,6 +388,7 @@
     "scope_default_title": "Current scope",
     "scope_progress": "Scope {current}/{total}",
     "scope_kp_count": "{count} concepts",
+    "scope_selector_label": "Scopes",
     "read_instruction": "Read this section at your own pace. Tap below when you're ready for a short explanation.",
     "read_cta": "I've finished reading",
     "preparing_explanation": "Preparing…",

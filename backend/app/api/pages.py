@@ -248,12 +248,17 @@ async def reprocess_page(
     if page_number < 1 or page_number > book.total_pages:
         raise HTTPException(status_code=400, detail=f"Page must be 1–{book.total_pages}")
 
-    doc = fitz.open(book.file_path)
     image_dir = os.path.join(settings.upload_dir, "images", str(book.id))
-    os.makedirs(image_dir, exist_ok=True)
+    # fitz.open parses the whole PDF header + xref table on open — on a
+    # large textbook that's tens of MB of disk I/O and CPU work. Run it
+    # off-thread so we don't stall the event loop for other requests.
+    doc = await asyncio.to_thread(fitz.open, book.file_path)
+    await asyncio.to_thread(os.makedirs, image_dir, exist_ok=True)
 
-    results = await convert_page_batch(doc, str(book.id), [page_number], image_dir)
-    doc.close()
+    try:
+        results = await convert_page_batch(doc, str(book.id), [page_number], image_dir)
+    finally:
+        await asyncio.to_thread(doc.close)
 
     if not results:
         raise HTTPException(status_code=500, detail="Vision conversion returned no result")

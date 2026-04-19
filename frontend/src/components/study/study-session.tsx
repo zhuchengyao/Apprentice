@@ -12,6 +12,7 @@ import { ReadingScopePanel } from "./reading-scope-panel";
 import { ExplanationPanel } from "./explanation-panel";
 import { QuizCard } from "./quiz-card";
 import { FeedbackCard } from "./feedback-card";
+import { ScopeSelector } from "./scope-selector";
 import type {
   AnswerResponse,
   NextScopeResponse,
@@ -45,6 +46,8 @@ export function StudySessionPanel({
   const questions = useStudySessionStore((s) => s.questions);
   const feedback = useStudySessionStore((s) => s.feedback);
   const scopeScore = useStudySessionStore((s) => s.scopeScore);
+  const scopes = useStudySessionStore((s) => s.scopes);
+  const maxScopeReached = useStudySessionStore((s) => s.maxScopeReached);
   const loading = useStudySessionStore((s) => s.loading);
   const error = useStudySessionStore((s) => s.error);
 
@@ -55,6 +58,7 @@ export function StudySessionPanel({
   const applyAnswer = useStudySessionStore((s) => s.applyAnswer);
   const advanceQuestion = useStudySessionStore((s) => s.advanceQuestion);
   const advanceScope = useStudySessionStore((s) => s.advanceScope);
+  const gotoScope = useStudySessionStore((s) => s.gotoScope);
   const reset = useStudySessionStore((s) => s.reset);
 
   const workingRef = useRef(false);
@@ -136,6 +140,31 @@ export function StudySessionPanel({
       setAdvancingScope(false);
     }
   }, [sessionId, advanceScope, highlight, setError]);
+
+  const handleSelectScope = useCallback(
+    async (targetIndex: number) => {
+      if (!sessionId || workingRef.current) return;
+      if (targetIndex === currentScopeIndex) return;
+      workingRef.current = true;
+      setAdvancingScope(true);
+      try {
+        const session = await api.post<StudySession>(
+          `/study/sessions/${sessionId}/goto-scope`,
+          { scope_index: targetIndex },
+        );
+        gotoScope(session);
+        // Drop scope highlights from the old scope; the new ReadingScopePanel
+        // re-applies when the stepper navigates back to READ.
+        highlight.clearAll();
+      } catch (err) {
+        setError(err instanceof Error ? err.message : "Failed to switch scope");
+      } finally {
+        workingRef.current = false;
+        setAdvancingScope(false);
+      }
+    },
+    [sessionId, currentScopeIndex, gotoScope, highlight, setError],
+  );
 
   // ── Fetch questions the first time we enter PRACTICE for a given scope ──
   useEffect(() => {
@@ -273,6 +302,13 @@ export function StudySessionPanel({
 
   return (
     <div className="flex min-w-0 flex-col gap-3">
+      <ScopeSelector
+        scopes={scopes}
+        currentScopeIndex={currentScopeIndex}
+        maxScopeReached={maxScopeReached}
+        working={advancingScope}
+        onSelect={handleSelectScope}
+      />
       <PhaseStepper
         phase={phase}
         scopeIndex={currentScopeIndex}

@@ -159,6 +159,12 @@ export interface ScopeView {
   source_anchors: string[];
 }
 
+export interface ScopeSummary {
+  index: number;
+  title: string;
+  anchor_hint: string;
+}
+
 export interface StudyAttempt {
   question_id: string;
   chosen_option: string;
@@ -174,6 +180,8 @@ export interface StudySession {
   total_scopes: number;
   current_question_index: number;
   scope: ScopeView | null;
+  scopes: ScopeSummary[];
+  max_scope_reached: number;
   attempts: StudyAttempt[];
   completed_at: string | null;
 }

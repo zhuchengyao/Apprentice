@@ -59,14 +59,19 @@ export function ExplanationPanel({ sessionId, onExplanationDone }: Props) {
     }
   }, [stream.buffer, stream.streaming, setExplanation]);
 
-  // Trigger the SSE stream. No mount-dedup ref: in React 18 StrictMode dev,
-  // the previous pattern set the ref on mount-1 then was aborted by the
-  // cleanup, leaving mount-2 to short-circuit and never restart the stream
-  // (panel header showed but body stayed empty). Effect cleanup aborts a
-  // stale stream; the next effect run starts a fresh one. Idempotent on
-  // the backend side — `/advance` re-streams from the LLM if called twice.
+  // Trigger the SSE stream on mount. Keyed only on sessionId so the `done`
+  // handler flipping `explanationComplete` to true doesn't re-run this
+  // effect and abort the in-flight stream mid-persist (that race left the
+  // store with explanationComplete=true but explanation="" — panel title
+  // rendered with an empty body when re-entering Explain via the stepper).
+  //
+  // On re-entry after a completed stream we read the store synchronously
+  // and skip if we already have cached content; otherwise we re-stream.
+  // `/advance` is idempotent on the backend.
   useEffect(() => {
-    if (explanationComplete) return;
+    const { explanation: cached, explanationComplete: completed } =
+      useStudySessionStore.getState();
+    if (completed && cached) return;
     stream.run(`${API_BASE}/study/sessions/${sessionId}/advance`, {
       method: "POST",
       headers: { "Accept-Language": getLocaleFromCookie() },
@@ -75,7 +80,7 @@ export function ExplanationPanel({ sessionId, onExplanationDone }: Props) {
       stream.abort();
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [sessionId, explanationComplete]);
+  }, [sessionId]);
 
   useEffect(() => {
     bodyRef.current?.scrollTo({

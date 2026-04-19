@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { ArrowRight, BookOpen, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Markdown } from "@/components/ui/markdown";
 import type {
   HighlightController,
   HighlightVariant,
@@ -61,11 +62,15 @@ export function ReadingScopePanel({
             {t("phase.read")}
           </div>
           <h3 className="mt-0.5 font-heading text-[14px] font-semibold tracking-tight">
-            {scope.title || t("scope_default_title")}
+            {scope.title ? (
+              <Markdown inline>{scope.title}</Markdown>
+            ) : (
+              t("scope_default_title")
+            )}
           </h3>
           {scope.anchor_hint && (
             <p className="mt-1 text-[12.5px] leading-relaxed text-muted-foreground">
-              {scope.anchor_hint}
+              <Markdown inline>{scope.anchor_hint}</Markdown>
             </p>
           )}
         </div>

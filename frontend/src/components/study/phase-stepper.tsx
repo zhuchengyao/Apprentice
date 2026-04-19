@@ -38,7 +38,7 @@ export function PhaseStepper({ phase, scopeIndex, totalScopes, onNavigate }: Pro
 
   return (
     <div className="flex items-center gap-3">
-      <div className="shrink-0 font-mono text-[10px] uppercase tracking-[0.08em] text-muted-foreground tabular-nums">
+      <div className="shrink-0 whitespace-nowrap font-mono text-[10px] uppercase tracking-[0.08em] text-muted-foreground tabular-nums">
         {totalScopes > 0
           ? t("scope_progress", {
               current: Math.min(scopeIndex + 1, totalScopes),
@@ -96,7 +96,7 @@ export function PhaseStepper({ phase, scopeIndex, totalScopes, onNavigate }: Pro
               <div className="mx-2 hidden flex-col sm:flex">
                 <span
                   className={cn(
-                    "font-mono text-[9.5px] uppercase tracking-[0.08em]",
+                    "whitespace-nowrap font-mono text-[9.5px] uppercase tracking-[0.08em]",
                     state === "current"
                       ? "text-foreground"
                       : "text-muted-foreground",

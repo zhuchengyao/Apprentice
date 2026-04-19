@@ -186,7 +186,7 @@ async def generate_quiz_for_scope(
         {
             "type": "text",
             "text": context_text,
-            "cache_control": {"type": "ephemeral"},
+            "cache_control": {"type": "ephemeral", "ttl": "1h"},
         },
         {
             "type": "text",
