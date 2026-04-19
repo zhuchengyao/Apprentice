@@ -91,6 +91,7 @@ class KnowledgePoint(Base):
     order_index: Mapped[int] = mapped_column(Integer)
     image_urls: Mapped[str | None] = mapped_column(Text, nullable=True)
     illustration: Mapped[dict | None] = mapped_column(JSONB, nullable=True)
+    illustration_video: Mapped[str | None] = mapped_column(String(255), nullable=True)
     question: Mapped[str | None] = mapped_column(Text, nullable=True)
     source_anchor: Mapped[str | None] = mapped_column(Text, nullable=True)
     mastered_at: Mapped[datetime | None] = mapped_column(DateTime, nullable=True)

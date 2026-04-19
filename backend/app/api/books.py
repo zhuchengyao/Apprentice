@@ -20,6 +20,11 @@ from app.schemas.book import (
     SectionResponse,
     KnowledgePointResponse,
 )
+from app.services.billing import check_credits_or_raise
+from app.services.book_reprocess import (
+    reprocess_book_images,
+    validate_reprocess_preconditions,
+)
 from app.tasks.processing import process_book
 
 router = APIRouter()
@@ -60,7 +65,6 @@ async def upload_book(
 
     # Pre-check credits BEFORE touching disk or inserting a DB row. If the user
     # has no balance, we don't want to leak a file or an orphan Book record.
-    from app.services.billing import check_credits_or_raise
     await check_credits_or_raise(
         db, current_user.id, model="gpt-5.4", max_tokens=4096
     )
@@ -257,9 +261,6 @@ async def reprocess_images(
     current_user: User = Depends(get_current_user),
 ):
     """Re-extract images from a book's PDF and rebuild section content with image refs."""
-    import asyncio
-    from app.services.parser.pdf_parser import parse_pdf
-
     result = await db.execute(
         select(Book)
         .where(Book.id == uuid.UUID(book_id), Book.user_id == current_user.id)
@@ -272,61 +273,12 @@ async def reprocess_images(
     book = result.scalar_one_or_none()
     if not book:
         raise HTTPException(status_code=404, detail="Book not found")
-    if book.file_type != "pdf":
-        raise HTTPException(status_code=400, detail="Only PDF books can be reprocessed")
-    if not os.path.exists(book.file_path):
-        raise HTTPException(status_code=400, detail="PDF file not found on disk")
 
-    loop = asyncio.get_running_loop()
-    parsed = await loop.run_in_executor(
-        None, lambda: parse_pdf(book.file_path, book_id=str(book.id))
-    )
+    precondition_error = validate_reprocess_preconditions(book)
+    if precondition_error:
+        raise HTTPException(status_code=400, detail=precondition_error)
 
-    from app.tasks.processing import _page_matches_section
-    page_images: dict[int, list[str]] = {}
-    page_texts: dict[int, str] = {}
-    for page in parsed.pages:
-        text = page.text.strip()
-        if text:
-            page_texts[page.page_number] = text
-        for img in page.images:
-            page_images.setdefault(page.page_number, []).append(img.image_url)
-
-    total_images = len(parsed.images)
-    kps_deleted = 0
-
-    for chapter in book.chapters:
-        for section in chapter.sections:
-            raw = section.content_raw or ""
-            marker = "\n\n---\n## Book Figures\n"
-            if marker in raw:
-                raw = raw[:raw.index(marker)]
-
-            matched = []
-            for page_num in sorted(page_images.keys()):
-                if page_num not in page_texts:
-                    continue
-                if _page_matches_section(page_texts[page_num], raw):
-                    for url in page_images[page_num]:
-                        matched.append(f"![Figure from page {page_num}]({url})")
-
-            if matched and "/api/images/" not in raw:
-                section.content_raw = raw + "\n\n" + "\n\n".join(matched)
-            else:
-                section.content_raw = raw
-
-            for kp in section.knowledge_points:
-                await db.delete(kp)
-                kps_deleted += 1
-
-    await db.commit()
-
-    return {
-        "status": "ok",
-        "images_extracted": total_images,
-        "kps_deleted": kps_deleted,
-        "message": f"Extracted {total_images} images. Deleted {kps_deleted} KPs — they will be re-generated with figure awareness on next study.",
-    }
+    return await reprocess_book_images(book, db)
 
 
 @router.delete("/{book_id}")

@@ -18,6 +18,7 @@ class TutorConversation(Base):
     current_kp_index: Mapped[int] = mapped_column(Integer, default=0)
     chapter_context: Mapped[str | None] = mapped_column(Text, nullable=True)
     kp_list_cache: Mapped[str | None] = mapped_column(Text, nullable=True)
+    student_block_cache: Mapped[str | None] = mapped_column(Text, nullable=True)
     created_at: Mapped[datetime] = mapped_column(DateTime, default=lambda: datetime.now(UTC).replace(tzinfo=None))
     updated_at: Mapped[datetime] = mapped_column(
         DateTime,

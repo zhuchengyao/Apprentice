@@ -10,59 +10,25 @@ from sqlalchemy.orm import selectinload
 from sqlalchemy.pool import NullPool
 
 from app.config import settings
+from app.constants import (
+    BATCH_SIZE,
+    ILLUSTRATION_CONCURRENCY,
+    ILLUSTRATION_MIN_DIFFICULTY,
+    ILLUSTRATION_QUALITY,
+)
 from app.models.book import Book, BookPage, BookStatus, Chapter, Section, KnowledgePoint
 from app.services.ai_context import ai_user_context
-from app.services.extractor.illustration import generate_illustrations_batch
+from app.services.extractor.manim_illustration import (
+    ManimInput,
+    ManimOutcome,
+    generate_manim_batch,
+    log_manim_outcome,
+)
 from app.services.extractor.knowledge import extract_knowledge_points
 from app.services.parser.pdf_parser import parse_pdf_metadata
 from app.services.parser.vision_converter import convert_page_batch
 
-ILLUSTRATION_MIN_DIFFICULTY = 2
-ILLUSTRATION_CONCURRENCY = 4
-
 logger = logging.getLogger(__name__)
-
-BATCH_SIZE = 3
-
-
-
-# ---------------------------------------------------------------------------
-# Helpers (used by the reprocess-images endpoint in books.py)
-# ---------------------------------------------------------------------------
-
-def _extract_phrases(text: str, phrase_len: int = 30, count: int = 8) -> list[str]:
-    """Extract several short phrases from different positions in the text for fuzzy matching."""
-    import re
-    cleaned = re.sub(r'\s+', ' ', text.strip())
-    if len(cleaned) < phrase_len:
-        return [cleaned] if len(cleaned) > 15 else []
-
-    phrases = []
-    step = max(1, (len(cleaned) - phrase_len) // count)
-    for i in range(0, len(cleaned) - phrase_len, step):
-        phrase = cleaned[i:i + phrase_len].strip()
-        if len(phrase) >= 15:
-            phrases.append(phrase)
-        if len(phrases) >= count:
-            break
-    return phrases
-
-
-def _page_matches_section(page_text: str, section_content: str) -> bool:
-    """Check if a page's text has enough overlap with a section's content."""
-    import re
-    phrases = _extract_phrases(page_text)
-    if not phrases:
-        return False
-    for phrase in phrases:
-        if phrase in section_content:
-            return True
-    page_words = set(w.lower() for w in re.findall(r'[a-zA-Z]{5,}', page_text))
-    section_words = set(w.lower() for w in re.findall(r'[a-zA-Z]{5,}', section_content))
-    if not page_words:
-        return False
-    overlap = len(page_words & section_words) / len(page_words)
-    return overlap > 0.4
 
 
 # ---------------------------------------------------------------------------
@@ -229,33 +195,42 @@ async def _extract_chapter_knowledge(
     db.add(section)
     await db.flush()
 
-    # Decide which KPs get an illustration before inserting — skip trivial
-    # facts (difficulty == 1) to hold down token cost; the heavier concepts
-    # are exactly where a visual pays off most.
-    illustration_targets = [
+    # Decide which KPs get an animation before inserting — skip trivial
+    # facts (difficulty == 1). Heavy concepts benefit most from a visual,
+    # and Manim rendering is expensive (LLM + subprocess + FFmpeg).
+    illustration_targets: list[tuple[int, ManimInput]] = [
         (
             idx,
-            (kp.get("concept") or "")[:300],
-            (kp.get("explanation") or "")[:2000],
+            ManimInput(
+                concept=(kp.get("concept") or "")[:300],
+                explanation=(kp.get("explanation") or "")[:2000],
+                chapter_title=chapter.title,
+                section_title=section.title,
+                kp_index=idx,
+            ),
         )
         for idx, kp in enumerate(kps)
         if int(kp.get("difficulty") or 1) >= ILLUSTRATION_MIN_DIFFICULTY
         and (kp.get("concept") or "").strip()
     ]
-    illustrations: dict[int, dict] = {}
+    outcomes_by_idx: dict[int, ManimOutcome] = {}
+    video_filenames: dict[int, str] = {}
     if illustration_targets:
-        specs = await generate_illustrations_batch(
-            [(c, e) for _, c, e in illustration_targets],
+        outcomes = await generate_manim_batch(
+            [inp for _, inp in illustration_targets],
             concurrency=ILLUSTRATION_CONCURRENCY,
+            quality=ILLUSTRATION_QUALITY,
         )
-        for (idx, _, _), spec in zip(illustration_targets, specs):
-            if spec:
-                illustrations[idx] = spec
+        for (idx, _), outcome in zip(illustration_targets, outcomes):
+            outcomes_by_idx[idx] = outcome
+            if outcome.output_path is not None:
+                video_filenames[idx] = outcome.output_path.name
 
+    kp_rows: list[tuple[int, KnowledgePoint]] = []
     for idx, kp in enumerate(kps):
         image_refs = kp.get("image_refs") or []
         image_urls = json.dumps(image_refs) if image_refs else None
-        db.add(KnowledgePoint(
+        row = KnowledgePoint(
             section_id=section.id,
             concept=(kp.get("concept") or "")[:500],
             explanation=kp.get("explanation") or "",
@@ -263,12 +238,30 @@ async def _extract_chapter_knowledge(
             order_index=int(kp.get("order_index", idx)),
             image_urls=image_urls,
             source_anchor=kp.get("source_anchor") or None,
-            illustration=illustrations.get(idx),
-        ))
+            illustration_video=video_filenames.get(idx),
+        )
+        db.add(row)
+        kp_rows.append((idx, row))
     await db.flush()
+
+    # After flush, KP rows have real ids — emit one structured log record per
+    # animation attempt (success or failure) so acceptance rate and failure
+    # modes are visible in logs.
+    for idx, row in kp_rows:
+        outcome = outcomes_by_idx.get(idx)
+        if outcome is None:
+            continue
+        log_manim_outcome(
+            outcome,
+            book_id=str(book.id),
+            chapter_id=str(chapter.id),
+            kp_id=str(row.id),
+            concept=row.concept,
+        )
+
     logger.info(
-        "Chapter '%s': extracted %d KPs (%d illustrated)",
-        chapter.title, len(kps), len(illustrations),
+        "Chapter '%s': extracted %d KPs (%d animated)",
+        chapter.title, len(kps), len(video_filenames),
     )
 
 

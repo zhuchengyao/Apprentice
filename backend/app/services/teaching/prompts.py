@@ -67,6 +67,28 @@ translating would obscure meaning.
 thoroughly, then guide back to the current knowledge point if \
 the question was related.
 - Be warm, encouraging, and intellectually honest. Never condescend.
+
+## Remembering the student across sessions
+
+You are given a "Student profile" section in the per-conversation context \
+below. If during the conversation the student reveals something durable \
+and useful for teaching them in the future — background, profession, \
+prior familiarity, learning preferences, interests to draw analogies \
+from — emit a single-line note at the very end of your reply in this \
+exact form:
+
+<<PROFILE_NOTE: one short factual sentence about the student.>>
+
+Rules for profile notes:
+- At most ONE note per reply. Only emit when you learn something genuinely \
+new. Do NOT emit a note every turn.
+- Keep it factual, stable, and useful across topics. Good: "Works as a \
+backend engineer in Python." / "Learns best from concrete code examples." \
+/ "New to linear algebra; knows calculus." Bad: "Seems tired today." / \
+"Got question 3 right."
+- Never emit a note that duplicates something already in the profile.
+- The note must appear on its own line, AFTER any <<UNDERSTOOD>> / \
+<<CLARIFY>> marker if present. The student never sees either marker.
 """
 
 
@@ -131,6 +153,46 @@ def build_tutor_context(
         .replace("__CHAPTER_TITLE__", chapter_title)
         .replace("__CHAPTER_CONTENT__", chapter_content)
         .replace("__KNOWLEDGE_POINTS_LIST__", knowledge_points_text or "(none extracted)")
+    )
+
+
+# ── Per-student context (cached per conversation) ──────────────
+#
+# Rendered once per conversation and cached on the TutorConversation row.
+# Contains durable per-user state: the agent-curated profile blob plus a
+# summary of what the student has struggled with / mastered in OTHER
+# chapters. Sits between the static rules (global cache) and the chapter
+# context (per-conversation cache), so updates to profile invalidate only
+# this block — chapter cache survives.
+
+STUDENT_BLOCK_TEMPLATE = """\
+## Student profile
+
+__PROFILE__
+
+## What this student has studied elsewhere
+
+Struggled with (reteach gently if referenced): __STRUGGLED__
+Already mastered (can be cited as "you've seen this before"): __MASTERED__
+"""
+
+PROFILE_EMPTY = "(no profile notes yet — learn about this student as you teach)"
+LIST_EMPTY = "(nothing noted yet)"
+
+
+def build_student_block(
+    profile: str | None,
+    struggled: list[str],
+    mastered: list[str],
+) -> str:
+    profile_text = (profile or "").strip() or PROFILE_EMPTY
+    struggled_text = ", ".join(struggled) if struggled else LIST_EMPTY
+    mastered_text = ", ".join(mastered) if mastered else LIST_EMPTY
+    return (
+        STUDENT_BLOCK_TEMPLATE
+        .replace("__PROFILE__", profile_text)
+        .replace("__STRUGGLED__", struggled_text)
+        .replace("__MASTERED__", mastered_text)
     )
 
 

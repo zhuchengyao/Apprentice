@@ -3,6 +3,7 @@
 import { useCallback } from "react";
 import { useDropzone } from "react-dropzone";
 import { motion, AnimatePresence } from "framer-motion";
+import { useTranslations } from "next-intl";
 import { Upload, FileText, AlertCircle, CheckCircle2 } from "lucide-react";
 import { Progress } from "@/components/ui/progress";
 import { ACCEPTED_FILE_TYPES } from "@/lib/constants";
@@ -25,6 +26,7 @@ export function Dropzone({
   selectedFile,
   uploadComplete,
 }: DropzoneProps) {
+  const t = useTranslations("upload");
   const onDrop = useCallback(
     (acceptedFiles: File[]) => {
       if (acceptedFiles.length > 0) {
@@ -42,24 +44,30 @@ export function Dropzone({
   });
 
   return (
-    <div className="w-full max-w-2xl mx-auto">
+    <div className="mx-auto w-full max-w-2xl">
       <motion.div
-        whileHover={!isUploading ? { scale: 1.01 } : undefined}
-        whileTap={!isUploading ? { scale: 0.99 } : undefined}
+        whileHover={!isUploading ? { scale: 1.005 } : undefined}
+        whileTap={!isUploading ? { scale: 0.995 } : undefined}
         transition={{ type: "spring", stiffness: 400, damping: 25 }}
       >
         <div
           {...getRootProps()}
           className={cn(
-            "relative cursor-pointer rounded-2xl border-2 border-dashed p-12 text-center transition-all duration-300",
+            "relative cursor-pointer overflow-hidden rounded-3xl border border-dashed px-6 py-14 text-center transition-all duration-300",
             isDragActive
-              ? "border-foreground bg-accent/80 shadow-lg"
-              : "border-border hover:border-foreground/30 hover:bg-accent/30",
-            isUploading && "pointer-events-none opacity-70",
-            error && "border-destructive/50",
-            uploadComplete && "border-green-500/50 bg-green-50/50 dark:bg-green-950/20",
+              ? "border-primary bg-primary/5 ring-2 ring-primary/20"
+              : "border-border/80 bg-subtle/30 hover:border-foreground/40 hover:bg-subtle/60",
+            isUploading && "pointer-events-none opacity-80",
+            error && "border-destructive/50 bg-destructive/5",
+            uploadComplete && "border-primary/50 bg-primary/5",
           )}
         >
+          {isDragActive && (
+            <div
+              aria-hidden
+              className="aurora pointer-events-none absolute inset-0 opacity-40"
+            />
+          )}
           <input {...getInputProps()} />
 
           <AnimatePresence mode="wait">
@@ -69,15 +77,17 @@ export function Dropzone({
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
-                className="flex flex-col items-center gap-4"
+                className="relative flex flex-col items-center gap-4"
               >
-                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-green-100 dark:bg-green-900/30">
-                  <CheckCircle2 className="h-8 w-8 text-green-600 dark:text-green-400" />
+                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/10 text-primary ring-1 ring-primary/20">
+                  <CheckCircle2 className="h-7 w-7" />
                 </div>
                 <div>
-                  <p className="text-lg font-medium">Upload complete!</p>
-                  <p className="mt-1 text-sm text-muted-foreground">
-                    Your book is being processed...
+                  <p className="font-heading text-[17px] font-semibold tracking-tight">
+                    {t("complete_title")}
+                  </p>
+                  <p className="mt-1 text-[13px] text-muted-foreground">
+                    {t("complete_hint")}
                   </p>
                 </div>
               </motion.div>
@@ -87,20 +97,20 @@ export function Dropzone({
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                className="flex flex-col items-center gap-4"
+                className="relative flex flex-col items-center gap-4"
               >
                 <motion.div
                   animate={{ rotate: 360 }}
                   transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-                  className="flex h-16 w-16 items-center justify-center rounded-full bg-accent"
+                  className="flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/10 text-primary ring-1 ring-primary/20"
                 >
-                  <Upload className="h-8 w-8 text-foreground" />
+                  <Upload className="h-6 w-6" />
                 </motion.div>
                 <div className="w-full max-w-xs">
-                  <p className="mb-2 text-sm font-medium">
-                    Uploading {selectedFile?.name}...
+                  <p className="mb-2 font-mono text-[11px] uppercase tracking-[0.12em] text-muted-foreground">
+                    {t("uploading", { name: selectedFile?.name ?? "" })}
                   </p>
-                  <Progress value={progress} className="h-2" />
+                  <Progress value={progress} className="h-1.5" />
                 </div>
               </motion.div>
             ) : error ? (
@@ -109,15 +119,17 @@ export function Dropzone({
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
-                className="flex flex-col items-center gap-4"
+                className="relative flex flex-col items-center gap-4"
               >
-                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-destructive/10">
-                  <AlertCircle className="h-8 w-8 text-destructive" />
+                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-destructive/10 text-destructive ring-1 ring-destructive/20">
+                  <AlertCircle className="h-6 w-6" />
                 </div>
                 <div>
-                  <p className="text-lg font-medium text-destructive">{error}</p>
-                  <p className="mt-1 text-sm text-muted-foreground">
-                    Click or drag to try again
+                  <p className="font-heading text-[15px] font-medium text-destructive">
+                    {error}
+                  </p>
+                  <p className="mt-1 text-[13px] text-muted-foreground">
+                    {t("retry_hint")}
                   </p>
                 </div>
               </motion.div>
@@ -127,15 +139,19 @@ export function Dropzone({
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
-                className="flex flex-col items-center gap-4"
+                className="relative flex flex-col items-center gap-4"
               >
-                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-accent">
-                  <FileText className="h-8 w-8 text-foreground" />
+                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/10 text-primary ring-1 ring-primary/20">
+                  <FileText className="h-6 w-6" />
                 </div>
                 <div>
-                  <p className="text-lg font-medium">{selectedFile.name}</p>
-                  <p className="mt-1 text-sm text-muted-foreground">
-                    {(selectedFile.size / 1024 / 1024).toFixed(1)} MB
+                  <p className="font-heading text-[15px] font-medium tracking-tight">
+                    {selectedFile.name}
+                  </p>
+                  <p className="mt-1 font-mono text-[11px] uppercase tracking-[0.12em] text-muted-foreground">
+                    {t("file_size", {
+                      size: (selectedFile.size / 1024 / 1024).toFixed(1),
+                    })}
                   </p>
                 </div>
               </motion.div>
@@ -145,23 +161,21 @@ export function Dropzone({
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                className="flex flex-col items-center gap-4"
+                className="relative flex flex-col items-center gap-4"
               >
                 <motion.div
-                  animate={isDragActive ? { y: -8 } : { y: 0 }}
+                  animate={isDragActive ? { y: -6 } : { y: 0 }}
                   transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                  className="flex h-16 w-16 items-center justify-center rounded-full bg-accent"
+                  className="flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/10 text-primary ring-1 ring-primary/20"
                 >
-                  <Upload className="h-8 w-8 text-muted-foreground" />
+                  <Upload className="h-6 w-6" />
                 </motion.div>
                 <div>
-                  <p className="text-lg font-medium">
-                    {isDragActive
-                      ? "Drop your book here"
-                      : "Drop a book here, or click to browse"}
+                  <p className="font-heading text-[17px] font-semibold tracking-tight">
+                    {isDragActive ? t("drop_active") : t("drop_prompt")}
                   </p>
-                  <p className="mt-1 text-sm text-muted-foreground">
-                    Supports PDF, EPUB, and plain text files
+                  <p className="mt-1.5 text-[13px] text-muted-foreground">
+                    {t("max_size")}
                   </p>
                 </div>
               </motion.div>

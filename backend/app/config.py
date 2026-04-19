@@ -8,6 +8,8 @@ class Settings(BaseSettings):
     openai_api_key: str = ""
     ai_model: str = "claude-sonnet-4-6"  # must match a model in MODEL_REGISTRY
     tutor_model: str = "gpt-5.4"  # model used for the tutor/teaching system
+    illustration_model: str | None = None  # overrides ai_model for illustration generation when set
+    manim_python: str | None = None  # python interpreter used to run `manim`; falls back to backend/.venv/bin/python or sys.executable
     upload_dir: str = "./uploads"
     cors_origins: list[str] = ["http://localhost:3000"]
 

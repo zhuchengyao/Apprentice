@@ -13,6 +13,7 @@ Pacing rules:
 """
 
 import logging
+import re
 from dataclasses import dataclass
 
 from sqlalchemy import select
@@ -132,20 +133,53 @@ _VERDICT_MARKERS = (_VERDICT_UNDERSTOOD, _VERDICT_CLARIFY)
 _VERDICT_TAIL_LEN = max(len(m) for m in _VERDICT_MARKERS)
 
 
-def parse_comprehension_verdict(text: str) -> tuple[str, str]:
-    """Strip a trailing verdict marker and return (cleaned_text, action).
+def parse_comprehension_verdict(text: str) -> tuple[str, str, str | None]:
+    """Strip a trailing verdict marker.
 
-    action is "continue" if the model judged the student understood, else
-    "pause". If no marker is present, action defaults to "pause".
+    Returns ``(cleaned_text, action, verdict)`` where ``action`` is
+    ``"continue"`` on UNDERSTOOD else ``"pause"``, and ``verdict`` is
+    ``"UNDERSTOOD"`` / ``"CLARIFY"`` / ``None`` (no marker).
     """
     stripped = text.rstrip()
-    for marker, action in (
-        (_VERDICT_UNDERSTOOD, "continue"),
-        (_VERDICT_CLARIFY, "pause"),
+    for marker, action, verdict in (
+        (_VERDICT_UNDERSTOOD, "continue", "UNDERSTOOD"),
+        (_VERDICT_CLARIFY, "pause", "CLARIFY"),
     ):
         if stripped.endswith(marker):
-            return stripped[: -len(marker)].rstrip(), action
-    return text, "pause"
+            return stripped[: -len(marker)].rstrip(), action, verdict
+    return text, "pause", None
+
+
+# ── Profile-note marker parsing ────────────────────────────────
+#
+# The tutor optionally emits `<<PROFILE_NOTE: one sentence.>>` when it
+# learns something durable about the student. Parsed post-stream: the
+# VerdictStreamFilter only hides trailing verdict markers, not notes.
+# A brief visual flicker of the note at end-of-stream is acceptable —
+# the `done` event carries the cleaned text which the client renders as
+# authoritative.
+
+_PROFILE_NOTE_PATTERN = re.compile(r"<<PROFILE_NOTE:\s*(.+?)\s*>>", re.DOTALL)
+
+
+def parse_profile_notes(text: str) -> tuple[str, list[str]]:
+    """Extract all `<<PROFILE_NOTE: ...>>` markers.
+
+    Returns ``(cleaned_text, notes)`` where ``notes`` is a list of note
+    bodies (without markers) and ``cleaned_text`` has them removed.
+    """
+    notes: list[str] = []
+
+    def _sub(match: "re.Match[str]") -> str:
+        body = match.group(1).strip()
+        if body:
+            notes.append(body)
+        return ""
+
+    cleaned = _PROFILE_NOTE_PATTERN.sub(_sub, text)
+    # Collapse any blank-line runs left behind by removal.
+    cleaned = re.sub(r"\n{3,}", "\n\n", cleaned).rstrip()
+    return cleaned, notes
 
 
 class VerdictStreamFilter:

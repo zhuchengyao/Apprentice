@@ -15,7 +15,7 @@ from app.config import settings
 from app.database import get_db
 from app.dependencies import get_current_user
 from app.i18n import get_request_locale
-from app.models.book import Book, Chapter, Section, BookPage, KnowledgePoint
+from app.models.book import KnowledgePoint
 from app.models.user import User
 from app.models.tutor import TutorConversation, TutorMessage
 from app.services.ai_client import chat_completion_stream
@@ -24,9 +24,22 @@ from app.services.billing import check_credits_or_raise
 from app.services.teaching.agent import (
     get_chapter_knowledge_points,
     plan_next_step,
-    format_kp_list,
     parse_comprehension_verdict,
+    parse_profile_notes,
     VerdictStreamFilter,
+)
+from app.services.teaching.context import (
+    kp_highlight_data,
+    load_chapter_context,
+    load_kp_list_text,
+    load_student_block,
+    recent_api_messages,
+)
+from app.services.teaching.errors import (
+    TutorLLMError,
+    TutorPersistError,
+    log_stream_failure,
+    stream_error_payload,
 )
 from app.services.teaching.prompts import (
     TUTOR_STATIC_RULES,
@@ -37,6 +50,7 @@ from app.services.teaching.prompts import (
     build_batch_task,
     build_answer_task,
 )
+from app.services.teaching.signals import apply_post_stream_signals
 
 logger = logging.getLogger(__name__)
 
@@ -70,9 +84,13 @@ async def _get_user_conversation(
     current_user: User,
     db: AsyncSession,
     *,
-    load_messages: bool = True,
+    load_messages: bool = False,
 ) -> TutorConversation:
-    """Load a conversation owned by current_user or raise 404/403."""
+    """Load a conversation owned by current_user or raise 404/403.
+
+    Messages are NOT loaded by default — hot-path endpoints use
+    ``recent_api_messages`` to fetch a bounded tail instead.
+    """
     conv_id = uuid.UUID(conversation_id)
     stmt = select(TutorConversation).where(TutorConversation.id == conv_id)
     if load_messages:
@@ -86,70 +104,23 @@ async def _get_user_conversation(
     return conversation
 
 
-async def _get_chapter_context(
-    conversation: TutorConversation, db: AsyncSession
-) -> tuple[str, str, str]:
-    """Return (book_title, chapter_title, chapter_content) for the system prompt.
-
-    chapter_content is cached on the conversation; backfilled on first access.
-    """
-    book = await db.get(Book, conversation.book_id)
-    if not book:
-        raise HTTPException(status_code=404, detail="Book not found")
-
-    chapter = await db.get(Chapter, conversation.chapter_id)
-    if not chapter:
-        raise HTTPException(status_code=404, detail="Chapter not found")
-
-    if conversation.chapter_context is not None:
-        return book.title, chapter.title, conversation.chapter_context
-
-    result = await db.execute(
-        select(Section)
-        .where(Section.chapter_id == conversation.chapter_id)
-        .order_by(Section.order_index)
-    )
-    sections = result.scalars().all()
-
-    if sections and any(s.content_raw for s in sections):
-        chapter_content = "\n\n".join(
-            f"## {s.title}\n{s.content_raw}" for s in sections if s.content_raw
-        )
-    else:
-        page_result = await db.execute(
-            select(BookPage)
-            .where(
-                BookPage.book_id == conversation.book_id,
-                BookPage.page_number >= chapter.start_page,
-                BookPage.page_number <= chapter.end_page,
-            )
-            .order_by(BookPage.page_number)
-        )
-        pages = page_result.scalars().all()
-        chapter_content = "\n\n".join(p.html_content for p in pages) if pages else ""
-
-    if len(chapter_content) > 50000:
-        chapter_content = chapter_content[:50000] + "\n\n[... content truncated ...]"
-
-    chapter_content = chapter_content.replace("<<<CHAPTER_END>>>", "<<<chapter_end>>>")
-    chapter_content = chapter_content.replace("<<<CHAPTER_BEGIN>>>", "<<<chapter_begin>>>")
-
-    conversation.chapter_context = chapter_content
-    await db.commit()
-    return book.title, chapter.title, chapter_content
-
-
 def _build_system_blocks(
     book_title: str,
     chapter_title: str,
     chapter_content: str,
     kp_list_text: str,
+    student_block: str,
     current_task: str,
     language: str,
 ) -> list[dict]:
-    # Three blocks. The cache_control marker caches blocks 0+1 together;
-    # the per-turn task lives in block 2 so task changes never bust the
-    # chapter-level cache.
+    # Four blocks with two cache breakpoints:
+    #   0. static rules (global cache prefix, cached with block 1)
+    #   1. chapter context — expensive; cached per-conversation
+    #   2. student block  — cached per-student; invalidated on profile update
+    #   3. per-turn task  — uncached
+    #
+    # Two cache_control markers let block 1's cache survive even when
+    # block 2 changes (the prefix up to block 1 still matches).
     context_text = build_tutor_context(
         book_title, chapter_title, chapter_content,
         knowledge_points_text=kp_list_text,
@@ -163,60 +134,39 @@ def _build_system_blocks(
             "text": context_text,
             "cache_control": {"type": "ephemeral"},
         },
+        {
+            "type": "text",
+            "text": student_block,
+            "cache_control": {"type": "ephemeral"},
+        },
         {"type": "text", "text": task_text},
     ]
 
 
-# Sliding-window history. The chapter content + KP list live in the cached
-# system prefix, so the model already "knows" the material. The message
-# history only provides conversational continuity — a short tail is enough.
-HISTORY_WINDOW = 6
-
-
-def _history_to_api_messages(messages: list[TutorMessage]) -> list[dict]:
-    """Return the last HISTORY_WINDOW messages, clamped to start on a
-    user turn so the sequence is a valid alternating chat.
-
-    The chapter content + KP list live in the cached system prefix, so the
-    model already has full context for the material. History only provides
-    conversational continuity — a short tail is enough.
-    """
-    recent = list(messages[-HISTORY_WINDOW:])
-    while recent and recent[0].role != "user":
-        recent.pop(0)
-    return [{"role": m.role, "content": m.content} for m in recent]
-
-
-async def _get_kp_list_text(
+async def _prepare_tutor_system(
     conversation: TutorConversation,
-    all_kps: list[KnowledgePoint],
+    current_user: User,
     db: AsyncSession,
-) -> str:
-    """Return the formatted KP list for the system prompt, cached on the
-    conversation. Backfilled on first access, same pattern as chapter_context.
+    all_kps: list[KnowledgePoint],
+    *,
+    task_text: str,
+    language: str,
+) -> list[dict]:
+    """Load cached per-conversation context and build the system prompt blocks.
+
+    Callers pass in `all_kps` (they already need it for planning/highlighting)
+    so we don't re-query.
     """
-    if conversation.kp_list_cache is not None:
-        return conversation.kp_list_cache
-    text = format_kp_list(all_kps)
-    conversation.kp_list_cache = text
-    await db.commit()
-    return text
-
-
-def _kp_highlight_data(kps: list[KnowledgePoint]) -> dict:
-    return {
-        "knowledge_points": [
-            {
-                "id": str(kp.id),
-                "concept": kp.concept,
-                "section_id": str(kp.section_id),
-                "explanation": kp.explanation[:200],
-                "source_anchor": kp.source_anchor,
-                "illustration": kp.illustration,
-            }
-            for kp in kps
-        ]
-    }
+    book_title, chapter_title, chapter_content = await load_chapter_context(
+        conversation, db
+    )
+    kp_list_text = await load_kp_list_text(conversation, all_kps, db)
+    student_block = await load_student_block(conversation, current_user, db)
+    return _build_system_blocks(
+        book_title, chapter_title, chapter_content,
+        kp_list_text, student_block, task_text,
+        language=language,
+    )
 
 
 # ── Endpoints ─────────────────────────────────────────────────
@@ -284,7 +234,9 @@ async def get_messages(
     db: AsyncSession = Depends(get_db),
     current_user: User = Depends(get_current_user),
 ):
-    conversation = await _get_user_conversation(conversation_id, current_user, db)
+    conversation = await _get_user_conversation(
+        conversation_id, current_user, db, load_messages=True
+    )
 
     return [
         {
@@ -308,19 +260,18 @@ async def open_chapter(
     conversation = await _get_user_conversation(conversation_id, current_user, db)
     conv_id = conversation.id
 
-    if conversation.messages:
+    has_message = await db.scalar(
+        select(TutorMessage.id)
+        .where(TutorMessage.conversation_id == conv_id)
+        .limit(1)
+    )
+    if has_message:
         raise HTTPException(status_code=409, detail="Conversation already has messages")
 
-    book_title, chapter_title, chapter_content = await _get_chapter_context(
-        conversation, db
-    )
     all_kps = await get_chapter_knowledge_points(conversation.chapter_id, db)
-    kp_list_text = await _get_kp_list_text(conversation, all_kps, db)
-
-    system_blocks = _build_system_blocks(
-        book_title, chapter_title, chapter_content,
-        kp_list_text, TASK_OPENING,
-        language=request_locale,
+    system_blocks = await _prepare_tutor_system(
+        conversation, current_user, db, all_kps,
+        task_text=TASK_OPENING, language=request_locale,
     )
     api_messages = [{"role": "user", "content": "请开始"}]
 
@@ -328,49 +279,66 @@ async def open_chapter(
         db, conversation.user_id, model=settings.tutor_model, max_tokens=1024
     )
 
-    user_id = str(conversation.user_id)
+    user_id_str = str(conversation.user_id)
+    user_uuid = conversation.user_id
 
     async def event_stream():
-        with ai_user_context(user_id):
-            collected = []
+        with ai_user_context(user_id_str):
+            collected: list[str] = []
             try:
-                async for chunk in chat_completion_stream(
-                    messages=api_messages,
-                    max_tokens=1024,
-                    model=settings.tutor_model,
-                    caller="tutor_opening",
-                    system=system_blocks,
-                ):
-                    collected.append(chunk)
-                    yield {"event": "token", "data": chunk}
+                try:
+                    async for chunk in chat_completion_stream(
+                        messages=api_messages,
+                        max_tokens=1024,
+                        model=settings.tutor_model,
+                        caller="tutor_opening",
+                        system=system_blocks,
+                    ):
+                        collected.append(chunk)
+                        yield {"event": "token", "data": chunk}
+                except Exception as e:
+                    raise TutorLLMError() from e
 
                 full_text = "".join(collected)
+                cleaned_text, profile_notes = parse_profile_notes(full_text)
                 opening_metadata = {"type": "opening", "action": "continue"}
 
-                from app.database import async_session
-                async with async_session() as save_db:
-                    assistant_msg = TutorMessage(
-                        conversation_id=conv_id,
-                        role="assistant",
-                        content=full_text,
-                        metadata_=opening_metadata,
-                    )
-                    save_db.add(assistant_msg)
-                    await save_db.commit()
-                    msg_id = str(assistant_msg.id)
+                try:
+                    from app.database import async_session
+                    async with async_session() as save_db:
+                        assistant_msg = TutorMessage(
+                            conversation_id=conv_id,
+                            role="assistant",
+                            content=cleaned_text,
+                            metadata_=opening_metadata,
+                        )
+                        save_db.add(assistant_msg)
+                        await apply_post_stream_signals(
+                            save_db,
+                            user_id=user_uuid,
+                            conv_id=conv_id,
+                            profile_notes=profile_notes,
+                            verdict_kp_id=None,
+                            verdict=None,
+                            exposed_kp_ids=[],
+                        )
+                        await save_db.commit()
+                        msg_id = str(assistant_msg.id)
+                except Exception as e:
+                    raise TutorPersistError() from e
 
                 yield {
                     "event": "done",
                     "data": json.dumps({
                         "id": msg_id,
-                        "content": full_text,
+                        "content": cleaned_text,
                         "action": "continue",
                         "metadata": opening_metadata,
                     }),
                 }
             except Exception as e:
-                logger.error("Tutor opening error: %s", e)
-                yield {"event": "error", "data": str(e)}
+                log_stream_failure(logger, "tutor_opening", e)
+                yield {"event": "error", "data": stream_error_payload(e)}
 
     return EventSourceResponse(event_stream())
 
@@ -402,11 +370,6 @@ async def teach_next(
             }
         return EventSourceResponse(done_stream())
 
-    book_title, chapter_title, chapter_content = await _get_chapter_context(
-        conversation, db
-    )
-    kp_list_text = await _get_kp_list_text(conversation, all_kps, db)
-
     if len(step.knowledge_points) == 1:
         kp = step.knowledge_points[0]
         kp_global_idx = conversation.current_kp_index
@@ -417,16 +380,15 @@ async def teach_next(
             batch_data.append((conversation.current_kp_index + i, kp.concept, kp.explanation))
         task_text = build_batch_task(batch_data)
 
-    system_blocks = _build_system_blocks(
-        book_title, chapter_title, chapter_content,
-        kp_list_text, task_text,
-        language=request_locale,
+    system_blocks = await _prepare_tutor_system(
+        conversation, current_user, db, all_kps,
+        task_text=task_text, language=request_locale,
     )
 
-    history = _history_to_api_messages(list(conversation.messages))
+    history = await recent_api_messages(conv_id, db)
     api_messages = history + [{"role": "user", "content": "请讲解下一个知识点。"}]
 
-    highlight_data = _kp_highlight_data(step.knowledge_points)
+    highlight_data = kp_highlight_data(step.knowledge_points)
 
     await check_credits_or_raise(
         db, conversation.user_id, model=settings.tutor_model, max_tokens=2048
@@ -434,7 +396,9 @@ async def teach_next(
 
     new_kp_index = step.kp_end_index
     action = step.action
-    user_id = str(conversation.user_id)
+    user_id_str = str(conversation.user_id)
+    user_uuid = conversation.user_id
+    taught_kp_ids = [kp.id for kp in step.knowledge_points]
 
     async def event_stream():
         yield {
@@ -442,20 +406,24 @@ async def teach_next(
             "data": json.dumps(highlight_data),
         }
 
-        with ai_user_context(user_id):
-            collected = []
+        with ai_user_context(user_id_str):
+            collected: list[str] = []
             try:
-                async for chunk in chat_completion_stream(
-                    messages=api_messages,
-                    max_tokens=2048,
-                    model=settings.tutor_model,
-                    caller="tutor_teach",
-                    system=system_blocks,
-                ):
-                    collected.append(chunk)
-                    yield {"event": "token", "data": chunk}
+                try:
+                    async for chunk in chat_completion_stream(
+                        messages=api_messages,
+                        max_tokens=2048,
+                        model=settings.tutor_model,
+                        caller="tutor_teach",
+                        system=system_blocks,
+                    ):
+                        collected.append(chunk)
+                        yield {"event": "token", "data": chunk}
+                except Exception as e:
+                    raise TutorLLMError() from e
 
                 full_text = "".join(collected)
+                cleaned_text, profile_notes = parse_profile_notes(full_text)
 
                 kp_ids = [str(kp.id) for kp in step.knowledge_points]
                 msg_metadata = {
@@ -464,26 +432,38 @@ async def teach_next(
                     "action": action,
                 }
 
-                from app.database import async_session
-                async with async_session() as save_db:
-                    assistant_msg = TutorMessage(
-                        conversation_id=conv_id,
-                        role="assistant",
-                        content=full_text,
-                        metadata_=msg_metadata,
-                    )
-                    save_db.add(assistant_msg)
+                try:
+                    from app.database import async_session
+                    async with async_session() as save_db:
+                        assistant_msg = TutorMessage(
+                            conversation_id=conv_id,
+                            role="assistant",
+                            content=cleaned_text,
+                            metadata_=msg_metadata,
+                        )
+                        save_db.add(assistant_msg)
 
-                    conv = await save_db.get(TutorConversation, conv_id)
-                    conv.current_kp_index = new_kp_index
-                    await save_db.commit()
-                    msg_id = str(assistant_msg.id)
+                        conv = await save_db.get(TutorConversation, conv_id)
+                        conv.current_kp_index = new_kp_index
+                        await apply_post_stream_signals(
+                            save_db,
+                            user_id=user_uuid,
+                            conv_id=conv_id,
+                            profile_notes=profile_notes,
+                            verdict_kp_id=None,
+                            verdict=None,
+                            exposed_kp_ids=taught_kp_ids,
+                        )
+                        await save_db.commit()
+                        msg_id = str(assistant_msg.id)
+                except Exception as e:
+                    raise TutorPersistError() from e
 
                 yield {
                     "event": "done",
                     "data": json.dumps({
                         "id": msg_id,
-                        "content": full_text,
+                        "content": cleaned_text,
                         "action": action,
                         "kp_index": new_kp_index,
                         "total_kps": len(all_kps),
@@ -491,8 +471,8 @@ async def teach_next(
                     }),
                 }
             except Exception as e:
-                logger.error("Tutor teach error: %s", e)
-                yield {"event": "error", "data": str(e)}
+                log_stream_failure(logger, "tutor_teach", e)
+                yield {"event": "error", "data": stream_error_payload(e)}
 
     return EventSourceResponse(event_stream())
 
@@ -517,69 +497,86 @@ async def send_message(
     db.add(user_msg)
     await db.commit()
 
-    book_title, chapter_title, chapter_content = await _get_chapter_context(
-        conversation, db
-    )
     all_kps = await get_chapter_knowledge_points(conversation.chapter_id, db)
-    kp_list_text = await _get_kp_list_text(conversation, all_kps, db)
 
     kp_index = max(0, conversation.current_kp_index - 1)
+    current_kp: KnowledgePoint | None = None
     if kp_index < len(all_kps):
         current_kp = all_kps[kp_index]
         task_text = build_answer_task(kp_index, current_kp.concept)
     else:
         task_text = "Answer the student's question about this chapter."
 
-    system_blocks = _build_system_blocks(
-        book_title, chapter_title, chapter_content,
-        kp_list_text, task_text,
-        language=request_locale,
+    system_blocks = await _prepare_tutor_system(
+        conversation, current_user, db, all_kps,
+        task_text=task_text, language=request_locale,
     )
 
-    api_messages = _history_to_api_messages(conversation.messages)
+    api_messages = await recent_api_messages(conv_id, db)
 
     await check_credits_or_raise(
         db, conversation.user_id, model=settings.tutor_model, max_tokens=2048
     )
 
-    user_id = str(conversation.user_id)
+    user_id_str = str(conversation.user_id)
+    user_uuid = conversation.user_id
+    verdict_kp_id = current_kp.id if current_kp is not None else None
 
     async def event_stream():
-        with ai_user_context(user_id):
-            collected = []
+        with ai_user_context(user_id_str):
+            collected: list[str] = []
             vfilter = VerdictStreamFilter()
             try:
-                async for chunk in chat_completion_stream(
-                    messages=api_messages,
-                    max_tokens=2048,
-                    model=settings.tutor_model,
-                    caller="tutor_chat",
-                    system=system_blocks,
-                ):
-                    collected.append(chunk)
-                    safe = vfilter.push(chunk)
-                    if safe:
-                        yield {"event": "token", "data": safe}
+                try:
+                    async for chunk in chat_completion_stream(
+                        messages=api_messages,
+                        max_tokens=2048,
+                        model=settings.tutor_model,
+                        caller="tutor_chat",
+                        system=system_blocks,
+                    ):
+                        collected.append(chunk)
+                        safe = vfilter.push(chunk)
+                        if safe:
+                            yield {"event": "token", "data": safe}
 
-                tail = vfilter.flush()
-                if tail:
-                    yield {"event": "token", "data": tail}
+                    tail = vfilter.flush()
+                    if tail:
+                        yield {"event": "token", "data": tail}
+                except Exception as e:
+                    raise TutorLLMError() from e
 
                 full_text = "".join(collected)
-                cleaned_text, action = parse_comprehension_verdict(full_text)
+                # Strip profile notes first, then verdict from the tail.
+                text_after_notes, profile_notes = parse_profile_notes(full_text)
+                cleaned_text, action, verdict = parse_comprehension_verdict(
+                    text_after_notes
+                )
                 msg_metadata = {"type": "answer", "action": action}
 
-                from app.database import async_session
-                async with async_session() as save_db:
-                    assistant_msg = TutorMessage(
-                        conversation_id=conv_id,
-                        role="assistant",
-                        content=cleaned_text,
-                        metadata_=msg_metadata,
-                    )
-                    save_db.add(assistant_msg)
-                    await save_db.commit()
-                    msg_id = str(assistant_msg.id)
+                try:
+                    from app.database import async_session
+                    async with async_session() as save_db:
+                        assistant_msg = TutorMessage(
+                            conversation_id=conv_id,
+                            role="assistant",
+                            content=cleaned_text,
+                            metadata_=msg_metadata,
+                        )
+                        save_db.add(assistant_msg)
+                        await apply_post_stream_signals(
+                            save_db,
+                            user_id=user_uuid,
+                            conv_id=conv_id,
+                            profile_notes=profile_notes,
+                            verdict_kp_id=verdict_kp_id,
+                            verdict=verdict,
+                            exposed_kp_ids=[],
+                        )
+                        await save_db.commit()
+                        msg_id = str(assistant_msg.id)
+                except Exception as e:
+                    raise TutorPersistError() from e
 
                 yield {
                     "event": "done",
@@ -591,7 +588,7 @@ async def send_message(
                     }),
                 }
             except Exception as e:
-                logger.error("Tutor chat error: %s", e)
-                yield {"event": "error", "data": str(e)}
+                log_stream_failure(logger, "tutor_chat", e)
+                yield {"event": "error", "data": stream_error_payload(e)}
 
     return EventSourceResponse(event_stream())

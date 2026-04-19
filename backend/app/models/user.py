@@ -2,7 +2,7 @@ import uuid
 from datetime import UTC, date, datetime
 from typing import Literal
 
-from sqlalchemy import Boolean, String, Integer, Float, ForeignKey, DateTime, Date
+from sqlalchemy import Boolean, String, Text, Integer, Float, ForeignKey, DateTime, Date
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import Mapped, mapped_column
 
@@ -47,6 +47,7 @@ class User(Base):
     preferred_language: Mapped[str] = mapped_column(
         String(16), default=DEFAULT_LANGUAGE, server_default=DEFAULT_LANGUAGE
     )
+    learner_profile: Mapped[str | None] = mapped_column(Text, nullable=True)
     created_at: Mapped[datetime] = mapped_column(DateTime, default=lambda: datetime.now(UTC).replace(tzinfo=None))
 
 

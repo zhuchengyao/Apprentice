@@ -1,13 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
-
-const BACKEND_URL = process.env.BACKEND_URL || "http://localhost:8000";
+import { backendFetch } from "@/lib/backend-fetch";
 
 export async function GET(
   _request: NextRequest,
   { params }: { params: Promise<{ bookId: string; filename: string }> },
 ) {
   const { bookId, filename } = await params;
-  const res = await fetch(`${BACKEND_URL}/api/images/${bookId}/${filename}`);
+  const res = await backendFetch(`/api/images/${bookId}/${filename}`);
 
   if (!res.ok) {
     return NextResponse.json({ error: "Image not found" }, { status: res.status });

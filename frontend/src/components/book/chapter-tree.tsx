@@ -1,63 +1,57 @@
 "use client";
 
-import { useState } from "react";
-import Link from "next/link";
+import { memo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import {
-  ChevronRight,
-  BookOpen,
-  Lightbulb,
-  GraduationCap,
-  CheckCircle,
-} from "lucide-react";
+import { useTranslations } from "next-intl";
+import { ChevronRight, BookOpen, Lightbulb, CheckCircle } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 import type { Chapter, Section } from "@/lib/types";
 
-const difficultyLabels: Record<number, string> = {
-  1: "Basic",
-  2: "Simple",
-  3: "Moderate",
-  4: "Complex",
-  5: "Advanced",
+const difficultyKey: Record<number, string> = {
+  1: "difficulty_basic",
+  2: "difficulty_simple",
+  3: "difficulty_moderate",
+  4: "difficulty_complex",
+  5: "difficulty_advanced",
 };
 
-const difficultyColors: Record<number, string> = {
-  1: "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400",
-  2: "bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400",
-  3: "bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-400",
-  4: "bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400",
-  5: "bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400",
+const difficultyTone: Record<
+  number,
+  "success" | "primary" | "warning" | "destructive" | "mono"
+> = {
+  1: "success",
+  2: "primary",
+  3: "warning",
+  4: "warning",
+  5: "destructive",
 };
 
-function SectionItem({
-  section,
-  bookId,
-}: {
-  section: Section;
-  bookId: string;
-}) {
+const SectionItem = memo(function SectionItem({ section }: { section: Section }) {
   const [expanded, setExpanded] = useState(false);
+  const t = useTranslations("book.tree");
   const kpCount = section.knowledge_points.length;
 
   return (
-    <div className="border-l-2 border-border ml-3 pl-4">
+    <div className="ml-4 border-l border-border/60 pl-3">
       <button
         onClick={() => setExpanded(!expanded)}
-        className="group flex w-full items-center gap-2 rounded-lg px-3 py-2 text-left text-sm transition-colors hover:bg-accent/50"
+        className="group flex w-full items-center gap-2 rounded-lg px-3 py-1.5 text-left transition-colors hover:bg-subtle/60"
       >
         <ChevronRight
           className={cn(
-            "h-3.5 w-3.5 text-muted-foreground transition-transform",
+            "h-3 w-3 text-muted-foreground transition-transform",
             expanded && "rotate-90",
           )}
         />
         <BookOpen className="h-3.5 w-3.5 text-muted-foreground" />
-        <span className="flex-1 truncate font-medium">{section.title}</span>
-        <span className="text-xs text-muted-foreground">
-          {kpCount} concept{kpCount !== 1 ? "s" : ""}
+        <span className="flex-1 truncate text-[13px] font-medium">
+          {section.title}
+        </span>
+        <span className="font-mono text-[10px] uppercase tracking-[0.08em] text-muted-foreground tabular-nums">
+          {t("concept_count", { count: kpCount })}
           {section.progress > 0 && (
-            <span className="ml-1 text-green-600">
+            <span className="ml-1 text-primary">
               · {Math.round(section.progress * 100)}%
             </span>
           )}
@@ -74,61 +68,56 @@ function SectionItem({
             className="overflow-hidden"
           >
             {section.summary && (
-              <p className="mx-3 mb-2 text-xs text-muted-foreground leading-relaxed">
+              <p className="mx-3 mb-2 text-[12px] leading-relaxed text-muted-foreground">
                 {section.summary}
               </p>
             )}
-
             <div className="space-y-1 pb-2">
               {section.knowledge_points.map((kp) => (
                 <div
                   key={kp.id}
-                  className="flex items-start gap-2 rounded-md px-3 py-1.5 ml-2"
+                  className="ml-2 flex items-start gap-2 rounded-md px-3 py-1.5"
                 >
                   {kp.mastery_level > 0 ? (
-                    <CheckCircle className="mt-0.5 h-3 w-3 shrink-0 text-green-600" />
+                    <CheckCircle className="mt-0.5 h-3 w-3 shrink-0 text-primary" />
                   ) : (
                     <Lightbulb className="mt-0.5 h-3 w-3 shrink-0 text-muted-foreground" />
                   )}
                   <div className="min-w-0 flex-1">
-                    <p className="text-xs font-medium">{kp.concept}</p>
-                    <p className="mt-0.5 text-[11px] text-muted-foreground line-clamp-2">
+                    <p className="text-[12px] font-medium">{kp.concept}</p>
+                    <p className="mt-0.5 line-clamp-2 text-[11px] leading-relaxed text-muted-foreground">
                       {kp.explanation}
                     </p>
                   </div>
                   <Badge
-                    variant="secondary"
-                    className={cn(
-                      "shrink-0 text-[10px] px-1.5 py-0",
-                      difficultyColors[kp.difficulty],
-                    )}
+                    variant={difficultyTone[kp.difficulty] || "mono"}
+                    className="shrink-0"
                   >
-                    {difficultyLabels[kp.difficulty] || "?"}
+                    {t(
+                      difficultyKey[kp.difficulty] as
+                        | "difficulty_basic"
+                        | "difficulty_simple"
+                        | "difficulty_moderate"
+                        | "difficulty_complex"
+                        | "difficulty_advanced",
+                    )}
                   </Badge>
                 </div>
               ))}
             </div>
-
-            <Link
-              href={`/book/${bookId}/study/${section.id}`}
-              className="mx-3 mb-3 flex items-center gap-1.5 rounded-lg bg-foreground px-3 py-1.5 text-xs font-medium text-background transition-opacity hover:opacity-90 w-fit"
-            >
-              <GraduationCap className="h-3.5 w-3.5" />
-              Study this section
-            </Link>
           </motion.div>
         )}
       </AnimatePresence>
     </div>
   );
-}
+});
 
 interface ChapterTreeProps {
   chapters: Chapter[];
-  bookId: string;
 }
 
-export function ChapterTree({ chapters, bookId }: ChapterTreeProps) {
+export function ChapterTree({ chapters }: ChapterTreeProps) {
+  const t = useTranslations("book.tree");
   const [expandedChapters, setExpandedChapters] = useState<Set<string>>(
     new Set(chapters.length <= 3 ? chapters.map((c) => c.id) : []),
   );
@@ -142,8 +131,16 @@ export function ChapterTree({ chapters, bookId }: ChapterTreeProps) {
     });
   };
 
+  if (chapters.length === 0) {
+    return (
+      <p className="px-3 py-6 text-center text-[13px] text-muted-foreground">
+        {t("empty")}
+      </p>
+    );
+  }
+
   return (
-    <div className="space-y-1">
+    <div className="space-y-0.5">
       {chapters.map((chapter) => {
         const isExpanded = expandedChapters.has(chapter.id);
         const totalKPs = chapter.sections.reduce(
@@ -155,21 +152,21 @@ export function ChapterTree({ chapters, bookId }: ChapterTreeProps) {
           <div key={chapter.id}>
             <button
               onClick={() => toggleChapter(chapter.id)}
-              className="group flex w-full items-center gap-2 rounded-lg px-3 py-2.5 text-left transition-colors hover:bg-accent/50"
+              className="group flex w-full items-center gap-2 rounded-lg px-3 py-2 text-left transition-colors hover:bg-subtle/60"
             >
               <ChevronRight
                 className={cn(
-                  "h-4 w-4 text-muted-foreground transition-transform",
+                  "h-3.5 w-3.5 text-muted-foreground transition-transform",
                   isExpanded && "rotate-90",
                 )}
               />
-              <span className="flex-1 text-sm font-semibold">
+              <span className="flex-1 truncate font-heading text-[14px] font-semibold tracking-tight">
                 {chapter.title}
               </span>
-              <span className="text-xs text-muted-foreground">
-                {chapter.sections.length} section{chapter.sections.length !== 1 ? "s" : ""}
+              <span className="font-mono text-[10px] uppercase tracking-[0.08em] text-muted-foreground tabular-nums">
+                {t("section_count", { count: chapter.sections.length })}
                 {" · "}
-                {totalKPs} concept{totalKPs !== 1 ? "s" : ""}
+                {t("concept_count", { count: totalKPs })}
               </span>
             </button>
 
@@ -184,11 +181,7 @@ export function ChapterTree({ chapters, bookId }: ChapterTreeProps) {
                 >
                   <div className="space-y-0.5 pb-2">
                     {chapter.sections.map((section) => (
-                      <SectionItem
-                        key={section.id}
-                        section={section}
-                        bookId={bookId}
-                      />
+                      <SectionItem key={section.id} section={section} />
                     ))}
                   </div>
                 </motion.div>

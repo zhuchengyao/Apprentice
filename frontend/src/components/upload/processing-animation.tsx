@@ -1,15 +1,16 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 import { Upload, FileSearch, Brain, CheckCircle2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import type { BookStatus } from "@/lib/constants";
 
-const steps = [
-  { key: "uploading", label: "Uploading", icon: Upload },
-  { key: "parsing", label: "Parsing content", icon: FileSearch },
-  { key: "extracting", label: "Extracting knowledge", icon: Brain },
-  { key: "ready", label: "Ready to learn", icon: CheckCircle2 },
+const stepConfig = [
+  { key: "uploading", icon: Upload },
+  { key: "parsing", icon: FileSearch },
+  { key: "extracting", icon: Brain },
+  { key: "ready", icon: CheckCircle2 },
 ] as const;
 
 const statusToStep: Record<string, number> = {
@@ -24,32 +25,36 @@ interface ProcessingAnimationProps {
 }
 
 export function ProcessingAnimation({ status }: ProcessingAnimationProps) {
+  const t = useTranslations("upload.stages");
   const currentStep = statusToStep[status] ?? 0;
 
   return (
     <div className="mx-auto w-full max-w-md">
       <div className="flex items-center justify-between">
-        {steps.map((step, index) => {
+        {stepConfig.map((step, index) => {
           const Icon = step.icon;
           const isActive = index === currentStep;
           const isComplete = index < currentStep;
 
           return (
-            <div key={step.key} className="flex flex-col items-center gap-2">
+            <div
+              key={step.key}
+              className="flex flex-col items-center gap-2.5"
+            >
               <motion.div
                 className={cn(
-                  "flex h-12 w-12 items-center justify-center rounded-full transition-colors duration-500",
-                  isComplete && "bg-foreground text-background",
-                  isActive && "bg-foreground/10",
-                  !isComplete && !isActive && "bg-muted",
+                  "flex h-11 w-11 items-center justify-center rounded-xl ring-1 transition-colors duration-500",
+                  isComplete && "bg-primary text-primary-foreground ring-primary",
+                  isActive && "bg-primary/10 text-primary ring-primary/25",
+                  !isComplete && !isActive && "bg-subtle text-muted-foreground ring-border/60",
                 )}
                 animate={
                   isActive
                     ? {
                         boxShadow: [
-                          "0 0 0 0 rgba(0,0,0,0)",
-                          "0 0 0 8px rgba(0,0,0,0.05)",
-                          "0 0 0 0 rgba(0,0,0,0)",
+                          "0 0 0 0 rgba(99,102,241,0)",
+                          "0 0 0 8px rgba(99,102,241,0.08)",
+                          "0 0 0 0 rgba(99,102,241,0)",
                         ],
                       }
                     : {}
@@ -60,18 +65,11 @@ export function ProcessingAnimation({ status }: ProcessingAnimationProps) {
                     : {}
                 }
               >
-                <Icon
-                  className={cn(
-                    "h-5 w-5",
-                    isComplete && "text-background",
-                    isActive && "text-foreground",
-                    !isComplete && !isActive && "text-muted-foreground",
-                  )}
-                />
+                <Icon className="h-4 w-4" />
               </motion.div>
               <span
                 className={cn(
-                  "text-xs font-medium transition-colors",
+                  "font-mono text-[10px] uppercase tracking-[0.08em] transition-colors",
                   isActive
                     ? "text-foreground"
                     : isComplete
@@ -79,19 +77,20 @@ export function ProcessingAnimation({ status }: ProcessingAnimationProps) {
                       : "text-muted-foreground",
                 )}
               >
-                {step.label}
+                {t(step.key)}
               </span>
             </div>
           );
         })}
       </div>
 
-      {/* Progress line */}
-      <div className="relative mt-[-2.75rem] mb-8 mx-6 h-0.5 bg-muted -z-10">
+      <div className="relative mt-[-2.75rem] mb-8 mx-6 h-px bg-border/60 -z-10">
         <motion.div
-          className="absolute left-0 top-0 h-full bg-foreground"
+          className="absolute left-0 top-0 h-full bg-primary"
           initial={{ width: "0%" }}
-          animate={{ width: `${(currentStep / (steps.length - 1)) * 100}%` }}
+          animate={{
+            width: `${(currentStep / (stepConfig.length - 1)) * 100}%`,
+          }}
           transition={{ duration: 0.8, ease: "easeInOut" }}
         />
       </div>

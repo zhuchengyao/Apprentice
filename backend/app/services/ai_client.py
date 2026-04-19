@@ -12,6 +12,7 @@ from collections.abc import AsyncGenerator
 from dataclasses import dataclass
 from enum import Enum
 
+import httpx
 from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker, AsyncSession
 from sqlalchemy.pool import NullPool
 
@@ -19,6 +20,45 @@ from app.config import settings
 from app.services.ai_context import get_user_id
 
 logger = logging.getLogger(__name__)
+
+
+# ── Shared SDK clients ──────────────────────────────────────────
+# Lazy module-level singletons. Both Anthropic and OpenAI Async SDKs keep
+# an internal httpx AsyncClient with a connection pool — rebuilding them
+# per call costs a TLS handshake + pool setup every time. Instantiating
+# here reuses the pool across the whole process lifetime.
+#
+# Locks make first-access thread-safe across concurrent coroutines.
+
+_anthropic_client = None
+_openai_client = None
+_anthropic_lock = asyncio.Lock()
+_openai_lock = asyncio.Lock()
+
+
+async def _get_anthropic_client():
+    global _anthropic_client
+    if _anthropic_client is None:
+        async with _anthropic_lock:
+            if _anthropic_client is None:
+                import anthropic
+                _anthropic_client = anthropic.AsyncAnthropic(
+                    api_key=settings.anthropic_api_key,
+                )
+    return _anthropic_client
+
+
+async def _get_openai_client():
+    global _openai_client
+    if _openai_client is None:
+        async with _openai_lock:
+            if _openai_client is None:
+                from openai import AsyncOpenAI
+                _openai_client = AsyncOpenAI(
+                    api_key=settings.openai_api_key,
+                    timeout=httpx.Timeout(120.0, connect=10.0),
+                )
+    return _openai_client
 
 
 class AIProvider(str, Enum):
@@ -31,6 +71,7 @@ MODEL_REGISTRY: dict[AIProvider, list[str]] = {
     AIProvider.ANTHROPIC: [
         "claude-sonnet-4-6",
         "claude-opus-4-6",
+        "claude-opus-4-7",
         "claude-haiku-4-5-20251001",
     ],
     AIProvider.OPENAI: [
@@ -57,6 +98,7 @@ def get_available_models() -> dict[str, list[str]]:
 #   OpenAI auto cache:    read = 0.50 × input,  write = 1.00 × input (no surcharge)
 MODEL_PRICING: dict[str, dict[str, float]] = {
     "claude-opus-4-6":           {"input": 15.0, "output": 75.0, "cache_read": 1.50,  "cache_write": 18.75},
+    "claude-opus-4-7":           {"input": 15.0, "output": 75.0, "cache_read": 1.50,  "cache_write": 18.75},
     "claude-sonnet-4-6":         {"input": 3.0,  "output": 15.0, "cache_read": 0.30,  "cache_write": 3.75},
     "claude-haiku-4-5-20251001": {"input": 0.8,  "output": 4.0,  "cache_read": 0.08,  "cache_write": 1.00},
     "gpt-5.4":                   {"input": 2.5,  "output": 10.0, "cache_read": 1.25,  "cache_write": 2.5},
@@ -320,9 +362,7 @@ def _extract_anthropic_usage(raw_usage) -> TokenUsage:
 async def _anthropic_chat(
     messages: list[dict], max_tokens: int, model: str, system: SystemParam = None,
 ) -> tuple[str, TokenUsage]:
-    import anthropic
-
-    client = anthropic.AsyncAnthropic(api_key=settings.anthropic_api_key)
+    client = await _get_anthropic_client()
     kwargs: dict = {
         "model": model,
         "max_tokens": max_tokens,
@@ -354,30 +394,21 @@ def _extract_openai_usage(usage) -> TokenUsage:
 async def _openai_chat(
     messages: list[dict], max_tokens: int, model: str, system: SystemParam = None,
 ) -> tuple[str, TokenUsage]:
-    from openai import AsyncOpenAI
-    import httpx
-
-    client = AsyncOpenAI(
-        api_key=settings.openai_api_key,
-        timeout=httpx.Timeout(120.0, connect=10.0),
+    client = await _get_openai_client()
+    oai_messages = []
+    for msg in _openai_messages_from_system(system, messages):
+        if isinstance(msg.get("content"), list):
+            oai_messages.append({"role": msg["role"], "content": _to_openai_content(msg["content"])})
+        else:
+            oai_messages.append(msg)
+    response = await client.chat.completions.create(
+        model=model,
+        max_completion_tokens=max_tokens,
+        messages=oai_messages,
     )
-    try:
-        oai_messages = []
-        for msg in _openai_messages_from_system(system, messages):
-            if isinstance(msg.get("content"), list):
-                oai_messages.append({"role": msg["role"], "content": _to_openai_content(msg["content"])})
-            else:
-                oai_messages.append(msg)
-        response = await client.chat.completions.create(
-            model=model,
-            max_completion_tokens=max_tokens,
-            messages=oai_messages,
-        )
-        text = response.choices[0].message.content.strip()
-        usage = _extract_openai_usage(response.usage)
-        return text, usage
-    finally:
-        await client.close()
+    text = response.choices[0].message.content.strip()
+    usage = _extract_openai_usage(response.usage)
+    return text, usage
 
 
 # ── Streaming implementations ──────────────────────────────────
@@ -388,9 +419,7 @@ async def _anthropic_stream(
     provider: AIProvider, caller: str,
     system: SystemParam = None,
 ) -> AsyncGenerator[str, None]:
-    import anthropic
-
-    client = anthropic.AsyncAnthropic(api_key=settings.anthropic_api_key)
+    client = await _get_anthropic_client()
     kwargs: dict = {
         "model": model,
         "max_tokens": max_tokens,
@@ -413,30 +442,25 @@ async def _openai_stream(
     provider: AIProvider, caller: str,
     system: SystemParam = None,
 ) -> AsyncGenerator[str, None]:
-    from openai import AsyncOpenAI
+    client = await _get_openai_client()
+    oai_messages = []
+    for msg in _openai_messages_from_system(system, messages):
+        if isinstance(msg.get("content"), list):
+            oai_messages.append({"role": msg["role"], "content": _to_openai_content(msg["content"])})
+        else:
+            oai_messages.append(msg)
+    response = await client.chat.completions.create(
+        model=model,
+        max_completion_tokens=max_tokens,
+        messages=oai_messages,
+        stream=True,
+        stream_options={"include_usage": True},
+    )
+    usage = TokenUsage(input_tokens=0, output_tokens=0)
+    async for chunk in response:
+        if chunk.choices and chunk.choices[0].delta.content:
+            yield chunk.choices[0].delta.content
+        if chunk.usage:
+            usage = _extract_openai_usage(chunk.usage)
 
-    client = AsyncOpenAI(api_key=settings.openai_api_key)
-    try:
-        oai_messages = []
-        for msg in _openai_messages_from_system(system, messages):
-            if isinstance(msg.get("content"), list):
-                oai_messages.append({"role": msg["role"], "content": _to_openai_content(msg["content"])})
-            else:
-                oai_messages.append(msg)
-        response = await client.chat.completions.create(
-            model=model,
-            max_completion_tokens=max_tokens,
-            messages=oai_messages,
-            stream=True,
-            stream_options={"include_usage": True},
-        )
-        usage = TokenUsage(input_tokens=0, output_tokens=0)
-        async for chunk in response:
-            if chunk.choices and chunk.choices[0].delta.content:
-                yield chunk.choices[0].delta.content
-            if chunk.usage:
-                usage = _extract_openai_usage(chunk.usage)
-
-        asyncio.create_task(_record_usage(model, provider, caller, usage))
-    finally:
-        await client.close()
+    asyncio.create_task(_record_usage(model, provider, caller, usage))

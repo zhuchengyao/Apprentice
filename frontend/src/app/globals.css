@@ -8,8 +8,10 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-sans);
-  --font-mono: var(--font-geist-mono);
-  --font-heading: var(--font-sans);
+  --font-serif: var(--font-serif);
+  --font-mono: var(--font-mono);
+  --font-heading: var(--font-serif);
+
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -27,6 +29,8 @@
   --color-input: var(--input);
   --color-border: var(--border);
   --color-destructive: var(--destructive);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
   --color-accent-foreground: var(--accent-foreground);
   --color-accent: var(--accent);
   --color-muted-foreground: var(--muted-foreground);
@@ -39,99 +43,278 @@
   --color-popover: var(--popover);
   --color-card-foreground: var(--card-foreground);
   --color-card: var(--card);
-  --radius-sm: calc(var(--radius) * 0.6);
-  --radius-md: calc(var(--radius) * 0.8);
+  --color-surface: var(--surface);
+  --color-surface-foreground: var(--surface-foreground);
+  --color-subtle: var(--subtle);
+  --color-subtle-foreground: var(--subtle-foreground);
+
+  --radius-sm: calc(var(--radius) * 0.55);
+  --radius-md: calc(var(--radius) * 0.75);
   --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) * 1.4);
-  --radius-2xl: calc(var(--radius) * 1.8);
-  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-xl: calc(var(--radius) * 1.35);
+  --radius-2xl: calc(var(--radius) * 1.75);
+  --radius-3xl: calc(var(--radius) * 2.1);
   --radius-4xl: calc(var(--radius) * 2.6);
+
+  --shadow-editorial: 0 1px 2px oklch(0.2 0.02 265 / 0.04),
+    0 8px 24px -8px oklch(0.2 0.02 265 / 0.08);
+  --shadow-editorial-lg: 0 2px 4px oklch(0.2 0.02 265 / 0.05),
+    0 24px 48px -16px oklch(0.2 0.02 265 / 0.12);
+  --shadow-ink: 0 1px 2px oklch(0 0 0 / 0.4), 0 12px 32px -8px oklch(0 0 0 / 0.35);
 }
 
+/* ── Editorial Studio — Indigo ──────────────────────────────
+   Light: warm paper, deep ink, confident indigo.
+   Dark : deep navy ink, bone text, luminous indigo.
+*/
 :root {
+  --background: oklch(0.985 0.004 95);
+  --foreground: oklch(0.22 0.02 265);
+
+  --surface: oklch(0.965 0.005 90);
+  --surface-foreground: oklch(0.22 0.02 265);
+
+  --subtle: oklch(0.945 0.008 90);
+  --subtle-foreground: oklch(0.38 0.02 265);
+
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.556 0 0);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
-  --radius: 0.625rem;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
+  --card-foreground: oklch(0.22 0.02 265);
+
+  --popover: oklch(0.998 0.002 90);
+  --popover-foreground: oklch(0.22 0.02 265);
+
+  --primary: oklch(0.48 0.17 268);
+  --primary-foreground: oklch(0.985 0.005 90);
+
+  --secondary: oklch(0.94 0.01 265);
+  --secondary-foreground: oklch(0.28 0.03 265);
+
+  --muted: oklch(0.955 0.006 90);
+  --muted-foreground: oklch(0.5 0.015 265);
+
+  --accent: oklch(0.93 0.025 268);
+  --accent-foreground: oklch(0.28 0.08 268);
+
+  --destructive: oklch(0.54 0.2 27);
+  --success: oklch(0.55 0.13 155);
+  --warning: oklch(0.72 0.14 70);
+
+  --border: oklch(0.9 0.008 265);
+  --input: oklch(0.92 0.008 265);
+  --ring: oklch(0.48 0.17 268);
+
+  --chart-1: oklch(0.48 0.17 268);
+  --chart-2: oklch(0.62 0.15 228);
+  --chart-3: oklch(0.7 0.13 190);
+  --chart-4: oklch(0.72 0.14 70);
+  --chart-5: oklch(0.55 0.13 335);
+
+  --radius: 0.75rem;
+
+  --sidebar: oklch(0.97 0.006 90);
+  --sidebar-foreground: oklch(0.22 0.02 265);
+  --sidebar-primary: oklch(0.48 0.17 268);
+  --sidebar-primary-foreground: oklch(0.985 0.005 90);
+  --sidebar-accent: oklch(0.92 0.018 268);
+  --sidebar-accent-foreground: oklch(0.28 0.08 268);
+  --sidebar-border: oklch(0.9 0.008 265);
+  --sidebar-ring: oklch(0.48 0.17 268);
 }
 
 .dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
+  --background: oklch(0.175 0.018 265);
+  --foreground: oklch(0.94 0.008 90);
+
+  --surface: oklch(0.215 0.022 265);
+  --surface-foreground: oklch(0.94 0.008 90);
+
+  --subtle: oklch(0.245 0.024 265);
+  --subtle-foreground: oklch(0.78 0.012 90);
+
+  --card: oklch(0.215 0.022 265);
+  --card-foreground: oklch(0.94 0.008 90);
+
+  --popover: oklch(0.23 0.024 265);
+  --popover-foreground: oklch(0.94 0.008 90);
+
+  --primary: oklch(0.72 0.16 268);
+  --primary-foreground: oklch(0.15 0.02 265);
+
+  --secondary: oklch(0.27 0.026 265);
+  --secondary-foreground: oklch(0.94 0.008 90);
+
+  --muted: oklch(0.245 0.022 265);
+  --muted-foreground: oklch(0.68 0.014 90);
+
+  --accent: oklch(0.3 0.06 268);
+  --accent-foreground: oklch(0.9 0.05 268);
+
+  --destructive: oklch(0.68 0.2 22);
+  --success: oklch(0.72 0.14 155);
+  --warning: oklch(0.78 0.14 70);
+
   --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.556 0 0);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
+  --input: oklch(1 0 0 / 14%);
+  --ring: oklch(0.72 0.16 268);
+
+  --chart-1: oklch(0.72 0.16 268);
+  --chart-2: oklch(0.72 0.14 228);
+  --chart-3: oklch(0.72 0.12 190);
+  --chart-4: oklch(0.78 0.14 70);
+  --chart-5: oklch(0.68 0.14 335);
+
+  --sidebar: oklch(0.195 0.02 265);
+  --sidebar-foreground: oklch(0.94 0.008 90);
+  --sidebar-primary: oklch(0.72 0.16 268);
+  --sidebar-primary-foreground: oklch(0.15 0.02 265);
+  --sidebar-accent: oklch(0.27 0.05 268);
+  --sidebar-accent-foreground: oklch(0.92 0.05 268);
+  --sidebar-border: oklch(1 0 0 / 8%);
+  --sidebar-ring: oklch(0.72 0.16 268);
 }
 
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
-  body {
-    @apply bg-background text-foreground;
-  }
   html {
     @apply font-sans;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "cv11", "ss01", "ss03";
+    font-variation-settings: "opsz" 14;
+  }
+  h1, h2, h3, h4 {
+    font-family: var(--font-serif), Georgia, serif;
+    font-feature-settings: "ss01", "liga";
+    letter-spacing: -0.015em;
+    color: var(--foreground);
+  }
+  h1 { letter-spacing: -0.025em; }
+  h2 { letter-spacing: -0.02em; }
+
+  /* Selection */
+  ::selection {
+    background: oklch(from var(--primary) l c h / 0.25);
+    color: var(--foreground);
+  }
+
+  /* Scrollbars — editorial quiet */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: oklch(from var(--foreground) l c h / 0.15) transparent;
+  }
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb {
+    background: oklch(from var(--foreground) l c h / 0.15);
+    border-radius: 999px;
+    border: 2px solid transparent;
+    background-clip: content-box;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: oklch(from var(--foreground) l c h / 0.25);
+    background-clip: content-box;
   }
 }
 
-/* ── Book reading view ────────────────────────────────────── */
-/* NOTE: Do NOT set line-height on .book-page — it breaks KaTeX
-   bracket alignment in matrices. Use margin/padding for spacing. */
+/* ── Typographic utilities ──────────────────────────────── */
+@layer utilities {
+  .font-heading { font-family: var(--font-serif), Georgia, serif; }
+  .font-display {
+    font-family: var(--font-serif), Georgia, serif;
+    letter-spacing: -0.03em;
+    font-feature-settings: "ss01", "liga", "dlig";
+  }
+  .font-mono { font-family: var(--font-mono), ui-monospace, monospace; }
+  .text-balance { text-wrap: balance; }
+  .text-pretty  { text-wrap: pretty; }
+
+  /* Editorial small-caps eyebrow */
+  .eyebrow {
+    font-family: var(--font-mono), ui-monospace, monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: var(--muted-foreground);
+  }
+
+  /* Soft indigo glow card */
+  .glow-indigo {
+    box-shadow:
+      0 1px 0 oklch(from var(--primary) l c h / 0.04) inset,
+      0 16px 40px -20px oklch(from var(--primary) l c h / 0.35);
+  }
+
+  /* Paper texture — super subtle */
+  .paper {
+    background-image:
+      radial-gradient(oklch(from var(--foreground) l c h / 0.018) 1px, transparent 1px);
+    background-size: 3px 3px;
+  }
+
+  /* Grid backdrop for hero-style surfaces */
+  .grid-bg {
+    background-image:
+      linear-gradient(to right, oklch(from var(--foreground) l c h / 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, oklch(from var(--foreground) l c h / 0.05) 1px, transparent 1px);
+    background-size: 32px 32px;
+    mask-image: radial-gradient(ellipse 60% 50% at 50% 0%, black 40%, transparent 100%);
+  }
+
+  /* Ink-to-paper aurora for hero moments */
+  .aurora {
+    background:
+      radial-gradient(ellipse 60% 50% at 20% 0%, oklch(from var(--primary) l c h / 0.22), transparent 60%),
+      radial-gradient(ellipse 50% 40% at 80% 10%, oklch(0.72 0.14 228 / 0.18), transparent 60%),
+      radial-gradient(ellipse 50% 50% at 50% 100%, oklch(from var(--primary) l c h / 0.12), transparent 60%);
+  }
+  .dark .aurora {
+    background:
+      radial-gradient(ellipse 60% 50% at 20% 0%, oklch(from var(--primary) l c h / 0.28), transparent 60%),
+      radial-gradient(ellipse 50% 40% at 80% 10%, oklch(0.6 0.16 228 / 0.22), transparent 60%),
+      radial-gradient(ellipse 50% 50% at 50% 100%, oklch(from var(--primary) l c h / 0.16), transparent 60%);
+  }
+
+  /* Editorial divider */
+  .rule {
+    height: 1px;
+    background: linear-gradient(
+      to right,
+      transparent,
+      oklch(from var(--foreground) l c h / 0.12),
+      transparent
+    );
+  }
+
+  /* Number ticker */
+  .tabular { font-variant-numeric: tabular-nums; }
+
+  /* Focus ring helper */
+  .focus-ring {
+    outline: none;
+  }
+  .focus-ring:focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+    border-radius: inherit;
+  }
+}
+
+/* ── Book reading view ─────────────────────────────────────
+   Do NOT set line-height on .book-page — it breaks KaTeX
+   bracket alignment. Use margin/padding for spacing.
+*/
+.book-page {
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: 1.0625rem;
+  color: var(--foreground);
+}
 
 .book-page h1,
 .book-page h2,
@@ -140,55 +323,71 @@
 .book-page h5,
 .book-page h6 {
   margin-top: 2em;
-  margin-bottom: 0.8em;
+  margin-bottom: 0.75em;
+  font-family: var(--font-serif), Georgia, serif;
+  letter-spacing: -0.015em;
 }
-
-.book-page h1 { font-size: 1.75em; }
-.book-page h2 { font-size: 1.45em; }
-.book-page h3 { font-size: 1.2em; }
+.book-page h1 { font-size: 1.9em; font-weight: 600; }
+.book-page h2 { font-size: 1.5em; font-weight: 600; }
+.book-page h3 { font-size: 1.22em; font-weight: 600; }
+.book-page h4 { font-size: 1.05em; font-weight: 600; }
 
 .book-page p {
-  margin-top: 0.8em;
-  margin-bottom: 0.8em;
+  margin-top: 0.85em;
+  margin-bottom: 0.85em;
 }
+.book-page p:first-child { margin-top: 0; }
 
 .book-page figure {
   margin-top: 1.8em;
   margin-bottom: 1.8em;
 }
-
 .book-page figcaption {
   margin-top: 0.6em;
   font-size: 0.875em;
   color: var(--muted-foreground);
+  font-family: var(--font-sans);
+  letter-spacing: 0.01em;
 }
 
 .book-page ul,
 .book-page ol {
   margin-top: 0.8em;
   margin-bottom: 0.8em;
+  padding-left: 1.4em;
 }
-
-.book-page li {
-  margin-top: 0.3em;
-  margin-bottom: 0.3em;
-}
+.book-page li { margin: 0.3em 0; }
 
 .book-page table {
-  margin-top: 1.5em;
-  margin-bottom: 1.5em;
+  margin: 1.5em 0;
+  font-family: var(--font-sans);
+  font-size: 0.95em;
 }
 
 .book-page blockquote {
-  margin-top: 1.2em;
-  margin-bottom: 1.2em;
-  padding-left: 1em;
-  border-left: 3px solid var(--border);
+  margin: 1.2em 0;
+  padding: 0.2em 0 0.2em 1.2em;
+  border-left: 2px solid var(--primary);
+  color: var(--subtle-foreground);
+  font-style: italic;
 }
 
 .book-page pre {
-  margin-top: 1.2em;
-  margin-bottom: 1.2em;
+  margin: 1.2em 0;
+  font-family: var(--font-mono);
+  background: var(--subtle);
+  border-radius: var(--radius-md);
+  padding: 1em 1.2em;
+  overflow-x: auto;
+  font-size: 0.92em;
+}
+
+.book-page code {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+  background: var(--subtle);
+  padding: 0.12em 0.35em;
+  border-radius: var(--radius-sm);
 }
 
 /* Inline SVG diagrams (exclude KaTeX internal SVGs) */
@@ -203,14 +402,8 @@
 }
 
 /* Isolate KaTeX from Tailwind prose interference */
-.book-page .katex {
-  line-height: initial;
-  font-size: 1em;
-}
-.book-page .katex-display {
-  line-height: initial;
-  margin: 1em 0;
-}
+.book-page .katex { line-height: initial; font-size: 1em; }
+.book-page .katex-display { line-height: initial; margin: 1em 0; }
 .book-page .katex-mathml {
   position: absolute !important;
   width: 1px !important;
@@ -221,8 +414,43 @@
   border: 0 !important;
 }
 
-/* Page-to-page boundary: subtle divider */
+/* Page-to-page boundary */
 .book-page + .book-page {
-  padding-top: 0.5em;
-  border-top: 1px solid var(--border);
+  padding-top: 1em;
+  margin-top: 1em;
+  position: relative;
 }
+.book-page + .book-page::before {
+  content: "§";
+  position: absolute;
+  top: -0.6em;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--background);
+  padding: 0 0.8em;
+  color: var(--muted-foreground);
+  font-size: 0.9em;
+  font-family: var(--font-serif);
+}
+
+/* ── Animations ──────────────────────────────────── */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    oklch(from var(--muted) l c h) 0%,
+    oklch(from var(--muted) calc(l + 0.03) c h) 50%,
+    oklch(from var(--muted) l c h) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.6s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 0.5; transform: scale(0.85); }
+  50% { opacity: 1; transform: scale(1); }
+}
+.pulse-dot { animation: pulse-dot 1.4s ease-in-out infinite; }

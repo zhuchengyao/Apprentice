@@ -78,26 +78,32 @@ async def extract_knowledge_points(section_title: str, section_content: str) -> 
     # Truncate very long sections
     content = section_content[:30000]
 
-    # Build message content — include images if present
+    # Static instructions live in the system block so they're eligible for
+    # prompt caching; per-section data stays in the user turn. The cache
+    # threshold (~1024 tokens) may not be hit today, but this structure
+    # activates caching automatically if the prompt grows.
     image_paths = _extract_image_paths_from_content(content)
-    text_content = (
-        f"{KP_EXTRACTION_PROMPT}\n\n"
+    section_text = (
         f"Section title: {section_title}\n\n"
         f"Section content:\n{content}"
     )
 
     if image_paths:
-        # Build multimodal message with images
-        content_blocks: list[dict] = [{"type": "text", "text": text_content}]
+        content_blocks: list[dict] = [{"type": "text", "text": section_text}]
         content_blocks.extend(build_image_content_blocks(image_paths[:10]))  # cap at 10 images
         message_content: str | list[dict] = content_blocks
     else:
-        message_content = text_content
+        message_content = section_text
 
     response_text = await chat_completion(
         messages=[{"role": "user", "content": message_content}],
         max_tokens=4096,
         caller="kp_extraction",
+        system=[{
+            "type": "text",
+            "text": KP_EXTRACTION_PROMPT,
+            "cache_control": {"type": "ephemeral"},
+        }],
     )
 
     if response_text.startswith("```"):

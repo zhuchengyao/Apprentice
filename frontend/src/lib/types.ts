@@ -52,47 +52,6 @@ export interface KnowledgePoint {
   mastery_level: number;
 }
 
-export interface StudySession {
-  id: string;
-  book_id: string;
-  section_id: string;
-  current_kp_index: number;
-  state: "idle" | "explain" | "check" | "evaluate" | "deepen";
-  knowledge_points: KnowledgePointDetail[];
-}
-
-export interface KnowledgePointDetail {
-  id: string;
-  concept: string;
-  explanation: string;
-  difficulty: number;
-  mastered?: boolean;
-  illustration?: string;
-  question?: string;
-  image_urls?: string[];
-}
-
-export type KPCardStatus =
-  | "pending"
-  | "illustrating"
-  | "checking"
-  | "answering"
-  | "evaluating"
-  | "deepening"
-  | "completed";
-
-export interface KPCardState {
-  status: KPCardStatus;
-  illustration: string;
-  question: string;
-  userAnswer: string;
-  feedback: { quality: number; feedback: string } | null;
-  deepenText: string;
-  secondQuestion: string;
-  secondAnswer: string;
-  secondFeedback: { quality: number; feedback: string } | null;
-}
-
 export interface BookPage {
   page_number: number;
   html_content: string;
@@ -119,4 +78,71 @@ export interface ProgressOverview {
   longest_streak: number;
   total_study_minutes: number;
   due_reviews: number;
+}
+
+// ── Billing types ──────────────────────────────────────────
+
+export type SubscriptionStatus = "active" | "canceled" | "past_due";
+
+export type TransactionType =
+  | "signup_bonus"
+  | "subscription_refill"
+  | "topup_purchase"
+  | "ai_usage"
+  | "admin_adjustment";
+
+export type UserRole = "user" | "admin";
+
+export interface SubscriptionPlan {
+  id: string;
+  name: string;
+  display_name: string;
+  monthly_credits: number;
+  price_usd: number;
+  stripe_price_id: string | null;
+  features: {
+    max_books: number | null;
+    allowed_models: string[] | null;
+    priority_processing: boolean;
+  };
+}
+
+export interface UserSubscription {
+  id: string;
+  status: SubscriptionStatus;
+  cancel_at_period_end: boolean;
+  current_period_start: string;
+  current_period_end: string;
+  plan: SubscriptionPlan | null;
+}
+
+export interface CreditTransaction {
+  id: string;
+  amount: number;
+  balance_after: number;
+  transaction_type: TransactionType;
+  description: string | null;
+  created_at: string;
+}
+
+export interface CreditPack {
+  credits: number;
+  price_usd: number;
+  label: string;
+}
+
+export interface UsageDailyEntry {
+  date: string;
+  cost_usd: number;
+  credits_used: number;
+  calls: number;
+}
+
+export interface UsageBreakdown {
+  caller: string;
+  calls: number;
+  input_tokens: number;
+  output_tokens: number;
+  cost_usd: number;
+  credits_used: number;
 }

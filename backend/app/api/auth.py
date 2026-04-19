@@ -4,7 +4,7 @@ import logging
 
 import httpx
 from fastapi import APIRouter, Depends, HTTPException, status
-from sqlalchemy import select
+from sqlalchemy import select, update
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.auth import hash_password, verify_password, create_access_token
@@ -34,6 +34,7 @@ def _user_response(user: User) -> UserResponse:
         avatar_url=user.avatar_url,
         auth_provider=user.auth_provider,
         preferred_language=user.preferred_language,
+        learner_profile=user.learner_profile,
     )
 
 
@@ -183,8 +184,22 @@ async def update_me(
     db: AsyncSession = Depends(get_db),
     current_user: User = Depends(get_current_user),
 ):
+    profile_changed = False
     if body.preferred_language is not None:
         current_user.preferred_language = body.preferred_language
+    if body.learner_profile is not None:
+        current_user.learner_profile = body.learner_profile.strip() or None
+        profile_changed = True
+
+    if profile_changed:
+        # Invalidate per-student block cache on all this user's tutor
+        # conversations so the next turn rebuilds with the updated profile.
+        from app.models.tutor import TutorConversation
+        await db.execute(
+            update(TutorConversation)
+            .where(TutorConversation.user_id == current_user.id)
+            .values(student_block_cache=None)
+        )
 
     await db.commit()
     await db.refresh(current_user)

@@ -17,7 +17,26 @@
       "Bash(git:*)",
       "Bash(pnpm add:*)",
       "Bash(node:*)",
-      "Bash(python3:*)"
+      "Bash(python3:*)",
+      "Bash(pip list:*)",
+      "Bash(ls:*)",
+      "Bash(pip install:*)",
+      "Bash(head -100 /Users/zhuchengyao/DemonTech/Apprentice/backend/app/tasks/*.py)",
+      "Bash(PGPASSWORD=apprentice pg_dump -h localhost -p 5433 -U apprentice -d apprentice -t study_sessions --inserts)",
+      "Bash(pnpm tsc *)",
+      "Bash(alembic heads *)",
+      "Bash(alembic current *)",
+      "Bash(alembic upgrade *)",
+      "Bash(pnpm build *)",
+      "Bash(npx eslint *)",
+      "Bash(pnpm exec *)",
+      "Bash(echo \"EXIT: $?\")",
+      "Bash(echo \"EXIT $?\")",
+      "Bash(awk *)",
+      "Bash(gh api *)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:hermes-agent.nousresearch.com)",
+      "Bash(grep -E \"\\\\.\\(ts|tsx\\)$\")"
     ]
   }
 }
