@@ -14,11 +14,11 @@ import {
   Menu,
   Plus,
   Settings,
-  Sparkles,
   User,
   X,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { BrandMark } from "@/components/ui/brand-mark";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { LanguageToggle } from "@/components/ui/language-toggle";
@@ -136,10 +136,7 @@ export function SideNav() {
           href="/library"
           className="flex items-center gap-2.5 transition-opacity hover:opacity-90"
         >
-          <div className="relative flex h-8 w-8 items-center justify-center rounded-lg bg-foreground text-background">
-            <Sparkles className="h-3.5 w-3.5" />
-            <span className="absolute -top-0.5 -right-0.5 h-2 w-2 rounded-full bg-primary ring-2 ring-sidebar" />
-          </div>
+          <BrandMark size={32} />
           <span className="font-heading text-[17px] font-semibold tracking-tight">
             Apprentice
           </span>
@@ -303,9 +300,7 @@ export function SideNav() {
           <Menu className="h-5 w-5" />
         </button>
         <Link href="/library" className="flex items-center gap-2">
-          <div className="flex h-6 w-6 items-center justify-center rounded-md bg-foreground text-background">
-            <Sparkles className="h-3 w-3" />
-          </div>
+          <BrandMark size={24} withDot={false} />
           <span className="font-heading text-sm font-semibold">
             Apprentice
           </span>

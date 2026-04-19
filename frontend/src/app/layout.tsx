@@ -4,20 +4,23 @@ import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getMessages } from "next-intl/server";
 import "./globals.css";
 
+// The Western fonts only ship Latin glyphs — we expose them under "*-base"
+// variables and let globals.css build the real --font-sans/serif/mono stacks
+// with CJK fallbacks (PingFang SC, Microsoft YaHei, Noto Sans/Serif CJK).
 const inter = Inter({
-  variable: "--font-sans",
+  variable: "--font-sans-base",
   subsets: ["latin"],
   display: "swap",
 });
 
 const jetbrainsMono = JetBrains_Mono({
-  variable: "--font-mono",
+  variable: "--font-mono-base",
   subsets: ["latin"],
   display: "swap",
 });
 
 const fraunces = Fraunces({
-  variable: "--font-serif",
+  variable: "--font-serif-base",
   subsets: ["latin"],
   axes: ["opsz", "SOFT"],
   display: "swap",

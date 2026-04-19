@@ -3,7 +3,7 @@ import json
 import logging
 import os
 
-from sqlalchemy import select
+from sqlalchemy import select, text
 from sqlalchemy.dialects.postgresql import insert as pg_insert
 from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker, AsyncSession
 from sqlalchemy.orm import selectinload
@@ -89,6 +89,16 @@ async def process_chapter(
     if book is None:
         book = chapter.book
     book_id = str(book.id)
+
+    # Serialize concurrent chapter workers for the same book. Overlapping
+    # chapter page-ranges (common when the TOC has level-1 + level-2
+    # entries that share pages) would otherwise race on the per-row
+    # INSERT ... ON CONFLICT lock and occasionally deadlock. The xact
+    # lock auto-releases on commit/rollback.
+    await db.execute(
+        text("SELECT pg_advisory_xact_lock(hashtextextended(:key, 0))"),
+        {"key": f"book_pages:{book_id}"},
+    )
 
     import fitz
     doc = fitz.open(book.file_path)

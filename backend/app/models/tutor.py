@@ -15,6 +15,9 @@ class TutorConversation(Base):
     user_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("users.id", ondelete="CASCADE"))
     book_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("books.id", ondelete="CASCADE"))
     chapter_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("chapters.id", ondelete="CASCADE"))
+    study_session_id: Mapped[uuid.UUID | None] = mapped_column(
+        ForeignKey("study_sessions.id", ondelete="SET NULL"), nullable=True
+    )
     current_kp_index: Mapped[int] = mapped_column(Integer, default=0)
     chapter_context: Mapped[str | None] = mapped_column(Text, nullable=True)
     kp_list_cache: Mapped[str | None] = mapped_column(Text, nullable=True)

@@ -68,6 +68,30 @@
    Dark : deep navy ink, bone text, luminous indigo.
 */
 :root {
+  /* Font stacks: Western font (from next/font) + CJK system fallbacks.
+     PingFang SC ships on macOS/iOS; Microsoft YaHei UI on Windows;
+     Noto Sans/Serif CJK on Linux. Source Han is the open-source name
+     for the same Adobe/Google CJK family. No webfont download for CJK. */
+  --font-sans:
+    var(--font-sans-base),
+    -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "PingFang SC", "Hiragino Sans GB",
+    "Microsoft YaHei UI", "Microsoft YaHei",
+    "Source Han Sans SC", "Source Han Sans CN",
+    "Noto Sans CJK SC", "Noto Sans SC",
+    system-ui, sans-serif;
+  --font-serif:
+    var(--font-serif-base),
+    Georgia, "Times New Roman",
+    "Songti SC", "STSong",
+    "Source Han Serif SC", "Noto Serif CJK SC",
+    SimSun, serif;
+  --font-mono:
+    var(--font-mono-base),
+    ui-monospace, "SF Mono", Menlo, Consolas, "Liberation Mono",
+    "PingFang SC", "Microsoft YaHei UI", "Source Han Sans SC",
+    monospace;
+
   --background: oklch(0.985 0.004 95);
   --foreground: oklch(0.22 0.02 265);
 
@@ -404,7 +428,8 @@
 /* Isolate KaTeX from Tailwind prose interference */
 .book-page .katex { line-height: initial; font-size: 1em; }
 .book-page .katex-display { line-height: initial; margin: 1em 0; }
-.book-page .katex-mathml {
+.book-page .katex-mathml,
+.study-panel .katex-mathml {
   position: absolute !important;
   width: 1px !important;
   height: 1px !important;
@@ -413,6 +438,22 @@
   padding: 0 !important;
   border: 0 !important;
 }
+
+/* Study panel sits in a 360px column. Wide inline matrices and display
+   math would otherwise be clipped by the page's overflow-hidden. Allow
+   horizontal scroll on math, and prevent any unbreakable token (long
+   identifiers, URLs) from forcing the whole column wider than its
+   container. */
+.study-panel { min-width: 0; word-break: break-word; overflow-wrap: anywhere; }
+.study-panel .katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-bottom: 0.25em;
+  max-width: 100%;
+}
+.study-panel .katex { max-width: 100%; }
+.study-panel pre,
+.study-panel code { max-width: 100%; overflow-x: auto; }
 
 /* Page-to-page boundary */
 .book-page + .book-page {

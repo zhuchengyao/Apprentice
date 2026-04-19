@@ -315,8 +315,23 @@ def _process_figure_regions(
 
         filename = f"p{page_number}_fig_{uuid.uuid4().hex[:8]}.png"
         filepath = os.path.join(image_dir, filename)
-        with open(filepath, "wb") as f:
-            f.write(png_bytes)
+        try:
+            with open(filepath, "wb") as f:
+                f.write(png_bytes)
+        except FileNotFoundError:
+            # image_dir vanished mid-processing (e.g. the user deleted the
+            # book). Recreate and try once more; if that fails, drop the
+            # image rather than failing the whole chapter.
+            try:
+                os.makedirs(image_dir, exist_ok=True)
+                with open(filepath, "wb") as f:
+                    f.write(png_bytes)
+            except OSError as e:
+                logger.warning(
+                    "Skipping figure on page %d — could not write %s: %s",
+                    page_number, filepath, e,
+                )
+                return ""
 
         url = f"/api/images/{book_id}/{filename}"
 

@@ -3,10 +3,10 @@ import { proxySSE } from "@/lib/backend-fetch";
 
 export async function POST(
   request: NextRequest,
-  { params }: { params: Promise<{ conversationId: string }> },
+  { params }: { params: Promise<{ sessionId: string }> },
 ) {
-  const { conversationId } = await params;
-  return proxySSE(`/api/tutor/conversations/${conversationId}/teach`, {
+  const { sessionId } = await params;
+  return proxySSE(`/api/study/sessions/${sessionId}/advance`, {
     method: "POST",
     signal: request.signal,
   });

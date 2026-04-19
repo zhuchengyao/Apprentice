@@ -90,6 +90,83 @@
       "body": "\u201CIf you can\u2019t explain it to a six-year-old, you don\u2019t understand it yourself.\u201D",
       "attr": "— Attributed to Richard Feynman"
     },
+    "testimonials": {
+      "eyebrow": "From the shelves",
+      "heading_line1": "What readers are",
+      "heading_line2": "actually saying.",
+      "featured_quote": "\u201CI\u2019ve tried a few AI learning tools before, but this one actually helps me finish books instead of just skimming. The structured breakdown into concepts makes a big difference, especially for technical material.\u201D",
+      "featured_name": "AlexChen92",
+      "featured_role": "March 2026",
+      "items": {
+        "mika": {
+          "quote": "The \u2018continue reading\u2019 flow is surprisingly effective. It removes the friction of deciding what to do next. I usually just open the app and pick up where I left off without thinking too much.",
+          "name": "mika_reading",
+          "role": "March 2026"
+        },
+        "dev": {
+          "quote": "As someone working in engineering, I like that the explanations don\u2019t oversimplify. The AI tutor can go into enough depth while still being interactive. It feels closer to a real study session.",
+          "name": "dev_goto",
+          "role": "March 2026"
+        },
+        "sophia": {
+          "quote": "I mainly use it for non-fiction. The way it extracts key points and reorganizes them makes dense content much more manageable. It\u2019s not perfect, but it saves me a lot of time.",
+          "name": "sophia_lin",
+          "role": "April 2026"
+        },
+        "takashi": {
+          "quote": "The interface is clean, and it doesn\u2019t try to overwhelm you with features. The focus on learning one concept at a time works well for me.",
+          "name": "takashi_k",
+          "role": "April 2026"
+        },
+        "data": {
+          "quote": "I was skeptical about AI explanations, but the quality is fairly consistent. Occasionally I double-check things, but overall it\u2019s reliable enough for daily study.",
+          "name": "data_aria",
+          "role": "April 2026"
+        },
+        "leonard": {
+          "quote": "What stands out is the continuity. It remembers what I\u2019ve been working on and keeps the learning flow going. Most reading apps don\u2019t get that right.",
+          "name": "leonard_w",
+          "role": "April 2026"
+        }
+      }
+    },
+    "pricing": {
+      "eyebrow": "Pricing",
+      "heading_line1": "Start free.",
+      "heading_line2": "Upgrade if it sticks.",
+      "subtitle": "Month-to-month. Cancel whenever.",
+      "per_month": "/ mo",
+      "most_popular": "Most popular",
+      "free": {
+        "name": "Free",
+        "price": "$0",
+        "blurb": "Try the loop with one book.",
+        "cta": "Start free",
+        "feature_1": "1 book",
+        "feature_2": "500 credits / month",
+        "feature_3": "Basic models"
+      },
+      "basic": {
+        "name": "Basic",
+        "price": "$9.99",
+        "blurb": "Up to five books on the go.",
+        "cta": "Start with Basic",
+        "feature_1": "5 books",
+        "feature_2": "15,000 credits / month",
+        "feature_3": "All AI models",
+        "feature_4": "Daily review queue"
+      },
+      "pro": {
+        "name": "Pro",
+        "price": "$29.99",
+        "blurb": "Unlimited books, deeper practice.",
+        "cta": "Go Pro",
+        "feature_1": "Unlimited books",
+        "feature_2": "50,000 credits / month",
+        "feature_3": "All AI models",
+        "feature_4": "Priority parsing"
+      }
+    },
     "final": {
       "heading_line1": "Open a book.",
       "heading_line2": "Finish it.",
@@ -157,6 +234,13 @@
     "empty_cta": "Upload your first book",
     "no_matches_title": "No matches",
     "no_matches_body": "Nothing matched \u201C{query}\u201D.",
+    "continue": {
+      "eyebrow": "Pick up where you left off",
+      "heading_with_count": "{mastered} of {total} concepts mastered",
+      "heading_no_count": "Continue reading",
+      "subtitle": "{percent}% through · last opened {when}",
+      "cta": "Continue"
+    },
     "book_card": {
       "unknown_author": "Unknown author",
       "concepts_suffix": "concepts",
@@ -289,6 +373,46 @@
     "minimize": "Minimize",
     "open": "Open tutor",
     "close": "Close tutor"
+  },
+  "study": {
+    "phase": {
+      "read": "Read",
+      "explain": "Explain",
+      "practice": "Practice",
+      "feedback": "Feedback"
+    },
+    "starting": "Preparing your study session…",
+    "no_kps_title": "Nothing to study here",
+    "no_kps_body": "This chapter doesn't contain any concepts to practice — it might be a table of contents, preface, or index. Pick another chapter from the sidebar.",
+    "loading_scope": "Locating scope…",
+    "scope_default_title": "Current scope",
+    "scope_progress": "Scope {current}/{total}",
+    "scope_kp_count": "{count} concepts",
+    "read_instruction": "Read this section at your own pace. Tap below when you're ready for a short explanation.",
+    "read_cta": "I've finished reading",
+    "preparing_explanation": "Preparing…",
+    "explain_title": "Let's unpack it",
+    "explain_waiting": "Thinking through an explanation…",
+    "explain_continue_cta": "I'm ready — start practice",
+    "loading_questions": "Preparing questions…",
+    "quiz_submit": "Submit answer",
+    "quiz_next": "Next question",
+    "quiz_question_progress": "Question {current}/{total}",
+    "correct": "Nice — that's it.",
+    "incorrect": "Not quite — here's what's going on:",
+    "correct_answer_was": "The right answer was {option}.",
+    "missed_it_reassure": "Missing one is part of how it sticks — no pressure.",
+    "scope_recap": "Scope recap",
+    "scope_score": "You got {correct} of {total}.",
+    "encouragement_perfect": "Flawless run. You've got this scope locked in.",
+    "encouragement_strong": "Strong grasp — a wobble or two is normal.",
+    "encouragement_mixed": "You're building the right model. Each miss is a real lesson.",
+    "encouragement_struggle": "Tough one. Confusion here is how the idea finally clicks — keep going.",
+    "next_scope_cta": "Continue to next scope",
+    "finish_session_cta": "Finish session",
+    "skip_to_next_scope": "Skip to next scope →",
+    "session_complete": "Chapter complete",
+    "session_complete_hint": "You've worked through every scope — nice work."
   },
   "upload": {
     "title": "Upload a book",

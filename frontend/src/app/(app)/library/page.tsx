@@ -1,10 +1,12 @@
 "use client";
 
 import { useEffect, useState, useCallback, useMemo } from "react";
+import Link from "next/link";
 import { motion } from "framer-motion";
-import { useTranslations } from "next-intl";
+import { useFormatter, useTranslations } from "next-intl";
 import {
   AlertCircle,
+  ArrowRight,
   BookOpen,
   Loader2,
   Plus,
@@ -23,6 +25,7 @@ const PROCESSING_STATUSES = ["uploading", "parsing", "extracting"] as const;
 
 export default function LibraryPage() {
   const t = useTranslations("library");
+  const format = useFormatter();
   const [books, setBooks] = useState<Book[]>([]);
   const [loading, setLoading] = useState(true);
   const [loadError, setLoadError] = useState(false);
@@ -120,6 +123,19 @@ export default function LibraryPage() {
     (PROCESSING_STATUSES as readonly string[]).includes(b.status),
   ).length;
 
+  // Most-recently-opened in-progress book — anchors the "continue" banner.
+  // Hidden during search so it doesn't fight with filtered results.
+  const continueBook = useMemo(() => {
+    if (query.trim()) return null;
+    const candidates = books.filter(
+      (b) => b.status === "ready" && b.progress > 0 && b.progress < 100,
+    );
+    if (candidates.length === 0) return null;
+    return candidates.reduce((latest, b) =>
+      new Date(b.updated_at) > new Date(latest.updated_at) ? b : latest,
+    );
+  }, [books, query]);
+
   return (
     <div className="mx-auto w-full max-w-6xl px-5 py-10 sm:px-8 sm:py-12">
       {/* Hero */}
@@ -213,6 +229,55 @@ export default function LibraryPage() {
             />
           </div>
         </div>
+      )}
+
+      {/* Continue reading — single signature card, only when a book is in progress */}
+      {continueBook && !selectMode && !loading && (
+        <motion.div
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4 }}
+          className="relative mt-8 overflow-hidden rounded-2xl bg-card ring-1 ring-border/60 shadow-editorial"
+        >
+          <div aria-hidden className="aurora pointer-events-none absolute inset-0" />
+          <div className="relative flex flex-wrap items-center gap-5 p-6 sm:p-7">
+            <div className="min-w-0 flex-1">
+              <p className="eyebrow text-primary">{t("continue.eyebrow")}</p>
+              <h2 className="mt-2 font-heading text-[22px] font-semibold leading-tight tracking-tight">
+                {continueBook.total_knowledge_points > 0 ? (
+                  <>
+                    <span className="italic text-primary tabular-nums">
+                      {continueBook.mastered_knowledge_points}
+                    </span>
+                    <span className="text-muted-foreground">
+                      {" / "}
+                      {continueBook.total_knowledge_points}
+                    </span>{" "}
+                    <span className="text-foreground/90">
+                      {t("book_card.concepts_suffix")}
+                    </span>
+                  </>
+                ) : (
+                  t("continue.heading_no_count")
+                )}
+              </h2>
+              <p className="mt-1 truncate font-mono text-[11px] uppercase tracking-[0.12em] text-muted-foreground">
+                {continueBook.title}
+                {" · "}
+                {t("continue.subtitle", {
+                  percent: Math.round(continueBook.progress),
+                  when: format.relativeTime(new Date(continueBook.updated_at)),
+                })}
+              </p>
+            </div>
+            <Link href={`/book/${continueBook.id}`} className="shrink-0">
+              <Button size="lg" variant="primary" className="gap-2 rounded-full">
+                {t("continue.cta")}
+                <ArrowRight className="h-4 w-4" />
+              </Button>
+            </Link>
+          </div>
+        </motion.div>
       )}
 
       {/* Grid / empty / error */}

@@ -90,6 +90,83 @@
       "body": "\u201C如果你没法把一件事讲给六岁小孩听，说明你自己其实还没真正理解。\u201D",
       "attr": "—— 常被归于理查德·费曼"
     },
+    "testimonials": {
+      "eyebrow": "来自读者",
+      "heading_line1": "读者真实的",
+      "heading_line2": "使用反馈。",
+      "featured_quote": "\u201C我以前也用过几款 AI 学习工具，但只有这个真正帮我把书读完，而不是泛泛地翻一翻。把内容拆成一个个概念，对技术类材料尤其有用。\u201D",
+      "featured_name": "AlexChen92",
+      "featured_role": "2026 年 3 月",
+      "items": {
+        "mika": {
+          "quote": "\u201C继续阅读\u201D 这个流程出乎意料地有效，省去了\u201C下一步该干嘛\u201D的纠结。我打开应用就能直接接着上次继续。",
+          "name": "mika_reading",
+          "role": "2026 年 3 月"
+        },
+        "dev": {
+          "quote": "作为一个工程师，我喜欢它的解释不会过度简化。AI 导师能讲到一定深度，又能保持互动，更像一次真实的学习会话。",
+          "name": "dev_goto",
+          "role": "2026 年 3 月"
+        },
+        "sophia": {
+          "quote": "我主要用它读非虚构类。它把要点抽出来重新组织的方式，让密度高的内容容易消化得多。不是十全十美，但确实省了不少时间。",
+          "name": "sophia_lin",
+          "role": "2026 年 4 月"
+        },
+        "takashi": {
+          "quote": "界面很干净，不会用一堆功能淹没你。\u201C一次只学一个概念\u201D 的节奏对我刚刚好。",
+          "name": "takashi_k",
+          "role": "2026 年 4 月"
+        },
+        "data": {
+          "quote": "原本对 AI 解释持保留态度，但稳定性还不错。偶尔会再核对一下，但作为日常学习工具足够可靠。",
+          "name": "data_aria",
+          "role": "2026 年 4 月"
+        },
+        "leonard": {
+          "quote": "最难得的是连贯性。它记得我之前在做什么，让学习节奏一直保持下去。这是大多数阅读应用做得不好的地方。",
+          "name": "leonard_w",
+          "role": "2026 年 4 月"
+        }
+      }
+    },
+    "pricing": {
+      "eyebrow": "定价",
+      "heading_line1": "免费开始。",
+      "heading_line2": "适合再升级。",
+      "subtitle": "按月付费，随时取消。",
+      "per_month": "/ 月",
+      "most_popular": "最受欢迎",
+      "free": {
+        "name": "Free",
+        "price": "$0",
+        "blurb": "用一本书体验整个学习闭环。",
+        "cta": "免费开始",
+        "feature_1": "1 本书",
+        "feature_2": "每月 500 积分",
+        "feature_3": "基础模型"
+      },
+      "basic": {
+        "name": "Basic",
+        "price": "$9.99",
+        "blurb": "同时学习最多五本书。",
+        "cta": "选择 Basic",
+        "feature_1": "5 本书",
+        "feature_2": "每月 15,000 积分",
+        "feature_3": "全部 AI 模型",
+        "feature_4": "每日复习队列"
+      },
+      "pro": {
+        "name": "Pro",
+        "price": "$29.99",
+        "blurb": "无限书籍，更深度的练习。",
+        "cta": "升级 Pro",
+        "feature_1": "无限书籍",
+        "feature_2": "每月 50,000 积分",
+        "feature_3": "全部 AI 模型",
+        "feature_4": "优先解析"
+      }
+    },
     "final": {
       "heading_line1": "翻开一本书。",
       "heading_line2": "把它读完。",
@@ -157,6 +234,13 @@
     "empty_cta": "上传你的第一本书",
     "no_matches_title": "没有匹配",
     "no_matches_body": "没有与 \u201C{query}\u201D 匹配的内容。",
+    "continue": {
+      "eyebrow": "回到上次的进度",
+      "heading_with_count": "已掌握 {mastered} / {total} 个概念",
+      "heading_no_count": "继续阅读",
+      "subtitle": "已读 {percent}% · 最近打开 {when}",
+      "cta": "继续阅读"
+    },
     "book_card": {
       "unknown_author": "作者不详",
       "concepts_suffix": "个概念",
@@ -289,6 +373,46 @@
     "minimize": "最小化",
     "open": "打开导师",
     "close": "关闭导师"
+  },
+  "study": {
+    "phase": {
+      "read": "阅读",
+      "explain": "讲解",
+      "practice": "练习",
+      "feedback": "反馈"
+    },
+    "starting": "正在准备学习会话…",
+    "no_kps_title": "这里没有可学习的内容",
+    "no_kps_body": "本章节没有可练习的知识点——可能是目录、前言或索引。请从左侧选择其他章节。",
+    "loading_scope": "正在定位范围…",
+    "scope_default_title": "当前范围",
+    "scope_progress": "范围 {current}/{total}",
+    "scope_kp_count": "{count} 个知识点",
+    "read_instruction": "按自己的节奏读完这一段,准备好后点下方按钮,我来做简短讲解。",
+    "read_cta": "我读完了",
+    "preparing_explanation": "准备中…",
+    "explain_title": "来解读一下",
+    "explain_waiting": "正在组织讲解…",
+    "explain_continue_cta": "我准备好了 — 开始练习",
+    "loading_questions": "正在准备题目…",
+    "quiz_submit": "提交答案",
+    "quiz_next": "下一题",
+    "quiz_question_progress": "第 {current}/{total} 题",
+    "correct": "答对啦 —— 就是这样。",
+    "incorrect": "差一点 —— 来看看:",
+    "correct_answer_was": "正确答案是 {option}。",
+    "missed_it_reassure": "答错一题再正常不过 —— 正是它让知识更牢。",
+    "scope_recap": "本范围回顾",
+    "scope_score": "你答对了 {correct}/{total} 题。",
+    "encouragement_perfect": "全对 —— 这个范围已经稳了。",
+    "encouragement_strong": "掌握得不错 —— 偶尔失误很正常。",
+    "encouragement_mixed": "思路正在成形。每次失误都是真正的学习。",
+    "encouragement_struggle": "确实有点难。困惑往往正是彻底搞懂的前奏 —— 继续走。",
+    "next_scope_cta": "继续下一个范围",
+    "finish_session_cta": "结束本次学习",
+    "skip_to_next_scope": "跳到下一个范围 →",
+    "session_complete": "本章学习完成",
+    "session_complete_hint": "你已走完所有范围 —— 做得很棒。"
   },
   "upload": {
     "title": "上传书籍",

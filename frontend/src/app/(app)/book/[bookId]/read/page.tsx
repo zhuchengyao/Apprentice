@@ -21,6 +21,7 @@ import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { TutorPopover, type KPHighlight } from "@/components/tutor/tutor-popover";
 import { useTutorHighlight } from "@/components/tutor/use-tutor-highlight";
+import { StudySessionPanel } from "@/components/study/study-session";
 import { api } from "@/lib/api-client";
 import { cn } from "@/lib/utils";
 import type {
@@ -62,7 +63,9 @@ const ChapterContent = memo(
     useEffect(() => {
       const el = containerRef.current;
       if (!el || sanitized.length === 0) return;
-      if (el.querySelector(".katex")) return;
+      // auto-render's `ignoredClasses: ["katex"]` skips already-processed
+      // nodes, so re-running on the same content is safe and re-running
+      // after `sanitized` changes correctly re-renders new pages.
       import("katex/contrib/auto-render").then((mod) => {
         mod.default(el, {
           delimiters: [
@@ -136,9 +139,10 @@ export default function ReadPage({
     () => highlightContainerRef.current,
     [],
   );
-  const { applyHighlight, clearAll: clearAllHighlights } = useTutorHighlight(
-    getHighlightContainer,
-  );
+  const { applyHighlight, clearAll: clearAllHighlights, clearVariant } =
+    useTutorHighlight(getHighlightContainer);
+
+  const studyV2Enabled = process.env.NEXT_PUBLIC_STUDY_V2 === "1";
 
   const searchParamsRef = useRef(searchParams);
   searchParamsRef.current = searchParams;
@@ -474,14 +478,27 @@ export default function ReadPage({
       </main>
 
       {activeChapterId && !processing && !contentLoading && chapterPages.length > 0 && (
-        <TutorPopover
-          key={activeChapterId}
-          bookId={bookId}
-          chapterId={activeChapterId}
-          scrollContainer={scrollContainer}
-          onHighlight={handleHighlight}
-          onKpsCovered={handleKpsCovered}
-        />
+        studyV2Enabled ? (
+          <aside className="hidden w-[360px] shrink-0 flex-col border-l border-sidebar-border bg-sidebar lg:flex">
+            <div className="study-panel min-h-0 min-w-0 flex-1 overflow-y-auto overflow-x-hidden p-4">
+              <StudySessionPanel
+                key={activeChapterId}
+                bookId={bookId}
+                chapterId={activeChapterId}
+                highlight={{ applyHighlight, clearAll: clearAllHighlights, clearVariant }}
+              />
+            </div>
+          </aside>
+        ) : (
+          <TutorPopover
+            key={activeChapterId}
+            bookId={bookId}
+            chapterId={activeChapterId}
+            scrollContainer={scrollContainer}
+            onHighlight={handleHighlight}
+            onKpsCovered={handleKpsCovered}
+          />
+        )
       )}
     </div>
   );

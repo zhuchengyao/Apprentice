@@ -56,6 +56,13 @@ logger = logging.getLogger(__name__)
 
 router = APIRouter()
 
+# Reasoning models (gpt-5-class) spend most of their budget on internal
+# thought that never becomes output content. Tight ceilings (1024/2048)
+# regularly yielded zero-token streams — the UI would show the header and
+# immediately move on. 8192 gives the reasoner room to think and still
+# emit a full conversational turn.
+TUTOR_MAX_TOKENS = 8192
+
 
 # ── Request / Response schemas ────────────────────────────────
 
@@ -276,7 +283,7 @@ async def open_chapter(
     api_messages = [{"role": "user", "content": "请开始"}]
 
     await check_credits_or_raise(
-        db, conversation.user_id, model=settings.tutor_model, max_tokens=1024
+        db, conversation.user_id, model=settings.tutor_model, max_tokens=TUTOR_MAX_TOKENS
     )
 
     user_id_str = str(conversation.user_id)
@@ -289,7 +296,7 @@ async def open_chapter(
                 try:
                     async for chunk in chat_completion_stream(
                         messages=api_messages,
-                        max_tokens=1024,
+                        max_tokens=TUTOR_MAX_TOKENS,
                         model=settings.tutor_model,
                         caller="tutor_opening",
                         system=system_blocks,
@@ -391,7 +398,7 @@ async def teach_next(
     highlight_data = kp_highlight_data(step.knowledge_points)
 
     await check_credits_or_raise(
-        db, conversation.user_id, model=settings.tutor_model, max_tokens=2048
+        db, conversation.user_id, model=settings.tutor_model, max_tokens=TUTOR_MAX_TOKENS
     )
 
     new_kp_index = step.kp_end_index
@@ -412,7 +419,7 @@ async def teach_next(
                 try:
                     async for chunk in chat_completion_stream(
                         messages=api_messages,
-                        max_tokens=2048,
+                        max_tokens=TUTOR_MAX_TOKENS,
                         model=settings.tutor_model,
                         caller="tutor_teach",
                         system=system_blocks,
@@ -515,7 +522,7 @@ async def send_message(
     api_messages = await recent_api_messages(conv_id, db)
 
     await check_credits_or_raise(
-        db, conversation.user_id, model=settings.tutor_model, max_tokens=2048
+        db, conversation.user_id, model=settings.tutor_model, max_tokens=TUTOR_MAX_TOKENS
     )
 
     user_id_str = str(conversation.user_id)
@@ -530,7 +537,7 @@ async def send_message(
                 try:
                     async for chunk in chat_completion_stream(
                         messages=api_messages,
-                        max_tokens=2048,
+                        max_tokens=TUTOR_MAX_TOKENS,
                         model=settings.tutor_model,
                         caller="tutor_chat",
                         system=system_blocks,

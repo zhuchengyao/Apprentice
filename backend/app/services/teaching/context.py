@@ -23,6 +23,62 @@ from app.services.teaching.agent import format_kp_list
 from app.services.teaching.prompts import build_student_block
 
 
+async def _fetch_chapter_content(
+    book_id: uuid.UUID, chapter: Chapter, db: AsyncSession
+) -> str:
+    """Materialize the chapter body from sections (preferred) or raw pages.
+
+    Truncates oversized chapters and normalizes any literal CHAPTER_BEGIN /
+    CHAPTER_END markers so they don't collide with the prompt's own delimiters.
+    """
+    result = await db.execute(
+        select(Section)
+        .where(Section.chapter_id == chapter.id)
+        .order_by(Section.order_index)
+    )
+    sections = result.scalars().all()
+
+    if sections and any(s.content_raw for s in sections):
+        chapter_content = "\n\n".join(
+            f"## {s.title}\n{s.content_raw}" for s in sections if s.content_raw
+        )
+    else:
+        page_result = await db.execute(
+            select(BookPage)
+            .where(
+                BookPage.book_id == book_id,
+                BookPage.page_number >= chapter.start_page,
+                BookPage.page_number <= chapter.end_page,
+            )
+            .order_by(BookPage.page_number)
+        )
+        pages = page_result.scalars().all()
+        chapter_content = "\n\n".join(p.html_content for p in pages) if pages else ""
+
+    if len(chapter_content) > 50000:
+        chapter_content = chapter_content[:50000] + "\n\n[... content truncated ...]"
+
+    chapter_content = chapter_content.replace("<<<CHAPTER_END>>>", "<<<chapter_end>>>")
+    chapter_content = chapter_content.replace("<<<CHAPTER_BEGIN>>>", "<<<chapter_begin>>>")
+    return chapter_content
+
+
+async def load_chapter_context_for(
+    book_id: uuid.UUID, chapter_id: uuid.UUID, db: AsyncSession
+) -> tuple[str, str, str]:
+    """Return (book_title, chapter_title, chapter_content) without a conversation.
+
+    Used by code paths (study session creation, re-planning) that need the
+    chapter body before any TutorConversation row exists.
+    """
+    book = await db.get(Book, book_id)
+    chapter = await db.get(Chapter, chapter_id)
+    if not book or not chapter:
+        raise HTTPException(status_code=404, detail="Book or chapter not found")
+    chapter_content = await _fetch_chapter_content(book_id, chapter, db)
+    return book.title, chapter.title, chapter_content
+
+
 async def load_chapter_context(
     conversation: TutorConversation, db: AsyncSession
 ) -> tuple[str, str, str]:
@@ -41,36 +97,7 @@ async def load_chapter_context(
     if conversation.chapter_context is not None:
         return book.title, chapter.title, conversation.chapter_context
 
-    result = await db.execute(
-        select(Section)
-        .where(Section.chapter_id == conversation.chapter_id)
-        .order_by(Section.order_index)
-    )
-    sections = result.scalars().all()
-
-    if sections and any(s.content_raw for s in sections):
-        chapter_content = "\n\n".join(
-            f"## {s.title}\n{s.content_raw}" for s in sections if s.content_raw
-        )
-    else:
-        page_result = await db.execute(
-            select(BookPage)
-            .where(
-                BookPage.book_id == conversation.book_id,
-                BookPage.page_number >= chapter.start_page,
-                BookPage.page_number <= chapter.end_page,
-            )
-            .order_by(BookPage.page_number)
-        )
-        pages = page_result.scalars().all()
-        chapter_content = "\n\n".join(p.html_content for p in pages) if pages else ""
-
-    if len(chapter_content) > 50000:
-        chapter_content = chapter_content[:50000] + "\n\n[... content truncated ...]"
-
-    chapter_content = chapter_content.replace("<<<CHAPTER_END>>>", "<<<chapter_end>>>")
-    chapter_content = chapter_content.replace("<<<CHAPTER_BEGIN>>>", "<<<chapter_begin>>>")
-
+    chapter_content = await _fetch_chapter_content(conversation.book_id, chapter, db)
     conversation.chapter_context = chapter_content
     await db.commit()
     return book.title, chapter.title, chapter_content

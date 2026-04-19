@@ -146,3 +146,67 @@ export interface UsageBreakdown {
   cost_usd: number;
   credits_used: number;
 }
+
+// ── Study session types ─────────────────────────────────────
+
+export type StudyPhase = "read" | "explain" | "practice" | "feedback" | "done";
+
+export interface ScopeView {
+  index: number;
+  title: string;
+  anchor_hint: string;
+  kp_ids: string[];
+  source_anchors: string[];
+}
+
+export interface StudyAttempt {
+  question_id: string;
+  chosen_option: string;
+  correct: boolean;
+}
+
+export interface StudySession {
+  id: string;
+  book_id: string;
+  chapter_id: string;
+  phase: StudyPhase;
+  current_scope_index: number;
+  total_scopes: number;
+  current_question_index: number;
+  scope: ScopeView | null;
+  attempts: StudyAttempt[];
+  completed_at: string | null;
+}
+
+export interface QuizOption {
+  key: "A" | "B" | "C" | "D";
+  text: string;
+}
+
+export interface QuizQuestion {
+  id: string;
+  stem: string;
+  options: QuizOption[];
+  difficulty: number;
+}
+
+export interface QuestionsResponse {
+  scope_index: number;
+  total: number;
+  questions: QuizQuestion[];
+  answered: StudyAttempt[];
+}
+
+export interface AnswerResponse {
+  correct: boolean;
+  correct_option: string;
+  explanation: string;
+  scope_score: { correct: number; total: number };
+  next_question_id: string | null;
+  scope_complete: boolean;
+}
+
+export interface NextScopeResponse {
+  session: StudySession;
+  done: boolean;
+}

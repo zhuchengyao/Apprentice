@@ -9,11 +9,15 @@ import {
   ArrowRight,
   BookOpen,
   Brain,
+  Check,
   GraduationCap,
   Sparkles,
   Quote,
+  Star,
 } from "lucide-react";
+import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+import { BrandMark } from "@/components/ui/brand-mark";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { LanguageToggle } from "@/components/ui/language-toggle";
 import { useAuthStore } from "@/stores/auth-store";
@@ -30,6 +34,28 @@ const principleKeys = [
   { index: "02", id: "two" },
   { index: "03", id: "three" },
 ] as const;
+
+const testimonialKeys = ["mika", "dev", "sophia", "takashi", "data", "leonard"] as const;
+
+const pricingTiers = [
+  { id: "free", featureCount: 3, featured: false },
+  { id: "basic", featureCount: 4, featured: true },
+  { id: "pro", featureCount: 4, featured: false },
+] as const;
+
+// Deterministic avatar gradient — matches BookCover hue family
+function avatarGradient(seed: string) {
+  let h = 0;
+  for (let i = 0; i < seed.length; i++) h = (h * 31 + seed.charCodeAt(i)) | 0;
+  const hue = 230 + (Math.abs(h) % 90);
+  return `linear-gradient(135deg, oklch(0.62 0.13 ${hue}) 0%, oklch(0.5 0.13 ${(hue + 30) % 360}) 100%)`;
+}
+
+function avatarInitial(name: string) {
+  // Drop leading non-letters (handles "@user" or numbered names) and uppercase first letter.
+  const stripped = name.replace(/^[^A-Za-z]+/, "");
+  return (stripped[0] ?? name[0] ?? "?").toUpperCase();
+}
 
 export default function LandingPage() {
   const router = useRouter();
@@ -52,10 +78,7 @@ export default function LandingPage() {
       <header className="sticky top-0 z-40 border-b border-border/60 bg-background/70 backdrop-blur-xl">
         <nav className="mx-auto flex h-14 max-w-6xl items-center justify-between px-5 sm:px-6">
           <Link href="/" className="flex items-center gap-2.5">
-            <div className="relative flex h-7 w-7 items-center justify-center rounded-lg bg-foreground text-background">
-              <Sparkles className="h-3.5 w-3.5" />
-              <span className="absolute -top-0.5 -right-0.5 h-1.5 w-1.5 rounded-full bg-primary ring-2 ring-background" />
-            </div>
+            <BrandMark size={28} />
             <span className="font-heading text-[17px] font-semibold tracking-tight">
               Apprentice
             </span>
@@ -234,6 +257,158 @@ export default function LandingPage() {
         </figure>
       </section>
 
+      {/* Testimonials */}
+      <section className="border-t border-border/50 bg-subtle/40 px-5 py-24 sm:px-6 sm:py-32">
+        <div className="mx-auto max-w-5xl">
+          <div className="max-w-2xl">
+            <span className="eyebrow">{t("testimonials.eyebrow")}</span>
+            <h2 className="mt-3 font-display text-balance text-4xl font-semibold tracking-tight sm:text-5xl">
+              {t("testimonials.heading_line1")}
+              <br />
+              <span className="italic text-primary">
+                {t("testimonials.heading_line2")}
+              </span>
+            </h2>
+          </div>
+
+          {/* Featured testimonial */}
+          <figure className="mt-14 rounded-2xl bg-card p-8 ring-1 ring-border/60 shadow-editorial sm:p-10">
+            <Quote className="h-8 w-8 text-primary/40" />
+            <blockquote className="mt-5 font-display text-balance text-2xl font-medium leading-snug tracking-tight text-foreground sm:text-[28px]">
+              {t("testimonials.featured_quote")}
+            </blockquote>
+            <figcaption className="mt-7 flex items-center gap-3">
+              <div
+                aria-hidden
+                className="flex h-10 w-10 items-center justify-center rounded-full font-heading text-[15px] font-semibold text-white"
+                style={{ background: avatarGradient(t("testimonials.featured_name")) }}
+              >
+                {avatarInitial(t("testimonials.featured_name"))}
+              </div>
+              <div>
+                <div className="text-[14px] font-medium text-foreground">
+                  {t("testimonials.featured_name")}
+                </div>
+                <div className="font-mono text-[11px] uppercase tracking-[0.12em] text-muted-foreground">
+                  {t("testimonials.featured_role")}
+                </div>
+              </div>
+            </figcaption>
+          </figure>
+
+          {/* Secondary testimonial grid */}
+          <div className="mt-5 grid gap-px overflow-hidden rounded-2xl bg-border/60 ring-1 ring-border/60 sm:grid-cols-2 lg:grid-cols-3">
+            {testimonialKeys.map((id) => {
+              const name = t(`testimonials.items.${id}.name`);
+              const role = t(`testimonials.items.${id}.role`);
+              return (
+                <figure key={id} className="flex flex-col gap-5 bg-card p-6">
+                  <blockquote className="text-[14px] leading-relaxed text-foreground/90">
+                    “{t(`testimonials.items.${id}.quote`)}”
+                  </blockquote>
+                  <figcaption className="mt-auto flex items-center gap-2.5">
+                    <div
+                      aria-hidden
+                      className="flex h-7 w-7 items-center justify-center rounded-full font-heading text-[12px] font-semibold text-white"
+                      style={{ background: avatarGradient(name) }}
+                    >
+                      {avatarInitial(name)}
+                    </div>
+                    <div className="min-w-0">
+                      <div className="truncate text-[13px] font-medium text-foreground">
+                        {name}
+                      </div>
+                      <div className="truncate font-mono text-[10px] uppercase tracking-[0.12em] text-muted-foreground">
+                        {role}
+                      </div>
+                    </div>
+                  </figcaption>
+                </figure>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Pricing */}
+      <section className="px-5 py-24 sm:px-6 sm:py-32">
+        <div className="mx-auto max-w-5xl">
+          <div className="text-center">
+            <span className="eyebrow">{t("pricing.eyebrow")}</span>
+            <h2 className="mt-3 font-display text-balance text-4xl font-semibold tracking-tight sm:text-5xl">
+              {t("pricing.heading_line1")}{" "}
+              <span className="italic text-primary">
+                {t("pricing.heading_line2")}
+              </span>
+            </h2>
+            <p className="mt-4 text-[14.5px] text-muted-foreground">
+              {t("pricing.subtitle")}
+            </p>
+          </div>
+
+          <div className="mt-14 grid items-stretch gap-5 md:grid-cols-3">
+            {pricingTiers.map((tier) => {
+              const featured = tier.featured;
+              return (
+                <div
+                  key={tier.id}
+                  className={cn(
+                    "relative flex flex-col rounded-2xl bg-card p-7",
+                    featured
+                      ? "ring-2 ring-primary shadow-editorial"
+                      : "ring-1 ring-border/60",
+                  )}
+                >
+                  {featured && (
+                    <span className="absolute -top-3 left-1/2 inline-flex -translate-x-1/2 items-center gap-1 rounded-full bg-primary px-3 py-1 font-mono text-[10px] uppercase tracking-[0.14em] text-primary-foreground">
+                      <Star className="h-2.5 w-2.5 fill-current" />
+                      {t("pricing.most_popular")}
+                    </span>
+                  )}
+                  <p className="eyebrow">{t(`pricing.${tier.id}.name`)}</p>
+                  <div className="mt-3 flex items-baseline gap-1.5">
+                    <span className="font-display text-5xl font-semibold tracking-tight">
+                      {t(`pricing.${tier.id}.price`)}
+                    </span>
+                    <span className="text-[13px] text-muted-foreground">
+                      {t("pricing.per_month")}
+                    </span>
+                  </div>
+                  <p className="mt-2 text-[14px] text-muted-foreground">
+                    {t(`pricing.${tier.id}.blurb`)}
+                  </p>
+                  <ul className="mt-7 flex flex-col gap-3">
+                    {Array.from({ length: tier.featureCount }, (_, i) => i + 1).map(
+                      (n) => (
+                        <li
+                          key={n}
+                          className="flex items-center gap-2.5 text-[13.5px] text-foreground/90"
+                        >
+                          <span className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-primary/12 text-primary">
+                            <Check className="h-2.5 w-2.5" strokeWidth={3} />
+                          </span>
+                          {t(`pricing.${tier.id}.feature_${n}`)}
+                        </li>
+                      ),
+                    )}
+                  </ul>
+                  <Link href="/register" className="mt-auto block pt-8">
+                    <Button
+                      size="lg"
+                      variant={featured ? "primary" : "outline"}
+                      className="w-full gap-1.5 rounded-full"
+                    >
+                      {t(`pricing.${tier.id}.cta`)}
+                      <ArrowRight className="h-3.5 w-3.5" />
+                    </Button>
+                  </Link>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="relative overflow-hidden border-t border-border/60 px-5 py-20 sm:px-6">
         <div
@@ -262,9 +437,7 @@ export default function LandingPage() {
       <footer className="border-t border-border/60 py-8">
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-5 text-[12px] text-muted-foreground sm:flex-row sm:px-6">
           <div className="flex items-center gap-2">
-            <div className="flex h-5 w-5 items-center justify-center rounded bg-foreground text-background">
-              <Sparkles className="h-3 w-3" />
-            </div>
+            <BrandMark size={20} withDot={false} />
             <span className="font-mono">
               {t("footer.copyright", { year: new Date().getFullYear() })}
             </span>

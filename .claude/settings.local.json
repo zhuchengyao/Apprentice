@@ -37,7 +37,17 @@
       "WebFetch(domain:github.com)",
       "WebFetch(domain:hermes-agent.nousresearch.com)",
       "Bash(grep -E \"\\\\.\\(ts|tsx\\)$\")",
-      "Bash(pnpm lint *)"
+      "Bash(pnpm lint *)",
+      "WebFetch(domain:api.anthropic.com)",
+      "Bash(mkdir -p /tmp/design-fetch)",
+      "Bash(cp /Users/zhuchengyao/.claude/projects/-Users-zhuchengyao-DemonTech-Apprentice/7e6c2a9a-3dd1-4ad1-8a0b-60dd6846b82f/tool-results/webfetch-1776581519869-kilw9h.bin /tmp/design-fetch/payload.gz)",
+      "Bash(gunzip -f /tmp/design-fetch/payload.gz)",
+      "Read(//tmp/design-fetch/**)",
+      "Bash(mkdir -p /tmp/design-fetch/extracted)",
+      "Bash(tar -xf /tmp/design-fetch/payload -C /tmp/design-fetch/extracted)",
+      "Bash(echo \"Exit: $?\")",
+      "Bash(grep -E \"\\\\.\\(tsx|ts\\)$\")",
+      "Bash(xargs basename *)"
     ]
   }
 }

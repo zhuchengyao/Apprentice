@@ -290,3 +290,134 @@ def build_answer_task(kp_index: int, concept: str) -> str:
     )
 
 
+# ── Guided study-session task templates ────────────────────────
+#
+# These power the four-phase study flow (READ → EXPLAIN → PRACTICE →
+# FEEDBACK). They share the same cached TUTOR_STATIC_RULES / context /
+# student blocks; only the task text differs per turn.
+
+TASK_PLAN_SCOPES = """\
+Plan the student's study path through this chapter as an ordered list of \
+"scopes". Each scope groups 3-5 closely related knowledge points that \
+should be read, explained, and quizzed together. Scopes may cross section \
+boundaries if it makes pedagogical sense — cluster by concept, not by \
+section. Cover every knowledge point exactly once.
+
+For each scope, provide:
+- "title": a short human-readable label (3-8 words) naming the concept \
+cluster.
+- "kp_ids": the ordered list of knowledge-point IDs in this scope (use \
+the IDs shown in the knowledge-points list above, exactly as given).
+- "anchor_hint": a short phrase that will help the reader locate the \
+starting passage in the chapter.
+
+Output ONLY a JSON array — no surrounding prose, no markdown fences. Example:
+
+[
+  {"title": "Newton's laws, intuition first", "kp_ids": ["...","...","..."], "anchor_hint": "..."},
+  {"title": "Friction as a special force", "kp_ids": ["...","..."], "anchor_hint": "..."}
+]
+
+Keep titles in the student's teaching language.\
+"""
+
+
+TASK_EXPLAIN_SCOPE = """\
+The student just finished reading the passage for this scope: \
+"__SCOPE_TITLE__".
+
+The knowledge points covered in this scope are:
+
+__SCOPE_KP_BLOCK__
+
+Deliver a single cohesive explanation of these concepts — do NOT split \
+into per-KP sections. Follow your teaching approach: locate in context, \
+restate simply, connect, deepen, and end with ONE Socratic question that \
+spans the group. Keep it to 3-5 paragraphs. Do NOT emit any \
+<<UNDERSTOOD>> / <<CLARIFY>> markers — those belong to the chat flow, \
+not this scope explanation.\
+"""
+
+
+TASK_GENERATE_MCQ = """\
+Generate __COUNT__ multiple-choice questions covering the knowledge \
+points in the current scope.
+
+Target difficulty: __TARGET_DIFFICULTY__ (1 = easy recall, 5 = hard \
+application).
+
+Knowledge points in this scope:
+
+__SCOPE_KP_BLOCK__
+
+Rules:
+- Each question has exactly 4 options labeled A, B, C, D.
+- Exactly one correct answer per question.
+- Distractors must be plausible — common mistakes, sibling concepts, \
+off-by-one formulations. No "all of the above" / "none of the above".
+- Write stems that test understanding, not rote recall of wording. \
+Application, transfer, and contrast questions are preferred.
+- The "explanation" field is shown to the student AFTER they answer. \
+It should briefly explain why the correct answer is correct AND, where \
+helpful, why a tempting distractor is wrong. Keep it friendly and \
+encouraging — failure is part of learning.
+- Each question targets one primary kp_id from the scope. Spread \
+questions across the KPs in the scope when count allows.
+- Write questions and options in the student's teaching language.
+
+Output ONLY a JSON array — no surrounding prose, no markdown fences:
+
+[
+  {
+    "kp_id": "...",
+    "difficulty": 1-5,
+    "stem": "...",
+    "options": [
+      {"key": "A", "text": "..."},
+      {"key": "B", "text": "..."},
+      {"key": "C", "text": "..."},
+      {"key": "D", "text": "..."}
+    ],
+    "correct_option": "A",
+    "explanation": "..."
+  }
+]\
+"""
+
+
+def _format_kp_block(kps: list[tuple[str, str, str]]) -> str:
+    """Format (id, concept, explanation) triples into the scope KP block."""
+    lines = []
+    for kp_id, concept, explanation in kps:
+        lines.append(f"- id={kp_id} | {concept}: {explanation}")
+    return "\n".join(lines) if lines else "(no knowledge points)"
+
+
+def build_plan_scopes_task() -> str:
+    return TASK_PLAN_SCOPES
+
+
+def build_explain_scope_task(
+    scope_title: str,
+    kps: list[tuple[str, str, str]],
+) -> str:
+    return (
+        TASK_EXPLAIN_SCOPE
+        .replace("__SCOPE_TITLE__", scope_title)
+        .replace("__SCOPE_KP_BLOCK__", _format_kp_block(kps))
+    )
+
+
+def build_generate_mcq_task(
+    kps: list[tuple[str, str, str]],
+    *,
+    count: int,
+    target_difficulty: int,
+) -> str:
+    return (
+        TASK_GENERATE_MCQ
+        .replace("__COUNT__", str(count))
+        .replace("__TARGET_DIFFICULTY__", str(target_difficulty))
+        .replace("__SCOPE_KP_BLOCK__", _format_kp_block(kps))
+    )
+

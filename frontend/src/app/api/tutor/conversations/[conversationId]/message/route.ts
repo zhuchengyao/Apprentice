@@ -10,5 +10,6 @@ export async function POST(
   return proxySSE(`/api/tutor/conversations/${conversationId}/message`, {
     method: "POST",
     body,
+    signal: request.signal,
   });
 }

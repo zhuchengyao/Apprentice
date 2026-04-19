@@ -79,22 +79,73 @@ export async function proxyJson(
 /**
  * Proxy a Server-Sent Events response through to the backend. Streams the
  * body unchanged and sets SSE headers on the downstream response.
+ *
+ * Pass `init.signal = request.signal` from the route handler so that when
+ * the client aborts (React StrictMode cleanup, tab close), the upstream
+ * fetch is cancelled cleanly instead of leaving the Node socket to emit
+ * ECONNRESET as an uncaughtException.
  */
 export async function proxySSE(
   path: string,
   init?: RequestInit,
 ): Promise<Response> {
-  const res = await backendFetch(path, { cache: "no-store", ...init });
+  let res: Response;
+  try {
+    res = await backendFetch(path, { cache: "no-store", ...init });
+  } catch (err) {
+    if (isAbortError(err)) {
+      return new Response(null, { status: 499 });
+    }
+    throw err;
+  }
   if (!res.ok || !res.body) {
     return new Response(res.statusText || (await res.text()), {
       status: res.status,
     });
   }
-  return new Response(res.body, {
+
+  // Re-stream through a TransformStream so we can swallow abort errors
+  // from the upstream body without letting them bubble up as uncaught
+  // exceptions in the Next.js route handler.
+  const passthrough = new TransformStream<Uint8Array, Uint8Array>();
+  const writer = passthrough.writable.getWriter();
+  const reader = res.body.getReader();
+  (async () => {
+    try {
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        await writer.write(value);
+      }
+    } catch (err) {
+      if (!isAbortError(err)) {
+        console.error("proxySSE upstream error:", err);
+      }
+    } finally {
+      try {
+        await writer.close();
+      } catch {
+        // writer already errored / closed
+      }
+    }
+  })();
+
+  return new Response(passthrough.readable, {
     headers: {
       "Content-Type": "text/event-stream",
       "Cache-Control": "no-cache",
       Connection: "keep-alive",
     },
   });
+}
+
+function isAbortError(err: unknown): boolean {
+  if (err instanceof DOMException && err.name === "AbortError") return true;
+  if (err instanceof Error) {
+    if (err.name === "AbortError") return true;
+    // Node undici raises ECONNRESET on aborted client connections.
+    const code = (err as NodeJS.ErrnoException).code;
+    if (code === "ECONNRESET" || code === "ABORT_ERR") return true;
+  }
+  return false;
 }
