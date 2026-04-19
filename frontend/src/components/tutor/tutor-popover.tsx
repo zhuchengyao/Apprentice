@@ -7,6 +7,8 @@ import {
   ChevronRight,
   GraduationCap,
   Loader2,
+  Minus,
+  Pause,
   Send,
   X,
   CheckCircle2,
@@ -95,6 +97,7 @@ export function TutorPopover({
   const [anchorRect, setAnchorRect] = useState<DOMRect | null>(null);
   const [input, setInput] = useState("");
   const [minimized, setMinimized] = useState(false);
+  const [autoContinuePaused, setAutoContinuePaused] = useState(false);
 
   const abortRef = useRef<AbortController | null>(null);
   const bodyRef = useRef<HTMLDivElement>(null);
@@ -190,19 +193,30 @@ export function TutorPopover({
     bodyRef.current?.scrollTo({ top: bodyRef.current.scrollHeight, behavior: "smooth" });
   }, [streamContent, messages.length]);
 
+  // Reset the user's pause as soon as a new assistant message lands so the
+  // auto-continue timer is armed again for the next teach step.
+  useEffect(() => {
+    setAutoContinuePaused(false);
+  }, [messages.length]);
+
   // ── Auto-continue when action=continue ──────────────────────
   // The delay scales with the length of the message the student just got,
   // so they have a moment to read before the next KP starts streaming.
   // Clamped so short messages don't feel sluggish and long ones don't stall.
   useEffect(() => {
-    if (lastAction === "continue" && !streaming && conversationId) {
+    if (
+      lastAction === "continue" &&
+      !streaming &&
+      conversationId &&
+      !autoContinuePaused
+    ) {
       const chars = lastAssistant?.content.length ?? 0;
       const delay = Math.min(3500, Math.max(800, chars * 4));
       const handle = setTimeout(() => teachNext(), delay);
       return () => clearTimeout(handle);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [lastAction, streaming, conversationId]);
+  }, [lastAction, streaming, conversationId, autoContinuePaused]);
 
   const streamOpening = useCallback(async (convId: string) => {
     setStreaming(true);
@@ -367,6 +381,11 @@ export function TutorPopover({
 
   const showContinue =
     lastAction === "pause" && !streaming && !chapterComplete && conversationId;
+  const showAutoContinue =
+    lastAction === "continue" &&
+    !streaming &&
+    !chapterComplete &&
+    !!conversationId;
   const currentConcept = currentKps[0]?.concept;
   // Show the whole conversation so the student can scroll back through
   // earlier KPs and Q&A. The body is scroll-constrained and auto-scrolls
@@ -402,7 +421,7 @@ export function TutorPopover({
           className="rounded-md p-1 text-muted-foreground transition-colors hover:bg-subtle hover:text-foreground"
           aria-label={t("minimize")}
         >
-          <X className="h-3.5 w-3.5" />
+          <Minus className="h-3.5 w-3.5" />
         </button>
       </div>
 
@@ -499,6 +518,34 @@ export function TutorPopover({
               {t("understood")}
               <ChevronRight className="h-3 w-3" />
             </Button>
+          </div>
+        )}
+        {showAutoContinue && (
+          <div className="mb-2 flex items-center justify-between gap-2 rounded-xl bg-subtle/60 px-3 py-1.5 ring-1 ring-border/60">
+            <span className="font-mono text-[10px] uppercase tracking-[0.08em] text-muted-foreground">
+              {autoContinuePaused ? t("paused") : t("up_next")}
+            </span>
+            {autoContinuePaused ? (
+              <Button
+                size="sm"
+                variant="primary"
+                className="h-7 gap-1 rounded-full px-2.5 text-[11px]"
+                onClick={teachNext}
+              >
+                {t("continue")}
+                <ChevronRight className="h-3 w-3" />
+              </Button>
+            ) : (
+              <Button
+                size="sm"
+                variant="ghost"
+                className="h-7 gap-1 rounded-full px-2.5 text-[11px]"
+                onClick={() => setAutoContinuePaused(true)}
+              >
+                <Pause className="h-3 w-3" />
+                {t("wait")}
+              </Button>
+            )}
           </div>
         )}
         <div className="flex items-end gap-1.5 rounded-2xl border border-border/60 bg-background px-3 py-1.5 transition-colors focus-within:border-ring/60 focus-within:ring-2 focus-within:ring-ring/20">

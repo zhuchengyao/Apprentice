@@ -1,11 +1,10 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
 import {
-  BookOpen,
   Clapperboard,
   Coins,
   CreditCard,
@@ -73,7 +72,6 @@ function Avatar({
 const primaryNavConfig = [
   { href: "/library", key: "library", icon: Library },
   { href: "/dashboard", key: "progress", icon: LayoutDashboard },
-  { href: "/manim-lab", key: "manim_lab", icon: Clapperboard },
   { href: "/billing", key: "billing", icon: CreditCard },
 ] as const;
 
@@ -95,17 +93,17 @@ export function SideNav() {
     if (user) fetchBalance();
   }, [user, fetchBalance]);
 
-  useEffect(() => {
+  const refreshBooks = useCallback(() => {
     if (!user) return;
-    let cancelled = false;
     api
       .get<{ books: Book[] }>("/books")
-      .then((d) => !cancelled && setBooks(d.books))
+      .then((d) => setBooks(d.books))
       .catch(() => {});
-    return () => {
-      cancelled = true;
-    };
-  }, [user, pathname]);
+  }, [user]);
+
+  useEffect(() => {
+    refreshBooks();
+  }, [refreshBooks]);
 
   useEffect(() => {
     function onClick(e: MouseEvent) {
@@ -271,14 +269,11 @@ export function SideNav() {
             </button>
             {menuOpen && (
               <div className="absolute bottom-full left-0 right-0 z-50 mb-2 rounded-xl border border-border/70 bg-popover p-1 shadow-editorial-lg">
-                <MenuItem href="/dashboard" icon={LayoutDashboard}>
-                  {t("progress")}
-                </MenuItem>
-                <MenuItem href="/billing" icon={CreditCard}>
-                  {t("billing")}
-                </MenuItem>
                 <MenuItem href="/settings" icon={Settings}>
                   {t("settings")}
+                </MenuItem>
+                <MenuItem href="/manim-lab" icon={Clapperboard}>
+                  {t("manim_lab")}
                 </MenuItem>
                 <div className="my-1 h-px bg-border/60" />
                 <button
@@ -335,7 +330,13 @@ export function SideNav() {
         </>
       )}
 
-      <UploadDialog open={uploadOpen} onClose={() => setUploadOpen(false)} />
+      <UploadDialog
+        open={uploadOpen}
+        onClose={() => {
+          setUploadOpen(false);
+          refreshBooks();
+        }}
+      />
     </>
   );
 }

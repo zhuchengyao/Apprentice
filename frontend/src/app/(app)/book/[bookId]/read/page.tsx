@@ -372,7 +372,7 @@ export default function ReadPage({
       )}
 
       <main className="flex flex-1 flex-col overflow-hidden">
-        <div className="flex items-center gap-3 border-b border-border/60 bg-background/75 px-4 py-2 backdrop-blur-xl">
+        <div className="flex items-center gap-2 border-b border-border/60 bg-background/75 px-4 py-2 backdrop-blur-xl">
           <Button
             variant="ghost"
             size="icon-sm"
@@ -386,8 +386,20 @@ export default function ReadPage({
               <PanelLeftOpen className="h-4 w-4" />
             )}
           </Button>
+          {!sidebarOpen && (
+            <Link href={`/book/${bookId}`}>
+              <Button
+                variant="ghost"
+                size="icon-sm"
+                className="rounded-full"
+                aria-label={t("back_to_book")}
+              >
+                <ArrowLeft className="h-4 w-4" />
+              </Button>
+            </Link>
+          )}
           {activeChapter && (
-            <span className="min-w-0 truncate font-heading text-[13px] font-medium">
+            <span className="min-w-0 truncate pl-1 font-heading text-[13px] font-medium">
               {activeChapter.title}
             </span>
           )}

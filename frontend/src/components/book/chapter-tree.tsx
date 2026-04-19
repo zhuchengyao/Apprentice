@@ -1,9 +1,16 @@
 "use client";
 
 import { memo, useState } from "react";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTranslations } from "next-intl";
-import { ChevronRight, BookOpen, Lightbulb, CheckCircle } from "lucide-react";
+import {
+  ArrowUpRight,
+  BookOpen,
+  CheckCircle,
+  ChevronRight,
+  Lightbulb,
+} from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 import type { Chapter, Section } from "@/lib/types";
@@ -114,12 +121,13 @@ const SectionItem = memo(function SectionItem({ section }: { section: Section })
 
 interface ChapterTreeProps {
   chapters: Chapter[];
+  bookId?: string;
 }
 
-export function ChapterTree({ chapters }: ChapterTreeProps) {
+export function ChapterTree({ chapters, bookId }: ChapterTreeProps) {
   const t = useTranslations("book.tree");
   const [expandedChapters, setExpandedChapters] = useState<Set<string>>(
-    new Set(chapters.length <= 3 ? chapters.map((c) => c.id) : []),
+    () => new Set(chapters.length > 0 ? [chapters[0].id] : []),
   );
 
   const toggleChapter = (id: string) => {
@@ -150,25 +158,37 @@ export function ChapterTree({ chapters }: ChapterTreeProps) {
 
         return (
           <div key={chapter.id}>
-            <button
-              onClick={() => toggleChapter(chapter.id)}
-              className="group flex w-full items-center gap-2 rounded-lg px-3 py-2 text-left transition-colors hover:bg-subtle/60"
-            >
-              <ChevronRight
-                className={cn(
-                  "h-3.5 w-3.5 text-muted-foreground transition-transform",
-                  isExpanded && "rotate-90",
-                )}
-              />
-              <span className="flex-1 truncate font-heading text-[14px] font-semibold tracking-tight">
-                {chapter.title}
-              </span>
-              <span className="font-mono text-[10px] uppercase tracking-[0.08em] text-muted-foreground tabular-nums">
-                {t("section_count", { count: chapter.sections.length })}
-                {" · "}
-                {t("concept_count", { count: totalKPs })}
-              </span>
-            </button>
+            <div className="group flex items-center gap-1 rounded-lg pr-1 transition-colors hover:bg-subtle/60">
+              <button
+                onClick={() => toggleChapter(chapter.id)}
+                className="flex flex-1 items-center gap-2 px-3 py-2 text-left"
+              >
+                <ChevronRight
+                  className={cn(
+                    "h-3.5 w-3.5 text-muted-foreground transition-transform",
+                    isExpanded && "rotate-90",
+                  )}
+                />
+                <span className="flex-1 truncate font-heading text-[14px] font-semibold tracking-tight">
+                  {chapter.title}
+                </span>
+                <span className="font-mono text-[10px] uppercase tracking-[0.08em] text-muted-foreground tabular-nums">
+                  {t("section_count", { count: chapter.sections.length })}
+                  {" · "}
+                  {t("concept_count", { count: totalKPs })}
+                </span>
+              </button>
+              {bookId && (
+                <Link
+                  href={`/book/${bookId}/read?chapter=${chapter.id}`}
+                  className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md text-muted-foreground opacity-0 transition-all hover:bg-background hover:text-foreground group-hover:opacity-100 focus-visible:opacity-100"
+                  aria-label={t("open_in_reader")}
+                  title={t("open_in_reader")}
+                >
+                  <ArrowUpRight className="h-3.5 w-3.5" />
+                </Link>
+              )}
+            </div>
 
             <AnimatePresence>
               {isExpanded && (

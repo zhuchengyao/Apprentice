@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import { Loader2 } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { LanguageToggle } from "@/components/ui/language-toggle";
 import { useAuthStore } from "@/stores/auth-store";
 import {
@@ -32,15 +31,17 @@ export default function SettingsPage() {
     }
   }, [user?.preferred_language]);
 
-  const dirty = !!user && language !== user.preferred_language;
-
-  async function handleSave() {
+  async function handleLanguageChange(next: LanguageCode) {
+    if (!user || next === language) return;
+    const previous = language;
+    setLanguage(next);
     setSaving(true);
     setMessage(null);
     try {
-      await updatePreferredLanguage(language);
+      await updatePreferredLanguage(next);
       setMessage({ kind: "success", text: t("teaching_language_updated") });
     } catch (err) {
+      setLanguage(previous);
       setMessage({
         kind: "error",
         text: err instanceof Error ? err.message : t("generic_error"),
@@ -82,19 +83,15 @@ export default function SettingsPage() {
           {t("teaching_language_help")}
         </p>
 
-        <div className="mt-5 space-y-2">
-          <label
-            htmlFor="language"
-            className="font-mono text-[10px] uppercase tracking-[0.1em] text-muted-foreground"
-          >
-            {t("teaching_language")}
-          </label>
+        <div className="mt-5 flex items-center gap-3">
           <select
             id="language"
             value={language}
-            onChange={(e) => setLanguage(e.target.value as LanguageCode)}
+            onChange={(e) =>
+              handleLanguageChange(e.target.value as LanguageCode)
+            }
             className="w-full max-w-sm rounded-xl bg-background px-3.5 py-2.5 text-sm ring-1 ring-border/60 outline-none transition-colors focus:ring-2 focus:ring-primary/30"
-            disabled={!user}
+            disabled={!user || saving}
           >
             {SUPPORTED_LANGUAGES.map((lang) => (
               <option key={lang.code} value={lang.code}>
@@ -102,6 +99,9 @@ export default function SettingsPage() {
               </option>
             ))}
           </select>
+          {saving && (
+            <Loader2 className="h-4 w-4 animate-spin text-muted-foreground" />
+          )}
         </div>
 
         {message && (
@@ -116,18 +116,6 @@ export default function SettingsPage() {
             {message.text}
           </p>
         )}
-
-        <div className="mt-6 flex justify-end">
-          <Button
-            variant="primary"
-            onClick={handleSave}
-            disabled={!dirty || saving}
-            className="gap-2 rounded-full"
-          >
-            {saving && <Loader2 className="h-4 w-4 animate-spin" />}
-            {saving ? t("saving") : t("save")}
-          </Button>
-        </div>
       </section>
     </div>
   );

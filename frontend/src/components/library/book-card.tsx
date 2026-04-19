@@ -187,7 +187,7 @@ export function BookCard({
                 book.progress > 0 ? "text-foreground" : "text-muted-foreground",
               )}
             >
-              {Math.round(book.progress)}
+              {Math.round(book.progress)}%
             </span>
           </div>
         )}

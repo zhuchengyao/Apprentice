@@ -11,9 +11,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Dropzone } from "@/components/upload/dropzone";
-import { ProcessingAnimation } from "@/components/upload/processing-animation";
 import { useUpload } from "@/hooks/use-upload";
-import type { BookStatus } from "@/lib/constants";
 
 interface UploadDialogProps {
   open: boolean;
@@ -37,10 +35,8 @@ export function UploadDialog({ open, onClose }: UploadDialogProps) {
     setSelectedFile(file);
     const result = await upload(file);
     if (result) {
-      setTimeout(() => {
-        onClose();
-        router.push(`/book/${result.id}`);
-      }, 1200);
+      onClose();
+      router.push(`/book/${result.id}`);
     }
   }
 
@@ -57,18 +53,14 @@ export function UploadDialog({ open, onClose }: UploadDialogProps) {
           <DialogDescription>{t("lede")}</DialogDescription>
         </DialogHeader>
         <div className="pt-2">
-          {book ? (
-            <ProcessingAnimation status={book.status as BookStatus} />
-          ) : (
-            <Dropzone
-              onFileSelected={handleFileSelected}
-              isUploading={isUploading}
-              progress={progress}
-              error={error}
-              selectedFile={selectedFile}
-              uploadComplete={!!book}
-            />
-          )}
+          <Dropzone
+            onFileSelected={handleFileSelected}
+            isUploading={isUploading}
+            progress={progress}
+            error={error}
+            selectedFile={selectedFile}
+            uploadComplete={!!book}
+          />
         </div>
       </DialogContent>
     </Dialog>

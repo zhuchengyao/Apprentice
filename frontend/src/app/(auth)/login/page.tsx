@@ -112,7 +112,11 @@ function LoginPageInner() {
       <p className="text-center text-[13px] text-muted-foreground">
         {t("sign_in_no_account")}{" "}
         <Link
-          href="/register"
+          href={
+            nextPath && nextPath.startsWith("/")
+              ? `/register?next=${encodeURIComponent(nextPath)}`
+              : "/register"
+          }
           className="font-medium text-foreground underline-offset-4 hover:underline"
         >
           {t("sign_in_create")}

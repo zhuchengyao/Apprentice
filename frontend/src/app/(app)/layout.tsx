@@ -7,7 +7,7 @@ import { useAuthStore } from "@/stores/auth-store";
 
 function isImmersive(pathname: string): boolean {
   // Reader uses its own full-screen chrome.
-  return /^\/book\/[^/]+\/(read|study)(\/|$)/.test(pathname);
+  return /^\/book\/[^/]+\/read(\/|$)/.test(pathname);
 }
 
 export default function AppLayout({

@@ -210,7 +210,7 @@ export default function BookOverviewPage({
             <div className="mt-12">
               <p className="eyebrow">{t("tree.eyebrow")}</p>
               <div className="mt-4 rounded-2xl bg-card p-2 ring-1 ring-border/60">
-                <ChapterTree chapters={book.chapters} />
+                <ChapterTree chapters={book.chapters} bookId={bookId} />
               </div>
             </div>
           </>

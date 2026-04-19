@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { Suspense, useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
 import { Loader2 } from "lucide-react";
@@ -15,7 +15,17 @@ import {
 } from "@/lib/languages";
 
 export default function RegisterPage() {
+  return (
+    <Suspense fallback={null}>
+      <RegisterPageInner />
+    </Suspense>
+  );
+}
+
+function RegisterPageInner() {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const nextPath = searchParams.get("next");
   const t = useTranslations("auth");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -49,7 +59,7 @@ export default function RegisterPage() {
         setError(data.detail || t("register_failed"));
         return;
       }
-      router.push("/library");
+      router.push(nextPath && nextPath.startsWith("/") ? nextPath : "/library");
     } catch {
       setError(t("generic_error"));
     } finally {
@@ -154,7 +164,11 @@ export default function RegisterPage() {
       <p className="text-center text-[13px] text-muted-foreground">
         {t("register_have_account")}{" "}
         <Link
-          href="/login"
+          href={
+            nextPath && nextPath.startsWith("/")
+              ? `/login?next=${encodeURIComponent(nextPath)}`
+              : "/login"
+          }
           className="font-medium text-foreground underline-offset-4 hover:underline"
         >
           {t("register_sign_in")}

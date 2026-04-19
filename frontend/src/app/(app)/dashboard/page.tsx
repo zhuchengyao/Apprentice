@@ -1,7 +1,9 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
+import { AlertCircle } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { StatCards } from "@/components/dashboard/stat-cards";
 import { BookProgressList } from "@/components/dashboard/book-progress-list";
 import { MasteryChart } from "@/components/dashboard/mastery-chart";
@@ -56,13 +58,18 @@ export default function DashboardPage() {
   const [data, setData] = useState<DashboardData | null>(null);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    api
-      .get<DashboardData>("/progress/overview")
-      .then(setData)
-      .catch(() => {})
-      .finally(() => setLoading(false));
+  const refresh = useCallback(async () => {
+    try {
+      const result = await api.get<DashboardData>("/progress/overview");
+      setData(result);
+    } catch {
+      setData(null);
+    }
   }, []);
+
+  useEffect(() => {
+    refresh().finally(() => setLoading(false));
+  }, [refresh]);
 
   return (
     <div className="mx-auto w-full max-w-6xl px-5 py-10 sm:px-8 sm:py-12">
@@ -127,8 +134,22 @@ export default function DashboardPage() {
             </div>
           </div>
         ) : (
-          <div className="flex flex-col items-center justify-center py-24">
-            <p className="text-sm text-muted-foreground">{t("load_failed")}</p>
+          <div className="flex flex-col items-center justify-center rounded-3xl border border-destructive/30 bg-destructive/5 px-6 py-16 text-center">
+            <AlertCircle className="h-9 w-9 text-destructive" />
+            <p className="mt-4 text-[14px] text-foreground">
+              {t("load_failed")}
+            </p>
+            <Button
+              size="sm"
+              variant="outline"
+              className="mt-5 rounded-full"
+              onClick={() => {
+                setLoading(true);
+                refresh().finally(() => setLoading(false));
+              }}
+            >
+              {t("retry")}
+            </Button>
           </div>
         )}
       </div>

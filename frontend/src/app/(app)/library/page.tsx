@@ -3,7 +3,15 @@
 import { useEffect, useState, useCallback, useMemo } from "react";
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
-import { Plus, BookOpen, Trash2, X, Loader2, Search } from "lucide-react";
+import {
+  AlertCircle,
+  BookOpen,
+  Loader2,
+  Plus,
+  Search,
+  Trash2,
+  X,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { BookGrid } from "@/components/library/book-grid";
@@ -11,44 +19,68 @@ import { UploadDialog } from "@/components/upload/upload-dialog";
 import { api } from "@/lib/api-client";
 import type { Book } from "@/lib/types";
 
+const PROCESSING_STATUSES = ["uploading", "parsing", "extracting"] as const;
+
 export default function LibraryPage() {
   const t = useTranslations("library");
   const [books, setBooks] = useState<Book[]>([]);
   const [loading, setLoading] = useState(true);
+  const [loadError, setLoadError] = useState(false);
   const [selectMode, setSelectMode] = useState(false);
   const [selectedIds, setSelectedIds] = useState<Set<string>>(new Set());
   const [deleting, setDeleting] = useState(false);
   const [uploadOpen, setUploadOpen] = useState(false);
   const [query, setQuery] = useState("");
 
-  useEffect(() => {
-    async function fetchBooks() {
-      try {
-        const data = await api.get<{ books: Book[] }>("/books");
-        setBooks(data.books);
-      } catch {
-        // no-op
-      } finally {
-        setLoading(false);
-      }
+  const refresh = useCallback(async () => {
+    try {
+      const data = await api.get<{ books: Book[] }>("/books");
+      setBooks(data.books);
+      setLoadError(false);
+      return data.books;
+    } catch {
+      setLoadError(true);
+      return null;
     }
-    fetchBooks();
-
-    const interval = setInterval(async () => {
-      try {
-        const data = await api.get<{ books: Book[] }>("/books");
-        setBooks(data.books);
-        const hasProcessing = data.books.some((b) =>
-          ["uploading", "parsing", "extracting"].includes(b.status),
-        );
-        if (!hasProcessing) clearInterval(interval);
-      } catch {
-        // ignore
-      }
-    }, 4000);
-
-    return () => clearInterval(interval);
   }, []);
+
+  useEffect(() => {
+    refresh().finally(() => setLoading(false));
+  }, [refresh]);
+
+  // Poll while any book is processing. Re-arms whenever a new processing book
+  // appears (e.g. an upload started from the side-nav while we're on this page).
+  const hasProcessing = books.some((b) =>
+    (PROCESSING_STATUSES as readonly string[]).includes(b.status),
+  );
+
+  useEffect(() => {
+    if (!hasProcessing) return;
+    const interval = setInterval(refresh, 4000);
+    return () => clearInterval(interval);
+  }, [hasProcessing, refresh]);
+
+  const filtered = useMemo(() => {
+    const q = query.trim().toLowerCase();
+    if (!q) return books;
+    return books.filter(
+      (b) =>
+        b.title.toLowerCase().includes(q) ||
+        (b.author ?? "").toLowerCase().includes(q),
+    );
+  }, [books, query]);
+
+  // Selected ids that are also visible — this is what delete operates on.
+  // Without this, a user could select books, type a query that hides them,
+  // then delete books they can no longer see.
+  const visibleSelectedIds = useMemo(() => {
+    if (selectedIds.size === 0) return selectedIds;
+    const visible = new Set<string>();
+    for (const b of filtered) {
+      if (selectedIds.has(b.id)) visible.add(b.id);
+    }
+    return visible;
+  }, [filtered, selectedIds]);
 
   const toggleSelect = useCallback((id: string) => {
     setSelectedIds((prev) => {
@@ -65,37 +97,27 @@ export default function LibraryPage() {
   }, []);
 
   const handleDeleteSelected = useCallback(async () => {
-    if (selectedIds.size === 0) return;
-    const count = selectedIds.size;
+    if (visibleSelectedIds.size === 0) return;
+    const count = visibleSelectedIds.size;
     if (!confirm(t("delete_confirm", { count }))) return;
 
     setDeleting(true);
     try {
       await Promise.all(
-        Array.from(selectedIds).map((id) => api.delete(`/books/${id}`)),
+        Array.from(visibleSelectedIds).map((id) => api.delete(`/books/${id}`)),
       );
-      setBooks((prev) => prev.filter((b) => !selectedIds.has(b.id)));
+      setBooks((prev) => prev.filter((b) => !visibleSelectedIds.has(b.id)));
       exitSelectMode();
     } catch {
       alert(t("delete_partial_failure"));
     } finally {
       setDeleting(false);
     }
-  }, [selectedIds, exitSelectMode, t]);
-
-  const filtered = useMemo(() => {
-    const q = query.trim().toLowerCase();
-    if (!q) return books;
-    return books.filter(
-      (b) =>
-        b.title.toLowerCase().includes(q) ||
-        (b.author ?? "").toLowerCase().includes(q),
-    );
-  }, [books, query]);
+  }, [visibleSelectedIds, exitSelectMode, t]);
 
   const ready = books.filter((b) => b.status === "ready").length;
   const active = books.filter((b) =>
-    ["parsing", "extracting", "uploading"].includes(b.status),
+    (PROCESSING_STATUSES as readonly string[]).includes(b.status),
   ).length;
 
   return (
@@ -130,13 +152,13 @@ export default function LibraryPage() {
           {selectMode ? (
             <>
               <span className="font-mono text-[11px] uppercase tracking-[0.12em] text-muted-foreground">
-                {t("selected", { count: selectedIds.size })}
+                {t("selected", { count: visibleSelectedIds.size })}
               </span>
               <Button
                 size="sm"
                 variant="destructive"
                 className="gap-1.5"
-                disabled={selectedIds.size === 0 || deleting}
+                disabled={visibleSelectedIds.size === 0 || deleting}
                 onClick={handleDeleteSelected}
               >
                 {deleting ? (
@@ -193,9 +215,27 @@ export default function LibraryPage() {
         </div>
       )}
 
-      {/* Grid / empty */}
+      {/* Grid / empty / error */}
       <div className="mt-10">
-        {loading ? (
+        {loadError && books.length === 0 && !loading ? (
+          <div className="flex flex-col items-center justify-center rounded-3xl border border-destructive/30 bg-destructive/5 px-6 py-16 text-center">
+            <AlertCircle className="h-9 w-9 text-destructive" />
+            <p className="mt-4 text-[14px] text-foreground">
+              {t("load_failed")}
+            </p>
+            <Button
+              size="sm"
+              variant="outline"
+              className="mt-5 rounded-full"
+              onClick={() => {
+                setLoading(true);
+                refresh().finally(() => setLoading(false));
+              }}
+            >
+              {t("retry")}
+            </Button>
+          </div>
+        ) : loading ? (
           <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
             {[...Array(4)].map((_, i) => (
               <div

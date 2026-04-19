@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import { Clapperboard, Loader2, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { api } from "@/lib/api-client";
@@ -19,6 +20,7 @@ interface GenerateResponse {
 type Quality = "low" | "medium" | "high";
 
 export default function ManimLabPage() {
+  const t = useTranslations("manim_lab");
   const [concept, setConcept] = useState("Newton's second law");
   const [explanation, setExplanation] = useState(
     "Net force on an object equals its mass times its acceleration: F = ma. " +
@@ -57,57 +59,56 @@ export default function ManimLabPage() {
           <Clapperboard className="h-4 w-4" />
         </div>
         <div>
-          <p className="eyebrow">Experimental</p>
+          <p className="eyebrow">{t("eyebrow")}</p>
           <h1 className="font-display text-3xl font-semibold tracking-tight sm:text-4xl">
-            Manim Lab
+            {t("heading")}
           </h1>
         </div>
       </div>
       <p className="mt-3 max-w-xl text-[14.5px] leading-relaxed text-muted-foreground">
-        Generate a short educational animation by describing a concept. The
-        model writes a Manim Scene, we render it to MP4, and play it inline.
+        {t("lede")}
       </p>
 
       <div className="mt-8 space-y-4 rounded-2xl border border-border/70 bg-card p-5">
         <div>
           <label className="mb-1.5 block text-[13px] font-medium">
-            Concept
+            {t("concept")}
           </label>
           <input
             type="text"
             value={concept}
             onChange={(e) => setConcept(e.target.value)}
             className="w-full rounded-lg border border-border bg-background px-3 py-2 text-sm outline-none focus-visible:border-primary focus-visible:ring-2 focus-visible:ring-primary/20"
-            placeholder="e.g. Newton's second law"
+            placeholder={t("concept_placeholder")}
           />
         </div>
 
         <div>
           <label className="mb-1.5 block text-[13px] font-medium">
-            Explanation
+            {t("explanation")}
           </label>
           <textarea
             value={explanation}
             onChange={(e) => setExplanation(e.target.value)}
             rows={5}
             className="w-full resize-y rounded-lg border border-border bg-background px-3 py-2 font-mono text-[12.5px] leading-relaxed outline-none focus-visible:border-primary focus-visible:ring-2 focus-visible:ring-primary/20"
-            placeholder="A few sentences describing the concept in detail."
+            placeholder={t("explanation_placeholder")}
           />
         </div>
 
         <div className="flex items-end gap-3">
           <div>
             <label className="mb-1.5 block text-[13px] font-medium">
-              Quality
+              {t("quality")}
             </label>
             <select
               value={quality}
               onChange={(e) => setQuality(e.target.value as Quality)}
               className="rounded-lg border border-border bg-background px-3 py-2 text-sm outline-none focus-visible:border-primary focus-visible:ring-2 focus-visible:ring-primary/20"
             >
-              <option value="low">Low — ~15s render</option>
-              <option value="medium">Medium — ~30s render</option>
-              <option value="high">High — ~60s+ render</option>
+              <option value="low">{t("quality_low")}</option>
+              <option value="medium">{t("quality_medium")}</option>
+              <option value="high">{t("quality_high")}</option>
             </select>
           </div>
 
@@ -123,7 +124,7 @@ export default function ManimLabPage() {
             ) : (
               <Sparkles className="h-4 w-4" />
             )}
-            {loading ? "Rendering…" : "Generate"}
+            {loading ? t("rendering") : t("generate")}
           </Button>
         </div>
       </div>
@@ -136,8 +137,7 @@ export default function ManimLabPage() {
 
       {loading && (
         <div className="mt-6 rounded-2xl border border-border/70 bg-card p-5 text-sm text-muted-foreground">
-          Generating Manim code, then rendering the scene. Low quality ≈ 15–30s,
-          medium ≈ 30–60s, high can exceed a minute.
+          {t("rendering_note")}
         </div>
       )}
 
@@ -158,12 +158,12 @@ export default function ManimLabPage() {
             <div className="rounded-2xl border border-amber-500/40 bg-amber-500/5 p-4 text-sm">
               <div className="font-medium text-amber-700 dark:text-amber-300">
                 {result.failure_kind === "declined"
-                  ? "Model declined to illustrate"
-                  : `Failed: ${result.failure_kind}`}
+                  ? t("declined")
+                  : t("failed", { kind: result.failure_kind })}
               </div>
               {result.decline_reason && (
                 <p className="mt-1 text-muted-foreground">
-                  Reason: {result.decline_reason}
+                  {t("decline_reason", { reason: result.decline_reason })}
                 </p>
               )}
               {result.failure_detail && (
@@ -176,13 +176,15 @@ export default function ManimLabPage() {
 
           <details className="rounded-xl border border-border/70 bg-card/60 text-[12.5px]">
             <summary className="cursor-pointer px-4 py-2.5 text-muted-foreground hover:text-foreground">
-              Details · latency {(result.latency_ms / 1000).toFixed(1)}s · kind{" "}
-              {result.failure_kind}
+              {t("details_summary", {
+                seconds: (result.latency_ms / 1000).toFixed(1),
+                kind: result.failure_kind,
+              })}
             </summary>
             {result.code && (
               <div className="border-t border-border/70 p-4">
                 <div className="mb-2 text-[11px] uppercase tracking-wider text-muted-foreground">
-                  Generated code
+                  {t("generated_code")}
                 </div>
                 <pre className="max-h-80 overflow-auto rounded-lg bg-muted/40 p-3 font-mono text-[11.5px] leading-relaxed">
                   {result.code}
@@ -192,7 +194,7 @@ export default function ManimLabPage() {
             {result.render_stderr_tail && (
               <div className="border-t border-border/70 p-4">
                 <div className="mb-2 text-[11px] uppercase tracking-wider text-muted-foreground">
-                  Render stderr (tail)
+                  {t("render_stderr")}
                 </div>
                 <pre className="max-h-60 overflow-auto rounded-lg bg-muted/40 p-3 font-mono text-[11.5px] leading-relaxed">
                   {result.render_stderr_tail}
