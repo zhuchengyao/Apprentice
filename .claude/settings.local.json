@@ -47,7 +47,17 @@
       "Bash(tar -xf /tmp/design-fetch/payload -C /tmp/design-fetch/extracted)",
       "Bash(echo \"Exit: $?\")",
       "Bash(grep -E \"\\\\.\\(tsx|ts\\)$\")",
-      "Bash(xargs basename *)"
+      "Bash(xargs basename *)",
+      "Bash(mkdir -p /tmp/design_bundle)",
+      "Bash(tar -xzf /Users/zhuchengyao/.claude/projects/-Users-zhuchengyao-DemonTech-Apprentice/7b68b153-b049-4a96-967d-5eee9d834981/tool-results/webfetch-1776621792118-7amlv0.bin -C /tmp/design_bundle)",
+      "Read(//private/tmp/design_bundle/**)",
+      "Bash(echo \"EXIT=$?\")",
+      "Bash(.venv/bin/python -m pytest tests/services/test_pdf_parser.py -v)",
+      "Bash(.venv/bin/pip install *)",
+      "Bash(.venv/bin/python *)",
+      "Bash(.venv/bin/pip list *)",
+      "WebFetch(domain:docs.manim.community)",
+      "WebFetch(domain:3b1b.github.io)"
     ]
   }
 }

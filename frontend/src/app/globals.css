@@ -439,21 +439,55 @@
   border: 0 !important;
 }
 
-/* Study panel sits in a 360px column. Wide inline matrices and display
-   math would otherwise be clipped by the page's overflow-hidden. Allow
-   horizontal scroll on math, and prevent any unbreakable token (long
-   identifiers, URLs) from forcing the whole column wider than its
-   container. */
+/* Study panel sits in a 360px column. Anything with intrinsic width
+   (display math, inline matrices, GFM tables, code blocks, long URLs,
+   identifiers) would otherwise be clipped by the page's overflow-hidden.
+   Strategy: text wraps anywhere; intrinsically-wide blocks scroll
+   horizontally inside their own box. */
 .study-panel { min-width: 0; word-break: break-word; overflow-wrap: anywhere; }
+
+/* Display math: scroll inside its block, never push the column wider. */
 .study-panel .katex-display {
+  display: block;
   overflow-x: auto;
   overflow-y: hidden;
   padding-bottom: 0.25em;
   max-width: 100%;
 }
+
+/* Inline math: KaTeX renders as display:inline by default, so max-width
+   has no effect — switch to inline-block so wide expressions scroll
+   instead of forcing the whole column to expand. The :not(...) guard
+   leaves the inner .katex inside .katex-display untouched. */
 .study-panel .katex { max-width: 100%; }
+.study-panel :not(.katex-display) > .katex {
+  display: inline-block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  vertical-align: middle;
+}
+
+/* Code blocks scroll horizontally inside their own width. */
 .study-panel pre,
 .study-panel code { max-width: 100%; overflow-x: auto; }
+.study-panel pre { white-space: pre; }
+
+/* GFM tables have intrinsic widths and ignore overflow-wrap. Promote to
+   a scrollable block so wide tables don't bleed past the column. */
+.study-panel table {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  border-collapse: collapse;
+}
+
+/* Markdown images/figures shouldn't force the column wider than itself.
+   Scoped to .prose so it doesn't fight Lucide UI icons that set their own
+   width/height. */
+.study-panel .prose img,
+.study-panel .prose svg { max-width: 100%; height: auto; }
 
 /* Page-to-page boundary */
 .book-page + .book-page {

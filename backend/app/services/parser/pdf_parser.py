@@ -8,6 +8,40 @@ import fitz  # PyMuPDF
 from app.config import settings
 
 
+class PdfParseError(Exception):
+    """Raised when a PDF cannot be parsed.
+
+    ``reason`` is a stable machine-readable tag (``encrypted``, ``corrupt``,
+    ``missing``) so upstream callers can branch on it; ``str(exc)`` carries
+    a human-readable message suitable for ``book.error_message``.
+    """
+
+    def __init__(self, reason: str, message: str | None = None):
+        self.reason = reason
+        super().__init__(message or reason)
+
+
+def _open_pdf(file_path: str) -> fitz.Document:
+    """Open a PDF, converting encryption + malformed-file conditions to PdfParseError.
+
+    PyMuPDF raises ``FileDataError`` for corrupt files and ``FileNotFoundError``
+    for missing ones. Password-protected PDFs open *successfully* but every
+    subsequent read (``get_text``, ``get_toc``) returns empty data — callers
+    would silently produce a 0-chapter book. We detect that here via
+    ``needs_pass`` and fail loudly instead.
+    """
+    try:
+        doc = fitz.open(file_path)
+    except fitz.FileDataError as e:
+        raise PdfParseError("corrupt", "PDF is corrupt or unreadable") from e
+    except fitz.FileNotFoundError as e:
+        raise PdfParseError("missing", "PDF file not found") from e
+    if doc.needs_pass:
+        doc.close()
+        raise PdfParseError("encrypted", "PDF is password-protected")
+    return doc
+
+
 @dataclass
 class PageImage:
     """An image extracted from a PDF page."""
@@ -352,7 +386,7 @@ class PdfMetadata:
 
 def parse_pdf_metadata(file_path: str) -> PdfMetadata:
     """Fast metadata-only parse: title, author, page count, TOC. No image extraction."""
-    doc = fitz.open(file_path)
+    doc = _open_pdf(file_path)
     title = doc.metadata.get("title", "") or ""
     author = doc.metadata.get("author", "") or ""
     toc = [(level, t, page) for level, t, page in doc.get_toc()]
@@ -375,7 +409,7 @@ def parse_pdf_pages(
         start_page: 1-based start page (inclusive)
         end_page: 1-based end page (inclusive), None = last page
     """
-    doc = fitz.open(file_path)
+    doc = _open_pdf(file_path)
     if end_page is None:
         end_page = len(doc)
 
@@ -403,7 +437,7 @@ def parse_pdf_pages(
 
 
 def parse_pdf(file_path: str, book_id: str | None = None) -> ParsedBook:
-    doc = fitz.open(file_path)
+    doc = _open_pdf(file_path)
 
     title = doc.metadata.get("title", "") or ""
     author = doc.metadata.get("author", "") or ""

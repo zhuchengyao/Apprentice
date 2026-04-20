@@ -151,12 +151,27 @@ export interface UsageBreakdown {
 
 export type StudyPhase = "read" | "explain" | "practice" | "feedback" | "done";
 
+export interface ScopeKpView {
+  id: string;
+  concept: string;
+  /** Manim animation filename (served via /api/manim/video/{filename}).
+   *  Null when the KP has no animation — LLM declined, render failed, or
+   *  difficulty was below the illustration threshold. */
+  illustration_video: string | null;
+}
+
 export interface ScopeView {
   index: number;
   title: string;
   anchor_hint: string;
   kp_ids: string[];
   source_anchors: string[];
+  /** Per-KP detail for the Explain phase: concept + animation filename.
+   *  Parallel to kp_ids; only entries whose KP row was resolvable appear. */
+  kps: ScopeKpView[];
+  /** Cached explanation text, populated once /advance has streamed it.
+   *  Present when reviewing a finished scope or resuming a completed one. */
+  explanation_text: string | null;
 }
 
 export interface ScopeSummary {
@@ -169,6 +184,11 @@ export interface StudyAttempt {
   question_id: string;
   chosen_option: string;
   correct: boolean;
+  /** Populated when the API has the question row joined in (e.g. /questions
+   *  for a finished scope). Lets the UI render prior feedback without an
+   *  extra round-trip per question. */
+  correct_option?: string | null;
+  explanation?: string | null;
 }
 
 export interface StudySession {
@@ -203,6 +223,9 @@ export interface QuestionsResponse {
   total: number;
   questions: QuizQuestion[];
   answered: StudyAttempt[];
+  /** Authoritative server phase. Clients reconcile local phase with this
+   *  on every response so multi-tab sessions stay in sync. */
+  phase: StudyPhase;
 }
 
 export interface AnswerResponse {
@@ -212,6 +235,9 @@ export interface AnswerResponse {
   scope_score: { correct: number; total: number };
   next_question_id: string | null;
   scope_complete: boolean;
+  /** Authoritative server phase after this answer was applied. Replaces the
+   *  local "if scope_complete set phase=feedback" heuristic. */
+  phase: StudyPhase;
 }
 
 export interface NextScopeResponse {

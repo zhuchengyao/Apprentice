@@ -93,6 +93,7 @@ export const useStudySessionStore = create<StudySessionState>((set) => ({
   setSession: (session) =>
     set(() => {
       const correct = session.attempts.filter((a) => a.correct).length;
+      const cachedExplanation = session.scope?.explanation_text || "";
       return {
         sessionId: session.id,
         bookId: session.book_id,
@@ -107,9 +108,13 @@ export const useStudySessionStore = create<StudySessionState>((set) => ({
         attempts: session.attempts,
         scopeScore: { correct, total: session.attempts.length },
         feedback: null,
-        explanation: "",
+        explanation: cachedExplanation,
         explanationStreaming: false,
-        explanationComplete: session.phase !== "read" && session.phase !== "explain",
+        // If the server already has a cached explanation for this scope,
+        // mark complete so ExplanationPanel skips its re-stream guard.
+        explanationComplete:
+          !!cachedExplanation ||
+          (session.phase !== "read" && session.phase !== "explain"),
       };
     }),
 
@@ -120,16 +125,26 @@ export const useStudySessionStore = create<StudySessionState>((set) => ({
     })),
 
   setQuestions: (payload) =>
-    set(() => {
+    set((s) => {
       const correct = payload.answered.filter((a) => a.correct).length;
+      const allAnswered =
+        payload.total > 0 && payload.answered.length >= payload.total;
       return {
         questions: payload.questions,
         attempts: payload.answered,
         scopeScore: { correct, total: payload.answered.length },
-        currentQuestionIndex: Math.min(
-          payload.answered.length,
-          Math.max(0, payload.total - 1),
-        ),
+        // Review mode (every question already answered): start at the first
+        // question so the user can step through their prior answers. Live
+        // mode: jump to the first unanswered question.
+        currentQuestionIndex: allAnswered
+          ? 0
+          : Math.min(
+              payload.answered.length,
+              Math.max(0, payload.total - 1),
+            ),
+        // Reconcile against authoritative server phase.
+        phase: payload.phase,
+        session: s.session ? { ...s.session, phase: payload.phase } : s.session,
       };
     }),
 
@@ -154,12 +169,34 @@ export const useStudySessionStore = create<StudySessionState>((set) => ({
         attempts: nextAttempts,
         feedback,
         scopeScore: response.scope_score,
+        // Trust the server's authoritative phase. Previously the submit
+        // handler derived this locally from `scope_complete`, which meant
+        // a second tab could stay on PRACTICE after the server (driven
+        // by the other tab) had already moved to FEEDBACK.
+        phase: response.phase,
+        session: s.session ? { ...s.session, phase: response.phase } : s.session,
       };
     }),
 
   advanceQuestion: () =>
     set((s) => {
       const answeredIds = new Set(s.attempts.map((a) => a.question_id));
+      const allAnswered =
+        s.questions.length > 0 && answeredIds.size >= s.questions.length;
+      // Review mode: walk linearly so the user can re-read each prior
+      // attempt. Past the last question, fall through to feedback.
+      if (allAnswered) {
+        const nextIdx = s.currentQuestionIndex + 1;
+        if (nextIdx >= s.questions.length) {
+          return {
+            currentQuestionIndex: s.questions.length,
+            feedback: null,
+            phase: "feedback",
+          };
+        }
+        return { currentQuestionIndex: nextIdx, feedback: null };
+      }
+      // Live mode: jump to the next unanswered question.
       const nextIdx = s.questions.findIndex((q) => !answeredIds.has(q.id));
       if (nextIdx === -1) {
         return {
@@ -195,13 +232,14 @@ export const useStudySessionStore = create<StudySessionState>((set) => ({
       };
     }),
 
-  // Jump to a previously-reached scope for review. Mirrors advanceScope's
-  // reset semantics (clear cached questions/explanation so the reviewed
-  // scope's content is loaded fresh) but uses the session payload as-is
-  // since the server has already placed us in `feedback`.
+  // Jump to a previously-reached scope for review. The server returns the
+  // session pinned at `feedback` for the target scope and (for finished
+  // scopes) attaches the cached explanation. We hydrate that here so the
+  // user can re-open Explain without triggering a fresh LLM stream.
   gotoScope: (session) =>
     set(() => {
       const correct = session.attempts.filter((a) => a.correct).length;
+      const cachedExplanation = session.scope?.explanation_text || "";
       return {
         session,
         phase: session.phase,
@@ -214,12 +252,9 @@ export const useStudySessionStore = create<StudySessionState>((set) => ({
         attempts: session.attempts,
         feedback: null,
         scopeScore: { correct, total: session.attempts.length },
-        explanation: "",
+        explanation: cachedExplanation,
         explanationStreaming: false,
-        // Reviewed scope already has a complete explanation history server-
-        // side; let ExplanationPanel decide whether to re-stream based on
-        // its cache-aware mount effect.
-        explanationComplete: false,
+        explanationComplete: !!cachedExplanation,
       };
     }),
 

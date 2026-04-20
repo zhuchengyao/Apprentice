@@ -1,9 +1,8 @@
 "use client";
 
 import { useEffect } from "react";
-import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
-import { ArrowRight, BookOpen, Loader2 } from "lucide-react";
+import { ArrowRight, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Markdown } from "@/components/ui/markdown";
 import type {
@@ -12,12 +11,15 @@ import type {
 } from "@/components/tutor/use-tutor-highlight";
 import type { KPHighlight } from "@/components/tutor/tutor-popover";
 import type { ScopeView } from "@/lib/types";
+import { PhaseShell, type PhaseState } from "./phase-shell";
 
 interface Props {
   scope: ScopeView;
   highlight: HighlightController;
   onFinishReading: () => Promise<void> | void;
   working: boolean;
+  state: PhaseState;
+  onExpand?: () => void;
 }
 
 const SCOPE_VARIANT: HighlightVariant = "scope";
@@ -27,10 +29,15 @@ export function ReadingScopePanel({
   highlight,
   onFinishReading,
   working,
+  state,
+  onExpand,
 }: Props) {
   const t = useTranslations("study");
 
+  // Only paint highlights while this phase is actually active — a collapsed
+  // "done" row shouldn't re-decorate the book page.
   useEffect(() => {
+    if (state !== "active") return;
     const kps: KPHighlight[] = scope.source_anchors.map((anchor, i) => ({
       id: scope.kp_ids[i] ?? `${scope.index}-${i}`,
       concept: scope.title,
@@ -42,68 +49,91 @@ export function ReadingScopePanel({
     return () => {
       highlight.clearVariant(SCOPE_VARIANT);
     };
-  }, [highlight, scope.anchor_hint, scope.index, scope.kp_ids, scope.source_anchors, scope.title]);
+  }, [
+    state,
+    highlight,
+    scope.anchor_hint,
+    scope.index,
+    scope.kp_ids,
+    scope.source_anchors,
+    scope.title,
+  ]);
+
+  if (state === "pending") {
+    return <PhaseShell phase="read" state="pending" />;
+  }
+
+  if (state === "done") {
+    return (
+      <PhaseShell
+        phase="read"
+        state="done"
+        meta={t("read_meta")}
+        compactSummary={scope.title}
+        onExpand={onExpand}
+      />
+    );
+  }
 
   return (
-    <motion.div
-      layout
-      initial={{ opacity: 0, y: 8 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -8 }}
-      transition={{ duration: 0.25, ease: "easeOut" }}
-      className="rounded-2xl border border-border/70 bg-card/60 p-4 shadow-editorial-sm ring-1 ring-foreground/5"
-    >
-      <div className="flex items-start gap-3">
-        <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-primary/12 text-primary ring-1 ring-primary/20">
-          <BookOpen className="h-4 w-4" />
-        </div>
-        <div className="min-w-0 flex-1">
-          <div className="font-mono text-[9.5px] uppercase tracking-[0.1em] text-muted-foreground">
-            {t("phase.read")}
-          </div>
-          <h3 className="mt-0.5 font-heading text-[14px] font-semibold tracking-tight">
-            {scope.title ? (
-              <Markdown inline>{scope.title}</Markdown>
-            ) : (
-              t("scope_default_title")
-            )}
-          </h3>
-          {scope.anchor_hint && (
-            <p className="mt-1 text-[12.5px] leading-relaxed text-muted-foreground">
+    <PhaseShell phase="read" state="active" meta={t("read_meta")}>
+      <div className="flex flex-col gap-3.5">
+        <h3 className="font-heading text-[16px] font-semibold leading-tight tracking-tight">
+          {scope.title ? (
+            <Markdown inline>{scope.title}</Markdown>
+          ) : (
+            t("scope_default_title")
+          )}
+        </h3>
+
+        {scope.anchor_hint && (
+          <div className="relative rounded-xl bg-primary/5 py-3 pl-4 pr-3.5">
+            <div className="absolute inset-y-2.5 left-0 w-[2px] rounded-full bg-primary" />
+            <p className="font-heading text-[13px] italic leading-snug text-subtle-foreground">
               <Markdown inline>{scope.anchor_hint}</Markdown>
             </p>
-          )}
+            <div className="mt-2 flex items-center gap-1.5 text-[11px] text-muted-foreground">
+              <ArrowRight className="h-3 w-3" />
+              <span className="font-mono tracking-[0.05em]">
+                {t("scope_kp_count", { count: scope.kp_ids.length })}
+              </span>
+            </div>
+          </div>
+        )}
+
+        <div className="flex items-center gap-2 text-[11.5px] text-muted-foreground">
+          <span
+            aria-hidden
+            className="inline-block h-[6px] w-[6px] flex-shrink-0 animate-pulse rounded-full bg-primary"
+          />
+          <span>{t("passage_in_book")}</span>
+        </div>
+
+        <div className="flex items-center justify-between gap-2">
+          <span className="font-mono text-[10px] uppercase tracking-[0.08em] tabular-nums text-muted-foreground">
+            {t("scope_kp_count", { count: scope.kp_ids.length })}
+          </span>
+          <Button
+            size="sm"
+            variant="primary"
+            className="h-8 gap-1.5 rounded-full px-3 text-[12px]"
+            onClick={() => onFinishReading()}
+            disabled={working}
+          >
+            {working ? (
+              <>
+                <Loader2 className="h-3.5 w-3.5 animate-spin" />
+                {t("preparing_explanation")}
+              </>
+            ) : (
+              <>
+                {t("read_cta")}
+                <ArrowRight className="h-3.5 w-3.5" />
+              </>
+            )}
+          </Button>
         </div>
       </div>
-
-      <p className="mt-3 rounded-xl bg-primary/5 px-3 py-2 text-[12px] leading-relaxed text-muted-foreground ring-1 ring-primary/10">
-        {t("read_instruction")}
-      </p>
-
-      <div className="mt-3 flex items-center justify-between gap-2">
-        <span className="font-mono text-[10px] uppercase tracking-[0.08em] text-muted-foreground tabular-nums">
-          {t("scope_kp_count", { count: scope.kp_ids.length })}
-        </span>
-        <Button
-          size="sm"
-          variant="primary"
-          className="h-8 gap-1.5 rounded-full px-3 text-[12px]"
-          onClick={() => onFinishReading()}
-          disabled={working}
-        >
-          {working ? (
-            <>
-              <Loader2 className="h-3.5 w-3.5 animate-spin" />
-              {t("preparing_explanation")}
-            </>
-          ) : (
-            <>
-              {t("read_cta")}
-              <ArrowRight className="h-3.5 w-3.5" />
-            </>
-          )}
-        </Button>
-      </div>
-    </motion.div>
+    </PhaseShell>
   );
 }

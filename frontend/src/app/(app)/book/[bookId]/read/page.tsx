@@ -332,8 +332,8 @@ export default function ReadPage({
   return (
     <div className="flex h-screen overflow-hidden bg-background">
       {sidebarOpen && (
-        <aside className="flex w-72 shrink-0 flex-col border-r border-sidebar-border bg-sidebar">
-          <div className="flex items-center gap-2 border-b border-sidebar-border/70 px-4 py-3">
+        <aside className="flex h-screen w-72 shrink-0 flex-col border-r border-sidebar-border bg-sidebar">
+          <div className="flex shrink-0 items-center gap-2 border-b border-sidebar-border/70 px-4 py-3">
             <Link href={`/book/${bookId}`}>
               <Button variant="ghost" size="icon-sm" className="rounded-full">
                 <ArrowLeft className="h-3.5 w-3.5" />
@@ -343,7 +343,7 @@ export default function ReadPage({
               {book.title}
             </h2>
           </div>
-          <ScrollArea className="flex-1">
+          <ScrollArea className="min-h-0 flex-1">
             <nav className="p-2">
               {book.chapters.map((chapter) => {
                 const active = chapter.id === activeChapterId;
@@ -480,7 +480,7 @@ export default function ReadPage({
       {activeChapterId && !processing && !contentLoading && chapterPages.length > 0 && (
         studyV2Enabled ? (
           <aside className="hidden w-[360px] shrink-0 flex-col border-l border-sidebar-border bg-sidebar lg:flex">
-            <div className="study-panel min-h-0 min-w-0 flex-1 overflow-y-auto overflow-x-hidden p-4">
+            <div className="study-panel min-h-0 min-w-0 flex-1 overflow-y-auto overflow-x-hidden">
               <StudySessionPanel
                 key={activeChapterId}
                 bookId={bookId}

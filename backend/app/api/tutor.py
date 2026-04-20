@@ -13,7 +13,7 @@ from sse_starlette.sse import EventSourceResponse
 from app.config import settings
 from app.database import get_db
 from app.dependencies import get_current_user
-from app.i18n import get_request_locale
+from app.i18n import effective_teaching_language, get_request_locale
 from app.models.book import KnowledgePoint
 from app.models.user import User
 from app.models.tutor import TutorConversation, TutorMessage
@@ -274,7 +274,10 @@ async def open_chapter(
     all_kps = await get_chapter_knowledge_points(conversation.chapter_id, db)
     system_blocks = await _prepare_tutor_system(
         conversation, current_user, db, all_kps,
-        task_text=TASK_OPENING, language=request_locale,
+        task_text=TASK_OPENING,
+        language=effective_teaching_language(
+            current_user.preferred_language, request_locale
+        ),
     )
     api_messages = [{"role": "user", "content": "请开始"}]
 
@@ -362,7 +365,10 @@ async def teach_next(
 
     system_blocks = await _prepare_tutor_system(
         conversation, current_user, db, all_kps,
-        task_text=task_text, language=request_locale,
+        task_text=task_text,
+        language=effective_teaching_language(
+            current_user.preferred_language, request_locale
+        ),
     )
 
     history = await recent_api_messages(conv_id, db)
@@ -465,7 +471,10 @@ async def send_message(
 
     system_blocks = await _prepare_tutor_system(
         conversation, current_user, db, all_kps,
-        task_text=task_text, language=request_locale,
+        task_text=task_text,
+        language=effective_teaching_language(
+            current_user.preferred_language, request_locale
+        ),
     )
 
     api_messages = await recent_api_messages(conv_id, db)

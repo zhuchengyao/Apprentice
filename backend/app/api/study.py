@@ -21,12 +21,13 @@ from fastapi import APIRouter, Depends, HTTPException
 from pydantic import BaseModel
 from sqlalchemy import select, func, text, update
 from sqlalchemy.ext.asyncio import AsyncSession
+from sqlalchemy.orm.attributes import flag_modified
 from sse_starlette.sse import EventSourceResponse
 
 from app.config import settings
 from app.database import get_db
 from app.dependencies import get_current_user
-from app.i18n import get_request_locale
+from app.i18n import effective_teaching_language, get_request_locale
 from app.models.book import Book, Chapter, KnowledgePoint
 from app.models.study import (
     QuizAttempt,
@@ -51,6 +52,7 @@ from app.services.teaching.context import (
     load_kp_list_text,
     load_student_block,
 )
+from app.services.teaching.errors import TutorLLMError
 from app.services.teaching.streaming import (
     iter_llm_chunks,
     save_session,
@@ -63,7 +65,7 @@ from app.services.teaching.prompts import (
     build_tutor_context,
 )
 from app.services.learning.adaptive import choose_quiz_plan
-from app.services.teaching.quiz import generate_quiz_for_scope
+from app.services.teaching.quiz import generate_quiz_for_scope, scope_signature
 from app.services.teaching.study_planner import plan_scopes
 
 logger = logging.getLogger(__name__)
@@ -98,12 +100,30 @@ class StartSessionRequest(BaseModel):
     chapter_id: str
 
 
+class ScopeKpView(BaseModel):
+    """Per-KP detail attached to a ScopeView so the Explain phase can render
+    the Manim animation for each KP inline. ``illustration_video`` is the
+    filename (served via ``/api/manim/video/{filename}``) or ``None`` when
+    the KP was declined / rendering failed."""
+    id: str
+    concept: str
+    illustration_video: str | None = None
+
+
 class ScopeView(BaseModel):
     index: int
     title: str
     anchor_hint: str
     kp_ids: list[str]
     source_anchors: list[str]
+    # Per-KP detail for the Explain phase: concept labels + Manim animation
+    # filenames when available. Parallel to `kp_ids` but carries enough for
+    # the frontend to render KpVideo without another round-trip.
+    kps: list[ScopeKpView] = []
+    # Cached scope explanation, populated once /advance has streamed it. Sent
+    # so a returning client (resume / goto-scope review) can hydrate without
+    # re-paying for an LLM call.
+    explanation_text: str | None = None
 
 
 class ScopeSummary(BaseModel):
@@ -117,6 +137,11 @@ class AttemptView(BaseModel):
     question_id: str
     chosen_option: str
     correct: bool
+    # Populated for review (when the question row is on hand). The frontend
+    # uses these to render the prior verdict and explainer for an answered
+    # question without re-calling /answer per question.
+    correct_option: str | None = None
+    explanation: str | None = None
 
 
 class SessionResponse(BaseModel):
@@ -150,6 +175,10 @@ class QuestionsResponse(BaseModel):
     total: int
     questions: list[QuestionView]
     answered: list[AttemptView]
+    # Authoritative server phase. The client reconciles its local phase
+    # with this on every response so two tabs pointed at the same session
+    # can't drift — if one tab has advanced the session, the other sees it.
+    phase: str
 
 
 class AnswerRequest(BaseModel):
@@ -165,6 +194,10 @@ class AnswerResponse(BaseModel):
     scope_score: dict  # {"correct": int, "total": int}
     next_question_id: str | None
     scope_complete: bool
+    # Authoritative server phase (see QuestionsResponse.phase). Clients
+    # should replace local phase with this instead of inferring feedback
+    # from `scope_complete` alone — another tab may have already advanced.
+    phase: str
 
 
 class NextScopeResponse(BaseModel):
@@ -218,12 +251,27 @@ def _scope_view(
     scope = _current_scope(session)
     if not scope:
         return None
+    kp_ids = [str(k) for k in scope.get("kp_ids", [])]
+    kp_views: list[ScopeKpView] = []
+    for kp_id in kp_ids:
+        kp = kps_by_id.get(kp_id)
+        if kp is None:
+            continue
+        kp_views.append(
+            ScopeKpView(
+                id=kp_id,
+                concept=kp.concept,
+                illustration_video=kp.illustration_video,
+            )
+        )
     return ScopeView(
         index=session.current_scope_index,
         title=scope.get("title", ""),
         anchor_hint=scope.get("anchor_hint", ""),
-        kp_ids=[str(k) for k in scope.get("kp_ids", [])],
+        kp_ids=kp_ids,
         source_anchors=_anchors_for_scope(scope, kps_by_id),
+        kps=kp_views,
+        explanation_text=scope.get("explanation_text") or None,
     )
 
 
@@ -251,6 +299,28 @@ def _attempt_views(attempts: list[QuizAttempt]) -> list[AttemptView]:
         )
         for a in attempts
     ]
+
+
+def _rich_attempt_views(
+    attempts: list[QuizAttempt], questions: list[QuizQuestion]
+) -> list[AttemptView]:
+    """Like _attempt_views, but joins against the in-memory questions list to
+    surface correct_option/explanation. Use when the caller has already loaded
+    the scope's questions (so we don't issue an extra round-trip)."""
+    by_id: dict[uuid.UUID, QuizQuestion] = {q.id: q for q in questions}
+    out: list[AttemptView] = []
+    for a in attempts:
+        q = by_id.get(a.question_id)
+        out.append(
+            AttemptView(
+                question_id=str(a.question_id),
+                chosen_option=a.chosen_option,
+                correct=a.correct,
+                correct_option=q.correct_option if q else None,
+                explanation=q.explanation if q else None,
+            )
+        )
+    return out
 
 
 async def _max_scope_reached(
@@ -406,8 +476,11 @@ async def start_or_resume_session(
             logger.info(
                 "Re-planning study session %s due to KP drift", session.id
             )
+            language = effective_teaching_language(
+                current_user.preferred_language, request_locale
+            )
             session = await _replan_session(
-                session, chapter, all_kps, current_user, db, request_locale
+                session, chapter, all_kps, current_user, db, language
             )
         return await _session_response(session, db, kps_by_id)
 
@@ -426,7 +499,9 @@ async def start_or_resume_session(
         chapter_content=chapter_content,
         kps=all_kps,
         student_block=student_block,
-        language=request_locale,
+        language=effective_teaching_language(
+            current_user.preferred_language, request_locale
+        ),
     )
 
     session = StudySession(
@@ -507,14 +582,42 @@ async def advance_to_explain(
 ):
     """READ → EXPLAIN: streams the scope explanation via SSE.
 
-    Idempotent by phase: if the session is already past READ we re-stream
-    an explanation for the current scope (useful if the client dropped the
-    previous stream).
+    Cache-first: if the current scope already has a saved explanation
+    (resume after completion, or jumping back via /goto-scope to review a
+    finished scope), replay the cached text as a single SSE event pair —
+    no LLM call, no credit charge. Otherwise stream fresh and persist on
+    completion so future visits hit the cache.
     """
     session = await _load_session(session_id, current_user, db)
     scope = _current_scope(session)
     if scope is None:
         raise HTTPException(status_code=409, detail="No active scope")
+
+    language = effective_teaching_language(
+        current_user.preferred_language, request_locale
+    )
+
+    # Cache hit: this scope already has a stored explanation (the user is
+    # reviewing a finished scope, or resuming after an earlier completed
+    # stream). Replay it as a single SSE event pair so the client's stream
+    # handler is unchanged, and skip the LLM call + credit charge entirely.
+    # We only replay when the cached language matches the user's current
+    # teaching language — otherwise a learner who switches tutor language
+    # in Settings would keep seeing the old-language explanation forever.
+    cached_text = (scope.get("explanation_text") or "").strip()
+    cached_language = scope.get("explanation_language")
+    if cached_text and (cached_language is None or cached_language == language):
+        async def cached_body():
+            yield {"event": "token", "data": cached_text}
+            yield {
+                "event": "done",
+                "data": json.dumps({
+                    "content": cached_text,
+                    "next_phase": session.phase.value,
+                    "cached": True,
+                }),
+            }
+        return EventSourceResponse(wrap_sse_errors("study_explain", cached_body()))
 
     all_kps = await get_chapter_knowledge_points(session.chapter_id, db)
     kps_by_id = _kp_index_by_id(all_kps)
@@ -534,7 +637,7 @@ async def advance_to_explain(
     context_text = build_tutor_context(
         book_title, chapter_title, chapter_content,
         knowledge_points_text=kp_list_text,
-        language=request_locale,
+        language=language,
     )
     system_blocks = [
         {"type": "text", "text": TUTOR_STATIC_RULES},
@@ -557,6 +660,7 @@ async def advance_to_explain(
     user_id_str = str(current_user.id)
     user_uuid = current_user.id
     session_id_uuid = session.id
+    scope_index_at_request = session.current_scope_index
     exposed_kp_ids = [kp.id for kp in scope_kps]
 
     # Immediately advance phase to EXPLAIN so clients that drop the stream
@@ -588,6 +692,15 @@ async def advance_to_explain(
             if collected_size >= EXPLAIN_DONE_PAYLOAD_CAP:
                 full_text = full_text[:EXPLAIN_DONE_PAYLOAD_CAP] + "\n\n[…]"
 
+            # Reasoning models can burn the entire token budget on hidden
+            # reasoning and emit zero visible content. Treat that as a
+            # failed turn: don't flip phase, don't record KP exposure,
+            # don't cache an empty string. The raise surfaces a retry-able
+            # error event via wrap_sse_errors; the session stays in EXPLAIN
+            # so /advance can be called again.
+            if not full_text.strip():
+                raise TutorLLMError()
+
             async with save_session() as save_db:
                 # Atomic phase transition: only one concurrent stream for
                 # this session "wins" the EXPLAIN→PRACTICE flip, avoiding
@@ -603,6 +716,22 @@ async def advance_to_explain(
                 if result.rowcount:
                     for kp_id in exposed_kp_ids:
                         await record_kp_exposure(save_db, user_uuid, kp_id)
+
+                # Persist the explanation onto the scope so future visits
+                # (resume, goto-scope review) replay from cache instead of
+                # re-streaming. Re-fetch under this transaction since the
+                # outer request session may have been closed by now.
+                fresh = await save_db.get(StudySession, session_id_uuid)
+                if fresh is not None and full_text:
+                    plan = list(fresh.scope_plan or [])
+                    if 0 <= scope_index_at_request < len(plan):
+                        plan[scope_index_at_request] = {
+                            **plan[scope_index_at_request],
+                            "explanation_text": full_text,
+                            "explanation_language": language,
+                        }
+                        fresh.scope_plan = plan
+                        flag_modified(fresh, "scope_plan")
                 await save_db.commit()
 
             yield {
@@ -656,7 +785,9 @@ async def get_scope_questions(
             chapter_content=chapter_content,
             kp_list_text=kp_list_text,
             student_block=student_block,
-            language=request_locale,
+            language=effective_teaching_language(
+                current_user.preferred_language, request_locale
+            ),
         )
 
     if not questions:
@@ -688,7 +819,8 @@ async def get_scope_questions(
             )
             for q in questions
         ],
-        answered=_attempt_views(attempts),
+        answered=_rich_attempt_views(attempts, questions),
+        phase=session.phase.value,
     )
 
 
@@ -708,6 +840,24 @@ async def answer_question(
     question = await db.get(QuizQuestion, qid)
     if question is None:
         raise HTTPException(status_code=404, detail="Question not found")
+
+    # Cross-scope guard: reject answers for questions that don't belong to
+    # the session's *current* scope. Without this, a second tab still
+    # showing scope N's quiz can submit after scope N+1 starts, and the
+    # attempt gets misfiled against the new scope_index (corrupting
+    # scope_score + the next-question cursor). 409 tells the client to
+    # resync session state rather than blindly retry.
+    current_scope = _current_scope(session)
+    if current_scope is None:
+        raise HTTPException(status_code=409, detail="No active scope")
+    current_signature = scope_signature(
+        [str(k) for k in current_scope.get("kp_ids", [])]
+    )
+    if question.scope_signature != current_signature:
+        raise HTTPException(
+            status_code=409,
+            detail="Question does not belong to the current scope — session advanced elsewhere",
+        )
 
     chosen = body.chosen_option.strip().upper()
     if chosen not in ("A", "B", "C", "D"):
@@ -781,6 +931,7 @@ async def answer_question(
         },
         next_question_id=str(remaining_ids[0]) if remaining_ids else None,
         scope_complete=scope_complete,
+        phase=session.phase.value,
     )
 
 

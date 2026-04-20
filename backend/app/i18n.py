@@ -61,6 +61,19 @@ async def get_request_locale(
     return normalize_locale(accept_language, fallback=DEFAULT_LOCALE)
 
 
+def effective_teaching_language(user_pref: str | None, request_locale: str) -> str:
+    """Pick the language for a tutor/study prompt.
+
+    The UI locale (``Accept-Language``) and the tutor language are two
+    separate settings — a learner can read a Chinese interface while
+    asking the tutor to teach in English, or vice-versa. The Settings
+    page writes the learner's choice to ``User.preferred_language``; we
+    honor that over the request header. Falls back to ``request_locale``
+    only when the user has no stored preference.
+    """
+    return user_pref or request_locale
+
+
 # Minimal error-message catalog. Expand lazily as endpoints need it.
 _ERRORS: dict[str, dict[str, str]] = {
     "en": {
