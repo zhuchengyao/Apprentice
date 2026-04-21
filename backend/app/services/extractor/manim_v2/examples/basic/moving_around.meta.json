@@ -1,0 +1,8 @@
+{
+  "id": "moving_around",
+  "category": "basic",
+  "difficulty": 1,
+  "summary": "Demonstrate the .animate chain for shift, set_fill, scale, rotate on a Square.",
+  "tags": ["animate_syntax", "transform", "basic_shapes", "shift", "scale", "rotate"],
+  "apis": ["Square", "Mobject.animate", "shift", "set_fill", "scale", "rotate"]
+}

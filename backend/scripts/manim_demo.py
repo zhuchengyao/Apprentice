@@ -22,7 +22,7 @@ import logging
 import sys
 from pathlib import Path
 
-from app.services.extractor.manim_illustration import generate_manim_animation
+from app.services.extractor.manim_v2 import generate_manim_animation
 
 
 def _parse_args() -> argparse.Namespace:

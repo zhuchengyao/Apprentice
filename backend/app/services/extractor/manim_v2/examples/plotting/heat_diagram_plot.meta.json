@@ -1,0 +1,8 @@
+{
+  "id": "heat_diagram_plot",
+  "category": "plotting",
+  "difficulty": 2,
+  "summary": "Plot a discrete x/y series as a line graph with vertex dots, using Axes.plot_line_graph.",
+  "tags": ["line_graph", "axes", "data_points", "empirical"],
+  "apis": ["Axes", "Axes.plot_line_graph", "get_axis_labels"]
+}

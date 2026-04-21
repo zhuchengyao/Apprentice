@@ -1,0 +1,8 @@
+{
+  "id": "sin_cos_plot",
+  "category": "plotting",
+  "difficulty": 2,
+  "summary": "Plot sin(x) and cos(x) on a shared Axes with get_graph_label and axis labels.",
+  "tags": ["plot", "axes", "trigonometry", "function_graph"],
+  "apis": ["Axes", "Axes.plot", "get_axis_labels", "get_graph_label", "Create", "Write"]
+}

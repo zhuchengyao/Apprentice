@@ -8,7 +8,11 @@ class Settings(BaseSettings):
     openai_api_key: str = ""
     ai_model: str = "claude-sonnet-4-6"  # must match a model in MODEL_REGISTRY
     tutor_model: str = "gpt-5.4"  # model used for the tutor/teaching system
-    illustration_model: str | None = "claude-haiku-4-5-20251001"  # Manim code generation is deterministic — Haiku handles it at ~75% lower cost than Sonnet
+    illustration_model: str | None = "claude-haiku-4-5-20251001"  # Fallback for any illustration stage that doesn't have a per-stage override below
+    illustration_planner_model: str | None = "gpt-5.4"             # Stage 1 — pedagogical scene plan (markdown)
+    illustration_spec_model: str | None = "gpt-5.4"                # Stage 2 — JSON SceneSpec (constrained schema)
+    illustration_codegen_model: str | None = "claude-opus-4-7"     # Stage 3 — Manim Python code (Opus for tighter API recall on the longer prompt)
+    illustration_embedding_model: str = "text-embedding-3-small"  # retrieval of Manim examples; OpenAI only — Anthropic has no embeddings endpoint
     manim_python: str | None = None  # python interpreter used to run `manim`; falls back to backend/.venv/bin/python or sys.executable
     upload_dir: str = "./uploads"
     cors_origins: list[str] = ["http://localhost:3000"]

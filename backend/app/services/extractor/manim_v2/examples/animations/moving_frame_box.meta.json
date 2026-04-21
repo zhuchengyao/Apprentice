@@ -1,0 +1,8 @@
+{
+  "id": "moving_frame_box",
+  "category": "animations",
+  "difficulty": 2,
+  "summary": "Highlight terms of an equation by moving a SurroundingRectangle across MathTex sub-expressions.",
+  "tags": ["highlight", "mathtex", "surrounding_rectangle", "equations"],
+  "apis": ["MathTex", "SurroundingRectangle", "ReplacementTransform", "Write", "Create"]
+}

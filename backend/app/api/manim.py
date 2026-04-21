@@ -19,7 +19,7 @@ from pydantic import BaseModel, Field
 from app.config import settings
 from app.dependencies import get_current_user
 from app.models.user import User
-from app.services.extractor.manim_illustration import generate_manim_animation
+from app.services.extractor.manim_v2 import generate_manim_animation
 
 logger = logging.getLogger(__name__)
 

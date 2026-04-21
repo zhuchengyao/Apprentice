@@ -298,24 +298,39 @@ def build_answer_task(kp_index: int, concept: str) -> str:
 
 TASK_PLAN_SCOPES = """\
 Plan the student's study path through this chapter as an ordered list of \
-"scopes". Each scope groups 3-5 closely related knowledge points that \
-should be read, explained, and quizzed together. Scopes may cross section \
-boundaries if it makes pedagogical sense — cluster by concept, not by \
-section. Cover every knowledge point exactly once.
+"scopes". Each scope gathers knowledge points that genuinely belong \
+together — by theme, by argument, or by the mental move the reader must \
+make. Scopes may cross section boundaries.
+
+Curate, don't enumerate:
+- DROP knowledge points that are trivia, redundant restatements, minor \
+examples, or tangential asides. The goal is the shortest reading path \
+that still lets the student reason about the chapter's core ideas.
+- A dropped KP simply does not appear in any scope's "kp_ids". You do \
+not need to justify drops; unlisted KPs are implicitly skipped.
+- The set of kp_ids across all scopes MUST be a subset of the knowledge \
+points shown above. Each KP that you keep appears in exactly one scope.
+
+Size and shape:
+- Group by theme and pedagogical progression, NOT by the order KPs \
+appeared in the source. A scope may contain as few as 1 KP when the \
+idea stands alone, or up to ~6 when they form one tight cluster. Err on \
+the smaller side — the student should not have to read too much at once.
+- Ordering of scopes should reflect how a teacher would unfold the \
+material, not the page order of the source.
 
 For each scope, provide:
-- "title": a short human-readable label (3-8 words) naming the concept \
-cluster.
-- "kp_ids": the ordered list of knowledge-point IDs in this scope (use \
-the IDs shown in the knowledge-points list above, exactly as given).
-- "anchor_hint": a short phrase that will help the reader locate the \
+- "title": a short human-readable label (3-8 words) naming the idea.
+- "kp_ids": ordered list of knowledge-point IDs in this scope, using \
+the exact IDs shown above.
+- "anchor_hint": a short phrase that helps the reader locate the \
 starting passage in the chapter.
 
 Output ONLY a JSON array — no surrounding prose, no markdown fences. Example:
 
 [
-  {"title": "Newton's laws, intuition first", "kp_ids": ["...","...","..."], "anchor_hint": "..."},
-  {"title": "Friction as a special force", "kp_ids": ["...","..."], "anchor_hint": "..."}
+  {"title": "Newton's laws, intuition first", "kp_ids": ["...","..."], "anchor_hint": "..."},
+  {"title": "Friction as a special force", "kp_ids": ["..."], "anchor_hint": "..."}
 ]
 
 Keep titles in the student's teaching language.\

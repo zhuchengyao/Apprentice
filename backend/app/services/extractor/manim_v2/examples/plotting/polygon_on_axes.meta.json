@@ -1,0 +1,8 @@
+{
+  "id": "polygon_on_axes",
+  "category": "plotting",
+  "difficulty": 2,
+  "summary": "Draw a polygon on coordinate axes and animate its size via a ValueTracker + always_redraw.",
+  "tags": ["polygon", "axes", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "Polygon", "ValueTracker", "always_redraw", "Axes.c2p"]
+}

@@ -1,0 +1,8 @@
+{
+  "id": "arg_min_example",
+  "category": "plotting",
+  "difficulty": 3,
+  "summary": "Drive a Dot along a parabola toward its minimum via ValueTracker; live x and f(x) labels update with always_redraw.",
+  "tags": ["value_tracker", "minimum", "optimization", "plot", "updater"],
+  "apis": ["ValueTracker", "Axes.plot", "always_redraw", "Axes.c2p", "Dot", "MathTex"]
+}

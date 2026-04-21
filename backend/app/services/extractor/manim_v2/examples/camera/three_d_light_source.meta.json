@@ -1,0 +1,8 @@
+{
+  "id": "three_d_light_source",
+  "category": "camera",
+  "difficulty": 3,
+  "summary": "Render a saddle Surface with a repositioned light source for clearer 3D shading.",
+  "tags": ["3d", "surface", "lighting", "three_d_scene"],
+  "apis": ["ThreeDScene", "Surface", "light_source", "set_camera_orientation", "set_fill_by_checkerboard"]
+}

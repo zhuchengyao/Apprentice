@@ -1,0 +1,8 @@
+{
+  "id": "transform_matching_tex",
+  "category": "advanced",
+  "difficulty": 2,
+  "summary": "Rearrange the Pythagorean identity with TransformMatchingTex so matching terms move instead of fading.",
+  "tags": ["transform_matching_tex", "equations", "rearrangement", "algebra"],
+  "apis": ["MathTex", "TransformMatchingTex", "Write"]
+}

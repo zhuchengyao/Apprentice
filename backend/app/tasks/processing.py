@@ -18,7 +18,7 @@ from app.constants import (
 )
 from app.models.book import Book, BookPage, BookStatus, Chapter, Section, KnowledgePoint
 from app.services.ai_context import ai_user_context
-from app.services.extractor.manim_illustration import (
+from app.services.extractor.manim_v2 import (
     ManimInput,
     ManimOutcome,
     generate_manim_batch,

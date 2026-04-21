@@ -57,7 +57,9 @@
       "Bash(.venv/bin/python *)",
       "Bash(.venv/bin/pip list *)",
       "WebFetch(domain:docs.manim.community)",
-      "WebFetch(domain:3b1b.github.io)"
+      "WebFetch(domain:3b1b.github.io)",
+      "Bash(tee /tmp/manim_v2_smoke.log)",
+      "Read(//private/tmp/**)"
     ]
   }
 }

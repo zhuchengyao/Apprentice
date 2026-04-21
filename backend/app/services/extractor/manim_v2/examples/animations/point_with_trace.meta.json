@@ -1,0 +1,8 @@
+{
+  "id": "point_with_trace",
+  "category": "animations",
+  "difficulty": 3,
+  "summary": "Draw a persistent trace behind a moving Dot by appending its center to a VMobject every frame.",
+  "tags": ["trace", "updater", "vmobject", "path", "orbit"],
+  "apis": ["VMobject", "set_points_as_corners", "add_updater", "clear_updaters", "Rotating"]
+}

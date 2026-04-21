@@ -90,10 +90,15 @@ def _fallback_plan(kps: list[KnowledgePoint]) -> list[ScopePlan]:
 
 def _validate_plan(
     raw_plans: list[dict], kps: list[KnowledgePoint]
-) -> list[ScopePlan] | None:
-    """Ensure the LLM output covers every KP exactly once and nothing extra.
+) -> tuple[list[ScopePlan], set[str]] | None:
+    """Validate the LLM plan and return (scopes, dropped_kp_ids).
 
-    Returns None if the plan is unusable (we fall back to the heuristic chunker).
+    The LLM is explicitly allowed to drop KPs it judges as trivia, redundant,
+    or tangential — any KP not assigned to a scope ends up in `dropped`.
+    Returns None only when the plan is structurally unusable (not a list of
+    non-empty scope dicts, references to unknown KP ids, duplicate KP
+    assignments, or zero scopes), in which case the caller falls back to
+    the heuristic chunker that covers every KP.
     """
     valid_kp_ids = {str(kp.id) for kp in kps}
     seen: set[str] = set()
@@ -112,9 +117,10 @@ def _validate_plan(
             seen.add(kp_id)
         anchor_hint = str(entry.get("anchor_hint", "")).strip()
         validated.append(ScopePlan(title=title[:120], kp_ids=kp_ids, anchor_hint=anchor_hint[:200]))
-    if seen != valid_kp_ids:
+    if not validated:
         return None
-    return validated
+    dropped = valid_kp_ids - seen
+    return validated, dropped
 
 
 async def plan_scopes(
@@ -181,9 +187,17 @@ async def plan_scopes(
     if not isinstance(parsed, list):
         return _fallback_plan(kps)
 
-    validated = _validate_plan(parsed, kps)
-    if validated is None:
-        logger.warning("plan_scopes: plan did not cover KP set, using fallback.")
+    result = _validate_plan(parsed, kps)
+    if result is None:
+        logger.warning("plan_scopes: plan structurally invalid, using fallback.")
         return _fallback_plan(kps)
 
+    validated, dropped = result
+    total = len(kps)
+    logger.info(
+        "plan_scopes: chapter=%s kps_total=%d kps_kept=%d kps_dropped=%d scopes=%d drop_rate=%.2f dropped_ids=%s",
+        getattr(chapter, "id", "?"), total, total - len(dropped), len(dropped),
+        len(validated), (len(dropped) / total) if total else 0.0,
+        sorted(dropped)[:10],
+    )
     return validated

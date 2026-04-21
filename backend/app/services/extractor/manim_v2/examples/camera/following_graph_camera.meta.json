@@ -1,0 +1,8 @@
+{
+  "id": "following_graph_camera",
+  "category": "camera",
+  "difficulty": 3,
+  "summary": "Use MovingCameraScene: zoom in, follow a Dot along a linear graph, then restore the camera.",
+  "tags": ["moving_camera", "zoom", "follow", "plot"],
+  "apis": ["MovingCameraScene", "camera.frame", "save_state", "Restore", "Axes", "Dot"]
+}

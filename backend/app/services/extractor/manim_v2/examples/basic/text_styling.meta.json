@@ -1,0 +1,8 @@
+{
+  "id": "text_styling",
+  "category": "basic",
+  "difficulty": 1,
+  "summary": "Render styled Text with per-word colors/slant/weight plus a MathTex equation.",
+  "tags": ["text", "typography", "styling", "mathtex"],
+  "apis": ["Text", "MathTex", "t2c", "t2s", "t2w", "weight", "ITALIC", "BOLD"]
+}

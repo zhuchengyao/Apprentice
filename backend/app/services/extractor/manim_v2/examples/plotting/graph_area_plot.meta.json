@@ -1,0 +1,8 @@
+{
+  "id": "graph_area_plot",
+  "category": "plotting",
+  "difficulty": 2,
+  "summary": "Shade the area under a curve with get_area, then morph it into Riemann rectangles.",
+  "tags": ["integral", "riemann", "area_under_curve", "plot"],
+  "apis": ["Axes", "Axes.plot", "get_area", "get_riemann_rectangles", "ReplacementTransform"]
+}

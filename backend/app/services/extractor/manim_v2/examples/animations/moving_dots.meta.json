@@ -1,0 +1,8 @@
+{
+  "id": "moving_dots",
+  "category": "animations",
+  "difficulty": 2,
+  "summary": "Track two moving dots; a connecting Line and a live distance² label update via always_redraw.",
+  "tags": ["updater", "always_redraw", "dots", "line_tracking", "distance"],
+  "apis": ["Dot", "Line", "always_redraw", "DecimalNumber", "Mobject.animate"]
+}

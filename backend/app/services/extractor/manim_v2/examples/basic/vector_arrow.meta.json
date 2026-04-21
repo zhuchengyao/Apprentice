@@ -1,0 +1,8 @@
+{
+  "id": "vector_arrow",
+  "category": "basic",
+  "difficulty": 1,
+  "summary": "Draw a 2D vector as an Arrow over a NumberPlane, with a MathTex label pointing to the tip.",
+  "tags": ["vector", "number_plane", "arrow", "coordinates", "2d"],
+  "apis": ["NumberPlane", "Dot", "Arrow", "GrowArrow", "MathTex", "next_to"]
+}
