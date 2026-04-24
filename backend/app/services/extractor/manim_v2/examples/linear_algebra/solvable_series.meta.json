@@ -1,8 +1,0 @@
-{
-  "id": "solvable_series",
-  "category": "linear_algebra",
-  "difficulty": 3,
-  "summary": "COMPARISON: LEFT S_4 normal series S_4 ⊃ A_4 ⊃ V_4 ⊃ {e} as 4 nested circles with color-coded labels and quotient Z_2, Z_3, Z_2×Z_2 all abelian ⇒ solvable. RIGHT S_5 chain stops at A_5 (simple group). ValueTracker step_tr reveals both chains in parallel via always_redraw.",
-  "tags": ["galois", "solvable_group", "normal_series", "value_tracker", "always_redraw"],
-  "apis": ["Circle", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
-}

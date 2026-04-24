@@ -1,9 +1,0 @@
-{
-  "id": "arbitrary_grid_is_choice",
-  "category": "linear_algebra",
-  "difficulty": 2,
-  "summary": "SINGLE_FOCUS: standard basis + Jenny's basis b_1=(2, 1), b_2=(-1, 1). GREEN î, RED ĵ fixed; ValueTracker s_tr fades in BLUE/PURPLE Jenny grid lines + basis arrows.",
-  "tags": ["basis_choice", "coordinate_system", "jenny_basis", "value_tracker", "always_redraw"],
-  "apis": ["NumberPlane", "Arrow", "Line", "VGroup", "ValueTracker", "always_redraw", "Tex"],
-  "source": "3b1b/_2016/eola/chapter9.py::ShowGrid+JennysGrid+SpaceHasNoGrid"
-}

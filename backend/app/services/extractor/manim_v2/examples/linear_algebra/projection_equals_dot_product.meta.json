@@ -1,9 +1,0 @@
-{
-  "id": "projection_equals_dot_product",
-  "category": "linear_algebra",
-  "difficulty": 2,
-  "summary": "SINGLE_FOCUS: |proj_û v| = v·û for unit û. BLUE v=(2.5, 1.2) fixed; YELLOW û rotated via ValueTracker u_angle_tr. always_redraw û arrow + line + PINK projection arrow + GREY dashed drop. Live projection length (PINK) and v·û (GREEN) — always equal.",
-  "tags": ["projection", "dot_product_identity", "unit_vector", "duality_key", "value_tracker", "always_redraw"],
-  "apis": ["NumberPlane", "Arrow", "Line", "DashedLine", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"],
-  "source": "3b1b/_2016/eola/chapter7.py::ScaleUpUHat+TranslateToTheWorldOfTransformations+UnderstandingProjection"
-}

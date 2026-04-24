@@ -1,9 +1,0 @@
-{
-  "id": "columns_span_full_rank",
-  "category": "linear_algebra",
-  "difficulty": 3,
-  "summary": "ThreeDScene: 3D columns full rank vs rank 2. ValueTracker s_tr morphs A_full (det≠0) → A_rank2 (third col = col1+col2, det=0). GREEN/ORANGE/BLUE column arrows + YELLOW parallelepiped collapsing to RED flat. Live s, det. Ambient camera rotation.",
-  "tags": ["column_span", "full_rank", "parallelepiped_collapse", "3d_rank", "value_tracker", "always_redraw"],
-  "apis": ["ThreeDAxes", "Arrow3D", "Polygon", "VGroup", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"],
-  "source": "3b1b/_2016/eola/chapter6.py::ThreeDColumnsDontSpan+NameFullRank"
-}

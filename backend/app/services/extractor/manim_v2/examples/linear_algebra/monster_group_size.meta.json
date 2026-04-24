@@ -1,8 +1,0 @@
-{
-  "id": "monster_group_size",
-  "category": "linear_algebra",
-  "difficulty": 2,
-  "summary": "SINGLE_FOCUS log10-scale number line 0..80. Fixed markers for Z12, S5, S9, Avogadro, Mathieu M24, atoms-in-universe, and Monster group at log10(8e53)≈53.9. ValueTracker k_tr sweeps cursor from 0→80 with always_redraw cursor bar + reading 10^k.",
-  "tags": ["monster_group", "large_numbers", "log_scale", "value_tracker", "always_redraw"],
-  "apis": ["NumberLine", "Line", "Dot", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
-}

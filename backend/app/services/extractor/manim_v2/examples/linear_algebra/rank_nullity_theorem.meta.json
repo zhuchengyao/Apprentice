@@ -1,8 +1,0 @@
-{
-  "id": "rank_nullity_theorem",
-  "category": "linear_algebra",
-  "difficulty": 3,
-  "summary": "SINGLE_FOCUS: BLUE 3×3 matrix A = [[1,2,3], [2,4,6], [1,1,1]] (rank 2) + ORANGE null-vector v=(1,-2,1) + GREEN product Av = 0. ValueTracker step_tr reveals rank=2, nullity=1, rank+nullity=3=dim V.",
-  "tags": ["rank_nullity", "null_space", "value_tracker", "always_redraw"],
-  "apis": ["Square", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
-}

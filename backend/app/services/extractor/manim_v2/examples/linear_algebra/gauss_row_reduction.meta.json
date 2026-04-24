@@ -1,8 +1,0 @@
-{
-  "id": "gauss_row_reduction",
-  "category": "linear_algebra",
-  "difficulty": 2,
-  "summary": "Row-reduce a 3×4 augmented matrix step by step via two elementary row operations, landing in upper-triangular form and back-substituting.",
-  "tags": ["gaussian_elimination", "row_reduction", "matrix", "linear_system", "echelon"],
-  "apis": ["Matrix", "Transform", "MathTex", "Text"]
-}

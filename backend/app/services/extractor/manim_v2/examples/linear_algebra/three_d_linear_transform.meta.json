@@ -1,8 +1,0 @@
-{
-  "id": "three_d_linear_transform",
-  "category": "linear_algebra",
-  "difficulty": 2,
-  "summary": "Apply a 3×3 matrix to i-hat, j-hat, k-hat — each basis arrow moves to the corresponding matrix column, showing a 3D linear transformation.",
-  "tags": ["3d", "linear_transform", "basis", "matrix", "column"],
-  "apis": ["ThreeDScene", "ThreeDAxes", "Arrow3D", "Transform", "MathTex", "add_fixed_in_frame_mobjects"]
-}

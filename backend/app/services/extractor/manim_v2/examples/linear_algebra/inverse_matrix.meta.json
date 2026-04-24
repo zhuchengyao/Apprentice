@@ -1,8 +1,0 @@
-{
-  "id": "inverse_matrix",
-  "category": "linear_algebra",
-  "difficulty": 2,
-  "summary": "Apply A then A^(-1) to the unit square and plane, confirming the round trip returns to the identity (A A^{-1} = I).",
-  "tags": ["inverse", "matrix", "identity", "linear_transform"],
-  "apis": ["NumberPlane", "Polygon", "ApplyMatrix", "Transform", "MathTex"]
-}

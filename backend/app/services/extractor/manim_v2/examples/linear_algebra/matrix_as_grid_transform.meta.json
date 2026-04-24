@@ -1,8 +1,0 @@
-{
-  "id": "matrix_as_grid_transform",
-  "category": "linear_algebra",
-  "difficulty": 2,
-  "summary": "Apply a 2x2 matrix to a coordinate grid with ApplyMatrix, showing the whole plane being linearly transformed while the formula is shown in the corner.",
-  "tags": ["matrix", "linear_transform", "2d", "grid", "number_plane"],
-  "apis": ["NumberPlane", "ApplyMatrix", "MathTex", "Mobject.add_background_rectangle"]
-}

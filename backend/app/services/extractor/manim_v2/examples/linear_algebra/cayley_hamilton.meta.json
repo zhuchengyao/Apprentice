@@ -1,8 +1,0 @@
-{
-  "id": "cayley_hamilton",
-  "category": "linear_algebra",
-  "difficulty": 3,
-  "summary": "SINGLE_FOCUS: 4 2×2 matrices shown as colored grids for A=[[2,1],[1,3]], A², -tr(A)A, det(A)I; bottom row shows sum = 0 matrix (Cayley-Hamilton). ValueTracker step_tr reveals one matrix at a time via always_redraw + panel with tr=5, det=5.",
-  "tags": ["cayley_hamilton", "characteristic_polynomial", "value_tracker", "always_redraw"],
-  "apis": ["Square", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
-}

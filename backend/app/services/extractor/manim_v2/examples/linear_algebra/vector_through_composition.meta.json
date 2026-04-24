@@ -1,9 +1,0 @@
-{
-  "id": "vector_through_composition",
-  "category": "linear_algebra",
-  "difficulty": 2,
-  "summary": "SINGLE_FOCUS: single YELLOW vector v=(2, 3) traced through SR composition. ValueTracker stage_tr ∈ [0, 2]: v → Rv=(-3, 2) → SRv=(-1, 2). always_redraw arrow + dot + faded GREEN î, RED ĵ also transforming. BLUE/GREEN/RED static waypoint dots with labels v, Rv, SRv.",
-  "tags": ["composition", "vector_tracking", "rotation_shear", "matrix_product", "value_tracker", "always_redraw"],
-  "apis": ["NumberPlane", "Arrow", "Dot", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"],
-  "source": "3b1b/_2016/eola/chapter4.py::PumpVectorThroughRotationThenShear"
-}

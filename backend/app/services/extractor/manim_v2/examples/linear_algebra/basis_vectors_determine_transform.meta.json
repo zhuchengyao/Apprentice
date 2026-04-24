@@ -1,9 +1,0 @@
-{
-  "id": "basis_vectors_determine_transform",
-  "category": "linear_algebra",
-  "difficulty": 2,
-  "summary": "SINGLE_FOCUS: linear transformation determined by T(î), T(ĵ). Fixed v=(-1, 2). ValueTracker s_tr ∈ [0, 2]: stage 0-1 moves GREEN î from (1, 0) to (2, 2); stage 1-2 moves RED ĵ from (0, 1) to (-2, 1). YELLOW v image = -1·î + 2·ĵ recomputed live by linearity via always_redraw.",
-  "tags": ["basis_vectors", "linear_transformation", "determination_by_basis", "linearity", "value_tracker", "always_redraw"],
-  "apis": ["NumberPlane", "Arrow", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"],
-  "source": "3b1b/_2016/eola/chapter4.py::DeterminedByTwoBasisVectors"
-}

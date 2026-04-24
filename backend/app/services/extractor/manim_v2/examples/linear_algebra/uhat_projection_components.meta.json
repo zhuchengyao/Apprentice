@@ -1,9 +1,0 @@
-{
-  "id": "uhat_projection_components",
-  "category": "linear_algebra",
-  "difficulty": 3,
-  "summary": "TWO_COLUMN: projecting GREEN î and RED ĵ onto YELLOW unit vector û at 35° yields projection lengths u_x, u_y (û's components). LEFT plane with drops + projection arrows. RIGHT: algebraic explanation î·û=u_x, ĵ·û=u_y, so projection matrix = [u_x, u_y].",
-  "tags": ["projection", "basis_components", "unit_vector", "1x2_matrix_derivation"],
-  "apis": ["NumberPlane", "Arrow", "Line", "DashedLine", "Matrix", "MathTex", "VGroup", "Tex"],
-  "source": "3b1b/_2016/eola/chapter7.py::ProjectBasisVectors+ShowSingleProjection+UHatIsTransformInDisguise"
-}

@@ -1,9 +1,0 @@
-{
-  "id": "noninvertible_no_function",
-  "category": "linear_algebra",
-  "difficulty": 2,
-  "summary": "SINGLE_FOCUS: when det=0, multiple inputs collapse to same output — no inverse function exists. A=[[2, 1], [-2, -1]], det=0. 17 input vectors (x+2, x) for x∈[-4, 4, step 0.5] colored PINK→YELLOW. ValueTracker forward collapses all to same (4, 2); reverse shows they were distinct.",
-  "tags": ["noninvertible", "determinant_zero", "many_to_one", "no_inverse", "value_tracker", "always_redraw"],
-  "apis": ["NumberPlane", "Arrow", "VGroup", "ValueTracker", "always_redraw", "Tex"],
-  "source": "3b1b/_2016/eola/chapter6.py::InvertNonInvertable+OneInputMultipleOutputs"
-}

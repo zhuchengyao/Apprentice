@@ -1,9 +1,0 @@
-{
-  "id": "derivative_is_linear_operator",
-  "category": "linear_algebra",
-  "difficulty": 2,
-  "summary": "SINGLE_FOCUS: derivative as linear operator. Additivity d/dx (f+g) = df/dx + dg/dx. Scaling d/dx (cf) = c·df/dx. Arrow to conclusion: derivative is linear transformation on function space.",
-  "tags": ["derivative", "linear_operator", "linearity_axioms", "function_space"],
-  "apis": ["MathTex", "Arrow", "Tex"],
-  "source": "3b1b/_2016/eola/chapter11.py::DerivativeIsLinear+FormalDefinitionOfLinear"
-}

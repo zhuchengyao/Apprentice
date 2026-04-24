@@ -1,9 +1,0 @@
-{
-  "id": "functions_as_vectors_addition",
-  "category": "linear_algebra",
-  "difficulty": 2,
-  "summary": "SINGLE_FOCUS: functions as vectors with pointwise addition. f=sin x (BLUE), g=(1/2)cos 2x (ORANGE), f+g (GREEN). ValueTracker x_tr sweeps probe with always_redraw BLUE/ORANGE/GREEN tracking dots on each curve at current x + GREY vertical line.",
-  "tags": ["function_space", "pointwise_addition", "abstract_vector", "value_tracker", "always_redraw"],
-  "apis": ["Axes", "ParametricFunction", "Dot", "DashedLine", "VGroup", "ValueTracker", "always_redraw", "Tex"],
-  "source": "3b1b/_2016/eola/chapter11.py::AddTwoFunctions+AddVectorsCoordinateByCoordinate"
-}

@@ -1,8 +1,0 @@
-{
-  "id": "jordan_normal_form",
-  "category": "linear_algebra",
-  "difficulty": 3,
-  "summary": "SINGLE_FOCUS: LEFT GREEN matrix A = P J P^(-1) for random P; RIGHT YELLOW/ORANGE Jordan form J = J_2(2) ⊕ J_2(2) with flashing ORANGE superdiagonal 1s. GREEN highlighted 2×2 Jordan blocks. ValueTracker s_tr drives the pulsing highlight via always_redraw.",
-  "tags": ["jordan_normal_form", "generalized_eigenvector", "similar_matrices", "value_tracker", "always_redraw"],
-  "apis": ["Square", "Rectangle", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
-}

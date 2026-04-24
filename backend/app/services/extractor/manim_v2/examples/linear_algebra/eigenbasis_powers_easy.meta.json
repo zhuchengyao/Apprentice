@@ -1,9 +1,0 @@
-{
-  "id": "eigenbasis_powers_easy",
-  "category": "linear_algebra",
-  "difficulty": 3,
-  "summary": "COMPARISON: non-diagonal vs diagonal matrix powers. ORANGE LHS shows [[3, 1], [0, 2]]^4 requires computation; GREEN RHS diag(3, 2)^4 = diag(81, 16) trivial. Bottom YELLOW insight: A=PDP^(-1) ⇒ A^k = P D^k P^(-1).",
-  "tags": ["diagonalization", "matrix_powers", "eigenbasis", "computational_benefit"],
-  "apis": ["MathTex", "Tex"],
-  "source": "3b1b/_2016/eola/chapter10.py::RepeatedMultiplicationInAction+RepeatedMultilpicationOfMatrices+RepeatedMultilpicationOfNonDiagonalMatrices"
-}

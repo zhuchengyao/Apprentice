@@ -1,9 +1,0 @@
-{
-  "id": "rotation_inverse_demo",
-  "category": "linear_algebra",
-  "difficulty": 1,
-  "summary": "SINGLE_FOCUS: 90° CCW rotation followed by 90° CW inverse. 2-stage ValueTracker: identity → R_ccw → R_cw·R_ccw = I. always_redraw BLUE/ORANGE grid + GREEN î / RED ĵ. Stage labels. Right panel shows R and R^(-1) matrices.",
-  "tags": ["rotation_inverse", "orthogonal_matrix", "rotation_90", "inverse_example", "value_tracker", "always_redraw"],
-  "apis": ["NumberPlane", "VMobject", "Arrow", "ValueTracker", "always_redraw", "add_updater", "Tex"],
-  "source": "3b1b/_2016/eola/chapter6.py::ClockwiseCounterclockwise"
-}

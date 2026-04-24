@@ -1,9 +1,0 @@
-{
-  "id": "null_space_offset_solutions",
-  "category": "linear_algebra",
-  "difficulty": 3,
-  "summary": "SINGLE_FOCUS: solution set of Ax=v when det=0. A=[[1, -1], [-1, 1]], v=(2, -2), x_0=(1, -1). YELLOW null-space line (dir (1, 1)) through origin; GREEN solution line (null shifted by x_0) with 5 sample solution dots. Linearity proof A(x_0+n) = v + 0 = v.",
-  "tags": ["null_space", "particular_plus_homogeneous", "affine_solution_set", "linearity", "geometric"],
-  "apis": ["NumberPlane", "Arrow", "Line", "Dot", "VGroup", "Tex"],
-  "source": "3b1b/_2016/eola/chapter6.py::OffsetNullSpace+AddJustOneNullSpaceVector+NullSpaceOffsetRule"
-}

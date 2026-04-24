@@ -1,8 +1,0 @@
-{
-  "id": "linearly_dependent",
-  "category": "linear_algebra",
-  "difficulty": 2,
-  "summary": "SINGLE_FOCUS: NumberPlane with fixed v (green) and rotating w (orange/red). ValueTracker θ rotates w through 5 angles including parallel and antiparallel positions. Yellow shaded parallelogram of vw collapses to a line at degeneracy. Right column has live angle, det, span (line vs ℝ²), and status (dependent/independent in red/green).",
-  "tags": ["linear_independence", "span", "determinant", "value_tracker", "always_redraw"],
-  "apis": ["NumberPlane", "Arrow", "Line", "Polygon", "ValueTracker", "always_redraw", "MathTex", "Tex"]
-}

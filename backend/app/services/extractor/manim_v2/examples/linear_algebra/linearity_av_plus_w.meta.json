@@ -1,9 +1,0 @@
-{
-  "id": "linearity_av_plus_w",
-  "category": "linear_algebra",
-  "difficulty": 1,
-  "summary": "SINGLE_FOCUS: linearity A(v+w)=Av+Aw. A=[[1, 0.5], [-1, 1]], v=(2, -1), w=(1, 2). ValueTracker stage_tr applies A; YELLOW Av arrow + MAROON Aw arrow tip-to-tail from Av + PINK A(v+w) arrow from origin. Labels always_redraw. Bottom formula with color-matched terms.",
-  "tags": ["linearity", "additivity", "tip_to_tail", "linear_map", "value_tracker", "always_redraw"],
-  "apis": ["NumberPlane", "Arrow", "MathTex", "ValueTracker", "always_redraw", "Tex"],
-  "source": "3b1b/_2016/eola/chapter6.py::ShowAdditivityProperty"
-}

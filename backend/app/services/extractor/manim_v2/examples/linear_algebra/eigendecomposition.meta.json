@@ -1,8 +1,0 @@
-{
-  "id": "eigendecomposition",
-  "category": "linear_algebra",
-  "difficulty": 3,
-  "summary": "TWO_COLUMN: ValueTracker s morphs M(s) = (1−s)·I + s·A from identity to A=[[3,1],[0,2]]; the two eigenvector arrows (v₁ green, v₂ orange) stretch along their persistent eigenspace lines while a generic yellow vector both rotates and scales. Right column shows live M(s) matrix, the (vᵢ, λᵢ) pairs, and the A = P D P⁻¹ decomposition.",
-  "tags": ["eigendecomposition", "eigenvector", "eigenvalue", "value_tracker", "diagonalization"],
-  "apis": ["NumberPlane", "ValueTracker", "always_redraw", "Arrow", "Line", "MathTex", "numpy"]
-}

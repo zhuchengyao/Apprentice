@@ -1,8 +1,0 @@
-{
-  "id": "matrix_basis_vectors",
-  "category": "linear_algebra",
-  "difficulty": 2,
-  "summary": "Show i-hat and j-hat as colored arrows that move to the columns of a 2x2 matrix as the grid transforms, making the 'matrix = where basis vectors land' intuition visual.",
-  "tags": ["basis", "matrix", "linear_transform", "i_hat", "j_hat", "vectors"],
-  "apis": ["NumberPlane", "Arrow", "MathTex", "ApplyMatrix", "Transform", "Mobject.animate"]
-}

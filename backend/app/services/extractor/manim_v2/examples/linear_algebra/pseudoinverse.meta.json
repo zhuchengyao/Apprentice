@@ -1,8 +1,0 @@
-{
-  "id": "pseudoinverse",
-  "category": "linear_algebra",
-  "difficulty": 3,
-  "summary": "TWO_COLUMN: Moore-Penrose pseudoinverse for 2×3 A under-determined Ax=b. LEFT axonometric 3D axes with RED x_LS=A^+ b and YELLOW solution line x(t)=x_LS+t·n where n spans ker A. ValueTracker t_tr sweeps t through {1.5, -1.5, 0.8, -0.8, 0}. always_redraw YELLOW dot on line. RIGHT has live t, ‖x(t)‖ (minimized at t=0), ‖Ax-b‖ (always 0).",
-  "tags": ["pseudoinverse", "least_squares", "minimum_norm", "kernel", "value_tracker", "always_redraw"],
-  "apis": ["ThreeDAxes", "Arrow", "Dot", "VMobject", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"]
-}

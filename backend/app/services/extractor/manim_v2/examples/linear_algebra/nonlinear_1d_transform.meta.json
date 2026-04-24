@@ -1,8 +1,0 @@
-{
-  "id": "nonlinear_1d_transform",
-  "category": "linear_algebra",
-  "difficulty": 2,
-  "summary": "Apply x -> sin(x) + x to a tick-marked axis so integer spacing is visibly unequal afterward, demonstrating a nonlinear 1D transform.",
-  "tags": ["nonlinear", "1d", "transform", "counterexample", "spacing"],
-  "apis": ["Line", "Dot", "VGroup", "MathTex", "ApplyPointwiseFunction", "Mobject.animate"]
-}

@@ -1,9 +1,0 @@
-{
-  "id": "everywhere_scales_by_same_factor",
-  "category": "linear_algebra",
-  "difficulty": 2,
-  "summary": "SINGLE_FOCUS: A=[[1, -1], [0.5, 1]] (det=1.5) applied to 6 colored squares of different sizes at different positions. ValueTracker t_tr morphs identity→A via always_redraw Polygon list; each square's area scales by exactly 1.5 regardless of size/location.",
-  "tags": ["determinant", "uniform_area_scaling", "multiple_shapes", "linear_transformation", "value_tracker", "always_redraw"],
-  "apis": ["NumberPlane", "Polygon", "VGroup", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"],
-  "source": "3b1b/_2016/eola/chapter5.py::WhatHappensToOneSquareHappensToAll"
-}

@@ -1,8 +1,0 @@
-{
-  "id": "gram_schmidt_process",
-  "category": "linear_algebra",
-  "difficulty": 2,
-  "summary": "SINGLE_FOCUS 2D Gram-Schmidt on v_1=(3, 1), v_2=(1, 2). ValueTracker stage_tr ∈ [0, 3.5] reveals: BLUE v_1, GREEN v_2 → YELLOW u_1 (normalized) → ORANGE projection (v_2·u_1)u_1 with dashed drop → PURPLE w_2=v_2-proj → RED u_2 (normalized). All arrows via always_redraw. u_1·u_2=0 verified live.",
-  "tags": ["gram_schmidt", "orthonormalization", "projection", "qr_factorization", "value_tracker", "always_redraw"],
-  "apis": ["NumberPlane", "Arrow", "DashedLine", "VMobject", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"]
-}

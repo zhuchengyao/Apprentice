@@ -1,9 +1,0 @@
-{
-  "id": "composition_as_matrix_multiplication",
-  "category": "linear_algebra",
-  "difficulty": 2,
-  "summary": "SINGLE_FOCUS: derive why composition = matrix multiplication. S(Rv) regrouped as (SR)v; define 'SR = composition'. Green RTL arrow with animated dot (via ValueTracker t_tr) emphasizes 'read right-to-left', paired with f(g(x)) ORANGE analogy. Stages reveal sequentially via Write/GrowArrow.",
-  "tags": ["composition", "matrix_multiplication", "right_to_left", "function_composition", "value_tracker", "always_redraw"],
-  "apis": ["MathTex", "Arrow", "Dot", "ValueTracker", "always_redraw", "Tex"],
-  "source": "3b1b/_2016/eola/chapter4.py::ExplainWhyItsMatrixMultiplication"
-}

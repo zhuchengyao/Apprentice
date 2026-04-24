@@ -1,8 +1,0 @@
-{
-  "id": "rotation_matrix_2d",
-  "category": "linear_algebra",
-  "difficulty": 1,
-  "summary": "TWO_COLUMN: NumberPlane with RED ê_1 and BLUE ê_2 orthogonal basis arrows that rotate together as ValueTracker θ_tr sweeps 0→2π via always_redraw; YELLOW arc marks angle. RIGHT panel shows live 2×2 matrix R(θ) with cos/sin entries, ê_1·ê_2 = 0 check (machine epsilon), det R = 1.",
-  "tags": ["rotation_matrix", "2d_basis", "orthogonal", "value_tracker", "always_redraw"],
-  "apis": ["NumberPlane", "Arrow", "Arc", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
-}

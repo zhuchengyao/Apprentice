@@ -1,8 +1,0 @@
-{
-  "id": "rotation_composition",
-  "category": "linear_algebra",
-  "difficulty": 1,
-  "summary": "SINGLE_FOCUS: NumberPlane with BLUE ê_1 fixed + GREEN R(α)ê_1 + YELLOW R(β)R(α)ê_1 + ORANGE R(α+β)ê_1. ValueTrackers α_tr and β_tr tour through 4 configurations; always_redraw all arrows; YELLOW and ORANGE coincide visually, verifying R(α)R(β) = R(α+β).",
-  "tags": ["rotation_matrix", "composition", "value_tracker", "always_redraw"],
-  "apis": ["NumberPlane", "Arrow", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
-}

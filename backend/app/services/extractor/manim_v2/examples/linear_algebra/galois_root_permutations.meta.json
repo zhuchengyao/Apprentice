@@ -1,8 +1,0 @@
-{
-  "id": "galois_root_permutations",
-  "category": "linear_algebra",
-  "difficulty": 3,
-  "summary": "SINGLE_FOCUS NumberLine with BLUE ±√2 dots and GREEN ±√3 dots labeled via MathTex. Bottom split panel: LEFT GREEN 'Allowed' lists {e, σ: √2↔-√2, τ: √3↔-√3, στ} — the Klein four-group; RIGHT RED 'Forbidden' shows √2↔√3 with reason (√2)²=2≠3. Bottom conclusion Gal(Q(√2,√3)/Q) ≅ Z_2 × Z_2 = V_4 in YELLOW SurroundingRectangle.",
-  "tags": ["galois_theory", "root_permutations", "klein_four_group", "field_automorphism", "algebraic_extension"],
-  "apis": ["NumberLine", "Dot", "MathTex", "Tex", "VGroup", "SurroundingRectangle", "LaggedStart", "FadeIn", "Write", "Create", "numpy"]
-}

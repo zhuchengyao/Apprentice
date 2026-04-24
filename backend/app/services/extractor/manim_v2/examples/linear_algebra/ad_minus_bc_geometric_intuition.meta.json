@@ -1,9 +1,0 @@
-{
-  "id": "ad_minus_bc_geometric_intuition",
-  "category": "linear_algebra",
-  "difficulty": 3,
-  "summary": "SINGLE_FOCUS: geometric derivation of ad-bc via 4-stage transformation sequence on unit square. a=3, b=1.5, c=0.5, d=2. ValueTracker stage_tr ∈ [0, 4]: stretch î by a, stretch ĵ by d, shear ĵ by b, shear î by c. always_redraw square + arrows + live det. Final det = ad-bc = 5.25.",
-  "tags": ["ad_minus_bc", "geometric_derivation", "shear_stretch_sequence", "unit_square", "value_tracker", "always_redraw"],
-  "apis": ["NumberPlane", "Polygon", "Arrow", "DecimalNumber", "ValueTracker", "always_redraw", "add_updater", "Tex"],
-  "source": "3b1b/_2016/eola/chapter5.py::TwoDDeterminantFormulaIntuition"
-}

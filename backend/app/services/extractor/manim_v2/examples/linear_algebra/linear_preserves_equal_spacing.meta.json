@@ -1,9 +1,0 @@
-{
-  "id": "linear_preserves_equal_spacing",
-  "category": "linear_algebra",
-  "difficulty": 2,
-  "summary": "TWO_COLUMN: 9 evenly-spaced BLUE→PINK dots along line y=x/2+0.5 mapped to number line. ValueTracker map_tr morphs L(x, y)=x+y (linear, spacing preserved) → N(x, y)=x²-y² (non-linear, spacing breaks) via always_redraw output dots. Dynamic label describes map.",
-  "tags": ["linearity_signature", "equal_spacing", "non_linear_contrast", "2d_to_1d", "value_tracker", "always_redraw"],
-  "apis": ["NumberPlane", "NumberLine", "Dot", "VGroup", "ValueTracker", "always_redraw", "add_updater", "Tex"],
-  "source": "3b1b/_2016/eola/chapter7.py::ThisTwoDTo1DTransformWithDots+NonLinearFailsDotTest"
-}

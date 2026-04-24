@@ -1,8 +1,0 @@
-{
-  "id": "cramers_rule",
-  "category": "linear_algebra",
-  "difficulty": 2,
-  "summary": "TWO_COLUMN: parallelogram of A's columns on the left plane Transforms first into A_x parallelogram (column 1 replaced by b) and then into A_y parallelogram (column 2 replaced by b). Right column shows the system, |det A|, |det A_x|, x = 4/3, |det A_y|, y = 1/3 in sync with the visual.",
-  "tags": ["cramers_rule", "determinant_ratio", "parallelogram", "transform", "linear_system"],
-  "apis": ["NumberPlane", "Polygon", "Transform", "Arrow", "FadeIn", "FadeOut", "MathTex"]
-}

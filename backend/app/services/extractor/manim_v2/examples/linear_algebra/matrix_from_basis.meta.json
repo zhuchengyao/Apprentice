@@ -1,8 +1,0 @@
-{
-  "id": "matrix_from_basis",
-  "category": "linear_algebra",
-  "difficulty": 2,
-  "summary": "Show i-hat landing at (3,1) and j-hat landing at (1,2) so the matrix columns literally ARE those landing points.",
-  "tags": ["matrix", "basis", "transformation", "columns"],
-  "apis": ["NumberPlane", "Arrow", "ApplyMatrix", "Transform", "MathTex"]
-}

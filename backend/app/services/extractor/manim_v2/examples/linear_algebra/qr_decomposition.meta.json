@@ -1,8 +1,0 @@
-{
-  "id": "qr_decomposition",
-  "category": "linear_algebra",
-  "difficulty": 2,
-  "summary": "SINGLE_FOCUS: NumberPlane with BLUE a_1=(3,1) and GREEN a_2=(1,2). ValueTracker step_tr reveals Gram-Schmidt stages: YELLOW e_1=a_1/‖a_1‖, ORANGE projection of a_2 onto e_1, PURPLE u_2 = a_2 - proj, RED e_2 = u_2/‖u_2‖. Formula captions rotate per step.",
-  "tags": ["qr_decomposition", "gram_schmidt", "value_tracker", "always_redraw"],
-  "apis": ["NumberPlane", "Arrow", "DashedLine", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
-}

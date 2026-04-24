@@ -1,9 +1,0 @@
-{
-  "id": "ihat_as_eigenvector",
-  "category": "linear_algebra",
-  "difficulty": 2,
-  "summary": "SINGLE_FOCUS: A=[[3, 1], [0, 2]]. î is eigenvector with λ=3. 6 GREEN dots along x-axis stay on x-axis under A; always_redraw shows them staying on the (stretched) GREEN x-axis line. All of x-axis = eigenspace.",
-  "tags": ["eigenvector", "eigenspace", "x_axis_invariant", "value_tracker", "always_redraw"],
-  "apis": ["NumberPlane", "Dot", "Line", "VGroup", "ValueTracker", "always_redraw", "Tex"],
-  "source": "3b1b/_2016/eola/chapter10.py::IHatAsEigenVector+AllXAxisVectorsAreEigenvectors"
-}

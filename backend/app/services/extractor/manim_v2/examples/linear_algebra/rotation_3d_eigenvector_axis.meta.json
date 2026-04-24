@@ -1,9 +1,0 @@
-{
-  "id": "rotation_3d_eigenvector_axis",
-  "category": "linear_algebra",
-  "difficulty": 3,
-  "summary": "ThreeDScene: 3D rotation around z-axis. GREEN axis = eigenvector with λ=1. YELLOW generic vector (1, 0.5, 0.3) sweeps arc with trail via always_redraw as ValueTracker theta_tr rotates 0→2π. Only axis stays on span.",
-  "tags": ["3d_rotation", "eigenvector", "rotation_axis", "lambda_equals_one", "value_tracker", "always_redraw"],
-  "apis": ["ThreeDAxes", "Arrow3D", "VMobject", "ValueTracker", "always_redraw", "Tex"],
-  "source": "3b1b/_2016/eola/chapter10.py::ThreeDShowRotation+ThreeDShowRotationWithEigenvector+EigenvectorToAxisOfRotation"
-}

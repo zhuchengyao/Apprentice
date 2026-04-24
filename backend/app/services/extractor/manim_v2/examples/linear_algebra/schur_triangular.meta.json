@@ -1,8 +1,0 @@
-{
-  "id": "schur_triangular",
-  "category": "linear_algebra",
-  "difficulty": 3,
-  "summary": "SINGLE_FOCUS Schur/spectral theorem for symmetric A=[[4, -2, 1], [-2, 5, -3], [1, -3, 6]]. ValueTracker s_tr interpolates A → diag(λ_i) (via eigh) with matrix-display rebuilt each frame + live Σ|M_{ij}| for i≠j → 0. RIGHT panel shows the 3 eigenvalues RED/ORANGE/GREEN.",
-  "tags": ["schur_decomposition", "spectral_theorem", "upper_triangular", "symmetric_matrix", "value_tracker", "always_redraw"],
-  "apis": ["DecimalNumber", "ValueTracker", "add_updater", "Tex"]
-}

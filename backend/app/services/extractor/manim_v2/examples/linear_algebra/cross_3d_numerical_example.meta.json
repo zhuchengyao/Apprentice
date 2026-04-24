@@ -1,9 +1,0 @@
-{
-  "id": "cross_3d_numerical_example",
-  "category": "linear_algebra",
-  "difficulty": 2,
-  "summary": "SINGLE_FOCUS: numerical 3D cross product (1, 2, 3) × (4, -1, 2) = (7, 10, -9). BLUE v, ORANGE w, GREEN formula with v_i w_j terms. Three sequential computation steps: 2·2-3·(-1)=7, 3·4-1·2=10, 1·(-1)-2·4=-9. Final YELLOW result vector.",
-  "tags": ["cross_product_3d", "numerical_computation", "component_formula"],
-  "apis": ["Matrix", "MathTex", "VGroup", "Tex"],
-  "source": "3b1b/_2016/eola/chapter8.py::ThreeDCrossProductExample"
-}

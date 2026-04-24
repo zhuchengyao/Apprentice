@@ -1,9 +1,0 @@
-{
-  "id": "eigenvalue_negative_half",
-  "category": "linear_algebra",
-  "difficulty": 2,
-  "summary": "SINGLE_FOCUS: negative eigenvalue λ=-0.5. A=diag(-0.5, 2). GREEN eigenvector v=(2, 0) on x-axis span flips to (-1, 0) under A — same span, reversed direction and half length. ValueTracker t_tr morphs via always_redraw.",
-  "tags": ["negative_eigenvalue", "eigenvector_flip", "span_preservation", "value_tracker", "always_redraw"],
-  "apis": ["NumberPlane", "Arrow", "DashedLine", "ValueTracker", "always_redraw", "Tex"],
-  "source": "3b1b/_2016/eola/chapter10.py::EigenvalueNegativeOneHalf"
-}

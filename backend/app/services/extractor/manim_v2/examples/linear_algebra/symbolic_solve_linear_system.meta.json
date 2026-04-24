@@ -1,9 +1,0 @@
-{
-  "id": "symbolic_solve_linear_system",
-  "category": "linear_algebra",
-  "difficulty": 1,
-  "summary": "SINGLE_FOCUS: derive x = A^(-1) v from Ax = v via 4-line sequence. Line 1: Ax=v. Line 2: A^(-1) A x = A^(-1) v with 'apply A^(-1) both sides' note. Line 3: I x = A^(-1) v with brace showing A^(-1) A = I. Line 4: x = A^(-1) v boxed in YELLOW. Color coding: PINK x, YELLOW v, GREEN A^(-1), BLUE I.",
-  "tags": ["symbolic_inversion", "matrix_equation", "solve_for_x", "algebraic_manipulation"],
-  "apis": ["MathTex", "Brace", "SurroundingRectangle", "VGroup", "Tex"],
-  "source": "3b1b/_2016/eola/chapter6.py::SymbolicInversion"
-}

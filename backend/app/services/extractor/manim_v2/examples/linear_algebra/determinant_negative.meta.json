@@ -1,8 +1,0 @@
-{
-  "id": "determinant_negative",
-  "category": "linear_algebra",
-  "difficulty": 2,
-  "summary": "Apply a matrix with negative determinant to the plane, watching i-hat swap from right-of to above-of j-hat to visualize the orientation flip.",
-  "tags": ["determinant", "orientation", "reflection", "linear_transform"],
-  "apis": ["NumberPlane", "Arrow", "Polygon", "ApplyMatrix", "Transform", "MathTex"]
-}

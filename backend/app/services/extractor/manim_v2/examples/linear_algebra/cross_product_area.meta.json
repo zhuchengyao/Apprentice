@@ -1,8 +1,0 @@
-{
-  "id": "cross_product_area",
-  "category": "linear_algebra",
-  "difficulty": 2,
-  "summary": "ThreeDScene cross product. Fixed BLUE a=(2, 0, 0). ValueTracker theta_tr rotates GREEN b=2(cos θ, sin θ, 0) through 5 angles. always_redraw: YELLOW parallelogram with vertices 0, a, a+b, b + RED cross-product arrow perpendicular (a×b). Live θ, |a×b|, |a||b|sin θ (match), a·b. Ambient rotation.",
-  "tags": ["cross_product", "parallelogram_area", "right_hand_rule", "dot_product", "value_tracker", "always_redraw"],
-  "apis": ["ThreeDAxes", "Arrow3D", "Polygon", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"]
-}

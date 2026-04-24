@@ -1,8 +1,0 @@
-{
-  "id": "gram_schmidt",
-  "category": "linear_algebra",
-  "difficulty": 2,
-  "summary": "SINGLE_FOCUS: 2D plane with BLUE v_1 = (3, 1), GREEN v_2 = (1, 2). ValueTracker step_tr reveals 4 stages: start, u_1 = v_1/‖v_1‖ YELLOW, proj ORANGE + dashed perp, u_2 = (v_2 - proj)/‖…‖ RED. always_redraw per stage; explanation formula at bottom updates.",
-  "tags": ["gram_schmidt", "orthogonalization", "projection", "value_tracker", "always_redraw"],
-  "apis": ["NumberPlane", "Arrow", "DashedLine", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
-}

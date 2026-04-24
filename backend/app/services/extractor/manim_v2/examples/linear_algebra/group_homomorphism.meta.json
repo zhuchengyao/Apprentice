@@ -1,8 +1,0 @@
-{
-  "id": "group_homomorphism",
-  "category": "linear_algebra",
-  "difficulty": 2,
-  "summary": "THREE_ROW: top number line is (ℝ⁺, ·) with ValueTracker-driven dots a, b, a·b; middle number line is (ℝ, +) with corresponding dots log(a), log(b), log(a)+log(b); dashed drops connect each pair. Bottom identity panel updates live. Sweep through 5 (a, b) pairs — log(a·b) and log(a)+log(b) coincide every frame, the homomorphism axiom in motion.",
-  "tags": ["group_theory", "homomorphism", "log", "value_tracker", "structure_preserving"],
-  "apis": ["NumberLine", "Dot", "DashedLine", "ValueTracker", "always_redraw", "MathTex", "Tex"]
-}

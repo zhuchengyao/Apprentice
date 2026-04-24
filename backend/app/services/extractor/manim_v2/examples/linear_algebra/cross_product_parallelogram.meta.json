@@ -1,8 +1,0 @@
-{
-  "id": "cross_product_parallelogram",
-  "category": "linear_algebra",
-  "difficulty": 3,
-  "summary": "3D scene: a=(2,0,0) fixed; ValueTracker theta_tr rotates b around z through 30°,60°,90°,120°,150°,45°. always_redraw keeps b-arrow + YELLOW a-b parallelogram + BLUE a×b vector synced. Ambient camera rotation + fixed-frame live panel shows θ and |a×b|=|a||b|sin θ.",
-  "tags": ["cross_product", "parallelogram", "area", "3d", "vectors", "value_tracker", "always_redraw"],
-  "apis": ["ThreeDScene", "ThreeDAxes", "Line", "Polygon", "ValueTracker", "always_redraw", "MathTex", "Tex", "add_fixed_in_frame_mobjects", "add_fixed_orientation_mobjects"]
-}

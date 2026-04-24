@@ -1,9 +1,0 @@
-{
-  "id": "zero_determinant_linearly_dependent",
-  "category": "linear_algebra",
-  "difficulty": 2,
-  "summary": "SINGLE_FOCUS: matrix [[2, 1], [1, s]] with s sweeping 2 → 0.5 via ValueTracker s_tr. BLUE v_1=(2, 1) fixed, ORANGE v_2=(1, s) moves toward parallel. always_redraw parallelogram (GREEN→YELLOW when det=0). At s=0.5 cols are linearly dependent, det=0, parallelogram collapses to line.",
-  "tags": ["zero_determinant", "linear_dependence", "parallel_columns", "collapsing_parallelogram", "value_tracker", "always_redraw"],
-  "apis": ["NumberPlane", "Polygon", "Arrow", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"],
-  "source": "3b1b/_2016/eola/chapter5.py::DeterminantIsZero+WriteZeroDeterminant"
-}

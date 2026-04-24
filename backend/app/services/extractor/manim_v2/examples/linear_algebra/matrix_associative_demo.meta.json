@@ -1,9 +1,0 @@
-{
-  "id": "matrix_associative_demo",
-  "category": "linear_algebra",
-  "difficulty": 2,
-  "summary": "COMPARISON: associativity (AB)C = A(BC). TOP applies C then AB (composite), BOTTOM applies BC (composite) then A via ValueTracker t_tr. Both grids end at identical final deformation (|diff|_∞ ≈ 0). always_redraw grids + GREEN î / RED ĵ arrows. A = rotation(-π/6), B=[[2, 1], [1, 2]], C=[[1, 0], [1, 1]].",
-  "tags": ["associativity", "matrix_multiplication", "three_transformations", "parentheses", "value_tracker", "always_redraw"],
-  "apis": ["VMobject", "Arrow", "ValueTracker", "always_redraw", "add_updater", "Tex"],
-  "source": "3b1b/_2016/eola/chapter4.py::AskAssociativityQuestion+ThreeSuccessiveTransformations"
-}

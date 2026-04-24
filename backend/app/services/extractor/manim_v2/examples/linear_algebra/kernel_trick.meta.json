@@ -1,8 +1,0 @@
-{
-  "id": "kernel_trick",
-  "category": "linear_algebra",
-  "difficulty": 3,
-  "summary": "TWO_COLUMN: kernel trick φ(x, y)=(x², y², √2 xy). LEFT 2D plane with 40 BLUE inner ring (r<0.8) + 40 RED outer ring (r>1.5). ValueTracker s_tr morphs dots via always_redraw to axonometric 3D φ-space. YELLOW separating plane z=1.25 fades in for s>0.5. Live morph parameter + class descriptions.",
-  "tags": ["kernel_trick", "feature_map", "polynomial_kernel", "svm", "value_tracker", "always_redraw"],
-  "apis": ["NumberPlane", "ThreeDAxes", "Arrow", "Dot", "Polygon", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"]
-}

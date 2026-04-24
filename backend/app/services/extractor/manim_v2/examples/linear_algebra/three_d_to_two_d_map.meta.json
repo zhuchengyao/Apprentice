@@ -1,8 +1,0 @@
-{
-  "id": "three_d_to_two_d_map",
-  "category": "linear_algebra",
-  "difficulty": 2,
-  "summary": "Send a 5³ lattice in ℝ³ through a 2×3 matrix — all points collapse into a planar image in the xy-plane.",
-  "tags": ["linear_transform", "nonsquare", "rank", "projection", "3d"],
-  "apis": ["ThreeDScene", "ThreeDAxes", "Dot3D", "Transform", "MathTex", "add_fixed_in_frame_mobjects"]
-}

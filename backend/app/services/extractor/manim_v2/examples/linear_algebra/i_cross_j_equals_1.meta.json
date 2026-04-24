@@ -1,9 +1,0 @@
-{
-  "id": "i_cross_j_equals_1",
-  "category": "linear_algebra",
-  "difficulty": 1,
-  "summary": "SINGLE_FOCUS: î×ĵ=+1 basis identity. LEFT plane with GREEN î, RED ĵ + unit square (GREEN fill, area=1). RIGHT column: î×ĵ=+1 (GREEN), ĵ×î=-1 (RED), anti-commutativity v×w = -w×v.",
-  "tags": ["basis_cross_product", "anti_commutative", "unit_area", "orientation"],
-  "apis": ["NumberPlane", "Arrow", "Polygon", "MathTex", "VGroup", "Tex"],
-  "source": "3b1b/_2016/eola/chapter8.py::CrossBasisVectors"
-}

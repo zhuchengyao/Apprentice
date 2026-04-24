@@ -1,8 +1,0 @@
-{
-  "id": "tensor_product",
-  "category": "linear_algebra",
-  "difficulty": 2,
-  "summary": "SINGLE_FOCUS: BLUE 2×2 A = [[1,2],[3,4]], ORANGE 2×2 B = [[0,1],[1,0]], and GREEN 4×4 A⊗B built block-by-block. ValueTracker step_tr reveals 4 blocks with YELLOW outlines via always_redraw.",
-  "tags": ["tensor_product", "kronecker_product", "value_tracker", "always_redraw"],
-  "apis": ["Square", "Rectangle", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
-}

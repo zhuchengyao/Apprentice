@@ -1,8 +1,0 @@
-{
-  "id": "dot_product_projection",
-  "category": "linear_algebra",
-  "difficulty": 2,
-  "summary": "TWO_COLUMN: fixed v on left plane, ValueTracker θ rotates a length-2.5 w through 360°; the dashed perpendicular drop and the yellow projection arrow on v redraw via always_redraw. Right column shows live θ, the dot v·w, and a mini-axes plot of v·w(θ) = 7.5cos(θ) with a moving dot tracking the current value.",
-  "tags": ["dot_product", "projection", "rotation", "value_tracker", "cosine"],
-  "apis": ["NumberPlane", "ValueTracker", "always_redraw", "Arrow", "DashedLine", "Axes", "plot", "MathTex"]
-}

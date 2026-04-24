@@ -1,8 +1,0 @@
-{
-  "id": "matrix_power_method",
-  "category": "linear_algebra",
-  "difficulty": 2,
-  "summary": "SINGLE_FOCUS: power method on A=[[0.9, 0.4], [0.4, 0.6]] (λ_1≈1.10, λ_2≈0.40). NumberPlane with GREEN dashed dominant-eigenvector line + 21 normalized iterates from random start x_0=(0.3, -0.9)/‖·‖. ValueTracker k_tr reveals path via always_redraw YELLOW + color-graded BLUE→YELLOW cumulative arrows + RED current. Live Rayleigh x^T A x → λ_1.",
-  "tags": ["power_method", "dominant_eigenvalue", "rayleigh_quotient", "iteration", "value_tracker", "always_redraw"],
-  "apis": ["NumberPlane", "DashedLine", "VMobject", "Arrow", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"]
-}

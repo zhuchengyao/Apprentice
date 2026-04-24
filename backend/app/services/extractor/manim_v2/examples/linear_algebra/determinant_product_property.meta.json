@@ -1,9 +1,0 @@
-{
-  "id": "determinant_product_property",
-  "category": "linear_algebra",
-  "difficulty": 2,
-  "summary": "SINGLE_FOCUS: det(M_1 M_2) = det(M_1)·det(M_2). ValueTracker stage_tr: identity → M_2 (area×det M_2) → M_1 M_2 (further ×det M_1). always_redraw YELLOW/GREEN/RED parallelogram + live area label at centroid. M_2=[[2, 0.5], [0.5, 1.5]] (det=2.75), M_1=[[1, -1], [1, 2]] (det=3), product = 8.25.",
-  "tags": ["determinant_product", "multiplicativity", "area_scaling", "composition", "value_tracker", "always_redraw"],
-  "apis": ["NumberPlane", "Polygon", "DecimalNumber", "ValueTracker", "always_redraw", "add_updater", "Tex"],
-  "source": "3b1b/_2016/eola/chapter5.py::ProductProperty"
-}

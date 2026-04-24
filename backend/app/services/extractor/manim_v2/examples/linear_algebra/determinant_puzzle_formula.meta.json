@@ -1,8 +1,0 @@
-{
-  "id": "determinant_puzzle_formula",
-  "category": "linear_algebra",
-  "difficulty": 2,
-  "summary": "TWO_COLUMN: NumberPlane with column-vectors (a, c) BLUE and (b, d) ORANGE as arrows; always_redraw parallelogram colored GREEN when det ≥ 0 / RED when negative. Four ValueTrackers a, b, c, d drive the matrix through 6 tour configurations; live matrix + computation ad - bc → signed area.",
-  "tags": ["determinant", "parallelogram_area", "2x2", "value_tracker", "always_redraw"],
-  "apis": ["NumberPlane", "Arrow", "Polygon", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
-}

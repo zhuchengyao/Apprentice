@@ -1,8 +1,0 @@
-{
-  "id": "power_iteration",
-  "category": "linear_algebra",
-  "difficulty": 3,
-  "summary": "SINGLE_FOCUS: NumberPlane with GREEN true dominant-eigenvector line for A=[[1.5,0.5],[0.5,1]], λ_1≈1.809. ValueTracker step_tr advances 15 power-iteration iterates from v_0=(1, 0.2); always_redraw YELLOW current arrow + BLUE→YELLOW faded trail. Live angle to v_1 → 0.",
-  "tags": ["power_iteration", "dominant_eigenvector", "value_tracker", "always_redraw"],
-  "apis": ["NumberPlane", "Line", "Arrow", "VGroup", "ValueTracker", "always_redraw", "interpolate_color", "MathTex", "Tex"]
-}

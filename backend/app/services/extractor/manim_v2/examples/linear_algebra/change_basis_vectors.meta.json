@@ -1,8 +1,0 @@
-{
-  "id": "change_basis_vectors",
-  "category": "linear_algebra",
-  "difficulty": 2,
-  "summary": "SINGLE_FOCUS change of basis. NumberPlane with fixed YELLOW v=(3, 2) world position. ValueTracker s_tr morphs basis from standard to b_1=(2, 1), b_2=(-1, 1) with always_redraw GREEN/ORANGE basis arrows + tilted coordinate grid. Live [v]_B = P^{-1} v solved via numpy.linalg. Vector's world position invariant; coordinates change.",
-  "tags": ["change_of_basis", "coordinate_transformation", "basis_vectors", "matrix_inverse", "value_tracker", "always_redraw"],
-  "apis": ["NumberPlane", "Arrow", "Line", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"]
-}

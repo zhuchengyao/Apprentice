@@ -1,9 +1,0 @@
-{
-  "id": "cross_bigger_when_perpendicular",
-  "category": "linear_algebra",
-  "difficulty": 2,
-  "summary": "TWO_COLUMN: |v×w| = |v||w|sin θ peaks at 90°. LEFT plane with BLUE v fixed, ORANGE w rotated via ValueTracker theta_tr; GREEN/RED parallelogram. RIGHT axes with 4 sin θ curve + YELLOW tracking dot. Live θ° and area. Max at π/2.",
-  "tags": ["cross_product_magnitude", "sin_theta", "perpendicular_max", "value_tracker", "always_redraw"],
-  "apis": ["NumberPlane", "Axes", "Arrow", "Polygon", "Dot", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"],
-  "source": "3b1b/_2016/eola/chapter8.py::BiggerWhenPerpendicular"
-}

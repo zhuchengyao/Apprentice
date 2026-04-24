@@ -1,8 +1,0 @@
-{
-  "id": "span_two_vectors",
-  "category": "linear_algebra",
-  "difficulty": 2,
-  "summary": "TWO_COLUMN: two ValueTrackers a and b drive the linear combination a·v + b·w shown as three tip-to-tail arrows on the left plane (av green, bw red, sum yellow); a yellow trail records every visited sum and 9 sequential targets sweep out the entire plane. Right column shows live (a, b) and the sum coordinates.",
-  "tags": ["span", "linear_combination", "value_tracker", "trail", "basis"],
-  "apis": ["NumberPlane", "ValueTracker", "always_redraw", "Arrow", "Dot", "VMobject", "add_updater", "MathTex"]
-}

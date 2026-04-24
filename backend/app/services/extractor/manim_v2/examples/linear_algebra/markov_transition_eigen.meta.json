@@ -1,8 +1,0 @@
-{
-  "id": "markov_transition_eigen",
-  "category": "linear_algebra",
-  "difficulty": 3,
-  "summary": "TWO_COLUMN: 4-state Markov chain with stochastic P displayed as BLUE heatmap of rows. RIGHT ComplexPlane with 4 eigenvalues on unit-circle reference (λ_1=1 RED, others ORANGE inside). Bottom: BLUE bars π_k starting from e_1 via ValueTracker t_tr sweeping 0→30 iterations; YELLOW outline of stationary π* reference.",
-  "tags": ["markov_chain", "stationary_distribution", "eigenvalue_spectrum", "mixing_time", "value_tracker", "always_redraw"],
-  "apis": ["Square", "Circle", "Rectangle", "Dot", "ComplexPlane", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"]
-}

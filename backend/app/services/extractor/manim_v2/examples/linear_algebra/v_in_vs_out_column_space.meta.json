@@ -1,9 +1,0 @@
-{
-  "id": "v_in_vs_out_column_space",
-  "category": "linear_algebra",
-  "difficulty": 2,
-  "summary": "SINGLE_FOCUS: Ax=v solvable iff v in column space. A=[[2, 1], [-2, -1]], det=0, col space = line y=-x (TEAL). v_1=(-4, 4) YELLOW on line → solutions exist (GREEN); v_2=(1, 1) RED off line → no solution (RED).",
-  "tags": ["column_space", "solvability", "det_zero_case", "existence_of_solutions", "linear_systems"],
-  "apis": ["NumberPlane", "Line", "Arrow", "VGroup", "Tex"],
-  "source": "3b1b/_2016/eola/chapter6.py::ShowVInAndOutOfColumnSpace"
-}

@@ -1,8 +1,0 @@
-{
-  "id": "householder_reflection",
-  "category": "linear_algebra",
-  "difficulty": 3,
-  "summary": "SINGLE_FOCUS NumberPlane: Householder H=I-2uu^T/u^Tu reflects GREEN vector a to ±|a|e_1. 4 config tour via ValueTracker idx_tr; for each, ValueTracker t_tr animates interpolation a→Ha. always_redraw GREEN a, YELLOW Ha, RED u arrow, BLUE dashed reflection hyperplane u^⊥. Live |a|=|Ha| confirms orthogonal transformation.",
-  "tags": ["householder_reflection", "orthogonal_transformation", "qr_factorization", "hyperplane_reflection", "value_tracker", "always_redraw"],
-  "apis": ["NumberPlane", "Arrow", "DashedLine", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"]
-}

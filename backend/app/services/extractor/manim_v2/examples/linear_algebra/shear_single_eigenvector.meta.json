@@ -1,9 +1,0 @@
-{
-  "id": "shear_single_eigenvector",
-  "category": "linear_algebra",
-  "difficulty": 2,
-  "summary": "SINGLE_FOCUS: shear [[1, 1], [0, 1]] has repeated eigenvalue λ=1 but only 1 eigenvector direction (x-axis). GREEN eigenvector (2, 0) stays; YELLOW non-eigenvector (1, 1.5) sheared away. 'Defective' matrix.",
-  "tags": ["shear", "repeated_eigenvalue", "defective_matrix", "value_tracker", "always_redraw"],
-  "apis": ["NumberPlane", "Arrow", "DashedLine", "ValueTracker", "always_redraw", "Tex"],
-  "source": "3b1b/_2016/eola/chapter10.py::ShearExample"
-}

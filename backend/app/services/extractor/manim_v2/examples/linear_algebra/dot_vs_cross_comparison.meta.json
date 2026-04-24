@@ -1,9 +1,0 @@
-{
-  "id": "dot_vs_cross_comparison",
-  "category": "linear_algebra",
-  "difficulty": 2,
-  "summary": "COMPARISON: dot vs cross. LEFT plane shows BLUE v and ORANGE w with YELLOW projection arrow + GREY drop = |v||w|cos θ = scalar. RIGHT plane shows same v, w with GREEN parallelogram = |v||w|sin θ = area. Numerical values + cos/sin summary.",
-  "tags": ["dot_product_vs_cross_product", "projection_vs_area", "scalar_vs_vector", "comparison"],
-  "apis": ["NumberPlane", "Arrow", "DashedLine", "Polygon", "Tex"],
-  "source": "3b1b/_2016/eola/chapter8.py::ContrastDotAndCross"
-}

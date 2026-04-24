@@ -1,8 +1,0 @@
-{
-  "id": "null_space",
-  "category": "linear_algebra",
-  "difficulty": 3,
-  "summary": "Highlight the direction (2,-1) as the null-space line of rank-1 matrix [[1,2],[2,4]] and apply the matrix so both grid and null line collapse into one line.",
-  "tags": ["null_space", "kernel", "rank", "linear_algebra"],
-  "apis": ["NumberPlane", "Line", "ApplyMatrix", "MathTex"]
-}

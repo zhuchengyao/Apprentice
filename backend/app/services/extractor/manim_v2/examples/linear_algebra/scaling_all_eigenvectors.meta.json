@@ -1,9 +1,0 @@
-{
-  "id": "scaling_all_eigenvectors",
-  "category": "linear_algebra",
-  "difficulty": 1,
-  "summary": "SINGLE_FOCUS: scaling A=2I has every vector as eigenvector with λ=2. 6 colored vectors all doubled in place under always_redraw on ValueTracker t_tr. Eigenspace = ℝ².",
-  "tags": ["scaling_matrix", "all_eigenvectors", "repeated_eigenvalue", "value_tracker", "always_redraw"],
-  "apis": ["NumberPlane", "Arrow", "VGroup", "ValueTracker", "always_redraw", "Tex"],
-  "source": "3b1b/_2016/eola/chapter10.py::ScalingExample"
-}

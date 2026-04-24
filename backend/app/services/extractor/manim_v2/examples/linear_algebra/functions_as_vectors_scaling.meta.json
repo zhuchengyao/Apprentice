@@ -1,9 +1,0 @@
-{
-  "id": "functions_as_vectors_scaling",
-  "category": "linear_algebra",
-  "difficulty": 2,
-  "summary": "SINGLE_FOCUS: scalar × function. BLUE f=sin x fixed dashed reference + YELLOW c·f via always_redraw on ValueTracker c_tr touring c={1, 2, -1, 0, 1.5}. Live c. Pointwise scaling.",
-  "tags": ["function_space", "scalar_multiplication", "abstract_vector", "value_tracker", "always_redraw"],
-  "apis": ["Axes", "ParametricFunction", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"],
-  "source": "3b1b/_2016/eola/chapter11.py::ScaleFunction+ScaleVectorByCoordinates"
-}

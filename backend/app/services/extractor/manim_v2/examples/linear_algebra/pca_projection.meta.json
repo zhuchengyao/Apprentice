@@ -1,8 +1,0 @@
-{
-  "id": "pca_projection",
-  "category": "linear_algebra",
-  "difficulty": 3,
-  "summary": "SINGLE_FOCUS: NumberPlane with 80 YELLOW correlated samples (cov = [[3, 1.8], [1.8, 1.3]]). BLUE PC_1 (largest eigenvalue direction) + RED PC_2 axes shown. ValueTracker s_tr morphs each point onto the PC_1 line via always_redraw scatter interpolation. Live λ_1, λ_2, variance-retained fraction.",
-  "tags": ["pca", "dimensionality_reduction", "eigendecomposition", "value_tracker", "always_redraw"],
-  "apis": ["NumberPlane", "Dot", "Line", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
-}

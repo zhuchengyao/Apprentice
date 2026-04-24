@@ -1,8 +1,0 @@
-{
-  "id": "determinant_geometric",
-  "category": "linear_algebra",
-  "difficulty": 2,
-  "summary": "SINGLE_FOCUS: 2×2 det as signed parallelogram area. 4 ValueTrackers a, b, c, d drive columns. always_redraw BLUE column-1 + ORANGE column-2 arrows + parallelogram (GREEN if det>0, RED if det<0). 5-config tour including singular (det=0) and negative-det flip. Matrix display + live det and area.",
-  "tags": ["determinant", "signed_area", "orientation", "parallelogram", "value_tracker", "always_redraw"],
-  "apis": ["NumberPlane", "Arrow", "Polygon", "DecimalNumber", "ValueTracker", "always_redraw", "add_updater", "Tex"]
-}

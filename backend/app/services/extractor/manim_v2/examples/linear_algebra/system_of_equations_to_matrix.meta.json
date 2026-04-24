@@ -1,9 +1,0 @@
-{
-  "id": "system_of_equations_to_matrix",
-  "category": "linear_algebra",
-  "difficulty": 2,
-  "summary": "SINGLE_FOCUS: 3-equation linear system factored into Ax=v. Stage 1: system written. Stage 2: arrow + matrix equation with BLUE/GREEN/ORANGE-colored A columns + PINK-gradient x-vector + YELLOW v. Sequential brace labels: 'coefficients A', 'unknowns x', 'constants v'.",
-  "tags": ["linear_system", "matrix_form", "Ax_equals_v", "linear_algebra_setup"],
-  "apis": ["Matrix", "MathTex", "Brace", "VGroup", "Tex"],
-  "source": "3b1b/_2016/eola/chapter6.py::SystemOfEquations"
-}

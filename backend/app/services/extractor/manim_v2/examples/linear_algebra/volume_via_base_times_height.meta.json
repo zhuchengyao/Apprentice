@@ -1,9 +1,0 @@
-{
-  "id": "volume_via_base_times_height",
-  "category": "linear_algebra",
-  "difficulty": 3,
-  "summary": "ThreeDScene: geometric volume of parallelepiped = base area × height via triple product. BLUE base parallelogram (v, w), PURPLE v×w perpendicular, GREEN u with RED dashed drop to base plane + RED height arrow. (v×w)·u extracts height component × base area.",
-  "tags": ["parallelepiped_volume", "base_times_height", "cross_product_geometric", "triple_product_meaning"],
-  "apis": ["ThreeDAxes", "Polygon", "Arrow3D", "DashedLine", "DecimalNumber", "VGroup", "Tex"],
-  "source": "3b1b/_2016/eola/chapter8p2.py::GeometricVolumeWords+ThreeDDotProductProjection+ThreeDDotProductWithCross"
-}

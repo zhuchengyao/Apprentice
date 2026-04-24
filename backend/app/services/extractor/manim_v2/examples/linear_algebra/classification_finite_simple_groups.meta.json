@@ -1,8 +1,0 @@
-{
-  "id": "classification_finite_simple_groups",
-  "category": "linear_algebra",
-  "difficulty": 2,
-  "summary": "SINGLE_FOCUS taxonomy diagram: 4 RoundedRectangle boxes for the four families — BLUE 'Cyclic Z_p of prime order', GREEN 'Alternating A_n (n≥5)', ORANGE 'Groups of Lie type (16 families)', RED '26 sporadic groups'. YELLOW Arrow from sporadic to a highlighted YELLOW 'Monster group M, |M|≈8×10^53' box. Bottom MathTex shows the full factorization of |M| (primes up to 71). YELLOW note connects moonshine to the j-function.",
-  "tags": ["finite_simple_groups", "classification", "monster_group", "sporadic_groups", "moonshine"],
-  "apis": ["RoundedRectangle", "Tex", "MathTex", "Arrow", "GrowArrow", "VGroup", "FadeIn", "Write"]
-}

@@ -1,9 +1,0 @@
-{
-  "id": "blob_grid_squares_det",
-  "category": "linear_algebra",
-  "difficulty": 2,
-  "summary": "SINGLE_FOCUS: BLUE blob (teardrop-like irregular) approximated by YELLOW grid of ε×ε squares (80-pt polygon boundary). ValueTracker eps_tr shrinks ε through {0.5, 0.3, 0.18, 0.1}; N squares grows, approximation improves. Live N, Nε² → blob area. Each square scales by |det A| under transformation.",
-  "tags": ["riemann_approximation", "area", "determinant", "discretization", "value_tracker", "always_redraw"],
-  "apis": ["NumberPlane", "Polygon", "VGroup", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"],
-  "source": "3b1b/_2016/eola/chapter5.py::BreakBlobIntoGridSquares+Granular+MoreGranular+VeryGranular"
-}

@@ -1,9 +1,0 @@
-{
-  "id": "eigenvector_knocked_vs_stays",
-  "category": "linear_algebra",
-  "difficulty": 2,
-  "summary": "SINGLE_FOCUS: A=[[3, 1], [0, 2]]. GREEN eigenvector (1, 0) λ=3 stays on GREEN dashed x-axis eigenspan. ORANGE eigenvector (-1, 1) λ=2 stays on ORANGE dashed anti-diagonal. YELLOW generic (1.5, 1.5) rotates off span. ValueTracker stage_tr applies A via always_redraw arrows.",
-  "tags": ["eigenvector_concept", "span_preservation", "eigenspace", "value_tracker", "always_redraw"],
-  "apis": ["NumberPlane", "Arrow", "DashedLine", "ValueTracker", "always_redraw", "Tex"],
-  "source": "3b1b/_2016/eola/chapter10.py::IntroduceExampleTransformation+VectorKnockedOffSpan+VectorRemainsOnSpan"
-}

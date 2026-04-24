@@ -1,9 +1,0 @@
-{
-  "id": "similarity_transform_matrix",
-  "category": "linear_algebra",
-  "difficulty": 3,
-  "summary": "SINGLE_FOCUS: similarity transform M_J = A^(-1) M A. Flow diagram v_J --A--> v --M--> Mv --A^(-1)--> (Mv)_J. Brace + compose label.",
-  "tags": ["similarity_transform", "change_of_basis_for_matrix", "conjugation"],
-  "apis": ["MathTex", "Arrow", "Brace", "VGroup", "Tex"],
-  "source": "3b1b/_2016/eola/chapter9.py::HowToTranslateAMatrix"
-}

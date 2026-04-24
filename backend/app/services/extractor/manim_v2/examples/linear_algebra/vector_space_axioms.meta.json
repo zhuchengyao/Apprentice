@@ -1,9 +1,0 @@
-{
-  "id": "vector_space_axioms",
-  "category": "linear_algebra",
-  "difficulty": 2,
-  "summary": "TWO_COLUMN: 8 vector-space axioms (commutativity, associativity, 0, inverses, distributive ×2, (cd)v=c(dv), 1v=v). Right panel: examples — ℝ^n, tuples, matrices, polynomials, continuous functions, harmonic solutions.",
-  "tags": ["vector_space_axioms", "abstract_definition", "abstraction", "mathematical_structure"],
-  "apis": ["VGroup", "Tex"],
-  "source": "3b1b/_2016/eola/chapter11.py::ListAxioms+AxiomsAreInterface"
-}

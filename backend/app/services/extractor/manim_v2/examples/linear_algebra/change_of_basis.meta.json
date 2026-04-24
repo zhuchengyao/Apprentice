@@ -1,8 +1,0 @@
-{
-  "id": "change_of_basis",
-  "category": "linear_algebra",
-  "difficulty": 3,
-  "summary": "TWO_COLUMN: ValueTracker s morphs the coordinate grid from the standard basis (e₁, e₂) to a new basis (b₁=(2,1), b₂=(-1,1)) via always_redraw on grid lines/dots and basis arrows. The fixed yellow point v stays pinned at world (3, 2); only the coordinate ruler underneath changes. Right column has live b₁, b₂ values and the recomputed (c₁, c₂) coordinates of v in the current basis (solved via numpy.linalg).",
-  "tags": ["change_of_basis", "coordinates", "value_tracker", "always_redraw", "basis"],
-  "apis": ["VMobject", "ValueTracker", "always_redraw", "Arrow", "Dot", "MathTex", "numpy.linalg.solve"]
-}

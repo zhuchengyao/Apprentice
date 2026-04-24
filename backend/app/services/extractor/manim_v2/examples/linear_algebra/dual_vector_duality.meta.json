@@ -1,9 +1,0 @@
-{
-  "id": "dual_vector_duality",
-  "category": "linear_algebra",
-  "difficulty": 3,
-  "summary": "TWO_COLUMN vector-functional duality. LEFT plane with BLUE v=(2, 1) arrow. RIGHT: 'dual' arrow → L_v = [2 1] as 1×2 matrix functional. Concrete action L_v(3, -2)=4 = v·(3, -2). Bottom note: every 2D vector is a 1×2 matrix in disguise.",
-  "tags": ["duality", "dual_vector", "linear_functional", "covector", "representation_theorem"],
-  "apis": ["NumberPlane", "Arrow", "Matrix", "MathTex", "VGroup", "Tex"],
-  "source": "3b1b/_2016/eola/chapter7.py::AssociationBetweenMatricesAndVectors+AbstractNumericAssociation+DualOfAVector"
-}

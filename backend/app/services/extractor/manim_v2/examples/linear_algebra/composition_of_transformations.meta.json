@@ -1,8 +1,0 @@
-{
-  "id": "composition_of_transformations",
-  "category": "linear_algebra",
-  "difficulty": 2,
-  "summary": "Apply a shear matrix then a 90-degree rotation to a NumberPlane sequentially and then display the product BA.",
-  "tags": ["matrix_multiplication", "composition", "linear_transform", "shear", "rotation"],
-  "apis": ["NumberPlane", "ApplyMatrix", "MathTex", "Transform"]
-}

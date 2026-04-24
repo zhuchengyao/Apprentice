@@ -1,9 +1,0 @@
-{
-  "id": "matrix_product_ae_bg_formula",
-  "category": "linear_algebra",
-  "difficulty": 3,
-  "summary": "SINGLE_FOCUS: general 2×2 product formula derivation. PINK M_2=[[a, b], [c, d]], YELLOW M_1=[[e, f], [g, h]]. ValueTracker idx_tr reveals entries (ae+bg), (af+bh), (ce+dg), (cf+dh) one at a time with always_redraw rectangle highlights on corresponding M_2 row and M_1 column. Dynamic explanation text mapping each cell to 'row·col' and 'where î/ĵ lands'.",
-  "tags": ["matrix_product_formula", "general_multiplication", "row_column", "basis_interpretation", "value_tracker", "always_redraw"],
-  "apis": ["MathTex", "Rectangle", "VMobject", "ValueTracker", "always_redraw", "add_updater", "Tex"],
-  "source": "3b1b/_2016/eola/chapter4.py::GeneralMultiplication"
-}

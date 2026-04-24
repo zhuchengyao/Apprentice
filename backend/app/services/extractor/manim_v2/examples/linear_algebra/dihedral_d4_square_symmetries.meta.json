@@ -1,8 +1,0 @@
-{
-  "id": "dihedral_d4_square_symmetries",
-  "category": "linear_algebra",
-  "difficulty": 2,
-  "summary": "GRID_8: all 8 elements of D_4 applied to a BLUE square with YELLOW/GREEN/ORANGE/PURPLE corner labels A,B,C,D. Top row: identity e, rotations r, r^2, r^3 via Rotate about corner. Bottom row: horizontal flip s, vertical flip rs, diagonal / (r^2 s), diagonal \\ (r^3 s) via .flip(axis=...). TransformFromCopy spawns each new square from the identity. Bottom Tex notes |D_4| = 8 = 4 rot + 4 refl.",
-  "tags": ["dihedral_group", "D4", "symmetry", "group_theory", "rotation", "reflection", "transform_from_copy"],
-  "apis": ["Square", "VGroup", "Tex", "Rotate", "TransformFromCopy", "FadeIn", "flip"]
-}
