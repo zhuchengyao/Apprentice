@@ -1,0 +1,8 @@
+{
+  "id": "erdos_ko_rado",
+  "category": "combinatorics",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS: Erdős–Ko–Rado n=6, k=3 → max intersecting family size C(5,2)=10. All 20 3-subsets drawn as 6-slot bit indicators in 4×5 grid. Slot 0 (fixed element 1) recolored GREEN on the 10 star-family sets. ValueTracker idx_tr walks through them with always_redraw GREEN highlight border + running count.",
+  "tags": ["erdos_ko_rado", "intersecting_family", "extremal_combinatorics", "star_family", "value_tracker", "always_redraw"],
+  "apis": ["Rectangle", "Square", "VGroup", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"]
+}

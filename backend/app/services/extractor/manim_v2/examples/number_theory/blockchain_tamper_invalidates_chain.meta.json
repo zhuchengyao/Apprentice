@@ -1,0 +1,8 @@
+{
+  "id": "blockchain_tamper_invalidates_chain",
+  "category": "number_theory",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS blockchain of 4 blocks drawn as SurroundingRectangle + VGroup of Tex lines (prev-hash, data, hash). Hashes computed via real hashlib.sha256 on prev||content. GREY_B Arrows link block_i to block_{i+1} via GrowArrow. Tampering: Transform the data of block 2 (RED); each downstream block's hash is recomputed and Transform-swapped in RED along with its SurroundingRectangle, and the next block's prev-hash Tex is also updated — the whole tail turns RED. Verdict caption: 'every downstream block is invalidated'.",
+  "tags": ["bitcoin", "blockchain", "hash_chain", "tamper_evidence", "sha256", "cryptography", "transform"],
+  "apis": ["Tex", "VGroup", "SurroundingRectangle", "Arrow", "GrowArrow", "Transform", "LaggedStart", "FadeIn", "hashlib"]
+}

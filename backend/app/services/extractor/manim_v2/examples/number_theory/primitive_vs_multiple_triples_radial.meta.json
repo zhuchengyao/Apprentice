@@ -1,0 +1,8 @@
+{
+  "id": "primitive_vs_multiple_triples_radial",
+  "category": "number_theory",
+  "difficulty": 1,
+  "summary": "SINGLE_FOCUS: NumberPlane with GREEN ray through (3,4), (6,8), (9,12), (12,16) lattice points - the multiples of (3,4,5). RED SurroundingRectangle marks the primitive. YELLOW ray adds (5,12,13) and BLUE ray adds (8,15,17) to show two other primitives with distinct directions.",
+  "tags": ["pythagorean_triples", "primitive_triples", "lattice", "radial", "number_theory"],
+  "apis": ["NumberPlane", "Line", "Dot", "SurroundingRectangle", "LaggedStart", "MathTex", "VGroup"]
+}

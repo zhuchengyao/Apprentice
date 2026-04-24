@@ -1,0 +1,8 @@
+{
+  "id": "recursive_zero_finding_by_winding",
+  "category": "complex",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS NumberPlane (-2.5..2.5) with RED zeros of p(z)=(z−1)(z+i/2) at (1,0) and (0,-0.5). Start with a YELLOW square [-2,2]^2 whose boundary winding number =2 (computed via numerical p-arg accumulation over 240 boundary samples). FadeOut, then Polygon-subdivide into 4 quadrants colored GREEN if w≠0 or GREY_B if w=0 with MathTex w-labels. Recurse once more on the two GREEN boxes yielding tight GREEN sub-squares isolating each zero. Right-side log panel narrates each stage: 'big box: w=2', 'two boxes have w=1', 'isolate tight boxes', 'zeros found'.",
+  "tags": ["winding_number", "zero_finding", "argument_principle", "recursive_subdivision", "polynomial_roots", "fta"],
+  "apis": ["NumberPlane", "Polygon", "Dot", "VGroup", "MathTex", "Tex", "LaggedStart", "FadeIn", "FadeOut", "Create", "numpy"]
+}

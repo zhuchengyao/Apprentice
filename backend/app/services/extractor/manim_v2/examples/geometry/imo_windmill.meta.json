@@ -1,0 +1,8 @@
+{
+  "id": "imo_windmill",
+  "category": "geometry",
+  "difficulty": 2,
+  "summary": "Demonstrate the IMO 2011 windmill motion: a rotating line through a pivot point of a finite set, passing through the rest of the points in turn.",
+  "tags": ["imo", "windmill", "rotation", "invariance", "combinatorial_geometry"],
+  "apis": ["Dot", "Line", "ValueTracker", "always_redraw", "Transform"]
+}

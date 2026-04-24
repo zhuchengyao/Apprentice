@@ -1,0 +1,8 @@
+{
+  "id": "column_space",
+  "category": "linear_algebra",
+  "difficulty": 2,
+  "summary": "TWO_COLUMN: input plane with ValueTracker-driven point x = (x₁, x₂) on left; output plane with image Ax on right plus persistent yellow trail tracking every visited image. 8 sequential (x₁, x₂) targets sweep out the full column space ℝ². Live equation A·x = x₁·a₁ + x₂·a₂ updates each frame.",
+  "tags": ["column_space", "linear_map", "value_tracker", "trail", "matrix_action"],
+  "apis": ["NumberPlane", "ValueTracker", "always_redraw", "Arrow", "Dot", "VMobject", "add_updater", "MathTex", "Tex"]
+}

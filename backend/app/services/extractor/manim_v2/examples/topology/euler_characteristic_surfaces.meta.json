@@ -1,0 +1,8 @@
+{
+  "id": "euler_characteristic_surfaces",
+  "category": "topology",
+  "difficulty": 3,
+  "summary": "ThreeDScene: χ=2-2g for closed orientable surfaces. ValueTracker g_tr morphs between sphere (g=0, χ=2), torus (g=0.5, χ=0), approximate double torus (g=1, χ=-2) via surface-point interpolation. always_redraw Surface with BLUE-GREEN-ORANGE gradient. Ambient rotation. Legend with genus formula.",
+  "tags": ["euler_characteristic", "genus", "closed_surface", "classification", "value_tracker", "always_redraw"],
+  "apis": ["ThreeDAxes", "Surface", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"]
+}

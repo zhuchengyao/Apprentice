@@ -1,0 +1,8 @@
+{
+  "id": "simply_connected_domain",
+  "category": "complex",
+  "difficulty": 2,
+  "summary": "COMPARISON: LEFT BLUE disk (simply connected) with GREEN contractible loop; RIGHT ORANGE annulus with inner hole + RED loop stuck around hole (cannot shrink below 0.7). ValueTracker contract_tr shrinks both loops via always_redraw.",
+  "tags": ["simply_connected", "homotopy", "fundamental_group", "value_tracker", "always_redraw"],
+  "apis": ["Circle", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

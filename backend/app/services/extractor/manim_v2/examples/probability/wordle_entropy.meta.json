@@ -1,0 +1,8 @@
+{
+  "id": "wordle_entropy",
+  "category": "probability",
+  "difficulty": 2,
+  "summary": "TWO_COLUMN: histogram of feedback-pattern bucket sizes for 3 candidate Wordle guesses (TARES, RAISE, SLATE) on a hypothetical 200-word list. ValueTracker guess_idx cycles through guesses via always_redraw; live panel shows Shannon entropy H = -Σp_i log_2 p_i (bits) — the expected information gain of each guess.",
+  "tags": ["wordle", "entropy", "information_theory", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "Rectangle", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

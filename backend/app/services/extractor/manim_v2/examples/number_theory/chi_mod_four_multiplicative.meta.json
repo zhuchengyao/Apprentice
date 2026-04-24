@@ -1,0 +1,8 @@
+{
+  "id": "chi_mod_four_multiplicative",
+  "category": "number_theory",
+  "difficulty": 2,
+  "summary": "TWO_PART: top strip of 16 labeled cells showing chi(n) for n=1..16 (GREY 0 on evens, GREEN +1 on 4k+1, RED -1 on 4k+3). Bottom 5x5 table for m,n ∈ {1,3,5,7,9} displays chi(mn) values, confirming the multiplicative identity. Right-bottom verification Tex + MathTex + Indicate highlights chi(3)*chi(7) = chi(21) = +1.",
+  "tags": ["dirichlet_character", "chi_mod_4", "multiplicative_function", "non_principal_character", "lagged_start", "indicate"],
+  "apis": ["Square", "VGroup", "Tex", "MathTex", "LaggedStart", "Indicate", "FadeIn"]
+}

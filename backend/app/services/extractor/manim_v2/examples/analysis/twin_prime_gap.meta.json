@@ -1,0 +1,8 @@
+{
+  "id": "twin_prime_gap",
+  "category": "analysis",
+  "difficulty": 2,
+  "summary": "TWO_COLUMN: number line 0..1500 with always_redraw twin-pair dots (YELLOW p, ORANGE p+2) accumulating as ValueTracker N_max sweeps 30→1500. Right column has live π₂(N) count vs Hardy-Littlewood 2C₂·N/(ln N)² estimate (C₂ ≈ 0.66016) plus the open Twin Prime Conjecture.",
+  "tags": ["twin_primes", "hardy_littlewood", "value_tracker", "always_redraw", "open_conjecture"],
+  "apis": ["NumberLine", "Dot", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

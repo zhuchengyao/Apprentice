@@ -1,0 +1,8 @@
+{
+  "id": "inclusion_exclusion",
+  "category": "combinatorics",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: 3-set Venn diagram (BLUE A, RED B, GREEN C). ValueTracker step_tr reveals the 4-term inclusion-exclusion formula line by line via always_redraw: |A|+|B|+|C| = 48, -(|AB|+|AC|+|BC|) = -15, +|ABC| = +2, total = 35.",
+  "tags": ["inclusion_exclusion", "venn_diagram", "set_theory", "value_tracker", "always_redraw"],
+  "apis": ["Circle", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

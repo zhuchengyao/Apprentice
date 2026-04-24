@@ -1,0 +1,8 @@
+{
+  "id": "riemann_mapping",
+  "category": "complex",
+  "difficulty": 3,
+  "summary": "COMPARISON: LEFT upper-half plane H with horizontal+vertical colored grid lines; RIGHT unit disk with YELLOW boundary + conformal Cayley images w = (z-i)/(z+i). ValueTracker t_tr moves YELLOW paired dots along elliptical path.",
+  "tags": ["riemann_mapping", "cayley_map", "conformal", "value_tracker", "always_redraw"],
+  "apis": ["ComplexPlane", "Circle", "Line", "VMobject", "Dot", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

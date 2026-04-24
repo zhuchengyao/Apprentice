@@ -1,0 +1,8 @@
+{
+  "id": "integral_by_parts",
+  "category": "calculus",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS: (u, v) plane with BLUE curve (u(t), v(t)) = (t, 4(1-e^(-t/2))) traced as ValueTracker x_tr sweeps 0→3.5; YELLOW uv rectangle + GREEN ∫u dv region (between curve and v-axis) + RED ∫v du region (between curve and u-axis). Legend + running numeric panel verify ∫u dv + ∫v du = uv.",
+  "tags": ["integration_by_parts", "geometric_proof", "uv_rectangle", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "Polygon", "VMobject", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

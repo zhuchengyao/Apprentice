@@ -1,0 +1,9 @@
+{
+  "id": "rote_2x2_matrix_product",
+  "category": "linear_algebra",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: rote 2×2 matrix product [[-3, 1], [2, 5]]·[[5, 3], [7, -3]]. BLUE A, ORANGE B, GREEN revealed result via ValueTracker step_tr ∈ {0, 1, 2, 3}. always_redraw SurroundingRectangles on current A row and B column + bottom computation string like '(-3)·5+1·7=-8' + row/col indicator.",
+  "tags": ["matrix_multiplication", "rote_computation", "row_times_column", "2x2_example", "value_tracker", "always_redraw"],
+  "apis": ["Matrix", "MathTex", "SurroundingRectangle", "VMobject", "ValueTracker", "always_redraw", "add_updater", "Tex"],
+  "source": "3b1b/_2016/eola/chapter4.py::RoteMatrixMultiplication"
+}

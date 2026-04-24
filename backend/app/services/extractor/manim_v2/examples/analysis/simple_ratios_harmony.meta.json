@@ -1,0 +1,8 @@
+{
+  "id": "simple_ratios_harmony",
+  "category": "analysis",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: sin(2πt) + sin(2πr·t) on t ∈ [0, 8]. ValueTracker r_tr slides r through 1, 3/2, 4/3, 5/4, √2, φ, 2. always_redraw redraws the wave, a YELLOW ±2|cos π(r-1)t| envelope, and live panel showing r, closest p/q with small q, and beat period T_beat = 1/|r-1|.",
+  "tags": ["beats", "consonance", "frequency_ratio", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "Axes.plot", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

@@ -1,0 +1,8 @@
+{
+  "id": "fourier_inversion",
+  "category": "analysis",
+  "difficulty": 3,
+  "summary": "TWO_COLUMN: LEFT axes with GREY true Gaussian f(x) = e^(-x²/2)/√(2π) and YELLOW partial inverse via numerical integration of f̂(ω)cos(ωx) over ±ω_max. RIGHT axes with RED spectrum + YELLOW cursor band showing which frequencies are included. ValueTracker omega_max_tr tours 0.5, 1, 2, 3, 5.",
+  "tags": ["fourier_inversion", "gaussian_transform", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "Axes.plot", "Rectangle", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

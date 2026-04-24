@@ -1,0 +1,9 @@
+{
+  "id": "sum_rule_derivative",
+  "category": "calculus",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: sum rule (f+g)' = f'+g'. Axes with BLUE f=0.5x²-1, GREEN g=sin x+0.5x, YELLOW f+g. ValueTracker x_tr sweeps 0.5→3.8 with always_redraw tangent lines + dots on each curve. Right panel: live x, f'(x), g'(x), f'+g' — numerically matches sum of slopes.",
+  "tags": ["sum_rule", "derivative_additivity", "tangent_lines", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "ParametricFunction", "Line", "Dot", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"],
+  "source": "3b1b/_2017/eoc/chapter4.py::SumRule"
+}

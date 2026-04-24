@@ -1,0 +1,8 @@
+{
+  "id": "soap_film_minimal",
+  "category": "misc_3d",
+  "difficulty": 3,
+  "summary": "ThreeDScene: catenoid surface c·cosh(z/c) connecting two WHITE rings at z=±h/2. ValueTracker h_tr tours h=0.4, 0.8, 1.2, 0.4; bisection finds c so edges hit R=1 rings; always_redraw surface + rings. Fixed-frame panel shows neck radius = c and critical h/R ≈ 1.325.",
+  "tags": ["catenoid", "minimal_surface", "soap_film", "value_tracker", "always_redraw"],
+  "apis": ["ThreeDScene", "ThreeDAxes", "Surface", "VMobject", "VGroup", "ValueTracker", "always_redraw", "Transform", "MathTex", "Tex"]
+}

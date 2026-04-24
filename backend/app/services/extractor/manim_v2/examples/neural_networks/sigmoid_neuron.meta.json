@@ -1,0 +1,8 @@
+{
+  "id": "sigmoid_neuron",
+  "category": "neural_networks",
+  "difficulty": 2,
+  "summary": "TWO_COLUMN: Axes with always_redraw sigmoid curve σ(wx+b) driven by ValueTrackers w_tr + b_tr. RED dashed decision boundary at x=-b/w; GREY dashed y=0.5; YELLOW input-cursor + rider dot driven by x_tr. Three-phase tour: vary w (steepness) → vary b (shift) → sweep x. Live panel has w, b, x, z, σ(z).",
+  "tags": ["sigmoid", "neural_network", "activation", "decision_boundary", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "Axes.plot", "DashedLine", "Dot", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

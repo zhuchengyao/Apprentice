@@ -1,0 +1,8 @@
+{
+  "id": "bayes_rule",
+  "category": "probability",
+  "difficulty": 2,
+  "summary": "Rectangle proportion diagram: ValueTracker sweeps the prior P(H) from 0.01 to 0.40 while four always_redraw rectangles track the joint P(H,+) and P(¬H,+) areas and a live stats panel updates the posterior P(H|+).",
+  "tags": ["bayes", "posterior", "prior_update", "rectangle_diagram", "value_tracker"],
+  "apis": ["Rectangle", "ValueTracker", "always_redraw", "Brace", "MathTex", "VGroup"]
+}

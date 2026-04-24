@@ -1,0 +1,8 @@
+{
+  "id": "inscribed_rectangle_loop_variant",
+  "category": "geometry",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS: smooth kidney-shaped loop r(t)=2.2+0.6cos(2t)+0.2cos(3t). ValueTracker θ_tr rotates a test direction; always_redraw BLUE and ORANGE perpendicular chord pair passing near origin; when |L_1 - L_2| < 0.3 a YELLOW rectangle flashes. Live panel shows θ, both lengths, difference.",
+  "tags": ["inscribed_rectangle", "loop", "smooth_curve", "value_tracker", "always_redraw"],
+  "apis": ["VMobject", "Line", "Dot", "Polygon", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

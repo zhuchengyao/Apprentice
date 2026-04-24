@@ -1,0 +1,8 @@
+{
+  "id": "residue_theorem_simple_pole",
+  "category": "complex",
+  "difficulty": 3,
+  "summary": "COMPARISON: LEFT ComplexPlane with BLUE contour |z|=1.5 + RED pole z_0=0.5. ValueTracker theta_tr sweeps 0→2π; always_redraw YELLOW arc trail. RIGHT axes track Im(I(θ)) for GREEN f=1/(z-z_0) → 2π (residue 1) and ORANGE f=1/(z-z_0)² → 0 (residue 0); dashed reference lines.",
+  "tags": ["residue_theorem", "simple_pole", "contour_integral", "value_tracker", "always_redraw"],
+  "apis": ["ComplexPlane", "Circle", "Dot", "Axes", "DashedLine", "VMobject", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

@@ -1,0 +1,8 @@
+{
+  "id": "nonlinear_2d_transform",
+  "category": "linear_algebra",
+  "difficulty": 2,
+  "summary": "Apply a squiggly pointwise function (x + sin y, y + cos x) to a grid so every grid line curves, illustrating what a nonlinear 2D transform looks like.",
+  "tags": ["nonlinear", "2d", "transform", "counterexample", "grid"],
+  "apis": ["NumberPlane", "ApplyPointwiseFunction", "Text"]
+}

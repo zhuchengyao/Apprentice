@@ -1,0 +1,8 @@
+{
+  "id": "banach_fixed_point_contraction",
+  "category": "analysis",
+  "difficulty": 3,
+  "summary": "TWO_COLUMN Banach fixed-point: T(x)=cos x on [0, 1] with L=sin(1)≈0.841 contraction. LEFT axes with BLUE T curve + GREY y=x + YELLOW cobweb diagram via always_redraw on ValueTracker k_tr=0..15 iterates from x_0=0.2 to fixed point x*≈0.739 (Dottie). RIGHT log|x_k-x*| vs k scales ≈ k log L (GREY reference).",
+  "tags": ["banach_fixed_point", "contraction_mapping", "cobweb_diagram", "dottie_number", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "Line", "VMobject", "Dot", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"]
+}

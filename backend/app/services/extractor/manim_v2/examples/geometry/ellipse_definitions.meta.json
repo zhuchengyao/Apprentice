@@ -1,0 +1,8 @@
+{
+  "id": "ellipse_definitions",
+  "category": "geometry",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: ellipse with two red foci F₁, F₂; ValueTracker θ moves P around the ellipse. Always_redraw segments PF₁ (orange) and PF₂ (green) with live lengths. Right column shows |PF₁|, |PF₂|, sum (= 2a constant), and the focal-sum definition.",
+  "tags": ["ellipse", "focal_sum", "value_tracker", "always_redraw", "invariant"],
+  "apis": ["Ellipse", "Dot", "Line", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

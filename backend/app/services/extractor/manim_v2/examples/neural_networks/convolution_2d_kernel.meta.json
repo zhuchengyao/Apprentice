@@ -1,0 +1,8 @@
+{
+  "id": "convolution_2d_kernel",
+  "category": "neural_networks",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: 10×10 BLUE_E input grid + 8×8 output grid (initially empty). ValueTracker slide_tr sweeps 64 patch positions; always_redraw YELLOW 3×3 kernel box on input + progressive filling of output cells colored BLUE (negative) / RED (positive) by edge-detection kernel output [-1,-1,-1;-1,8,-1;-1,-1,-1].",
+  "tags": ["convolution", "kernel", "edge_detection", "value_tracker", "always_redraw"],
+  "apis": ["Square", "Rectangle", "VGroup", "ValueTracker", "always_redraw", "interpolate_color", "MathTex", "Tex"]
+}

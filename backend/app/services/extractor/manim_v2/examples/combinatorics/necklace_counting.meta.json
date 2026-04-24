@@ -1,0 +1,8 @@
+{
+  "id": "necklace_counting",
+  "category": "combinatorics",
+  "difficulty": 3,
+  "summary": "TWO_COLUMN Burnside lemma for 2-color necklaces of length 6. 64 binary patterns → 14 orbits under cyclic rotation. LEFT: n=6 BLUE/ORANGE bead necklace via always_redraw with ValueTracker idx_tr cycling all 14 canonical representatives. RIGHT shows Σ_{d|n} φ(d)·k^(n/d)/n formula: (64+8+8+4)/6 = 14.",
+  "tags": ["necklace_counting", "burnside_lemma", "cyclic_symmetry", "orbit_counting", "value_tracker", "always_redraw"],
+  "apis": ["Circle", "Dot", "VGroup", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"]
+}

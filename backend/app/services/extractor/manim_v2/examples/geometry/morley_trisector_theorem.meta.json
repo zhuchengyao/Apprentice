@@ -1,0 +1,8 @@
+{
+  "id": "morley_trisector_theorem",
+  "category": "geometry",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS: ValueTracker A_tr morphs triangle ABC through 5 configs (scalene, right, obtuse, near-equilateral, scalene). always_redraw rebuilds BLUE outer triangle + 6 GREY trisector rays + GREEN inner Morley triangle at adjacent-trisector intersections. Live |s1|,|s2|,|s3| DecimalNumbers stay equal within ~1e-3 confirming inner triangle equilateral.",
+  "tags": ["morley_theorem", "angle_trisector", "equilateral", "triangle_geometry", "value_tracker", "always_redraw"],
+  "apis": ["Polygon", "Line", "Dot", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"]
+}

@@ -1,0 +1,8 @@
+{
+  "id": "hermite_polynomials",
+  "category": "calculus",
+  "difficulty": 3,
+  "summary": "TWO_COLUMN: physicist Hermite polynomials H_n(x) via 3-term recurrence H_{n+1}=2x H_n - 2n H_{n-1}. LEFT axes with YELLOW current H_n(x)·e^(-x²/2) curve via always_redraw + BLUE→TEAL history. ValueTracker n_tr steps 0..5. RIGHT shows numeric ∫H_n² e^(-x²) dx via np.trapezoid matching √π·2^n·n! analytic formula.",
+  "tags": ["hermite_polynomials", "orthogonal_polynomials", "recurrence_relation", "quantum_oscillator", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "ParametricFunction", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"]
+}

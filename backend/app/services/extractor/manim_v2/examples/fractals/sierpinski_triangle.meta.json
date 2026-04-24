@@ -1,0 +1,8 @@
+{
+  "id": "sierpinski_triangle",
+  "category": "fractals",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: Sierpinski refinement depths 0→6 with Transform morphing between successive depths. Right column shows live depth, count = 3^d, area = (3/4)^d. Hausdorff dim log3/log2 ≈ 1.585 in title.",
+  "tags": ["sierpinski", "fractal", "self_similarity", "value_tracker", "transform"],
+  "apis": ["Polygon", "VGroup", "ValueTracker", "Transform", "always_redraw", "MathTex", "Tex"]
+}

@@ -1,0 +1,8 @@
+{
+  "id": "pythagorean_triples",
+  "category": "number_theory",
+  "difficulty": 2,
+  "summary": "TWO_COLUMN: right triangle on the left with always_redraw sides driven by Euclid's parametric formula (a=m²-n², b=2mn, c=m²+n²). Two ValueTrackers m, n sweep through 6 (m,n) pairs producing (3,4,5), (5,12,13), (8,15,17), (12,5,13), (35,12,37), (9,40,41). Right column has live values and a²+b² = c² check.",
+  "tags": ["pythagorean_triples", "euclid_formula", "value_tracker", "always_redraw", "right_triangle"],
+  "apis": ["Polygon", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

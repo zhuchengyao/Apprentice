@@ -1,0 +1,8 @@
+{
+  "id": "permutation_group",
+  "category": "combinatorics",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: equilateral triangle with 3 color-coded corner dots (BLUE, RED, GREEN) and number labels. Transform sequence enumerates all 6 elements of S_3 — identity, r (rotate 120°), r² (240°), and three reflections s, rs, r²s — with the current permutation shown as a cycle on the right. Ends with |S_3| = 3! = 6.",
+  "tags": ["symmetric_group", "permutations", "triangle", "rotate", "transform"],
+  "apis": ["Polygon", "Dot", "VGroup", "Transform", "Rotate", "MathTex", "Tex"]
+}

@@ -1,0 +1,8 @@
+{
+  "id": "quaternion_multiplication",
+  "category": "linear_algebra",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS: triangle with i (RED top), j (GREEN bottom-left), k (BLUE bottom-right). ValueTracker step_tr cycles through 6 products ij=k, jk=i, ki=j (cyclic) and reversed ji=-k, kj=-i, ik=-j (negatives); always_redraw pair of colored arrows start→mid→end. Non-commutativity visualized via reversed arrow for negative products.",
+  "tags": ["quaternions", "non_commutative", "basis_multiplication", "value_tracker", "always_redraw"],
+  "apis": ["Dot", "Arrow", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

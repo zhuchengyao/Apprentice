@@ -1,0 +1,9 @@
+{
+  "id": "rotation_90_no_real_eigen",
+  "category": "linear_algebra",
+  "difficulty": 2,
+  "summary": "TWO_COLUMN: 90° rotation has no real eigenvectors. LEFT plane with 4 colored vectors all rotating 90° via ValueTracker — no span preserved. RIGHT: char poly λ²+1=0 ⇒ λ=±i complex. 'no real eigenvectors!' stamp.",
+  "tags": ["complex_eigenvalues", "rotation", "no_real_eigenvectors", "value_tracker", "always_redraw"],
+  "apis": ["NumberPlane", "Arrow", "VGroup", "ValueTracker", "always_redraw", "Tex"],
+  "source": "3b1b/_2016/eola/chapter10.py::Rotate90Degrees+SolveRotationEigenvalues"
+}

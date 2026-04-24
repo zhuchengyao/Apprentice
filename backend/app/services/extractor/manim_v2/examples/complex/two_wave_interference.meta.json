@@ -1,0 +1,8 @@
+{
+  "id": "two_wave_interference",
+  "category": "complex",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS heatmap: 60×30 cells of the instantaneous wave field cos(k·d₁ − ωt) + cos(k·d₂ − ωt) from two point sources. ValueTracker t advances time; field redraws via always_redraw so wave fronts radiate AND the nodal lines (perpendicular bisectors) stay perfectly dark while antinodes oscillate.",
+  "tags": ["interference", "two_source", "wave", "value_tracker", "heatmap"],
+  "apis": ["Rectangle", "VGroup", "ValueTracker", "always_redraw", "interpolate_color", "Dot", "MathTex", "Tex"]
+}

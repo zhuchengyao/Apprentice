@@ -1,0 +1,8 @@
+{
+  "id": "central_limit_theorem",
+  "category": "probability",
+  "difficulty": 3,
+  "summary": "TWO_COLUMN: histogram of (1/√(n/12))·Σ_{i=1}^n U_i for U_i~Uniform(-½,½), Transform-morphed through n = 1, 2, 3, 5, 8, 12, 20, 30 against the fixed red 𝒩(0,1) reference. Right column shows the live n value, scaling formula, and the limit statement (S_n − nμ)/(σ√n) → 𝒩(0,1).",
+  "tags": ["central_limit_theorem", "clt", "histogram", "transform", "convergence"],
+  "apis": ["Axes", "Rectangle", "VGroup", "Transform", "ValueTracker", "always_redraw", "MathTex"]
+}

@@ -1,0 +1,8 @@
+{
+  "id": "mobius_strip",
+  "category": "misc_3d",
+  "difficulty": 2,
+  "summary": "ThreeDScene Möbius strip via r(u,v)=((1+v cos(u/2))cos u,(1+v cos(u/2))sin u, v sin(u/2)). Phase 1: ValueTracker u_max_tr grows the BLUE surface 0→2π via always_redraw Surface. Phase 2: ValueTracker u_probe advances YELLOW dot + GREEN normal arrow (computed from cross of r_u, r_v) around strip; normal flips after one revolution confirming non-orientability.",
+  "tags": ["mobius_strip", "non_orientable", "parametric_surface", "normal_vector", "value_tracker", "always_redraw"],
+  "apis": ["ThreeDAxes", "Surface", "Arrow3D", "Dot3D", "ValueTracker", "always_redraw", "Tex"]
+}

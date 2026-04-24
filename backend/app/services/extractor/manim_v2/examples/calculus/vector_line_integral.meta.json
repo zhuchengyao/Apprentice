@@ -1,0 +1,8 @@
+{
+  "id": "vector_line_integral",
+  "category": "calculus",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS: NumberPlane with BLUE_D vector-field arrows for F=(x²y, x); YELLOW unit circle γ. ValueTracker t_tr sweeps θ 0→2π; always_redraw YELLOW arc trail + RED rider + numerical ∫ F·dr → 3π/4 ≈ 2.356 (Green's theorem: ∫∫ (1-x²) dA over unit disk).",
+  "tags": ["line_integral", "greens_theorem", "vector_field", "value_tracker", "always_redraw"],
+  "apis": ["NumberPlane", "Arrow", "Circle", "Dot", "VMobject", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

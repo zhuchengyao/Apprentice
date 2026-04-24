@@ -1,0 +1,8 @@
+{
+  "id": "basketball_projectile",
+  "category": "geometry",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: projectile from launcher to hoop (d=5m, h=1m). ValueTracker θ_tr sweeps launch angle; for each angle compute required speed v² = gd²/(2cos²θ(d tan θ - h)); always_redraw YELLOW trajectory arc + RED midpoint ball. RIGHT axes show v(θ) curve with BLUE line + YELLOW rider dot; live panel has θ, v.",
+  "tags": ["projectile", "optimization", "basketball", "value_tracker", "always_redraw"],
+  "apis": ["Line", "Dot", "Circle", "Axes", "Axes.plot", "VMobject", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

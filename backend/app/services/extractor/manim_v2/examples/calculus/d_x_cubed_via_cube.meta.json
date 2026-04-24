@@ -1,0 +1,9 @@
+{
+  "id": "d_x_cubed_via_cube",
+  "category": "calculus",
+  "difficulty": 3,
+  "summary": "ThreeDScene: d(x³)/dx = 3x² via cube nudge. BLUE cube of side x=1.5 + 3 face slabs (GREEN, ORANGE, YELLOW Prism) of dimensions x·x·dx via always_redraw on ValueTracker dx_tr. Ambient rotation. 3 slabs × x²·dx = 3x²·dx ⇒ dV/dx = 3x².",
+  "tags": ["power_rule_cubic", "geometric_derivative", "3d_cube", "volume_expansion", "value_tracker", "always_redraw"],
+  "apis": ["ThreeDAxes", "Cube", "Prism", "VGroup", "ValueTracker", "always_redraw", "Tex"],
+  "source": "3b1b/_2017/eoc/chapter3.py::NudgeSideLengthOfCube+ShowCubeDVIn3D"
+}

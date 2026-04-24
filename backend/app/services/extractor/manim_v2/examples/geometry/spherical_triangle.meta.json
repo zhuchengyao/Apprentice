@@ -1,0 +1,8 @@
+{
+  "id": "spherical_triangle",
+  "category": "geometry",
+  "difficulty": 3,
+  "summary": "ThreeDScene: unit sphere + spherical triangle with 2 fixed vertices A=(1,0,0), B at (cos 120°, sin 120°, 0), and C height variable via ValueTracker h_tr through 0.3, 0.6, 0.9. always_redraw RED/GREEN/YELLOW geodesic arcs + vertex dots. Panel shows α + β + γ - π = area (spherical excess).",
+  "tags": ["spherical_triangle", "spherical_excess", "geodesic", "value_tracker", "always_redraw"],
+  "apis": ["ThreeDScene", "ThreeDAxes", "Sphere", "VMobject", "Dot3D", "VGroup", "ValueTracker", "always_redraw", "Transform", "MathTex", "Tex"]
+}

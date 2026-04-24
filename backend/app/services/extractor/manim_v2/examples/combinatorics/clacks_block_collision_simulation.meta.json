@@ -1,0 +1,8 @@
+{
+  "id": "clacks_block_collision_simulation",
+  "category": "combinatorics",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS physical block-collision simulation. WHITE floor and wall with hatch marks; BLUE small Square (m=1) and RED big Square (M=100, mass ratio 100). Code simulates the elastic 1D kinematics via a proper event loop (wall reflection or block-block elastic collision, momentum+energy conserving) producing a sequence of events, then animates the first 12 with x_small and x_big ValueTrackers and a Flash effect at each collision. YELLOW Integer counter increments up to 31 clacks. Bottom caption gives the closed-form result: clacks(M/m=100^k) = ⌊π·10^k⌋.",
+  "tags": ["clacks", "pi", "elastic_collision", "conservation", "simulation", "value_tracker", "flash"],
+  "apis": ["Square", "Line", "VGroup", "Integer", "ValueTracker", "always_redraw", "Flash", "MathTex", "Tex"]
+}

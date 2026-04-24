@@ -1,0 +1,8 @@
+{
+  "id": "seam_carving_energy",
+  "category": "geometry",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS: 8×12 random energy grid (salient hot-spot block). Phase 1 ValueTracker step_tr fills cumulative-energy DP table top-down with BLUE→RED heatmap via always_redraw. Phase 2 traceback animates RED seam dots+lines from top to bottom via seam_tr; final total energy label.",
+  "tags": ["seam_carving", "dynamic_programming", "image_processing", "value_tracker", "always_redraw"],
+  "apis": ["Square", "Dot", "Line", "VGroup", "ValueTracker", "always_redraw", "interpolate_color", "MathTex", "Tex"]
+}

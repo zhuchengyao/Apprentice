@@ -1,0 +1,8 @@
+{
+  "id": "attention_value_vector_output",
+  "category": "neural_networks",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS: 5 token Value vectors drawn as 4-cell columns of GREEN/RED-colored Squares with fill_opacity = |v_i|. Top row shows attention weights (YELLOW if >0.3, else GREY_A) for a query, dominant on 'sat' (0.6). TransformFromCopy scales each column by its weight into PURPLE weighted columns below; then + signs and = signs build the weighted sum column on the right in YELLOW with SurroundingRectangle. Bottom MathTex: z = Σ softmax(QK^T)_i · V_i.",
+  "tags": ["attention", "value_vectors", "weighted_sum", "transformer", "attention_output", "transform_from_copy"],
+  "apis": ["Square", "VGroup", "MathTex", "Tex", "TransformFromCopy", "SurroundingRectangle", "LaggedStart", "FadeIn", "Write", "numpy"]
+}

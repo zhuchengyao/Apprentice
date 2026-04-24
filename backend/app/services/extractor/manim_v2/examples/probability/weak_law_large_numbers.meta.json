@@ -1,0 +1,8 @@
+{
+  "id": "weak_law_large_numbers",
+  "category": "probability",
+  "difficulty": 2,
+  "summary": "TWO_COLUMN: LEFT axes with YELLOW ε-band around μ=0.5 + 30 BLUE_D faint sample-mean paths from iid Uniform(0,1). ValueTracker n_tr grows 1→300 via always_redraw. RIGHT axes with GREEN fraction-in-band curve approaching 1.",
+  "tags": ["law_of_large_numbers", "weak_lln", "convergence_in_probability", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "Rectangle", "DashedLine", "VMobject", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

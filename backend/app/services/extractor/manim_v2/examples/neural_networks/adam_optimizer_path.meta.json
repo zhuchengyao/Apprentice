@@ -1,0 +1,8 @@
+{
+  "id": "adam_optimizer_path",
+  "category": "neural_networks",
+  "difficulty": 3,
+  "summary": "TWO_COLUMN Adam vs SGD vs momentum on anisotropic loss f=0.05x²+y². ORANGE SGD, GREEN momentum (β=0.9), BLUE Adam (β_1=0.9, β_2=0.999) paths from (2.8, 2.0). ValueTracker t_tr reveals 100 iterations via always_redraw trails + dots. Live losses; Adam adaptive per-dim rates shown.",
+  "tags": ["adam_optimizer", "stochastic_optimization", "momentum", "adaptive_learning_rate", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "VMobject", "Dot", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"]
+}

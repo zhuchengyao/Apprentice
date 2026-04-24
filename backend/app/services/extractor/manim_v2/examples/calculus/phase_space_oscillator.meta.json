@@ -1,0 +1,8 @@
+{
+  "id": "phase_space_oscillator",
+  "category": "calculus",
+  "difficulty": 3,
+  "summary": "TWO_COLUMN: NumberPlane as (x, p) phase space; always_redraw trajectory trace + RED rider dot for damped harmonic oscillator x(t)=e^(-γt)cos(ωt) with ω=√(1-γ²). Phase 1: γ=0.12 inward spiral; Phase 2: γ=0 steady ellipse (energy preserved). Live (γ, t, x, p, E) panel.",
+  "tags": ["phase_space", "oscillator", "damping", "energy", "value_tracker", "always_redraw"],
+  "apis": ["NumberPlane", "VMobject", "Dot", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

@@ -1,0 +1,8 @@
+{
+  "id": "dominated_convergence",
+  "category": "analysis",
+  "difficulty": 3,
+  "summary": "TWO_COLUMN: axes with GREEN dominating g(x)=e^(-x), YELLOW dashed limit f=0, BLUE f_n(x) = (1/n) e^(-x/n) sin x. ValueTracker n_tr grows 1, 2, 5, 10, 30, 100; always_redraw f_n → 0 pointwise with ∫ f_n → 0.",
+  "tags": ["dominated_convergence", "lebesgue", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "Axes.plot", "DashedLine", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

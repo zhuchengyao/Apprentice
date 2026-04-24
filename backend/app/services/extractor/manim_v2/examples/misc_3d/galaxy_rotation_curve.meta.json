@@ -1,0 +1,8 @@
+{
+  "id": "galaxy_rotation_curve",
+  "category": "misc_3d",
+  "difficulty": 2,
+  "summary": "TWO_COLUMN: LEFT galaxy top-down view with 24 YELLOW stars at 6 radii, each rotating at ω = v_flat/r via ValueTracker t_tr + always_redraw. RIGHT axes compare BLUE Keplerian v = 1/√r (predicted) with ORANGE observed flat v=1 line — implication: dark matter.",
+  "tags": ["galaxy_rotation", "dark_matter", "astrophysics", "value_tracker", "always_redraw"],
+  "apis": ["Dot", "Axes", "Axes.plot", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

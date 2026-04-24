@@ -1,0 +1,8 @@
+{
+  "id": "spirals_rays_and_gaps_mod_44",
+  "category": "number_theory",
+  "difficulty": 3,
+  "summary": "COMPARISON two polar scatter plots of n at (√n · 0.08, n rad) for n ≤ 2500. LEFT BLUE shows all integers revealing the 44 tight spirals and 710 rays structure. RIGHT shows PRIMES only, colored YELLOW if gcd(n,44)=1 and RED otherwise — so primes concentrate on the φ(44)=20 coprime rays. LaggedStart with low lag_ratio reveals each cloud. Legend clarifies color map. Bottom MathTex: '44 spirals but only φ(44)=20 rays can hold primes'.",
+  "tags": ["prime_spiral", "dirichlet", "residues_mod_44", "eulers_totient", "polar_scatter"],
+  "apis": ["Dot", "VGroup", "LaggedStart", "MathTex", "Tex", "FadeIn", "numpy"]
+}

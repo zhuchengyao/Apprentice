@@ -1,0 +1,8 @@
+{
+  "id": "moser_circle_chords",
+  "category": "combinatorics",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: Circle with n YELLOW points and all C(n,2) BLUE chords — rebuilt via always_redraw as ValueTracker n_tr steps 1..6. Live panel shows n, C(n,2), C(n,4), R_n = 1 + C(n,2) + C(n,4) producing sequence 1, 2, 4, 8, 16, 31 (not 32).",
+  "tags": ["moser", "circle_regions", "combinatorics", "value_tracker", "always_redraw"],
+  "apis": ["Circle", "Line", "Dot", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

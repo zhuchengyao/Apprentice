@@ -1,0 +1,8 @@
+{
+  "id": "compactness_heine_borel",
+  "category": "analysis",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: number line [-0.2, 1.2] with YELLOW closed interval [0, 1]. ValueTracker N_tr steps N = 3, 6, 10, 20; always_redraw N+1 color-coded overlapping open intervals I_k = (k/N - 1.2/N, k/N + 1.2/N) staggered vertically. Live 'cover size' and compactness statement.",
+  "tags": ["heine_borel", "compactness", "open_cover", "value_tracker", "always_redraw"],
+  "apis": ["NumberLine", "Line", "Dot", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

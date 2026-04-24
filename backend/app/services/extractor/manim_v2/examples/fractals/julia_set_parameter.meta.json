@@ -1,0 +1,8 @@
+{
+  "id": "julia_set_parameter",
+  "category": "fractals",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS Julia set tour of f_c(z)=z²+c for c in {rabbit -0.7+0.27i, disconnected -0.8+0.156i, cauliflower 0.285+0.01i, airplane -1.25, dendrite -0.4+0.6i}. 80×60 precomputed escape-time heatmap. ValueTracker c_idx_tr advances through 5 sets via always_redraw recoloring. Live c + name label.",
+  "tags": ["julia_set", "escape_time", "parameter_tour", "mandelbrot_family", "value_tracker", "always_redraw"],
+  "apis": ["Rectangle", "VGroup", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"]
+}

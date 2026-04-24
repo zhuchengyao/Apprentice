@@ -1,0 +1,8 @@
+{
+  "id": "dirichlet_ap_primes",
+  "category": "number_theory",
+  "difficulty": 3,
+  "summary": "TWO_COLUMN: LEFT number line 0..200 with GREEN primes in 4n+1 class and RED primes in 4n+3 class marked. RIGHT axes with GREEN and RED running-count curves (both unbounded, slight Chebyshev bias toward 4n+3). ValueTracker N_tr sweeps.",
+  "tags": ["dirichlet_theorem", "primes_in_ap", "value_tracker", "always_redraw"],
+  "apis": ["NumberLine", "Dot", "Axes", "VMobject", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

@@ -1,0 +1,8 @@
+{
+  "id": "hologram_diffraction_double_slit",
+  "category": "calculus",
+  "difficulty": 3,
+  "summary": "TWO_COLUMN: LEFT 60-cell BLACK→WHITE intensity strip representing screen; RIGHT axes plot I(θ) = cos²(π d sin θ/λ) · sinc²(π a sin θ/λ) with a/λ=0.8 fixed. ValueTracker d_over_lambda_tr tours 1.5, 5.0, 8.0, 3.0; always_redraw strip + YELLOW curve + live d/λ panel.",
+  "tags": ["diffraction", "double_slit", "holograms", "value_tracker", "always_redraw"],
+  "apis": ["Rectangle", "Axes", "Axes.plot", "VGroup", "ValueTracker", "always_redraw", "interpolate_color", "MathTex", "Tex"]
+}

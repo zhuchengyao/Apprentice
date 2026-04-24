@@ -1,0 +1,8 @@
+{
+  "id": "complex_integration_contour",
+  "category": "complex",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS: ComplexPlane with 2 simultaneous paths from -1-i (GREEN) to 1+i (RED): BLUE straight line and PURPLE semicircle through origin. ValueTracker s_tr sweeps 0→1 tracing both via always_redraw trails + rider dots. Live numerical contour integrals for z² — both equal (z₁³-z₀³)/3 at s=1 (path-independent for holomorphic).",
+  "tags": ["contour_integral", "path_independence", "holomorphic", "value_tracker", "always_redraw"],
+  "apis": ["ComplexPlane", "Dot", "VMobject", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

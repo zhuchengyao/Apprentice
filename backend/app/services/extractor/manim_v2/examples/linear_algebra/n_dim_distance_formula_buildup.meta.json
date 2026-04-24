@@ -1,0 +1,8 @@
+{
+  "id": "n_dim_distance_formula_buildup",
+  "category": "linear_algebra",
+  "difficulty": 2,
+  "summary": "TWO_COLUMN: LEFT NumberPlane with a right triangle from origin to (4,3) — GREEN x-leg, RED y-leg, WHITE hypotenuse with sqrt(x²+y²) rotated label. RIGHT column a stack of three MathTex formulas built by TransformFromCopy chaining: ||v|| = sqrt(x²+y²) → sqrt(x²+y²+z²) → sqrt(x_1² + x_2² + ... + x_n²), boxed in YELLOW SurroundingRectangle with caption 'Definition of length in any R^n'.",
+  "tags": ["distance_formula", "pythagorean", "euclidean_norm", "generalization", "transform_from_copy", "n_dimensional"],
+  "apis": ["NumberPlane", "Line", "MathTex", "Tex", "TransformFromCopy", "SurroundingRectangle", "VGroup"]
+}

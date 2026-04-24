@@ -1,0 +1,8 @@
+{
+  "id": "gray_code",
+  "category": "combinatorics",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: Gray code n=4, all 16 patterns stacked vertically with 4 ORANGE/GREY bit slots + row index + binary label. ValueTracker k_tr walks k=0..15 with always_redraw YELLOW highlight row + GREEN flip arrow connecting current row to next at the exact bit that flips. Live k and Gray(k) readouts.",
+  "tags": ["gray_code", "reflected_binary", "hamming_distance", "hamiltonian_hypercube", "value_tracker", "always_redraw"],
+  "apis": ["Square", "Rectangle", "Arrow", "VGroup", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"]
+}

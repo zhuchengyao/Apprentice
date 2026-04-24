@@ -1,0 +1,9 @@
+{
+  "id": "ad_minus_bc_from_rectangle",
+  "category": "linear_algebra",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: derive det=ad-bc by sweeping b, c from 0 → targets (1.5, 0.8). Fixed a=3, d=2. ValueTracker bc_tr morphs columns (3, c), (b, 2); always_redraw YELLOW parallelogram + GREEN v_1, RED v_2. Dynamic formula rebuilds each frame: starts '3·2=6', ends 'ad-bc=4.80'.",
+  "tags": ["ad_minus_bc", "determinant_formula", "diagonal_limit", "bc_correction", "value_tracker", "always_redraw"],
+  "apis": ["NumberPlane", "Polygon", "Arrow", "DecimalNumber", "ValueTracker", "always_redraw", "add_updater", "Tex"],
+  "source": "3b1b/_2016/eola/chapter5.py::TwoDDeterminantFormula"
+}

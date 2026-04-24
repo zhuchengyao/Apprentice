@@ -1,0 +1,8 @@
+{
+  "id": "knights_tour",
+  "category": "combinatorics",
+  "difficulty": 2,
+  "summary": "Draw an 8x8 checkered chess board and MoveAlongPath a yellow dot through a 16-step knight's tour with the trailing path highlighted.",
+  "tags": ["chess", "knight", "tour", "path", "animation"],
+  "apis": ["Square", "VGroup", "VMobject", "MoveAlongPath", "Dot"]
+}

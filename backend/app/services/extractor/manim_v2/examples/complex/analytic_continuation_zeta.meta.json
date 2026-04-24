@@ -1,0 +1,8 @@
+{
+  "id": "analytic_continuation_zeta",
+  "category": "complex",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS: axes for real s with ORANGE analytic ζ(s) on both sides of s=1 pole (dashed RED) + BLUE partial sum Σ 1/n^s from ValueTracker N_tr=1..200. Partial sum diverges for s ≤ 1 but continued ζ is finite. Markers at ζ(2)=π²/6 GREEN, ζ(-1)=-1/12 YELLOW.",
+  "tags": ["zeta_function", "analytic_continuation", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "Axes.plot", "DashedLine", "Dot", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

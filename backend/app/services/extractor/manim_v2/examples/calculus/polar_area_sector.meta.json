@@ -1,0 +1,8 @@
+{
+  "id": "polar_area_sector",
+  "category": "calculus",
+  "difficulty": 2,
+  "summary": "TWO_COLUMN: polar area for cardioid r(θ)=1+cos θ. LEFT NumberPlane with BLUE cardioid + YELLOW growing sector polygon via always_redraw sweeping 0→2π driven by ValueTracker theta_tr, ORANGE radial arrow at leading edge. RIGHT shows live β, A(β)=½∫_0^β r² dt computed via np.trapezoid converging to 3π/2.",
+  "tags": ["polar_area", "cardioid", "riemann_integral", "trapezoidal", "value_tracker", "always_redraw"],
+  "apis": ["NumberPlane", "ParametricFunction", "Polygon", "Line", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"]
+}

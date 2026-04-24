@@ -1,0 +1,9 @@
+{
+  "id": "change_to_eigenbasis",
+  "category": "linear_algebra",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS: diagonalization A=[[3, 1], [0, 2]] via eigenbasis. GREEN P=[[1, -1], [0, 1]] (eigenvectors as columns), GREEN P^(-1)=[[1, 1], [0, 1]], YELLOW D=P^(-1)AP=diag(3, 2). Eigenvalues on diagonal.",
+  "tags": ["diagonalization", "eigenbasis", "similarity", "P_D_Pinv"],
+  "apis": ["MathTex", "Tex"],
+  "source": "3b1b/_2016/eola/chapter10.py::ChangeToEigenBasis"
+}

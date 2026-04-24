@@ -1,0 +1,8 @@
+{
+  "id": "sphere_to_cylinder_area_preservation",
+  "category": "misc_3d",
+  "difficulty": 3,
+  "summary": "ThreeDScene with BLUE_D Sphere R=1.8 inscribed in a YELLOW_E ParametricSurface cylinder of radius R, height 2R. At latitude φ=45° a RED sphere-ring and GREEN cylinder-ring mark the projected band, connected by 12 WHITE Arrow3D radial projectors via LaggedStart. Fixed-frame derivation bottom-right: sphere area element ΔA = R dφ · R cos φ dθ; cylinder image stretches width by 1/cos φ, squishes height by cos φ — area preserved. Conclusion 'A_sphere = A_cylinder lateral = 2πR · 2R = 4πR²' in YELLOW, boxed.",
+  "tags": ["sphere_area", "4_pi_r_squared", "area_preservation", "cylinder_projection", "archimedes", "3d"],
+  "apis": ["ThreeDScene", "Sphere", "ParametricSurface", "VMobject", "Arrow3D", "VGroup", "LaggedStart", "MathTex", "Tex", "SurroundingRectangle", "add_fixed_in_frame_mobjects"]
+}

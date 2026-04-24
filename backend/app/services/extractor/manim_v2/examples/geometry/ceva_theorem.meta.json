@@ -1,0 +1,8 @@
+{
+  "id": "ceva_theorem",
+  "category": "geometry",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: triangle ABC (vertices GREEN). Three cevians CF (BLUE), AD (RED), BE (PURPLE) to opposite-side feet. BD/DC=2 and CE/EA=1.5 fixed; ValueTracker u_tr varies AF/FB. always_redraw cevians + dots; product u·2·1.5 shown. 'Concurrent!' flag when product=1 (u=1/3).",
+  "tags": ["ceva_theorem", "cevians", "triangle_concurrency", "value_tracker", "always_redraw"],
+  "apis": ["Polygon", "Dot", "Line", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

@@ -1,0 +1,8 @@
+{
+  "id": "pythagoras_right_triangle",
+  "category": "geometry",
+  "difficulty": 1,
+  "summary": "SINGLE_FOCUS: right triangle at origin with 3 squares (RED a², BLUE b², GREEN c²) on each side. ValueTrackers a_tr, b_tr drive the legs; always_redraw rebuilds geometry + inline area labels each frame. 5-config tour (3,4), (1.5, 3.5), (2.5, 2.5), (4, 1), (3, 2). Live panel has a, b, c, a²+b², c².",
+  "tags": ["pythagoras", "right_triangle", "squares_on_sides", "value_tracker", "always_redraw"],
+  "apis": ["Polygon", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

@@ -1,0 +1,8 @@
+{
+  "id": "cumulant_expansion_clt",
+  "category": "probability",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS Axes (-3..3 × 0..4.5). YELLOW target curve t²/2 (the CGF of standard Gaussian). Three colored K_{Y_n} curves approach it as n grows: RED n=1 (includes κ_3 t³/6), ORANGE n=10 (κ_3 t³/(6√10) term still noticeable), GREEN n=1000 (nearly indistinguishable from t²/2). Bottom derivation shows K_X(t) = t²/2 + κ_3 t³/6 + ..., and K_{Y_n}(t) = t²/2 + κ_3 t³/(6√n) + ... — higher-order terms fade as 1/√n.",
+  "tags": ["central_limit_theorem", "cumulant_generating_function", "mgf_proof", "gaussian_limit", "clt_proof"],
+  "apis": ["Axes", "Axes.plot", "MathTex", "Tex", "VGroup", "Create", "Write", "FadeIn", "numpy"]
+}

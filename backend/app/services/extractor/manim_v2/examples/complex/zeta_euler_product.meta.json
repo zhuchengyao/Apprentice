@@ -1,0 +1,8 @@
+{
+  "id": "zeta_euler_product",
+  "category": "complex",
+  "difficulty": 3,
+  "summary": "TWO_COLUMN: Axes left with BLUE sum-form ζ(s)=Σ1/n^s reference + GREEN always_redraw partial Euler product over the first k primes (ValueTracker prime_idx steps 1→10). Right column lists the active primes and compares at s=2 (π²/6 ≈ 1.6449); GREEN curve climbs to overlap BLUE.",
+  "tags": ["euler_product", "zeta", "primes", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "plot", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

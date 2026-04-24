@@ -1,0 +1,8 @@
+{
+  "id": "iterated_function_system",
+  "category": "fractals",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS IFS chaos game with 3 equal-probability contraction maps f_i(x)=(x+v_i)/2 toward 3 triangle vertices (RED/GREEN/BLUE) reveals Sierpinski attractor. 8000 pre-computed iterates colored by which map was used. ValueTracker n_tr sweeps 0→8000 with add_updater fading in dots. Banach fixed-point guarantees unique attractor.",
+  "tags": ["ifs", "chaos_game", "banach_fixed_point", "sierpinski", "value_tracker", "add_updater"],
+  "apis": ["Dot", "VGroup", "DecimalNumber", "ValueTracker", "add_updater", "Tex"]
+}

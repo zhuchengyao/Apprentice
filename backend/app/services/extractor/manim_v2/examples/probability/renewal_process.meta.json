@@ -1,0 +1,8 @@
+{
+  "id": "renewal_process",
+  "category": "probability",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: axes with BLUE counting staircase N(t) + YELLOW arrival ticks + GREEN dashed y=t/E[X] reference. ValueTracker t_tr sweeps 0→30; 30 precomputed Exp(1) inter-arrivals. N(t)/t → 1 by elementary renewal theorem.",
+  "tags": ["renewal_process", "counting_process", "exponential_interarrivals", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "DashedLine", "Line", "Dot", "VMobject", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

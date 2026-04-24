@@ -1,0 +1,8 @@
+{
+  "id": "mass_points_cevian",
+  "category": "geometry",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS mass point geometry. BLUE triangle ABC with 3 ValueTrackers m_A, m_B, m_C. always_redraw TEAL cevian AD with D on BC at ratio m_C:m_B + YELLOW center-of-mass G dot at (m_A·A+m_B·B+m_C·C)/Σ. Sweep mass tuples (3, 1), (1, 3), (2, 2), (4, 1), (2, 1); Ceva's theorem emphasized.",
+  "tags": ["mass_points", "cevian", "center_of_mass", "ceva_theorem", "value_tracker", "always_redraw"],
+  "apis": ["Polygon", "Line", "Dot", "ValueTracker", "always_redraw", "Tex"]
+}

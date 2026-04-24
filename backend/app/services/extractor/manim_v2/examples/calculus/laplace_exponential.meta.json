@@ -1,0 +1,8 @@
+{
+  "id": "laplace_exponential",
+  "category": "calculus",
+  "difficulty": 3,
+  "summary": "TWO_COLUMN: top time-axes with BLUE e^(at) curve; bottom Laplace-axes with 1/(s-a) split into RED (s<a, divergent) and GREEN (s>a, valid) branches plus YELLOW dashed vertical at pole s=a. ValueTracker a_tr tours -1.5, 0, 0.4, -0.5 via always_redraw; live sign/behavior panel.",
+  "tags": ["laplace_transform", "exponential", "region_of_convergence", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "Axes.plot", "DashedLine", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

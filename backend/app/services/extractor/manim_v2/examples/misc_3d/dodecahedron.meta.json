@@ -1,0 +1,8 @@
+{
+  "id": "dodecahedron",
+  "category": "misc_3d",
+  "difficulty": 1,
+  "summary": "Construct a green Dodecahedron polyhedron and spin it 360 degrees around the vertical axis, with a fixed-in-frame title overlay.",
+  "tags": ["3d", "polyhedron", "dodecahedron", "rotation", "platonic_solid"],
+  "apis": ["ThreeDScene", "Dodecahedron", "Rotate", "ThreeDScene.add_fixed_in_frame_mobjects"]
+}

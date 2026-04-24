@@ -1,0 +1,8 @@
+{
+  "id": "exp_self_derivative",
+  "category": "calculus",
+  "difficulty": 1,
+  "summary": "Slide the tangent line along y = eˣ and show its slope always equals the function value — d/dx eˣ = eˣ.",
+  "tags": ["exponential", "derivative", "tangent", "e_to_the_x", "self_derivative"],
+  "apis": ["Axes", "plot", "ValueTracker", "always_redraw", "Line", "Dot", "MathTex"]
+}

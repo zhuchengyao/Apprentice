@@ -1,0 +1,8 @@
+{
+  "id": "lagrange_multipliers",
+  "category": "calculus",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS NumberPlane: maximize f=xy on unit circle g=x²+y²=1 via Lagrange. BLUE circle + TEAL hyperbolic level curves of f. ValueTracker theta_tr moves YELLOW point around circle; always_redraw GREEN ∇f=(y, x) arrow + ORANGE ∇g=2(x, y) arrow + RED hollow marker when ∇f ∥ ∇g. Live (x, y), f, df/dθ = cos(2θ) zeros at optima.",
+  "tags": ["lagrange_multipliers", "constrained_optimization", "gradient_alignment", "level_curves", "value_tracker", "always_redraw"],
+  "apis": ["NumberPlane", "Circle", "ParametricFunction", "Arrow", "Dot", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"]
+}

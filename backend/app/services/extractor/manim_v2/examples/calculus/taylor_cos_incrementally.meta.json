@@ -1,0 +1,9 @@
+{
+  "id": "taylor_cos_incrementally",
+  "category": "calculus",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: Taylor series for cos x built incrementally. BLUE cos x + YELLOW P_0=1, P_2=1-x²/2, P_4=1-x²/2+x⁴/24, P_6 via always_redraw on ValueTracker order_tr stepping 0→3. Dynamic term list at bottom; each addition improves fit near x=0.",
+  "tags": ["taylor_series", "cos_taylor", "incremental_approximation", "polynomial_fit", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "ParametricFunction", "VGroup", "DecimalNumber", "ValueTracker", "always_redraw", "add_updater", "Tex"],
+  "source": "3b1b/_2017/eoc/chapter10.py::ConstructQuadraticApproximation+CubicAndQuarticApproximations"
+}

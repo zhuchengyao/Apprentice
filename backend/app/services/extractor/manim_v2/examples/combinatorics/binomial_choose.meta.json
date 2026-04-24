@@ -1,0 +1,8 @@
+{
+  "id": "binomial_choose",
+  "category": "combinatorics",
+  "difficulty": 2,
+  "summary": "TWO_COLUMN: 8 element circles on top; Transform steps through all 56 subsets of size k=3 in lex order, each selected 3 elements turn YELLOW. Progress bar below fills GREEN; live panel shows n, k, C(8,3)=56, and the count shown so far.",
+  "tags": ["binomial_coefficient", "subsets", "combinations", "transform"],
+  "apis": ["Circle", "Rectangle", "VGroup", "Transform", "MathTex", "Tex"]
+}

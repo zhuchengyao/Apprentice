@@ -1,0 +1,8 @@
+{
+  "id": "cantor_set_removal",
+  "category": "fractals",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS Cantor ternary set construction. Horizontal stack of levels C_0..C_6 via ValueTracker level_tr. always_redraw rebuilds 2^L surviving intervals per level (BLUE→RED gradient). Middle thirds recursively removed. Live 2^L count, (2/3)^L total length → 0 (measure zero, uncountable, dim log 2/log 3 ≈ 0.6309).",
+  "tags": ["cantor_set", "fractal_dimension", "middle_thirds_removal", "measure_zero", "value_tracker", "always_redraw"],
+  "apis": ["Line", "VGroup", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"]
+}

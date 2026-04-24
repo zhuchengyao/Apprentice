@@ -1,0 +1,9 @@
+{
+  "id": "chain_rule_three_lines",
+  "category": "calculus",
+  "difficulty": 3,
+  "summary": "THREE_ROW: 3 coupled NumberLines for x, g(x)=x²+3, f(g)=sin g. ValueTracker x_tr sweeps 1.5→2.5; YELLOW/GREEN/BLUE dots on each line + GREEN and BLUE arrows connecting them via always_redraw. Right panel: live x, g'(x)=2x, f'(g)=cos g, chain product f'(g)·g'(x).",
+  "tags": ["chain_rule", "coupled_lines", "composition_derivative", "value_tracker", "always_redraw"],
+  "apis": ["NumberLine", "Dot", "Arrow", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"],
+  "source": "3b1b/_2017/eoc/chapter4.py::ThreeLinesChainRule+GeneralizeChainRule"
+}

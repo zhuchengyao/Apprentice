@@ -1,0 +1,8 @@
+{
+  "id": "grover_rotation",
+  "category": "number_theory",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS: 2D quantum-state plane spanned by |α⟩ (x-axis, BLUE) and |β⟩ (y-axis, RED). Unit circle + target-amplitude band (GREEN). For N=100, M=1, θ=arcsin(1/10). ValueTracker k_tr advances Grover iterations k=0 → k*≈7.85; always_redraw YELLOW state arrow + dot at angle (2k+1)θ + angle arc. Live panel tracks N, M, θ, angle, amplitude² on target, k*.",
+  "tags": ["grover_algorithm", "amplitude_amplification", "quantum", "value_tracker", "always_redraw"],
+  "apis": ["NumberPlane", "Arrow", "Dot", "Circle", "Arc", "Rectangle", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

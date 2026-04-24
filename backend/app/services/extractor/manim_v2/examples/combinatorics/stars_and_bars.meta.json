@@ -1,0 +1,8 @@
+{
+  "id": "stars_and_bars",
+  "category": "combinatorics",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS stars and bars: 5 stars distributed into 3 bins → C(7, 2)=21 arrangements enumerated. ValueTracker idx_tr walks all 21 compositions with always_redraw showing BLUE/GREEN/ORANGE color-coded star groups separated by 2 RED bars. Live (a, b, c) triple + running count + formula binom{n+k-1}{k-1}.",
+  "tags": ["stars_and_bars", "multisets", "combinations_with_repetition", "binomial_coefficient", "value_tracker", "always_redraw"],
+  "apis": ["Star", "Line", "VGroup", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"]
+}

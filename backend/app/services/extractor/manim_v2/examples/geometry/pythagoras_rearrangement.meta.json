@@ -1,0 +1,8 @@
+{
+  "id": "pythagoras_rearrangement",
+  "category": "geometry",
+  "difficulty": 3,
+  "summary": "Two-arrangement proof: a fixed (a+b)-square is filled first by an a²-square + b²-square + 4 triangles, then via Transform the same 4 triangles slide to the corners revealing a tilted c² square. Same total area in both arrangements ⇒ a² + b² = c².",
+  "tags": ["pythagoras", "rearrangement_proof", "transform", "area_invariant", "geometry"],
+  "apis": ["Polygon", "VGroup", "Transform", "LaggedStart", "FadeOut", "MathTex"]
+}

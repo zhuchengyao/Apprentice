@@ -1,0 +1,8 @@
+{
+  "id": "complex_exp_as_dilate_and_rotate",
+  "category": "complex",
+  "difficulty": 3,
+  "summary": "COMPARISON two NumberPlanes. LEFT GREEN (C, +) plane with YELLOW z=a+bi dot and GREEN arrow from origin. RIGHT ORANGE (C^*, ×) plane with RED e^z dot, RED arrow from origin, and BLUE semi-transparent always_redraw Circle of radius e^a showing the modulus. ValueTracker a_tr, b_tr independently sweep (0.8, π/2, π) so real-part adds stretch the image out of the unit circle while imaginary-part adds rotate it. Bottom readout shows live a, b, |e^z|. This visualizes exp as the group homomorphism (C,+)→(C^*,×): add -> dilate+rotate.",
+  "tags": ["complex_exponential", "group_homomorphism", "rotation", "dilation", "value_tracker", "always_redraw", "euler"],
+  "apis": ["NumberPlane", "Dot", "Arrow", "Circle", "ValueTracker", "always_redraw", "DecimalNumber", "MathTex", "VGroup"]
+}

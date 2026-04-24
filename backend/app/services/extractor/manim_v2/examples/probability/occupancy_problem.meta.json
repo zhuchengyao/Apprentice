@@ -1,0 +1,8 @@
+{
+  "id": "occupancy_problem",
+  "category": "probability",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: M=12 boxes at bottom. ValueTracker throw_tr drops N=24 precomputed uniform random balls; always_redraw stacked BLUE balls in each box. Live panel shows throws, empty count, expected E = M(1-1/M)^N, max occupancy.",
+  "tags": ["occupancy_problem", "balls_boxes", "value_tracker", "always_redraw"],
+  "apis": ["Rectangle", "Circle", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

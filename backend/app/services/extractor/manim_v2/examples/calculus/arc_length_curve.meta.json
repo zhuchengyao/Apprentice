@@ -1,0 +1,8 @@
+{
+  "id": "arc_length_curve",
+  "category": "calculus",
+  "difficulty": 2,
+  "summary": "TWO_COLUMN: axes with BLUE f(x) = x·sin x + 1 on [0, 4] + YELLOW polygonal approximation with N segments. ValueTracker N_tr grows 2, 4, 8, 16, 40 via always_redraw polygon + dots. Live polygon length vs exact arc length (fine numerical).",
+  "tags": ["arc_length", "polygonal_approximation", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "Axes.plot", "VMobject", "Dot", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

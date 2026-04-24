@@ -1,0 +1,8 @@
+{
+  "id": "coupon_collector",
+  "category": "probability",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: 10 coupon slots at top (fill YELLOW with ✓ as first-seen). ValueTracker t_tr advances 1 draw at a time; RED circle highlights current draw. Progress axes at bottom show collected count vs draws with GREEN dashed E[draws] = 10·H_10 ≈ 29.3.",
+  "tags": ["coupon_collector", "harmonic_number", "value_tracker", "always_redraw"],
+  "apis": ["Rectangle", "Square", "Circle", "Axes", "DashedLine", "VMobject", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

@@ -1,0 +1,8 @@
+{
+  "id": "orbital_3d_pz",
+  "category": "misc_3d",
+  "difficulty": 3,
+  "summary": "ThreeDScene hydrogen 2p_z orbital isosurface |ψ|²=c. Radial equation r²e^(-r)=c²/cos²θ solved per frame via 20-iter Newton. ORANGE-YELLOW upper lobe (+) and BLUE-PURPLE lower lobe (-) via always_redraw Surface. ValueTracker density_tr tours {0.3, 0.5, 0.2, 0.1, 0.4}. Ambient camera rotation.",
+  "tags": ["atomic_orbital", "2p_orbital", "quantum_mechanics", "isosurface", "value_tracker", "always_redraw"],
+  "apis": ["ThreeDAxes", "Surface", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"]
+}

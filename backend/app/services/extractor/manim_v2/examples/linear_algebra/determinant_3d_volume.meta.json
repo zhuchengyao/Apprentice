@@ -1,0 +1,8 @@
+{
+  "id": "determinant_3d_volume",
+  "category": "linear_algebra",
+  "difficulty": 3,
+  "summary": "3D scene: ValueTracker s_tr interpolates A(s) = (1-s)I + sM with 2 targets — M_good (det=3, proper volume) and M_degen (det=0, flat). always_redraw RED/GREEN/BLUE column-vector arrows + YELLOW parallelepiped faces; ambient camera rotation. Fixed-frame panel shows |det A| updating live via Transform between phases.",
+  "tags": ["determinant", "volume", "3d", "value_tracker", "always_redraw", "transform"],
+  "apis": ["ThreeDScene", "ThreeDAxes", "Line", "Polygon", "VGroup", "ValueTracker", "always_redraw", "Transform", "MathTex", "Tex"]
+}

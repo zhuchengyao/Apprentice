@@ -1,0 +1,9 @@
+{
+  "id": "nonlinearity_not_allowed",
+  "category": "linear_algebra",
+  "difficulty": 1,
+  "summary": "SINGLE_FOCUS: what's NOT linear. GREEN allowed terms 3x, -2y, 5z, c_1 x+c_2 y. RED forbidden terms x², sin(x), xy, e^x, √x each revealed with RED circle+slash. Bottom summary: 'each variable first power, no products'.",
+  "tags": ["linearity", "forbidden_operations", "first_order_only", "linear_system"],
+  "apis": ["MathTex", "Circle", "Line", "VGroup", "Tex"],
+  "source": "3b1b/_2016/eola/chapter6.py::SystemOfEquations.show_nonlinearity_examples"
+}

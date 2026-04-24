@@ -1,0 +1,9 @@
+{
+  "id": "diagonal_matrix_stretches_axes",
+  "category": "linear_algebra",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: diagonal A=[[3, 0], [0, 2]] decomposed as sequential x-stretch (î→(3, 0)) then y-stretch (ĵ→(0, 2)) via 2-stage ValueTracker. YELLOW unit square deforms; GREEN î, RED ĵ arrows + live width/height labels. Bottom: area=3·2=6=det.",
+  "tags": ["diagonal_matrix", "axis_stretching", "determinant_product", "unit_square", "value_tracker", "always_redraw"],
+  "apis": ["NumberPlane", "Polygon", "Arrow", "ValueTracker", "always_redraw", "add_updater", "Tex"],
+  "source": "3b1b/_2016/eola/chapter5.py::DiagonalExample+DiagonalExampleWithSquare"
+}

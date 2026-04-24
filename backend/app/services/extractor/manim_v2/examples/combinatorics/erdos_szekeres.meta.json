@@ -1,0 +1,8 @@
+{
+  "id": "erdos_szekeres",
+  "category": "combinatorics",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: Erdős–Szekeres for r=s=5 (needs N=17 distinct reals). Random permutation of 1..17 plotted as BLUE dots. Compute LIS and LDS via dynamic programming; reveal the longer-or-tied one (GREEN or RED) via ValueTracker k_tr walking dots + connecting lines. Live LIS, LDS lengths + forced-monotonic conclusion.",
+  "tags": ["erdos_szekeres", "monotone_subsequence", "pigeonhole", "lis_lds", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "Dot", "Line", "VGroup", "ValueTracker", "always_redraw", "Tex"]
+}

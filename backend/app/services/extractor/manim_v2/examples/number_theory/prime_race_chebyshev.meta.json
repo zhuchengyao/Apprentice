@@ -1,0 +1,8 @@
+{
+  "id": "prime_race_chebyshev",
+  "category": "number_theory",
+  "difficulty": 3,
+  "summary": "TWO_COLUMN: axes with YELLOW running curve of π(x; 4, 3) - π(x; 4, 1) for x ∈ [0, 10000], sampled every 100. ValueTracker x_tr grows; always_redraw curve + RED rider. Live panel shows both counts + leader + delta. Chebyshev's bias: 'mod 3' leads most of the time despite asymptotic parity.",
+  "tags": ["prime_race", "chebyshev_bias", "dirichlet_primes", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "DashedLine", "VMobject", "Dot", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

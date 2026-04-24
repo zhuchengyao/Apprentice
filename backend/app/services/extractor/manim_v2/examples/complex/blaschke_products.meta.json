@@ -1,0 +1,8 @@
+{
+  "id": "blaschke_products",
+  "category": "complex",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS: unit disk with YELLOW boundary circle + RED zero a=0.5. ValueTracker theta_tr walks BLUE rider around |z|=1; always_redraw GREEN B(z) = (z-a)/(1-ā z) image also winds around |w|=1 (Blaschke maps disk to disk preserving boundary).",
+  "tags": ["blaschke_product", "unit_disk", "value_tracker", "always_redraw"],
+  "apis": ["ComplexPlane", "Circle", "Dot", "VMobject", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

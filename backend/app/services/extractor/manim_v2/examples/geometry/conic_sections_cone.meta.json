@@ -1,0 +1,8 @@
+{
+  "id": "conic_sections_cone",
+  "category": "geometry",
+  "difficulty": 3,
+  "summary": "ThreeDScene: double cone (half-angle 36.87°) + YELLOW tiltable cutting plane. ValueTracker tilt_tr sweeps tilt through 20°, 35°, 50°, 70°; always_redraw plane + RED intersection curve. Panel names kind: ellipse (tilt < cone angle), parabola (equal), hyperbola (greater).",
+  "tags": ["conic_sections", "cone_slice", "ellipse_parabola_hyperbola", "value_tracker", "always_redraw"],
+  "apis": ["ThreeDScene", "ThreeDAxes", "Surface", "VMobject", "VGroup", "ValueTracker", "always_redraw", "Transform", "MathTex", "Tex"]
+}

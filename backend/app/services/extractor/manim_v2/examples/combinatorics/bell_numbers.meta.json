@@ -1,0 +1,8 @@
+{
+  "id": "bell_numbers",
+  "category": "combinatorics",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: partitions of {1..n} displayed as rows of color-blocked boxes grouped by block. Transform morphs the grid through n=1..5 showing B_n = 1, 2, 5, 15, 52. Live count label + recurrence B_{n+1} = Σ C(n,k) B_k.",
+  "tags": ["bell_numbers", "set_partitions", "transform", "combinatorics"],
+  "apis": ["Square", "VGroup", "Transform", "MathTex", "Tex"]
+}

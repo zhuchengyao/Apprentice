@@ -1,0 +1,8 @@
+{
+  "id": "baby_step_giant_step",
+  "category": "number_theory",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS: baby-step giant-step discrete log for p=23, g=5, h=7, m=5. BLUE baby boxes g^j for j=0..4, ORANGE giant boxes h(g^(-m))^i for i=0..5. ValueTracker step_tr walks through giant boxes with always_redraw YELLOW scanner; on match, GREEN highlight + arrow to baby + live i, current giant value; found x=im+j.",
+  "tags": ["baby_step_giant_step", "discrete_logarithm", "meet_in_the_middle", "modular", "value_tracker", "always_redraw"],
+  "apis": ["Square", "Rectangle", "Arrow", "VGroup", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"]
+}

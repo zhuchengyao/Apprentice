@@ -1,0 +1,8 @@
+{
+  "id": "romeo_juliet_love_ode",
+  "category": "calculus",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS Strogatz love-affair ODE (R'=-J, J'=R) as a center case. NumberPlane with GREY_B vector-field arrows showing the rotational flow (LaggedStart reveal). ValueTracker t_tr sweeps 0→2π; always_redraw YELLOW trail (VMobject set_points_as_corners) and Dot rider trace a perfect circle from (2, 0.3). Right panel: live t, R(t), J(t) + matrix form A=[[0,-1],[1,0]] + solution e^(At)·(R₀, J₀).",
+  "tags": ["linear_ode", "phase_portrait", "love_dynamics", "matrix_exp", "center_equilibrium", "value_tracker", "always_redraw"],
+  "apis": ["NumberPlane", "Arrow", "VMobject", "Dot", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex", "LaggedStart", "numpy"]
+}

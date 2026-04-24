@@ -1,0 +1,8 @@
+{
+  "id": "einstein_field_equation",
+  "category": "misc_3d",
+  "difficulty": 3,
+  "summary": "ThreeDScene: flat grid in (x, y) curved by Newtonian-like potential h(r) = -m/(r+0.3) creating a depression at origin. ValueTracker m_tr grows mass through 0 → 3 via always_redraw warped grid + mass sphere. Ambient camera rotation. Fixed-frame title has Einstein equation; panel shows M and 'space curves toward mass'.",
+  "tags": ["einstein_equation", "general_relativity", "curvature", "value_tracker", "always_redraw"],
+  "apis": ["ThreeDScene", "ThreeDAxes", "VMobject", "Sphere", "VGroup", "ValueTracker", "always_redraw", "Transform", "MathTex", "Tex"]
+}

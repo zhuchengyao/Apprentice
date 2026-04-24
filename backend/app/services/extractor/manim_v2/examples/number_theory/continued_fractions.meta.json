@@ -1,0 +1,8 @@
+{
+  "id": "continued_fractions",
+  "category": "number_theory",
+  "difficulty": 3,
+  "summary": "TWO_COLUMN: number-line zoomed to [3.13, 3.15] with YELLOW π tick. ValueTracker k_tr steps through convergents p_k/q_k of π = [3; 7, 15, 1, 292, 1, 1, 1, 2, 1]; RED dot jumps to each convergent. Live panel shows CF expansion, p_k/q_k, decimal value, |error|.",
+  "tags": ["continued_fractions", "pi_approximation", "convergents", "value_tracker", "always_redraw"],
+  "apis": ["NumberLine", "Line", "Dot", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

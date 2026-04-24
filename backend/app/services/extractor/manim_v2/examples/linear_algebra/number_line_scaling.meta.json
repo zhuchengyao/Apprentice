@@ -1,0 +1,8 @@
+{
+  "id": "number_line_scaling",
+  "category": "linear_algebra",
+  "difficulty": 1,
+  "summary": "TWO_COLUMN stacked: top input number line with BLUE point + ORANGE interval; bottom output number line showing k·x image + stretched interval; DashedLine connector. Two ValueTrackers k_tr and x_tr; k_tr tours through 2, -1, 0.5, 3, 0, 1 showing scaling/flipping/collapse. Live (k, x, kx, |det T| = |k|) panel.",
+  "tags": ["1d_linear_map", "scaling", "number_line", "determinant", "value_tracker", "always_redraw"],
+  "apis": ["NumberLine", "Line", "Dot", "DashedLine", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

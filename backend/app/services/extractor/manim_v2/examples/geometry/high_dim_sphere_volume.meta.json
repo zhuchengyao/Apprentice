@@ -1,0 +1,8 @@
+{
+  "id": "high_dim_sphere_volume",
+  "category": "geometry",
+  "difficulty": 3,
+  "summary": "TWO_COLUMN: Axes on LEFT plot V_n = π^(n/2)/Γ(n/2+1) over n=0..20 as BLUE curve; RED dot + label highlight peak at n=5. ValueTracker n_tr sweeps 0→20; always_redraw YELLOW rider + dashed drop + live panel showing n, V_n, comparison V(cube)_n = 1, limit V_n → 0.",
+  "tags": ["volume", "high_dimensional", "sphere", "gamma_function", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "Axes.plot", "Dot", "DashedLine", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

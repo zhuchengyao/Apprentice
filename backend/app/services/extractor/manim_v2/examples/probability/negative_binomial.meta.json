@@ -1,0 +1,8 @@
+{
+  "id": "negative_binomial",
+  "category": "probability",
+  "difficulty": 2,
+  "summary": "TWO_COLUMN: axes with BLUE bars of NB PMF P(X=k) = C(k-1, r-1) 0.35^r · 0.65^(k-r) for k=r..24. ValueTracker r_tr steps r=1, 2, 3, 5, 8; always_redraw. Live panel has r, E[X]=r/p, Var[X]=r(1-p)/p², mode.",
+  "tags": ["negative_binomial", "waiting_time", "bernoulli", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "Rectangle", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

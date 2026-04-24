@@ -1,0 +1,8 @@
+{
+  "id": "open_mapping_theorem",
+  "category": "complex",
+  "difficulty": 3,
+  "summary": "COMPARISON: LEFT z-plane with BLUE small disk of radius r around RED z_0 (z_0 = 1+0.5i then 0+i); RIGHT f(z) = z²+1 image region in GREEN (always an open set around f(z_0)). ValueTracker r_tr tours radii.",
+  "tags": ["open_mapping_theorem", "holomorphic", "value_tracker", "always_redraw"],
+  "apis": ["ComplexPlane", "Circle", "Dot", "VMobject", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

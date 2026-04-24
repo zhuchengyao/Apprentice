@@ -1,0 +1,9 @@
+{
+  "id": "continuous_average_from_samples",
+  "category": "calculus",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: continuous average of sin on [0, π]. BLUE sin curve + YELLOW N sample dots via always_redraw + GREEN dashed sample-average line + RED dashed exact 2/π line. ValueTracker n_tr through N={5, 10, 20, 40, 50}. Finite avg → 2/π.",
+  "tags": ["continuous_average", "integral_mean", "riemann_to_integral", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "ParametricFunction", "Dot", "DashedLine", "VGroup", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"],
+  "source": "3b1b/_2017/eoc/chapter9.py::AverageOfContinuousVariable+FiniteSample+FiniteSampleWithMoreSamplePoints"
+}

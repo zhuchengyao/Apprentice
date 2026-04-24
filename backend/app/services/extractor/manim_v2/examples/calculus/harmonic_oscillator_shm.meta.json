@@ -1,0 +1,8 @@
+{
+  "id": "harmonic_oscillator_shm",
+  "category": "calculus",
+  "difficulty": 2,
+  "summary": "TWO_COLUMN: LEFT time-domain axes with BLUE x(t) = A cos ωt + ORANGE v(t)/ω = -A sin ωt; always_redraw rider dots. RIGHT phase plane with YELLOW circle of radius A and RED always_redraw rider. ValueTracker t_tr sweeps 0 → 12. Live panel has t, x, v, energy ½ω²A² (constant), ω, A.",
+  "tags": ["shm", "harmonic_oscillator", "phase_circle", "energy", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "Axes.plot", "NumberPlane", "Circle", "Dot", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

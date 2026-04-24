@@ -1,0 +1,9 @@
+{
+  "id": "newton_cooling_exponential",
+  "category": "calculus",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: Newton's cooling T(t)=T_∞+(T_0-T_∞)e^(-kt) with T_0=90°, T_∞=20°, k=0.5. RED curve + BLUE ambient asymptote + YELLOW probe dot via always_redraw on ValueTracker t_tr 0→8s. Live t and T(t) decaying exponentially.",
+  "tags": ["newton_cooling", "exponential_decay", "first_order_ode", "asymptote", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "ParametricFunction", "DashedLine", "Dot", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"],
+  "source": "3b1b/_2017/eoc/chapter5.py::TemperatureOverTimeOfWarmWater+TemperatureOverTimeOfWarmWaterWithSolution"
+}

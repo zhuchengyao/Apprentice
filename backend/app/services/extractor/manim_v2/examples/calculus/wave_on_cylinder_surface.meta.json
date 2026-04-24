@@ -1,0 +1,8 @@
+{
+  "id": "wave_on_cylinder_surface",
+  "category": "calculus",
+  "difficulty": 3,
+  "summary": "ThreeDScene: parametric cylinder surface with radial displacement u(φ, z, t) = A cos(kz - ωt) cos(nφ), n=2 angular modes. ValueTracker t_tr advances time 0→10 via always_redraw Surface (36×30 resolution). Ambient camera rotation; fixed-frame panel with t, k, ω, n.",
+  "tags": ["cylinder_wave", "pde_on_manifold", "3d_surface", "value_tracker", "always_redraw"],
+  "apis": ["ThreeDScene", "ThreeDAxes", "Surface", "VGroup", "ValueTracker", "always_redraw", "Transform", "MathTex", "Tex"]
+}

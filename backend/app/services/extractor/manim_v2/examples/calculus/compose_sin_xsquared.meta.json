@@ -1,0 +1,9 @@
+{
+  "id": "compose_sin_xsquared",
+  "category": "calculus",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: h(x)=sin(x²) with faster oscillations as x grows. BLUE curve + YELLOW tracker dot + GREEN tangent line with slope h'(x)=cos(x²)·2x via always_redraw on ValueTracker x_tr sweeping 0.5→3.3. Live x, h(x), h'(x). Chain rule: outer' × inner'.",
+  "tags": ["chain_rule_example", "sin_x_squared", "composition", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "ParametricFunction", "Dot", "Line", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"],
+  "source": "3b1b/_2017/eoc/chapter4.py::ShoveXSquaredInSine"
+}

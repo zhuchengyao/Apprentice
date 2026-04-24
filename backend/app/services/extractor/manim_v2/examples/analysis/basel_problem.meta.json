@@ -1,0 +1,8 @@
+{
+  "id": "basel_problem",
+  "category": "analysis",
+  "difficulty": 2,
+  "summary": "Animated Basel convergence: ValueTracker N sweeps 0→40 driving two always_redraw panels — bars of terms 1/k² on the left and the cumulative partial sum Sₙ curve approaching the dashed π²/6 line on the right, with live Sₙ and gap readouts.",
+  "tags": ["basel_problem", "partial_sum", "convergence", "pi_squared_over_six", "value_tracker"],
+  "apis": ["Axes", "ValueTracker", "always_redraw", "VMobject", "set_points_as_corners", "DashedLine", "Dot", "MathTex"]
+}

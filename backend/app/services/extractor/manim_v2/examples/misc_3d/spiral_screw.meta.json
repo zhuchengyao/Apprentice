@@ -1,0 +1,8 @@
+{
+  "id": "spiral_screw",
+  "category": "misc_3d",
+  "difficulty": 2,
+  "summary": "ThreeDScene: helical BLUE/PURPLE ribbon of radius R=1.3, width 0.35 × 2, pitch 0.35. ValueTracker length_tr extends parameter from π to 6π via always_redraw Surface; ambient camera rotation reveals 3D structure.",
+  "tags": ["helix", "ribbon", "parametric_surface", "value_tracker", "always_redraw"],
+  "apis": ["ThreeDScene", "ThreeDAxes", "Surface", "VGroup", "ValueTracker", "always_redraw", "Transform", "MathTex", "Tex"]
+}

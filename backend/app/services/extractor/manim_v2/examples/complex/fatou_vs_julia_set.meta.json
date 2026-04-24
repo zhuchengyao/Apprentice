@@ -1,0 +1,8 @@
+{
+  "id": "fatou_vs_julia_set",
+  "category": "complex",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS ComplexPlane for f(z)=z²-1. Three orbits drawn as color-coded chains of Dots + fading connection Lines: BLUE orbit starting at 0.3+0.05i converges to the attracting fixed point (Fatou), GREEN orbit at -0.7 falls onto the 2-cycle {0, -1} (Fatou), RED orbit starting near the Julia boundary at 0.618+0.01i shows chaotic bouncing. Legend labels each behavior; bottom YELLOW Tex summarizes the Fatou/Julia dichotomy.",
+  "tags": ["julia_set", "fatou_set", "complex_dynamics", "attracting_cycle", "chaotic_iteration", "z_squared_minus_1"],
+  "apis": ["ComplexPlane", "Dot", "Line", "VGroup", "LaggedStart", "Tex", "FadeIn", "Create"]
+}

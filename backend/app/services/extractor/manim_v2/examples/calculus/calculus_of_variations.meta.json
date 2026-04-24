@@ -1,0 +1,8 @@
+{
+  "id": "calculus_of_variations",
+  "category": "calculus",
+  "difficulty": 3,
+  "summary": "TWO_COLUMN: LEFT axes with GREEN reference straight line y=x + YELLOW parametric candidate y = x + b·x(2-x). RIGHT axes plot J[y] = ∫√(1+y'²)dx vs b with RED curve, GREEN min marker at b=0, YELLOW rider. ValueTracker bend_tr tours b values.",
+  "tags": ["calculus_of_variations", "euler_lagrange", "shortest_path", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "Axes.plot", "Dot", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

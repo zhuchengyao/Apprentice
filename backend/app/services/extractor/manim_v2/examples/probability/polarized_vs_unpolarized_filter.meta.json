@@ -1,0 +1,8 @@
+{
+  "id": "polarized_vs_unpolarized_filter",
+  "category": "probability",
+  "difficulty": 2,
+  "summary": "COMPARISON two halves of the canvas. LEFT BLUE 'Unpolarized → filter': 9 randomly oriented short Arrow vectors feed into a 45° polarizer Circle, outputting 4 arrows at 45° — always 1/2 pass regardless of angle. RIGHT GREEN 'Polarized → filter': 6 horizontal polarized arrows feed into a rotatable polarizer whose angle is driven by ValueTracker dtheta_tr (tour 0,30,60,45,90,15°). always_redraw rebuilds the right filter, the output count = round(6·cos²(Δθ)), and the MathTex intensity label I_out = cos²(Δθ)·I₀. Contrasts the 'always 1/2' vs 'cos²' rules.",
+  "tags": ["malus_law", "polarization", "quantum_optics", "value_tracker", "always_redraw", "unpolarized"],
+  "apis": ["Arrow", "Circle", "Line", "VGroup", "ValueTracker", "always_redraw", "GrowArrow", "LaggedStart", "MathTex", "Tex"]
+}

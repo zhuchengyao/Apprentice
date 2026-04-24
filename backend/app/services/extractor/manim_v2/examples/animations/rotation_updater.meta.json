@@ -1,8 +1,0 @@
-{
-  "id": "rotation_updater",
-  "category": "animations",
-  "difficulty": 2,
-  "summary": "Spin a Square continuously using a dt-based updater, then remove the updater to stop rotation.",
-  "tags": ["updater", "dt_updater", "rotation", "continuous_motion"],
-  "apis": ["Square", "add_updater", "remove_updater", "Mobject.animate"]
-}

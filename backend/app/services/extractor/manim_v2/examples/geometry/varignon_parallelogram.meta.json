@@ -1,0 +1,8 @@
+{
+  "id": "varignon_parallelogram",
+  "category": "geometry",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: variable YELLOW quadrilateral ABCD (A, B fixed; C, D moved by ValueTrackers c_tr, d_tr); always_redraw GREEN midpoint parallelogram always closed. Live |s_1 - s_3|, |s_2 - s_4| → 0 confirming parallelogram property for any quadrilateral.",
+  "tags": ["varignon_theorem", "quadrilateral", "midpoints", "value_tracker", "always_redraw"],
+  "apis": ["Polygon", "Dot", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

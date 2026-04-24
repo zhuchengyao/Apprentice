@@ -1,0 +1,8 @@
+{
+  "id": "multivariable_chain_rule",
+  "category": "calculus",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS computational graph t→(x,y)→f→df/dt with concrete x=cos t, y=sin t, f=x²+3y². ValueTracker t sweeps 0→2π; node values, edge labels (x'(t), y'(t), ∂ₓf, ∂ᵧf), and the bottom verification (chain-rule sum vs analytic 2sin(2t)) all redraw via always_redraw — the two values agree every frame.",
+  "tags": ["chain_rule", "multivariable", "computational_graph", "value_tracker", "verification"],
+  "apis": ["Circle", "Arrow", "ValueTracker", "always_redraw", "VGroup", "GrowArrow", "MathTex", "Tex"]
+}

@@ -1,0 +1,8 @@
+{
+  "id": "hairy_ball",
+  "category": "topology",
+  "difficulty": 3,
+  "summary": "ThreeDScene: sphere with latitude tangent-vector field (yellow hairs) showing vortices at both poles (RED dots); camera rotates to confirm south pole vortex; then Transform morphs hairs to longitudinal field which still has pole vortices. Conclusion: χ(S²)=2 ≠ 0 forces zeros.",
+  "tags": ["hairy_ball", "vector_field", "vortex", "transform", "euler_characteristic"],
+  "apis": ["ThreeDScene", "Sphere", "Line", "Dot3D", "Transform", "move_camera", "MathTex", "Tex"]
+}

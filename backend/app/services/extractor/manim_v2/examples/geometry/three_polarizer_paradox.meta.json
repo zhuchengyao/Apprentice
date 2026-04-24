@@ -1,0 +1,8 @@
+{
+  "id": "three_polarizer_paradox",
+  "category": "geometry",
+  "difficulty": 3,
+  "summary": "Two cases shown sequentially. CASE 1: BLUE vertical polarizer + GREEN horizontal polarizer — 0% transmission (RED caption I_final = 0). CASE 2: BLUE vertical + PURPLE 45° + GREEN horizontal — 1/8 transmission (YELLOW caption I = I_0/2·cos²45°·cos²45° = I_0/8). Each case draws polarizer Circles with axis Line, a beam Line whose stroke_width is proportional to intensity along each segment, and MathTex intensity labels above each stretch. SurroundingRectangle highlights the final formula. Closing note: adding a filter INCREASES transmission.",
+  "tags": ["polarizer", "malus_law", "quantum_measurement", "three_polarizer", "lagged_start", "surrounding_rectangle"],
+  "apis": ["Circle", "Line", "VGroup", "Arrow", "MathTex", "Tex", "LaggedStart", "SurroundingRectangle", "FadeIn", "FadeOut"]
+}

@@ -1,0 +1,8 @@
+{
+  "id": "mobius_sphere_rotation",
+  "category": "complex",
+  "difficulty": 3,
+  "summary": "ThreeDScene: Riemann sphere with BLUE surface + GREY meridians + 3 colored parallels (RED south, YELLOW equator, GREEN north). ValueTracker theta_tr rotates sphere about x-axis through 2π via always_redraw replacement of sphere_group with rotated copy. Corresponds to Möbius map z↦1/z̄ flipping 0 ↔ ∞.",
+  "tags": ["mobius_transformation", "riemann_sphere", "stereographic", "rotation_group", "value_tracker", "always_redraw"],
+  "apis": ["ThreeDAxes", "Sphere", "VMobject", "VGroup", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"]
+}

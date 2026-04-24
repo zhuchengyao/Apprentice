@@ -1,0 +1,9 @@
+{
+  "id": "area_under_velocity_is_distance",
+  "category": "calculus",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: area under velocity curve = distance. BLUE v(t)=t(8-t)/4 curve. ValueTracker t_tr sweeps 0→8; always_redraw GREEN shaded region grows + ORANGE probe line and dot. Live t and cumulative distance via np.trapezoid.",
+  "tags": ["fundamental_theorem", "velocity_to_distance", "area_under_curve", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "ParametricFunction", "Polygon", "DashedLine", "Dot", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"],
+  "source": "3b1b/_2017/eoc/chapter8.py::AreaUnderVGraph+ConstantVelocityPlot"
+}

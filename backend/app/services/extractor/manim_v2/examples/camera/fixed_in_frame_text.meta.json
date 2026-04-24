@@ -1,8 +1,0 @@
-{
-  "id": "fixed_in_frame_text",
-  "category": "camera",
-  "difficulty": 2,
-  "summary": "Pin a title to camera space with add_fixed_in_frame_mobjects while a Sphere rotates in 3D.",
-  "tags": ["3d", "fixed_in_frame", "hud", "three_d_scene"],
-  "apis": ["ThreeDScene", "Sphere", "add_fixed_in_frame_mobjects", "begin_ambient_camera_rotation"]
-}

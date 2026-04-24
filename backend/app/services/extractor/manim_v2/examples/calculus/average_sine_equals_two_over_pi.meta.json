@@ -1,0 +1,9 @@
+{
+  "id": "average_sine_equals_two_over_pi",
+  "category": "calculus",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: average of sin on [0, π] = 2/π. BLUE sin curve with area-fill (∫=2) + GREEN y=2/π line with equivalent GREEN rectangle area=2. Both regions have equal area ⇒ average height = 2/π.",
+  "tags": ["average_value", "sine_integral", "mean_value", "geometric_interpretation"],
+  "apis": ["Axes", "ParametricFunction", "Polygon", "Tex"],
+  "source": "3b1b/_2017/eoc/chapter9.py::IntegralOfSine+Antiderivative"
+}

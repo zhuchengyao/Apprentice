@@ -1,0 +1,8 @@
+{
+  "id": "cauchy_convergence",
+  "category": "analysis",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: NumberLine with first 60 terms of a_n = 1 + (-1)^n/n → 1 as static BLUE dots (size shrinking with n). ValueTracker eps_tr shrinks a YELLOW ε-band centered at L=1 from 0.4 → 0.05; live panel shows ε, N = ⌈1/ε⌉, the formula a_n.",
+  "tags": ["sequence_limit", "cauchy", "epsilon_N", "value_tracker", "always_redraw"],
+  "apis": ["NumberLine", "Dot", "Rectangle", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

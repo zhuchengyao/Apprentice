@@ -1,0 +1,8 @@
+{
+  "id": "area_under_circle_pi",
+  "category": "calculus",
+  "difficulty": 3,
+  "summary": "TWO_COLUMN: ValueTracker s morphs 24 concentric rings of a disk (left) into horizontal strips stacked into a right triangle of base 2πR, height R (right). Each ring is a polygon whose vertices interpolate between an arc and a straight strip. Persistent triangle outline + 2πR/R labels make the area equation A = ½·2πR·R = πR² visible.",
+  "tags": ["disk_area", "ring_decomposition", "unrolling", "value_tracker", "pi_r_squared"],
+  "apis": ["Annulus", "Polygon", "ValueTracker", "always_redraw", "interpolate_color", "MathTex"]
+}

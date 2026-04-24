@@ -1,0 +1,8 @@
+{
+  "id": "heat_equation_evolution",
+  "category": "calculus",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS: heat equation on [0, 1] with square-wave IC decomposed into 30 sin modes. ValueTracker t_tr advances 0 → 300; always_redraw RED u(x, t) = Σ a_n sin(nπx)·exp(-α(nπ)²t) smooths toward the fundamental mode. Grey dashed initial square + zero line. Live t, α, |a_1(t)|.",
+  "tags": ["heat_equation", "fourier_series", "mode_decay", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "Axes.plot", "DashedLine", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

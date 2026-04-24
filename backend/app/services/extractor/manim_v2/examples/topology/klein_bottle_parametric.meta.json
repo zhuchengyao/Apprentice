@@ -1,0 +1,8 @@
+{
+  "id": "klein_bottle_parametric",
+  "category": "topology",
+  "difficulty": 3,
+  "summary": "ThreeDScene: Klein bottle immersed in ℝ³ via standard parametrization with u, v ∈ [0, 2π]. ValueTracker u_max_tr grows surface from 0 → 2π via always_redraw Surface with BLUE-TEAL-ORANGE gradient. Camera ambient rotation shows self-intersection (handle through wall). Non-orientable, no boundary; embeds in ℝ⁴.",
+  "tags": ["klein_bottle", "non_orientable_surface", "immersion", "parametric_surface", "value_tracker", "always_redraw"],
+  "apis": ["ThreeDAxes", "Surface", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"]
+}

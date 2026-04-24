@@ -1,8 +1,0 @@
-{
-  "id": "sine_curve_unit_circle",
-  "category": "advanced",
-  "difficulty": 4,
-  "summary": "Generate the sine curve by tracing a rotating radius on a unit circle onto an Axes plot.",
-  "tags": ["trigonometry", "unit_circle", "sine", "value_tracker", "always_redraw"],
-  "apis": ["Circle", "Axes", "ValueTracker", "always_redraw", "Axes.plot", "Line", "Dot"]
-}

@@ -1,0 +1,8 @@
+{
+  "id": "circular_fractal",
+  "category": "fractals",
+  "difficulty": 2,
+  "summary": "Replace each disk with a central child disk plus six arranged on a ring, iterating three times.",
+  "tags": ["fractal", "circle", "ring", "self_similar", "recursion"],
+  "apis": ["Circle", "VGroup", "Transform", "FadeIn", "Text"]
+}

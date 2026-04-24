@@ -1,0 +1,8 @@
+{
+  "id": "cauchy_sequence_completeness",
+  "category": "analysis",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS: x_n=(1+1/n)^n Cauchy sequence in ℚ converging to e. Axes x∈[2, 3]; dashed RED e reference. ValueTracker n_tr sweeps 1→200 with always_redraw YELLOW cumulative dots + ORANGE current + GREEN shrinking ε-ball around x_n with half-width |x_{n+1}-x_n|. Live x_n, |x_{n+1}-x_n|, |x_n - e|; all ⊂ℚ but limit ∉ ℚ.",
+  "tags": ["cauchy_sequence", "completeness", "rational_vs_real", "e_constant", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "DashedLine", "Line", "Dot", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"]
+}

@@ -1,0 +1,8 @@
+{
+  "id": "least_squares",
+  "category": "linear_algebra",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: axes with 15 BLUE noisy data points (true y=1.3x+0.5). ValueTrackers m_tr, c_tr vary YELLOW fit line; always_redraw RED residual drops + live SSE vs min SSE at LS solution m*=1.3, c*≈0.5.",
+  "tags": ["least_squares", "linear_regression", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "Axes.plot", "Dot", "Line", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

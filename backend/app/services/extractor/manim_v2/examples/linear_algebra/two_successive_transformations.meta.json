@@ -1,0 +1,9 @@
+{
+  "id": "two_successive_transformations",
+  "category": "linear_algebra",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: colored grid (BLUE→GREEN horizontal, ORANGE→RED vertical lines) deformed by A=[[2, 1], [1, 2]] then B=[[-1, 0], [-0.5, -0.5]] via ValueTracker stage_tr ∈ [0, 2]. always_redraw rebuilds grid + GREEN î / RED ĵ basis arrows. Stage labels: identity → applying A → after A → applying B → after B∘A.",
+  "tags": ["successive_transformations", "composition", "grid_deformation", "matrix_product", "value_tracker", "always_redraw"],
+  "apis": ["VMobject", "Arrow", "DecimalNumber", "ValueTracker", "always_redraw", "add_updater", "Tex"],
+  "source": "3b1b/_2016/eola/chapter4.py::TwoSuccessiveTransformations"
+}

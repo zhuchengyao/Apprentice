@@ -1,0 +1,8 @@
+{
+  "id": "moser_formula",
+  "category": "combinatorics",
+  "difficulty": 3,
+  "summary": "TWO_COLUMN: LEFT has chord diagram for n=6 with YELLOW vertices, BLUE chords, RED interior intersections. RIGHT has the V-E+F Euler derivation revealed via ValueTracker step_tr + always_redraw — 5 identity lines building R_n = 1 + C(n,2) + C(n,4); final numeric check V=21, E=36, F=17, R_6=16.",
+  "tags": ["moser", "euler_formula", "derivation", "value_tracker", "always_redraw"],
+  "apis": ["Circle", "Line", "Dot", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

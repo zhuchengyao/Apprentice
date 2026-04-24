@@ -1,0 +1,8 @@
+{
+  "id": "fundamental_theorem",
+  "category": "calculus",
+  "difficulty": 3,
+  "summary": "Sweep a ValueTracker along x, shading the running area under f(x) and showing a dashed green height bar to illustrate d/dx ∫ f = f.",
+  "tags": ["fundamental_theorem", "integral", "derivative", "value_tracker"],
+  "apis": ["Axes", "Axes.get_area", "ValueTracker", "always_redraw", "DashedLine", "MathTex"]
+}

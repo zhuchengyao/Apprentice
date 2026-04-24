@@ -1,0 +1,9 @@
+{
+  "id": "bijectivity_of_invertible",
+  "category": "linear_algebra",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: invertibility = bijectivity. 35 lattice points (7×5) colored BLUE→RED by x-coordinate deformed by A=[[0, 2], [-1, 1]] (det=2). ValueTracker t_tr forward/back; always_redraw shows each point maps to unique image. Injective (unique image) + surjective (every y has preimage) ⇒ A^(-1) exists.",
+  "tags": ["bijection", "invertibility", "injective", "surjective", "value_tracker", "always_redraw"],
+  "apis": ["NumberPlane", "Dot", "VGroup", "ValueTracker", "always_redraw", "add_updater", "Tex"],
+  "source": "3b1b/_2016/eola/chapter6.py::ShowBijectivity"
+}

@@ -1,0 +1,8 @@
+{
+  "id": "spherical_harmonics_Y_lm",
+  "category": "misc_3d",
+  "difficulty": 3,
+  "summary": "ThreeDScene: spherical harmonics Y_l^m surfaces. Tour 8 (l, m) configs {(0, 0), (1, 0), (1, 1), (2, 0), (2, 1), (2, 2), (3, 0), (3, 2)}. Surface radius = 1 + 0.6 Re(Y_l^m) via scipy.special.sph_harm. BLUE-YELLOW-RED gradient via always_redraw on ValueTracker idx_tr. Ambient rotation.",
+  "tags": ["spherical_harmonics", "Y_lm", "quantum_orbitals", "angular_modes", "value_tracker", "always_redraw"],
+  "apis": ["ThreeDAxes", "Surface", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"]
+}

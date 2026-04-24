@@ -1,0 +1,8 @@
+{
+  "id": "rotation_composition",
+  "category": "geometry",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS: composition of two 2D rotations about different centers. BLUE initial triangle + always_redraw current (GREEN→ORANGE→RED) via 2-stage t_tr. Stage 1 rotates about C_1 by α=π/3; stage 2 rotates about C_2 by β=π/2. RED C_3 fixed-point found by iteration shows composite is single rotation by α+β.",
+  "tags": ["rotation_composition", "isometry", "fixed_point", "rigid_motion", "value_tracker", "always_redraw"],
+  "apis": ["NumberPlane", "Polygon", "Dot", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"]
+}

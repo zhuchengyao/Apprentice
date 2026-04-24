@@ -1,0 +1,8 @@
+{
+  "id": "hamilton_quaternion_identities",
+  "category": "linear_algebra",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: 4x4 multiplication grid for quaternion basis {1, i, j, k}, MathTex cells colored by result (WHITE/GREEN/RED/BLUE with RED for negative entries). Row/column headers labeled in matching colors with 'b·a' tag in corner. LaggedStart reveals grid, then right side shows 6 cyclic identities ij=k, jk=i, ki=j (positive) and ji=-k, kj=-i, ik=-j (negative) color-coded. Indicate highlights cells for ij, jk, ki. Bottom YELLOW SurroundingRectangle around Hamilton's Broom-Bridge inscription i²=j²=k²=ijk=−1.",
+  "tags": ["quaternions", "hamilton", "non_commutative", "multiplication_table", "identities", "lagged_start", "indicate"],
+  "apis": ["Square", "VGroup", "MathTex", "Tex", "LaggedStart", "Indicate", "SurroundingRectangle", "FadeIn", "Write"]
+}

@@ -1,0 +1,8 @@
+{
+  "id": "independence_multiplication",
+  "category": "probability",
+  "difficulty": 1,
+  "summary": "TWO_COLUMN: unit square with BLUE vertical strip A (width P(A)), RED horizontal strip B (height P(B)), YELLOW intersection rectangle whose area = P(A)·P(B). Two ValueTrackers pA_tr, pB_tr sweep through 4 (P(A), P(B)) configurations via always_redraw. Live RIGHT panel shows P(A), P(B), and their product = yellow area.",
+  "tags": ["independence", "joint_probability", "unit_square", "value_tracker", "always_redraw"],
+  "apis": ["Rectangle", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

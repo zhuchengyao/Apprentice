@@ -1,0 +1,8 @@
+{
+  "id": "waiting_time_paradox",
+  "category": "probability",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS: bus waiting paradox. NumberLine [0, 12] with BLUE Poisson-arrival dots (rate λ=1). RED passenger marker moves via ValueTracker pass_tr. always_redraw YELLOW highlights containing interval + ORANGE wait segment from passenger to next bus + live interval length + wait. Size-biased sampling of longer intervals ⇒ E[wait]=1/λ not 1/(2λ).",
+  "tags": ["waiting_time_paradox", "poisson_process", "size_biased_sampling", "inspection_paradox", "value_tracker", "always_redraw"],
+  "apis": ["NumberLine", "Dot", "Line", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"]
+}

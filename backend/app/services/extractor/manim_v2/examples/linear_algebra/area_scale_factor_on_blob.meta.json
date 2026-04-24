@@ -1,0 +1,9 @@
+{
+  "id": "area_scale_factor_on_blob",
+  "category": "linear_algebra",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: irregular BLUE blob (50-pt irregular closed curve) morphs under A=[[2, -1], [1, 1]] (det=3) via ValueTracker t_tr. always_redraw Polygon + dynamic 'Area' → '3·Area' YELLOW label at blob center. Area scale factor = |det A|.",
+  "tags": ["area_scaling", "determinant", "linear_transformation", "blob", "value_tracker", "always_redraw"],
+  "apis": ["NumberPlane", "Polygon", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"],
+  "source": "3b1b/_2016/eola/chapter5.py::AskAboutStretchingSpecifically"
+}

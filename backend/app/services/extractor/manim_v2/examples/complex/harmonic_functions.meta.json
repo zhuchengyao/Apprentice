@@ -1,0 +1,8 @@
+{
+  "id": "harmonic_functions",
+  "category": "complex",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS: 20×20 heatmap on [-2, 2]² colored BLUE_E→RED by u(x, y). ValueTracker idx_tr cycles through 3 harmonic examples: Re(z²)=x²-y², Re(z³)=x³-3xy², Re(e^z) = e^x cos y. always_redraw cells + formula label.",
+  "tags": ["harmonic_function", "laplace_equation", "real_part_holomorphic", "value_tracker", "always_redraw"],
+  "apis": ["Square", "VGroup", "ValueTracker", "always_redraw", "interpolate_color", "MathTex", "Tex"]
+}

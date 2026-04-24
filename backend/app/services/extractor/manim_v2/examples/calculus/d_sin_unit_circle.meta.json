@@ -1,0 +1,9 @@
+{
+  "id": "d_sin_unit_circle",
+  "category": "calculus",
+  "difficulty": 2,
+  "summary": "TWO_COLUMN: d(sin θ)/dθ = cos θ via unit circle. LEFT NumberPlane with BLUE unit circle, ORANGE radial line, YELLOW point P, GREEN y-coord segment (=sin θ), RED tangent arrow in direction (-sin θ, cos θ). ValueTracker theta_tr sweeps π/4 → 5π/6. RIGHT derivation: arc=dθ, tangent's y-component = cos θ.",
+  "tags": ["derivative_sine", "unit_circle_geometry", "tangent_direction", "value_tracker", "always_redraw"],
+  "apis": ["NumberPlane", "Circle", "Line", "Arrow", "Dot", "MathTex", "VGroup", "ValueTracker", "always_redraw", "Tex"],
+  "source": "3b1b/_2017/eoc/chapter3.py::DerivativeOfSineIsSlope+IntroduceUnitCircleWithSine+DerivativeIntuitionFromSineGraph+DerivativeFromZoomingInOnSine"
+}

@@ -1,0 +1,8 @@
+{
+  "id": "z_squared_mapping",
+  "category": "complex",
+  "difficulty": 2,
+  "summary": "COMPARISON layout: input z-plane (left) and output z²-plane (right). ValueTracker θ sweeps 0→2π; z = 1.5·e^(iθ) on the input circle, z² traces the output circle of radius 2.25 — going around TWICE per full input revolution. Persistent yellow trail records every visited z². Bottom strip shows live θ, 2θ, |z|, |z²|.",
+  "tags": ["complex_map", "z_squared", "angle_doubling", "value_tracker", "comparison_layout"],
+  "apis": ["ComplexPlane", "ValueTracker", "always_redraw", "Arrow", "Dot", "Circle", "VMobject", "add_updater"]
+}

@@ -1,0 +1,8 @@
+{
+  "id": "cross_entropy_loss",
+  "category": "neural_networks",
+  "difficulty": 2,
+  "summary": "TWO_COLUMN cross-entropy loss for 5-class classification with true=class 2. LEFT axes with 5 colored probability bars + YELLOW star marker on true class; ValueTracker p_tr sweeps true-class probability through {0.2, 0.5, 0.8, 0.95, 0.05, 0.2}; always_redraw. RIGHT axes with BLUE -log p curve + RED tracking dot. Live L=-log p_true.",
+  "tags": ["cross_entropy", "classification_loss", "softmax_output", "log_loss", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "Rectangle", "Star", "Dot", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"]
+}

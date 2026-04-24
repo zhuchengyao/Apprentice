@@ -1,8 +1,0 @@
-{
-  "id": "riemann_rectangles_refine",
-  "category": "advanced",
-  "difficulty": 3,
-  "summary": "Progressively refine Riemann rectangles under a parabola to convey the limiting area = integral.",
-  "tags": ["riemann", "integral", "limit", "refinement", "plot"],
-  "apis": ["Axes", "Axes.plot", "get_riemann_rectangles", "ReplacementTransform", "get_graph_label"]
-}

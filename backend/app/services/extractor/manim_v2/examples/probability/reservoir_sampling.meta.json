@@ -1,0 +1,8 @@
+{
+  "id": "reservoir_sampling",
+  "category": "probability",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: 40-item stream of squares (turning GREY_B as visited) + YELLOW reservoir box at top. ValueTracker t_tr advances 0→40; always_redraw stream + GREEN current-highlight + reservoir value updated by deterministic simulation with P(replace)=1/t. Live panel shows t, 1/t, reservoir state.",
+  "tags": ["reservoir_sampling", "online_algorithm", "uniform_sampling", "value_tracker", "always_redraw"],
+  "apis": ["Square", "Rectangle", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

@@ -45,6 +45,9 @@ Thumbs.db
 # Uploads
 backend/uploads/
 
+# Manim RAG embedding index (regenerated via `python -m scripts.build_manim_example_index`)
+backend/app/services/extractor/manim_v2/examples/_index.json
+
 # Database
 *.db
 *.sqlite

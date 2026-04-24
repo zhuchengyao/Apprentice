@@ -1,0 +1,8 @@
+{
+  "id": "quadratic_koch",
+  "category": "fractals",
+  "difficulty": 3,
+  "summary": "Iterate a square-bumped Koch rule on a horizontal line (each segment → 8 segments making a square-tooth) through 3 iterations.",
+  "tags": ["fractal", "koch", "iteration", "self_similar"],
+  "apis": ["VMobject", "VMobject.set_points_as_corners", "Transform"]
+}

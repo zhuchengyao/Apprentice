@@ -1,0 +1,8 @@
+{
+  "id": "stirling_second_kind",
+  "category": "combinatorics",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS Stirling 2nd kind S(n, k) triangle for n, k=1..7 via recurrence S(n, k)=k·S(n-1, k)+S(n-1, k-1). BLUE→YELLOW log-colored cells with values inside. ValueTracker n_tr reveals rows 1..7. Live Bell number B_n = Σ_k S(n, k). Row/column labels.",
+  "tags": ["stirling_numbers", "set_partitions", "bell_numbers", "recurrence", "value_tracker", "always_redraw"],
+  "apis": ["Square", "VGroup", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"]
+}

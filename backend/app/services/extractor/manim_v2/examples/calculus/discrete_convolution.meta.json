@@ -1,0 +1,8 @@
+{
+  "id": "discrete_convolution",
+  "category": "calculus",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS 3-row stem plots: BLUE x[k]=[1,2,3,2,1] fixed, ORANGE h[n-k]=[1,1,1] (reversed+shifted) sliding via ValueTracker n_tr, GREEN cumulative y[n] = x*h growing to [1,3,6,7,6,3,1]. always_redraw flipped-shifted kernel + output.",
+  "tags": ["discrete_convolution", "sliding_window", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "Line", "Dot", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

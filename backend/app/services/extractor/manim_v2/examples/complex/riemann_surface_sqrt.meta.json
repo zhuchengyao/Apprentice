@@ -1,0 +1,8 @@
+{
+  "id": "riemann_surface_sqrt",
+  "category": "complex",
+  "difficulty": 3,
+  "summary": "COMPARISON: LEFT z-plane with RED dashed branch cut + BLUE/PURPLE arrow rotating from θ=0 to 4π (color changes at 2π to mark sheet 2). RIGHT w = √z plane with arrow at angle θ/2 and radius √1.5 — traces upper half on sheet 1, lower half on sheet 2. Both have always_redraw arrows + color-segmented trails. Live panel shows θ, w, current sheet.",
+  "tags": ["riemann_surface", "branch_cut", "sqrt", "multi_valued", "value_tracker", "always_redraw"],
+  "apis": ["ComplexPlane", "Arrow", "Dot", "DashedLine", "VMobject", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

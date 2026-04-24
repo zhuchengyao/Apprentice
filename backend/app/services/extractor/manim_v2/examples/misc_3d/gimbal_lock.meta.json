@@ -1,0 +1,8 @@
+{
+  "id": "gimbal_lock",
+  "category": "misc_3d",
+  "difficulty": 3,
+  "summary": "Three nested gimbal rings rotate by yaw, pitch, roll; tilting pitch to 90° aligns the inner ring with the outer — the classic gimbal-lock degeneracy.",
+  "tags": ["gimbal_lock", "euler_angles", "rotation", "degeneracy", "3d"],
+  "apis": ["ThreeDScene", "Circle", "ValueTracker", "add_updater", "rotate"]
+}

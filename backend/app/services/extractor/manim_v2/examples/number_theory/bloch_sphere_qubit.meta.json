@@ -1,0 +1,8 @@
+{
+  "id": "bloch_sphere_qubit",
+  "category": "number_theory",
+  "difficulty": 3,
+  "summary": "ThreeDScene: unit Bloch sphere with basis-state markers |0⟩ (north), |1⟩ (south), |+⟩, |-⟩, |+y⟩. ValueTrackers theta_tr and phi_tr position a PURPLE state arrow + dot; always_redraw updates via cos(θ/2), sin(θ/2)e^(iφ) parametrization. Tour: |+⟩ → |+y⟩ → |1⟩ → general mid-state. Fixed-frame panel shows θ, φ, α, β.",
+  "tags": ["bloch_sphere", "qubit", "quantum_state", "value_tracker", "always_redraw"],
+  "apis": ["ThreeDScene", "ThreeDAxes", "Sphere", "Line", "Dot3D", "VGroup", "ValueTracker", "always_redraw", "Transform", "MathTex", "Tex"]
+}

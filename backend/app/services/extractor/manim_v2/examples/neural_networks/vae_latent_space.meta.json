@@ -1,0 +1,8 @@
+{
+  "id": "vae_latent_space",
+  "category": "neural_networks",
+  "difficulty": 3,
+  "summary": "TWO_COLUMN via NumberPlane: 5 color-coded latent-class Gaussian blobs (ellipses) + WHITE reference N(0, I) unit circle. ValueTracker kl_weight_tr morphs blobs from initial positions toward origin with σ=1 (KL regularization effect) and back via always_redraw.",
+  "tags": ["vae", "latent_space", "kl_divergence", "value_tracker", "always_redraw"],
+  "apis": ["NumberPlane", "Ellipse", "Circle", "Dot", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

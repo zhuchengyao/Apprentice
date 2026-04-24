@@ -1,0 +1,8 @@
+{
+  "id": "baires_category",
+  "category": "analysis",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS NumberLine on [0, 1]. Open dense sets U_n remove rationals p/q with q ≤ n shown as RED punctures of radius 0.35/q via always_redraw. ValueTracker n_tr steps n=1..12. Labels for small q. Live n, count of rationals removed, and Baire-category conclusion that ∩U_n=irrationals still dense.",
+  "tags": ["baire_category", "dense_set", "rational_irrational", "complete_metric_space", "value_tracker", "always_redraw"],
+  "apis": ["NumberLine", "Line", "Dot", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"]
+}

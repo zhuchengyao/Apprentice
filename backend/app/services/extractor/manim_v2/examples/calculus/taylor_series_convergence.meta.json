@@ -1,0 +1,8 @@
+{
+  "id": "taylor_series_convergence",
+  "category": "calculus",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: axes with GREY e^x reference + always_redraw BLUE Taylor partial sum T_N(x) = Σ x^k/k! for k=0..N. ValueTracker N_tr steps N = 1, 2, 3, 5, 8, 12; agreement region widens. Live T_N(2), e^2, error.",
+  "tags": ["taylor_series", "exponential", "partial_sums", "convergence", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "Axes.plot", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

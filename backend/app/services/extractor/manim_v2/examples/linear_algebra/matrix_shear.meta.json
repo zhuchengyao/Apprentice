@@ -1,0 +1,8 @@
+{
+  "id": "matrix_shear",
+  "category": "linear_algebra",
+  "difficulty": 2,
+  "summary": "Apply the horizontal shear matrix [[1,1],[0,1]] to both the grid and a unit square, making the classic parallelogram-from-square shear visible.",
+  "tags": ["shear", "matrix", "linear_transform", "unit_square", "2d"],
+  "apis": ["NumberPlane", "Polygon", "ApplyMatrix", "MathTex"]
+}

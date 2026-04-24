@@ -1,0 +1,8 @@
+{
+  "id": "quadratic_reciprocity",
+  "category": "number_theory",
+  "difficulty": 3,
+  "summary": "TWO_COLUMN: 10x10 table of Legendre symbol pairs for primes [3, 5, 7, ..., 31]. Each (p, q) cell colored GREEN if (p/q)(q/p) equals (-1)^((p-1)/2·(q-1)/2), RED otherwise (always GREEN — theorem holds). ValueTracker idx_tr scans all 100 cells with YELLOW scanner via always_redraw. Right column shows live p, q, (p/q), (q/p), expected sign.",
+  "tags": ["quadratic_reciprocity", "legendre_symbol", "prime", "modular_arithmetic", "value_tracker", "always_redraw"],
+  "apis": ["Square", "VGroup", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"]
+}

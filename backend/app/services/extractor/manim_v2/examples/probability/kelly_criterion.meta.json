@@ -1,0 +1,8 @@
+{
+  "id": "kelly_criterion",
+  "category": "probability",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS Kelly criterion: g(f)=p log(1+bf)+(1-p) log(1-f) with p=0.55, b=1. BLUE growth curve via always_redraw on ValueTracker p_tr; RED optimum dot at f*=p-(1-p)/b with dashed vertical. ValueTracker f_tr sweeps YELLOW probe. Phase 2: p morphs through {0.7, 0.3, 0.85, 0.55}. Live p, f, g(f), f*.",
+  "tags": ["kelly_criterion", "log_growth", "optimal_betting", "expected_log_wealth", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "DashedLine", "Dot", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"]
+}

@@ -1,0 +1,8 @@
+{
+  "id": "brachistochrone_cycloid",
+  "category": "geometry",
+  "difficulty": 3,
+  "summary": "TWO_COLUMN: physics race between cycloid and straight-chord beads from A=(0,0) to B=(πR,−2R). ValueTracker τ in REAL seconds drives both beads via always_redraw using cycloid pendulum identity θ=√(g/R)·τ for one and constant-acceleration kinematics on the slope for the other. Right column shows live τ, the two arrival times t_c=π√(R/g) and t_l, and a status caption that flips to 'cycloid wins!' the moment the yellow bead arrives.",
+  "tags": ["brachistochrone", "cycloid", "physics", "value_tracker", "race"],
+  "apis": ["Axes", "ParametricFunction", "Line", "Dot", "ValueTracker", "always_redraw", "Tex", "MathTex"]
+}

@@ -1,0 +1,8 @@
+{
+  "id": "eigenvalues_quick",
+  "category": "linear_algebra",
+  "difficulty": 2,
+  "summary": "TWO_COLUMN: ValueTracker θ rotates a probe arrow on the left plane through 360°; the image arrow A·v turns GREEN when aligned with the probe — those θ are exactly the eigenvector directions. Persistent dashed lines mark the true eigenspace lines. Right column has live readouts and the characteristic-polynomial derivation.",
+  "tags": ["eigenvalue", "eigenvector", "characteristic_polynomial", "value_tracker", "rotation"],
+  "apis": ["NumberPlane", "Arrow", "DashedLine", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

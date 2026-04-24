@@ -1,0 +1,8 @@
+{
+  "id": "green_identities_3d",
+  "category": "calculus",
+  "difficulty": 3,
+  "summary": "TWO_COLUMN Green's second identity for u=x, v=x²+y² on unit disk. LEFT NumberPlane with BLUE unit disk + YELLOW (u∇v - v∇u) vector field arrows. RED boundary probe dot + outward normal arrow sweeping θ:0→2π via ValueTracker. RIGHT shows numerical LHS=RHS=0 via 2D and boundary quadrature.",
+  "tags": ["green_identity", "laplacian", "vector_calculus", "divergence_theorem", "value_tracker", "always_redraw"],
+  "apis": ["NumberPlane", "Circle", "Arrow", "Dot", "VGroup", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"]
+}

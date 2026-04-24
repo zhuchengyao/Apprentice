@@ -1,0 +1,8 @@
+{
+  "id": "rational_point_unit_circle_line",
+  "category": "number_theory",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: NumberPlane with BLUE unit circle and WHITE pivot at (-1,0). ValueTracker t_tr drives a GREEN line from the pivot with slope t and an always_redraw YELLOW hit point at ((1-t^2)/(1+t^2), 2t/(1+t^2)). Right panel has live t, x, y decimals. Sweep 0.4 -> 2.0 -> -1.8 -> 0.5 and highlight (3/5, 4/5) -> (3,4,5).",
+  "tags": ["rational_points", "unit_circle", "parametrization", "pythagorean_triples", "value_tracker", "always_redraw"],
+  "apis": ["NumberPlane", "Circle", "Dot", "Line", "ValueTracker", "always_redraw", "DecimalNumber", "MathTex"]
+}

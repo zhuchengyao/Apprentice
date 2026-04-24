@@ -1,0 +1,8 @@
+{
+  "id": "hyperdart_shrinking",
+  "category": "probability",
+  "difficulty": 2,
+  "summary": "Throw five darts uniformly; each hit becomes the new center and dart distance the new radius — probability the game lasts forever is π/4.",
+  "tags": ["hyperdart", "uniform_random", "shrinking_target", "expected_value", "geometric_probability"],
+  "apis": ["Circle", "Dot", "Transform", "MathTex", "FadeIn"]
+}

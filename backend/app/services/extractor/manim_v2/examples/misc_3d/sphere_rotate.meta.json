@@ -1,0 +1,8 @@
+{
+  "id": "sphere_rotate",
+  "category": "misc_3d",
+  "difficulty": 2,
+  "summary": "ThreeDScene: translucent sphere with RED axis line + 4 color-coded tracer points at different latitudes. ValueTracker phi_tr drives rotation via Rodrigues formula; always_redraw tracer dots + growing trails. Phase 1 rotates about z; Phase 2 switches axis to (0.7, 0, 0.7) and rotates again — trails differ in shape.",
+  "tags": ["sphere", "rotation", "latitude", "rodrigues", "value_tracker", "always_redraw"],
+  "apis": ["ThreeDScene", "ThreeDAxes", "Sphere", "Line", "Dot3D", "VMobject", "VGroup", "ValueTracker", "always_redraw", "Tex"]
+}

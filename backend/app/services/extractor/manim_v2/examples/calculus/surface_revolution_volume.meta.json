@@ -1,0 +1,8 @@
+{
+  "id": "surface_revolution_volume",
+  "category": "calculus",
+  "difficulty": 2,
+  "summary": "TWO_COLUMN: axes with BLUE y = x²/3 + 1 (and mirror -f) on [0, 2]; YELLOW stacked elliptical disc cross-sections from disk method. ValueTracker N_tr grows 2, 5, 10, 20, 40; always_redraw discs. Riemann sum V_N = π Σ f(x_i)² Δx approaches V = π ∫ f² dx.",
+  "tags": ["volume_of_revolution", "disc_method", "riemann_sum", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "Axes.plot", "Ellipse", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

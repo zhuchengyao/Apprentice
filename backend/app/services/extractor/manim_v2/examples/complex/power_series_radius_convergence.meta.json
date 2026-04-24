@@ -1,0 +1,8 @@
+{
+  "id": "power_series_radius_convergence",
+  "category": "complex",
+  "difficulty": 2,
+  "summary": "TWO_COLUMN: power series Σn z^n has R=1. LEFT ComplexPlane with YELLOW |z|=1 boundary + RED probe dot moving along real axis. RIGHT axes with GREEN partial sums (converging if |z|<1) or RED (diverging). BLUE dashed 1/(1-z)² reference when |z|<1. Tour z={0.5, 0.8, 0.95, 1.05, 1.1, 0.3}.",
+  "tags": ["power_series", "radius_of_convergence", "partial_sums", "divergence", "value_tracker", "always_redraw"],
+  "apis": ["ComplexPlane", "Axes", "Circle", "Dot", "VMobject", "DashedLine", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"]
+}

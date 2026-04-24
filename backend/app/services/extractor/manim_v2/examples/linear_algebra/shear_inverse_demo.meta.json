@@ -1,0 +1,9 @@
+{
+  "id": "shear_inverse_demo",
+  "category": "linear_algebra",
+  "difficulty": 1,
+  "summary": "SINGLE_FOCUS: rightward shear [[1, 1], [0, 1]] inverted by leftward shear [[1, -1], [0, 1]]. 2-stage ValueTracker: identity → S → S^(-1) S = I. Same structure as rotation_inverse_demo but for shear.",
+  "tags": ["shear_inverse", "shear_matrix", "inverse_example", "value_tracker", "always_redraw"],
+  "apis": ["NumberPlane", "VMobject", "Arrow", "ValueTracker", "always_redraw", "add_updater", "Tex"],
+  "source": "3b1b/_2016/eola/chapter6.py::ShearInverseShear"
+}

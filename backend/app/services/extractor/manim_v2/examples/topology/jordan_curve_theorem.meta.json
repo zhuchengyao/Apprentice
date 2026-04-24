@@ -1,0 +1,8 @@
+{
+  "id": "jordan_curve_theorem",
+  "category": "topology",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS NumberPlane: wobbly simple closed curve r(θ)=2 + 0.5 cos 3θ + 0.3 sin 5θ. 6 test points classified GREEN (inside) or RED (outside) via ray-cast intersection count. ValueTracker scan_tr sweeps a probe dot along y=-1.9 line; always_redraw YELLOW dashed ray + probe dot recolored based on live inside/outside classification.",
+  "tags": ["jordan_curve_theorem", "simple_closed_curve", "inside_outside", "ray_casting", "value_tracker", "always_redraw"],
+  "apis": ["NumberPlane", "ParametricFunction", "Dot", "DashedLine", "ValueTracker", "always_redraw", "Tex"]
+}

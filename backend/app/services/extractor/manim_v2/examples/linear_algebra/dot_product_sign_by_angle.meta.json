@@ -1,0 +1,9 @@
+{
+  "id": "dot_product_sign_by_angle",
+  "category": "linear_algebra",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: sign of dot product reveals angle. BLUE v=(2, 0) fixed; ORANGE w=2.2(cos θ, sin θ) with ValueTracker theta_tr sweeping 0→π. always_redraw w arrow + YELLOW angle arc. Live θ°, v·w with color (GREEN acute / YELLOW perp / RED obtuse) + dynamic label 'acute/perpendicular/obtuse'.",
+  "tags": ["dot_product", "angle_sign", "acute_obtuse", "perpendicular", "value_tracker", "always_redraw"],
+  "apis": ["NumberPlane", "Arrow", "Arc", "DecimalNumber", "ValueTracker", "always_redraw", "add_updater", "Tex"],
+  "source": "3b1b/_2016/eola/chapter7.py::ShowQualitativeDotProductValues"
+}

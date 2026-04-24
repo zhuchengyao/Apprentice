@@ -1,0 +1,9 @@
+{
+  "id": "ad_minus_bc_full_derivation",
+  "category": "linear_algebra",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS: full geometric derivation of ad-bc. Enclosing (a+b)×(c+d) BLUE rectangle with 6 colored subtracted regions: 2 MAROON ac/2 triangles, 2 TEAL bd/2 triangles, 2 PINK bc rectangles; YELLOW central parallelogram is ad-bc. Reveals additive decomposition (a+b)(c+d) - 2ac - 2bd - 2bc = ad-bc. a=3, b=1.5, c=0.5, d=2.",
+  "tags": ["ad_minus_bc", "geometric_proof", "area_decomposition", "polygon", "value_tracker"],
+  "apis": ["Polygon", "VGroup", "Tex"],
+  "source": "3b1b/_2016/eola/chapter5.py::FullFormulaExplanation"
+}

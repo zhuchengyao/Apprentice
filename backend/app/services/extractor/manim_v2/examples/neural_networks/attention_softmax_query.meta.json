@@ -1,0 +1,8 @@
+{
+  "id": "attention_softmax_query",
+  "category": "neural_networks",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS attention mechanism: 6 colored keys k_1..k_6 scattered on NumberPlane, YELLOW query q moving on ellipse via ValueTracker q_tr. always_redraw colored edges with thickness ∝ softmax(qK^T/√d) + bar chart showing attention weights; closest key receives highest weight.",
+  "tags": ["attention", "softmax", "query_key", "transformer", "value_tracker", "always_redraw"],
+  "apis": ["NumberPlane", "Dot", "Line", "Rectangle", "VGroup", "ValueTracker", "always_redraw", "Tex"]
+}

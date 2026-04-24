@@ -1,0 +1,8 @@
+{
+  "id": "arzela_ascoli",
+  "category": "analysis",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS: axes with GREY_B sin(x) + BLUE→RED color-graded family f_n(x) = sin(x + 1/n) for n=1..8 via ValueTracker n_tr, always_redraw. Sup-norm ‖f_n-f‖ ∼ 1/n → 0 uniformly as n grows (equicontinuous + bounded ⇒ uniform convergent subseq).",
+  "tags": ["arzela_ascoli", "equicontinuous", "uniform_convergence", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "Axes.plot", "VGroup", "ValueTracker", "always_redraw", "interpolate_color", "MathTex", "Tex"]
+}

@@ -1,0 +1,8 @@
+{
+  "id": "pendulum_phase_portrait",
+  "category": "calculus",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS: phase plane (θ, θ') for nonlinear pendulum. 8 precomputed RK2-integrated orbits drawn: small-oscillation BLUE loops inside the separatrix, rotation curves (YELLOW) outside, RED separatrix at energy E=2. ValueTracker t_tr moves an ORANGE rider along a chosen oscillation orbit.",
+  "tags": ["pendulum", "phase_portrait", "nonlinear_ode", "separatrix", "value_tracker", "always_redraw"],
+  "apis": ["NumberPlane", "VMobject", "Dot", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

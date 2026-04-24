@@ -1,0 +1,8 @@
+{
+  "id": "isogonal_conjugate",
+  "category": "geometry",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS isogonal conjugate for fixed triangle ABC. GREEN point P traces ellipse centered at centroid; RED P* computed live via barycentric formula (a²/P_a, b²/P_b, c²/P_c) normalized. always_redraw GREEN/RED cevians + dots + labels. Pairs: circumcenter↔orthocenter, centroid↔symmedian.",
+  "tags": ["isogonal_conjugate", "cevians", "barycentric_coordinates", "triangle_centers", "value_tracker", "always_redraw"],
+  "apis": ["NumberPlane", "Polygon", "Line", "Dot", "ValueTracker", "always_redraw", "Tex"]
+}

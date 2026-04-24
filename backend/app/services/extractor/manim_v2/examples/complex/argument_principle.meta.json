@@ -1,0 +1,8 @@
+{
+  "id": "argument_principle",
+  "category": "complex",
+  "difficulty": 3,
+  "summary": "COMPARISON: LEFT z-plane with BLUE contour |z|=1.5 + RED zero markers at 0.5 and -0.3; RIGHT w-plane with YELLOW w=(z-0.5)(z+0.3) trail. ValueTracker theta_tr sweeps 0→2π; image winds twice around 0 (Z=2, P=0 ⇒ Z-P=2).",
+  "tags": ["argument_principle", "winding_number", "zeros_poles", "value_tracker", "always_redraw"],
+  "apis": ["ComplexPlane", "Circle", "Dot", "VMobject", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

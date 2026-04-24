@@ -1,0 +1,8 @@
+{
+  "id": "harmonic_ratios_table",
+  "category": "analysis",
+  "difficulty": 2,
+  "summary": "TWO_COLUMN: 3 stacked axes on LEFT — base sin(2πt), sin(2π·r·t), and their sum. ValueTracker r_tr snaps through 1, 2, 3/2, 4/3, 5/4, 6/5, √2; always_redraw r·f and sum curves update; RIGHT panel shows r, closest simple ratio label, and consonance name.",
+  "tags": ["harmony", "frequency_ratios", "consonance", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "Axes.plot", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

@@ -1,0 +1,8 @@
+{
+  "id": "bayes_area_model",
+  "category": "probability",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: 10×10 dot grid split by prior (columns) and likelihood (rows). 4 outcome colors BLUE=TP, YELLOW=FN, RED=FP, GREY=TN. ValueTracker prior_tr sweeps 0.10 → 0.01 → 0.50 → 0.10; always_redraw recolor. Live readout: P(H), sens, fpr, P(E), P(H|E).",
+  "tags": ["bayes", "area_model", "contingency_table", "value_tracker", "always_redraw"],
+  "apis": ["Square", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

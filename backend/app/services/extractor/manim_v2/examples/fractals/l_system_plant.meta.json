@@ -1,0 +1,8 @@
+{
+  "id": "l_system_plant",
+  "category": "fractals",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS L-system plant with axiom X, rules X→F+[[X]-X]-F[-FX]+X, F→FF. ValueTracker depth_tr steps 1..5 with always_redraw generating full GREEN plant via turtle interpretation of expanded string; branching revealed at each depth. Step size scaled by 3.2/2^depth to keep plant the same overall size.",
+  "tags": ["l_system", "fractal_plant", "turtle_graphics", "branching", "value_tracker", "always_redraw"],
+  "apis": ["Line", "VGroup", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"]
+}

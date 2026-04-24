@@ -1,0 +1,8 @@
+{
+  "id": "partition_function_integer",
+  "category": "combinatorics",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: Ferrers-diagram grid showing every partition of n for n=1..7 (capped for display). ValueTracker n_tr grows; always_redraw rebuild with yellow dots arranged in rows for each partition. Live p(n) = 1, 2, 3, 5, 7, 11, 15 + generating function formula.",
+  "tags": ["partition_function", "ferrers_diagram", "integer_partitions", "value_tracker", "always_redraw"],
+  "apis": ["Dot", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

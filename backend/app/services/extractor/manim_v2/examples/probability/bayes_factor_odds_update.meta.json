@@ -1,0 +1,8 @@
+{
+  "id": "bayes_factor_odds_update",
+  "category": "probability",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS 'Bayes in odds form' lesson. Top MathTex formula: posterior odds = prior odds × Bayes factor. 3-row table: BLUE prior (1/99 odds ≈ 1%), GREEN 'x10' multiplier annotated by GREEN Arrow with Bayes-factor label, PURPLE posterior (≈ 0.101 odds ≈ 9.2%). Bottom 3-line narration explains: 1% prior, 10× likelihood ratio, counterintuitive 9.2% posterior (not the 90% most people guess).",
+  "tags": ["bayes_factor", "odds_form", "likelihood_ratio", "medical_test", "base_rate_neglect"],
+  "apis": ["Tex", "MathTex", "Arrow", "GrowArrow", "VGroup", "FadeIn", "Write"]
+}

@@ -1,0 +1,8 @@
+{
+  "id": "matrix_rotation_90",
+  "category": "linear_algebra",
+  "difficulty": 2,
+  "summary": "Rotate the plane and both basis vectors 90 degrees counterclockwise to show how [[0,-1],[1,0]] acts as a rotation matrix.",
+  "tags": ["rotation", "matrix", "linear_transform", "basis", "2d"],
+  "apis": ["NumberPlane", "Arrow", "Rotate", "MathTex"]
+}

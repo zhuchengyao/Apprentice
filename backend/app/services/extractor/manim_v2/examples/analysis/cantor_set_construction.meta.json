@@ -1,0 +1,8 @@
+{
+  "id": "cantor_set_construction",
+  "category": "analysis",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: stacked bars at depths d=0..7 showing Cantor-set remove-middle-third construction. ValueTracker depth_tr grows, always_redraw rebuilds bars. Live count 2^d intervals, total length (2/3)^d → 0, Hausdorff dim = log 2/log 3 ≈ 0.6309.",
+  "tags": ["cantor_set", "fractal", "measure_zero", "hausdorff_dimension", "value_tracker", "always_redraw"],
+  "apis": ["Rectangle", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

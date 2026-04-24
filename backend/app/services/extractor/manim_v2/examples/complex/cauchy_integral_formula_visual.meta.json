@@ -1,0 +1,8 @@
+{
+  "id": "cauchy_integral_formula_visual",
+  "category": "complex",
+  "difficulty": 3,
+  "summary": "TWO_COLUMN Cauchy integral formula for f(z)=z²-2z+3, contour |z|=2, z_0=1+0.5i. LEFT ComplexPlane with BLUE contour + RED z_0 + YELLOW sampling dots on contour via ValueTracker N_tr (2→100 points). always_redraw dots. RIGHT live numeric integral (1/2πi)∮f/(z-z_0)dz converging to f(z_0)=1.75 with error → 0.",
+  "tags": ["cauchy_integral_formula", "contour_integration", "holomorphic", "numerical_integration", "value_tracker", "always_redraw"],
+  "apis": ["ComplexPlane", "Circle", "Dot", "VGroup", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"]
+}

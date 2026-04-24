@@ -1,0 +1,8 @@
+{
+  "id": "lozenge_hexagon_tiling",
+  "category": "geometry",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: regular hexagon tiled by 3 BLUE/RED/GREEN lozenges (each formed from 2 adjacent hex vertices + center). Phase 1: Rotate whole tiling through τ about center. Phase 2: Transform-cycles colors (= cube-rotation of the 3D interpretation). Phase 3: rotate again.",
+  "tags": ["hexagon", "lozenge_tiling", "rotate", "transform", "3d_cube_interpretation"],
+  "apis": ["Polygon", "VGroup", "Rotate", "Transform", "Tex"]
+}

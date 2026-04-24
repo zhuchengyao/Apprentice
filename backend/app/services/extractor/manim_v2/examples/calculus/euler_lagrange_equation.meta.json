@@ -1,0 +1,8 @@
+{
+  "id": "euler_lagrange_equation",
+  "category": "calculus",
+  "difficulty": 3,
+  "summary": "TWO_COLUMN: LEFT axes with BLUE extremum y=x and GREEN candidate y_s(x)=x+s sin(πx) driven by always_redraw on ValueTracker s_tr touring s=0, 0.4, -0.4, 0.8, -0.8, 0. RIGHT has EL derivation and live J[y_s] DecimalNumber minimized at s=0 with value √2.",
+  "tags": ["euler_lagrange", "calculus_of_variations", "arc_length", "extremum", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"]
+}

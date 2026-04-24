@@ -1,0 +1,8 @@
+{
+  "id": "implicit_3d_surface",
+  "category": "calculus",
+  "difficulty": 3,
+  "summary": "ThreeDScene: level set x²+y²-z² = c as BLUE parametric surface. ValueTracker c_tr tours c = 0.5, 1.0, 0.0 (cone), -0.8 (two-sheet), 0.4; always_redraw Surface. Panel shows c and geometric classification. Ambient camera rotation.",
+  "tags": ["level_set", "hyperboloid", "implicit_surface", "value_tracker", "always_redraw"],
+  "apis": ["ThreeDScene", "ThreeDAxes", "Surface", "VGroup", "ValueTracker", "always_redraw", "Transform", "MathTex", "Tex"]
+}

@@ -1,0 +1,8 @@
+{
+  "id": "additive_vs_multiplicative_real_line",
+  "category": "complex",
+  "difficulty": 2,
+  "summary": "TWO_ROW: top GREEN NumberLine (-3..5) labeled (R, +); bottom ORANGE NumberLine (0..8) labeled (R_{>0}, ×). YELLOW Dot at 0 (top) and at 1 (bottom) — the respective group identities. Action demo: top slides LEFT by 2 units via .shift; bottom stretches by factor 2 about the point 1 via .stretch(..., about_point=1). Right-bottom summary calls the group action names 'slide by a' vs 'stretch by factor k from 1'.",
+  "tags": ["group_theory", "additive_group", "multiplicative_group", "translation", "scaling", "number_line"],
+  "apis": ["NumberLine", "Dot", "MathTex", "Tex", "shift", "stretch", "VGroup"]
+}

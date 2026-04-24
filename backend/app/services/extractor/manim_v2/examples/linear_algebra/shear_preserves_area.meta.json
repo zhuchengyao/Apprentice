@@ -1,0 +1,9 @@
+{
+  "id": "shear_preserves_area",
+  "category": "linear_algebra",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: shear [[1, k], [0, 1]] preserves area regardless of k. ValueTracker k_tr tours k={0, 0.5, 1, 2, -1, 0.5}. YELLOW parallelogram deforms via always_redraw; GREEN î stays (1, 0), RED ĵ=(k, 1). GREY dashed height line shows height=1 always. det=1 confirmed.",
+  "tags": ["shear", "area_preserving", "determinant_one", "unit_square", "value_tracker", "always_redraw"],
+  "apis": ["NumberPlane", "Polygon", "Arrow", "DashedLine", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"],
+  "source": "3b1b/_2016/eola/chapter5.py::ShearExampleWithSquare"
+}

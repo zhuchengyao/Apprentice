@@ -1,0 +1,9 @@
+{
+  "id": "track_basis_to_build_composite",
+  "category": "linear_algebra",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: composite SR on left plane with GREEN î → (1, 1) and RED ĵ → (-1, 0) via 2-stage ValueTracker. always_redraw arrows + live coordinate labels. Right side shows C matrix with columns = landing coordinates of î, ĵ — no explicit multiplication needed.",
+  "tags": ["composite_matrix", "basis_tracking", "matrix_columns", "visual_composition", "value_tracker", "always_redraw"],
+  "apis": ["NumberPlane", "Arrow", "ValueTracker", "always_redraw", "add_updater", "Tex"],
+  "source": "3b1b/_2016/eola/chapter4.py::IntroduceIdeaOfComposition"
+}

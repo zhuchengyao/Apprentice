@@ -1,0 +1,8 @@
+{
+  "id": "coin_flip_tree",
+  "category": "probability",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: always_redraw binary tree of coin flips above + brick row below. ValueTracker depth_tr steps n = 1..6; each level of the tree shows 2^n YELLOW nodes; bricks below have widths proportional to C(n, k) summing to total 2^n. Live panel has n, 2^n, and Σ C(n,k) 2^(-n) = 1.",
+  "tags": ["coin_flips", "binomial_coefficient", "brick_row", "value_tracker", "always_redraw"],
+  "apis": ["Rectangle", "Dot", "Line", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

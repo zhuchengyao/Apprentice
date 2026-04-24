@@ -1,0 +1,8 @@
+{
+  "id": "point_nine_repeating",
+  "category": "analysis",
+  "difficulty": 1,
+  "summary": "TWO_COLUMN: number line [0.9, 1.0] with always_redraw dots at S_n = 1 - 10^(-n) for n=1..15; ValueTracker N steps; dots cluster ever closer to a green marker at 1. Right column has live n, S_n value with n digits, and the geometric-series derivation 0.999...= (9/10)/(9/10) = 1.",
+  "tags": ["zero_point_nine", "geometric_series", "limit", "value_tracker", "always_redraw"],
+  "apis": ["NumberLine", "Dot", "VGroup", "ValueTracker", "always_redraw", "interpolate_color", "MathTex", "Tex"]
+}

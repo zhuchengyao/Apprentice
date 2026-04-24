@@ -1,8 +1,0 @@
-{
-  "id": "three_d_surface",
-  "category": "camera",
-  "difficulty": 3,
-  "summary": "Render a 3D parametric Surface (z = sin(u)cos(v)) with checkerboard fill on ThreeDAxes.",
-  "tags": ["3d", "surface", "parametric", "three_d_scene", "checkerboard"],
-  "apis": ["ThreeDScene", "ThreeDAxes", "Surface", "set_camera_orientation", "set_fill_by_checkerboard"]
-}

@@ -1,0 +1,9 @@
+{
+  "id": "piecewise_constant_velocity_approx",
+  "category": "calculus",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: approximate smooth v(t) by N piecewise-constant pieces. BLUE v curve + GREEN midpoint rectangles via always_redraw on ValueTracker n_tr stepping {4, 8, 16, 32, 50}. Exact ∫=64/3≈21.33; error shrinks with N.",
+  "tags": ["piecewise_constant", "integral_approximation", "riemann_sum", "midpoint_rule", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "ParametricFunction", "Rectangle", "VGroup", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"],
+  "source": "3b1b/_2017/eoc/chapter8.py::CarJourneyApproximation+LessWrongCarJourneyApproximation+PiecewiseConstantPlot"
+}

@@ -1,0 +1,8 @@
+{
+  "id": "linear_combination_tracker",
+  "category": "linear_algebra",
+  "difficulty": 3,
+  "summary": "Animate scalar coefficients a and b via ValueTracker so that av, bw, and av+bw arrows follow along (always_redraw), sweeping through a range of combinations.",
+  "tags": ["linear_combination", "vectors", "value_tracker", "always_redraw"],
+  "apis": ["NumberPlane", "Arrow", "ValueTracker", "always_redraw", "MathTex"]
+}

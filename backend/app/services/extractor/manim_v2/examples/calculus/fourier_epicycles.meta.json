@@ -1,0 +1,8 @@
+{
+  "id": "fourier_epicycles",
+  "category": "calculus",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS: 12 rotating epicycle vectors at frequencies 1, 3, 5, ... drawing a square wave via odd-harmonic Fourier series coefficients 4/(πk)/2. ValueTracker t_tr advances; always_redraw chain + RED tip with persistent trail. RIGHT reference plot of target f(t) with BLUE curve + RED rider matching the epicycle output.",
+  "tags": ["fourier_series", "epicycles", "square_wave", "value_tracker", "always_redraw"],
+  "apis": ["Circle", "Arrow", "Dot", "VMobject", "Axes", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

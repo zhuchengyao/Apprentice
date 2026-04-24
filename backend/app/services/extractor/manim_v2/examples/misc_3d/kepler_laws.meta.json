@@ -1,0 +1,8 @@
+{
+  "id": "kepler_laws",
+  "category": "misc_3d",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS: BLUE ellipse orbit + YELLOW Sun at right focus; RED planet advances via Kepler's equation M = E - e sin E with e ≈ 0.78, a=3.5, b=2.2. ValueTracker t_tr sweeps t/T ∈ [0, 1]; always_redraw planet + orange trail. 4 colored sectors show equal Δt = 0.08 T correspond to equal swept areas.",
+  "tags": ["kepler_laws", "orbit", "equal_areas", "value_tracker", "always_redraw"],
+  "apis": ["VMobject", "Dot", "Polygon", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

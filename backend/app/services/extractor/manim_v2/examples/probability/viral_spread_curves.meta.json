@@ -1,0 +1,8 @@
+{
+  "id": "viral_spread_curves",
+  "category": "probability",
+  "difficulty": 2,
+  "summary": "Overlay the pure exponential I₀·e^(rt) with the logistic 1/(1+A·e^(−rt)) to show where naive epidemic growth curves overstate the eventual peak.",
+  "tags": ["epidemic", "exponential", "logistic", "saturation", "sir"],
+  "apis": ["Axes", "plot", "MathTex", "VGroup"]
+}

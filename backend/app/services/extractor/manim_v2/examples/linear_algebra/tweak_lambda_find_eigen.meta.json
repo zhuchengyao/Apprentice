@@ -1,0 +1,9 @@
+{
+  "id": "tweak_lambda_find_eigen",
+  "category": "linear_algebra",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: sweep λ and plot det(A-λI)=(3-λ)(2-λ). Axes with BLUE parabola + GREEN zero at λ=2, ORANGE zero at λ=3. YELLOW probe dot tracks as ValueTracker lam_tr sweeps 0.3→4.5. Live λ and det value.",
+  "tags": ["eigenvalue_search", "characteristic_poly", "zeros", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "Dot", "DashedLine", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"],
+  "source": "3b1b/_2016/eola/chapter10.py::TweakLambda+NonZeroSolutionsVisually+ShowEigenVectorAfterComputing"
+}

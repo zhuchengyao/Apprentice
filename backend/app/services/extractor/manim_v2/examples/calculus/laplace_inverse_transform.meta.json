@@ -1,0 +1,8 @@
+{
+  "id": "laplace_inverse_transform",
+  "category": "calculus",
+  "difficulty": 2,
+  "summary": "TWO_COLUMN: LEFT axes with BLUE e^(-t), ORANGE -e^(-2t), GREEN sum f(t) = e^(-t) - e^(-2t). RIGHT axes show RED F(s) = 1/((s+1)(s+2)). ValueTracker t_tr sweeps 0→5 with always_redraw riders on all three time curves.",
+  "tags": ["laplace_inverse", "partial_fractions", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "Axes.plot", "Dot", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

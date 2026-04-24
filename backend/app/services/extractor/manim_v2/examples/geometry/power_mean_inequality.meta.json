@@ -1,0 +1,8 @@
+{
+  "id": "power_mean_inequality",
+  "category": "geometry",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: semicircle on segment [a+b] with perpendicular to circle = GM, radius = AM, and HM/QM shown as labeled heights on a left scale. ValueTrackers a_tr, b_tr tour through (1,4), (2,3), (1,7), (2,2), (1,4); always_redraw geometry + panel with HM ≤ GM ≤ AM ≤ QM.",
+  "tags": ["power_means", "amgm_inequality", "semicircle", "value_tracker", "always_redraw"],
+  "apis": ["Line", "Arc", "Dot", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

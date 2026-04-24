@@ -1,0 +1,8 @@
+{
+  "id": "hall_marriage_theorem",
+  "category": "combinatorics",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS: bipartite graph with 4 BLUE left + 4 GREEN right vertices + GREY_B faint edge set. ValueTracker step_tr reveals a RED perfect matching edge-by-edge (0→0, 1→1, 2→3, 3→2) via always_redraw. Panel lists Hall conditions.",
+  "tags": ["hall_theorem", "bipartite_matching", "value_tracker", "always_redraw"],
+  "apis": ["Circle", "Line", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

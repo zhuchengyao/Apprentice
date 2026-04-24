@@ -1,0 +1,8 @@
+{
+  "id": "graph_coloring",
+  "category": "combinatorics",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: 7-vertex planar graph (wheel-like with central vertex connected to all peripheral). ValueTracker step_tr assigns colors greedily 1 at a time via always_redraw; vertex colors BLUE/YELLOW/GREEN from palette. Final: χ(G) = 3.",
+  "tags": ["graph_coloring", "chromatic_number", "greedy_algorithm", "value_tracker", "always_redraw"],
+  "apis": ["Circle", "Line", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

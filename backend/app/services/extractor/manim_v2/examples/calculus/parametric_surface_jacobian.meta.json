@@ -1,0 +1,8 @@
+{
+  "id": "parametric_surface_jacobian",
+  "category": "calculus",
+  "difficulty": 3,
+  "summary": "ThreeDScene hemisphere parametric surface. ValueTrackers u_tr, v_tr position a YELLOW patch on BLUE surface. always_redraw GREEN r_u, ORANGE r_v tangent arrows + RED normal r_u×r_v. Live |r_u×r_v|=sin u readout. 4-config tour. A=∫∫ sin u du dv = 2π analytic reference.",
+  "tags": ["parametric_surface", "surface_area", "jacobian", "tangent_vectors", "value_tracker", "always_redraw"],
+  "apis": ["ThreeDAxes", "Surface", "Polygon", "Arrow3D", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"]
+}

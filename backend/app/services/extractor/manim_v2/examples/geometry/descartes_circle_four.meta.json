@@ -1,0 +1,8 @@
+{
+  "id": "descartes_circle_four",
+  "category": "geometry",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS Descartes circle theorem. 3 congruent BLUE/GREEN/ORANGE unit circles mutually tangent. ValueTracker s_tr: phase 1 reveals RED outer Soddy circle (k_4=3-2√3≈-0.464, radius ≈ 2.155), phase 2 reveals PURPLE inner Soddy (k_4=3+2√3≈6.464, radius ≈ 0.155) — both via always_redraw with fading.",
+  "tags": ["descartes_circle_theorem", "soddy_circle", "apollonian_gasket", "curvature", "value_tracker", "always_redraw"],
+  "apis": ["Circle", "VMobject", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"]
+}

@@ -1,0 +1,8 @@
+{
+  "id": "brachistochrone_race",
+  "category": "calculus",
+  "difficulty": 3,
+  "summary": "Draw three descending paths (straight line, parabola, cycloid) between the same two points and race a colored ball on each with different rate_funcs so the cycloid finishes first.",
+  "tags": ["brachistochrone", "cycloid", "ball_race", "move_along_path", "calculus_of_variations"],
+  "apis": ["Axes", "Axes.plot", "Dot", "MoveAlongPath"]
+}

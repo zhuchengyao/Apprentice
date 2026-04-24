@@ -1,0 +1,8 @@
+{
+  "id": "partial_deriv_y_as_constant",
+  "category": "calculus",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: f(x,y)=e^(-x^2+cos(2y)) with BLUE x glyphs and RED y glyphs. RED arrows drop onto each y labeled 'constant', BLUE arrows rise onto each x labeled 'variable'. ReplacementTransform pulls the outer e^() exponent down into df/dx = e^(...)(-2x), chain-rule note in YELLOW.",
+  "tags": ["partial_derivative", "chain_rule", "pedagogy", "multivariable", "color_code"],
+  "apis": ["MathTex", "Tex", "Arrow", "GrowArrow", "LaggedStart", "ReplacementTransform", "VGroup"]
+}

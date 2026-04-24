@@ -1,0 +1,8 @@
+{
+  "id": "resnet_skip_connection",
+  "category": "neural_networks",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS ResNet skip connections. 5 BLUE residual F_i blocks chained horizontally with GREEN skip ArcBetweenPoints over each. Phase 1: YELLOW forward signal dot moves left→right via ValueTracker t_tr. Phase 2: RED gradient dot moves right→left via grad_dot_tr. Live stage counter.",
+  "tags": ["resnet", "skip_connection", "residual_block", "gradient_flow", "value_tracker", "always_redraw"],
+  "apis": ["Rectangle", "ArcBetweenPoints", "Dot", "VGroup", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"]
+}

@@ -1,0 +1,8 @@
+{
+  "id": "binary_representation",
+  "category": "number_theory",
+  "difficulty": 1,
+  "summary": "SINGLE_FOCUS: 8 boxes labeled 2^7..2^0 and 128..1. ValueTracker n_tr sweeps 0→255 linearly then jumps through 170, 85, 128, 1, 255, 13. always_redraw fills each box YELLOW when bit=1 and shows the digit inside. Live expansion sum and (n)_2 bit string below.",
+  "tags": ["binary", "number_systems", "powers_of_two", "bits", "value_tracker", "always_redraw"],
+  "apis": ["Rectangle", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

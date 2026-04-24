@@ -1,0 +1,8 @@
+{
+  "id": "n_choose_k_formula",
+  "category": "combinatorics",
+  "difficulty": 2,
+  "summary": "TWO_COLUMN: 6 circles on top with indices 1..6; ordered pick highlights 3 in sequence with RED order labels 1, 2, 3. RIGHT column reveals 7-step derivation via always_redraw as ValueTracker step_tr increments, ending with C(6,3) = 20. Phase 2 Transforms the order labels through all 3! = 6 orderings of {1, 3, 5}.",
+  "tags": ["binomial_coefficient", "derivation", "orderings", "value_tracker", "always_redraw", "transform"],
+  "apis": ["Circle", "VGroup", "ValueTracker", "always_redraw", "Transform", "MathTex", "Tex"]
+}

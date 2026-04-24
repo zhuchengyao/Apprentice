@@ -1,0 +1,8 @@
+{
+  "id": "mass_scaling_integer_vs_fractional",
+  "category": "fractals",
+  "difficulty": 2,
+  "summary": "FOUR_COLUMN comparison of how mass scales when each shape is shrunk by factor 1/2. BLUE line halves, BLUE square quarters = (1/2)^2, BLUE-layered cube eighths = (1/2)^3, YELLOW Sierpinski triangle (order 4) thirds — which fits NO integer power, shown in RED. Top row builds shapes then TransformFromCopy spawns half-scale copies below with GREEN mass labels and power-form labels beneath. Indicate highlights the Sierpinski outlier (1/2)^? demanding a non-integer dimension.",
+  "tags": ["fractal_dimension", "self_similarity", "mass_scaling", "sierpinski", "power_law", "comparison"],
+  "apis": ["Line", "Square", "Polygon", "VGroup", "TransformFromCopy", "LaggedStart", "Indicate", "Tex", "MathTex"]
+}

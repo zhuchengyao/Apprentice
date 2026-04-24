@@ -1,0 +1,8 @@
+{
+  "id": "two_d_corner_circles_inner_gap",
+  "category": "geometry",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS 2D version of the high-dimensional inner-sphere paradox. NumberPlane (-3..3) with RED 2x2 outer box; four YELLOW unit circles centered at (±1,±1). Draws the right triangle (GREEN legs of length 1, WHITE sqrt(2) diagonal) from origin to (1,1), then grows a GREEN inner circle of radius sqrt(2)-1 ≈ 0.414 tangent to all four corner circles. Right panel derivation: d_{0→(1,1)}=sqrt(2), r_inner=sqrt(2)-1, ≈0.414.",
+  "tags": ["high_dimensional", "geometry", "pythagorean", "nested_spheres", "corner_geometry"],
+  "apis": ["NumberPlane", "Circle", "Polygon", "Line", "Dot", "LaggedStart", "GrowFromCenter", "MathTex", "Tex", "VGroup"]
+}

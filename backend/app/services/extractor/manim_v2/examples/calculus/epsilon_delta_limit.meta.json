@@ -1,0 +1,8 @@
+{
+  "id": "epsilon_delta_limit",
+  "category": "calculus",
+  "difficulty": 3,
+  "summary": "TWO_COLUMN: graph of f(x)=x² with always_redraw yellow ε-band around L=4 and green δ-band around a=2. ValueTracker eps sweeps 1.2→0.05; δ is recomputed each frame as √(L+ε)−a so the green strip stays exactly inside the yellow strip. Right column shows live ε, δ, the ≈ε/(2a) approximation, and the formal ∀ε∃δ statement.",
+  "tags": ["epsilon_delta", "limit", "value_tracker", "always_redraw", "rigorous"],
+  "apis": ["Axes", "plot", "ValueTracker", "always_redraw", "Rectangle", "DoubleArrow", "MathTex"]
+}

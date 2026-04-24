@@ -1,0 +1,8 @@
+{
+  "id": "uniform_convergence",
+  "category": "analysis",
+  "difficulty": 2,
+  "summary": "TWO_COLUMN: LEFT axes with GREEN limit function f (0 on [0,1), 1 at x=1) + BLUE f_n(x) = x^n. ValueTracker n_tr grows 1→200 via always_redraw. RIGHT axes with RED dashed constant ‖f_n - f‖_∞ = 1 (no uniform convergence despite pointwise → f).",
+  "tags": ["uniform_convergence", "pointwise", "sup_norm", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "Axes.plot", "DashedLine", "VMobject", "Dot", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

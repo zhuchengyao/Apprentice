@@ -1,0 +1,8 @@
+{
+  "id": "beta_bernoulli_conjugate",
+  "category": "probability",
+  "difficulty": 2,
+  "summary": "TWO_COLUMN Beta-Bernoulli conjugate. BLUE Beta(3, 3) prior + RED dashed p*=0.3. YELLOW always_redraw posterior Beta(3+k, 3+n-k) narrowing around p* as ValueTracker n_tr sweeps 0→100 Bernoulli trials (seed=7). Data dots BLUE=1, ORANGE=0. Live n, k, posterior params, posterior mean.",
+  "tags": ["conjugate_prior", "beta_bernoulli", "bayesian_update", "posterior", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "DashedLine", "Dot", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"]
+}

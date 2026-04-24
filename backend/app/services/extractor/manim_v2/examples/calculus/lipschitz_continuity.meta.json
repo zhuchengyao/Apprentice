@@ -1,0 +1,8 @@
+{
+  "id": "lipschitz_continuity",
+  "category": "calculus",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: axes with BLUE sin x (Lipschitz K=1). ValueTracker x_tr moves RED point; always_redraw YELLOW ± K·(t-x_0) lines from (x_0, sin x_0). sin curve stays within double cone for all (x, y) pairs.",
+  "tags": ["lipschitz_continuity", "cone_condition", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "Axes.plot", "Dot", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

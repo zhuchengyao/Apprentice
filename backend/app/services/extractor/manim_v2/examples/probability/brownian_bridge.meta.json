@@ -1,0 +1,8 @@
+{
+  "id": "brownian_bridge",
+  "category": "probability",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS: axes with GREY variance envelope ±√(t(1-t)) + 5 precomputed Brownian bridge paths (B_t - t·B_1 formula). ValueTracker t_tr advances; RED endpoints at t=0, 1 both 0. Variance peaks at t=0.5.",
+  "tags": ["brownian_bridge", "conditional_brownian", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "Axes.plot", "Dot", "VMobject", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

@@ -1,0 +1,8 @@
+{
+  "id": "julia_vs_mandelbrot",
+  "category": "fractals",
+  "difficulty": 3,
+  "summary": "COMPARISON layout: precomputed Mandelbrot heatmap on left with always_redraw cursor at current c; right shows the Julia(c) heatmap recomputed each frame via always_redraw. ValueTracker s sweeps c along a path through 5 distinct regions — connected Julia (c inside M) vs Cantor dust (c outside M).",
+  "tags": ["mandelbrot", "julia", "fractal", "value_tracker", "comparison"],
+  "apis": ["Rectangle", "interpolate_color", "VGroup", "ValueTracker", "always_redraw", "Dot", "MathTex", "Tex"]
+}

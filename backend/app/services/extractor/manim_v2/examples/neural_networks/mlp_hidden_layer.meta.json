@@ -1,0 +1,8 @@
+{
+  "id": "mlp_hidden_layer",
+  "category": "neural_networks",
+  "difficulty": 2,
+  "summary": "TWO_COLUMN: 4 BLUE input circles connected by colored/thick edges (GREEN w>0, RED w<0, thickness ∝ |w|) to 6 ORANGE/GREY hidden circles. always_redraw updates as ValueTracker x_tr cycles through 4 test inputs; ReLU activations color cells + RIGHT panel shows x, z = Wx+b, h = ReLU(z).",
+  "tags": ["mlp", "neural_network", "relu", "forward_pass", "value_tracker", "always_redraw"],
+  "apis": ["Circle", "Line", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

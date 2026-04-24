@@ -1,0 +1,8 @@
+{
+  "id": "domino_tilings_2n",
+  "category": "combinatorics",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: two 2×n strip diagrams stacked — top with all-vertical BLUE dominos, bottom with pairs of horizontal ORANGE dominos (last col vertical if n odd). ValueTracker n_tr steps 1→8 via always_redraw; live F(n) = 1, 2, 3, 5, 8, 13, 21, 34 Fibonacci count.",
+  "tags": ["domino_tiling", "fibonacci", "recurrence", "value_tracker", "always_redraw"],
+  "apis": ["Rectangle", "Line", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

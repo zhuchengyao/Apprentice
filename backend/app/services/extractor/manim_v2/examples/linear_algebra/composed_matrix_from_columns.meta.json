@@ -1,0 +1,9 @@
+{
+  "id": "composed_matrix_from_columns",
+  "category": "linear_algebra",
+  "difficulty": 3,
+  "summary": "TWO_COLUMN: M_1=[[1, -2], [1, 0]], M_2=[[0, 2], [1, 0]]; composite M_2 M_1 = [[2, 0], [1, -2]]. LEFT deforming grid + basis arrows via ValueTracker stage_tr. RIGHT shows M_1, M_2, and M_2 M_1 with entries revealed from ? to filled as î, ĵ land; columns = landing coordinates.",
+  "tags": ["matrix_composition", "visual_matrix_product", "basis_columns", "numerical_example", "value_tracker", "always_redraw"],
+  "apis": ["VMobject", "Arrow", "ValueTracker", "always_redraw", "add_updater", "Tex"],
+  "source": "3b1b/_2016/eola/chapter4.py::MoreComplicatedExampleVisually+Numerically"
+}

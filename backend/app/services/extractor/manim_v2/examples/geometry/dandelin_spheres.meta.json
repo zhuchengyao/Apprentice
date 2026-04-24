@@ -1,0 +1,8 @@
+{
+  "id": "dandelin_spheres",
+  "category": "geometry",
+  "difficulty": 3,
+  "summary": "ThreeDScene: cone (upper+lower) + tilted slicing plane + two Dandelin spheres (tangent to both). RED dots mark the tangent points (foci F₁, F₂). ValueTracker θ moves a yellow point P around the slicing ellipse; orange/green PF₁ and PF₂ segments redraw via always_redraw. Right corner has live |PF₁| + |PF₂| staying ≈ constant.",
+  "tags": ["dandelin", "ellipse", "conic_section", "value_tracker", "always_redraw"],
+  "apis": ["ThreeDScene", "Surface", "Sphere", "Dot3D", "Line", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

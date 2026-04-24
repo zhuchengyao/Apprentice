@@ -1,0 +1,8 @@
+{
+  "id": "partial_sums_approach_one",
+  "category": "analysis",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: unit bar [0, 1] gets filled left-to-right with rectangles of widths 1/2, 1/4, 1/8, ... ValueTracker n steps 1→8; always_redraw redraws all rectangles + an orange edge marker at S_n = 1 - 1/2^n. Each rect labeled 1/2^k inside (first 5).",
+  "tags": ["geometric_series", "partial_sums", "value_tracker", "always_redraw", "convergence"],
+  "apis": ["Rectangle", "VGroup", "ValueTracker", "always_redraw", "color_gradient", "Line", "MathTex", "Tex"]
+}

@@ -1,0 +1,8 @@
+{
+  "id": "hadamard_three_circles",
+  "category": "complex",
+  "difficulty": 3,
+  "summary": "TWO_COLUMN: LEFT ComplexPlane with 3 static reference circles + YELLOW always_redraw moving circle at radius r; ValueTracker r_tr sweeps 0.6→2.5. RIGHT axes with BLUE log M(r) for f=z² (linear 2·log r) and RED for z²+z (convex); riders track.",
+  "tags": ["hadamard_three_circles", "log_convexity", "complex_analysis", "value_tracker", "always_redraw"],
+  "apis": ["ComplexPlane", "Circle", "Axes", "Axes.plot", "Dot", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

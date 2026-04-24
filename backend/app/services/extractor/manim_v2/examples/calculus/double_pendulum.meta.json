@@ -1,0 +1,8 @@
+{
+  "id": "double_pendulum",
+  "category": "calculus",
+  "difficulty": 3,
+  "summary": "Integrate two double pendulums with near-identical initial angles via RK4; their traces diverge quickly — classic chaotic ODE.",
+  "tags": ["chaos", "double_pendulum", "rk4", "ode", "sensitive_dependence"],
+  "apis": ["Line", "Dot", "VMobject", "add_updater", "set_points_as_corners"]
+}

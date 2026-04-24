@@ -1,0 +1,8 @@
+{
+  "id": "wilson_theorem",
+  "category": "number_theory",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS Wilson's theorem: p prime ⟺ (p-1)! ≡ -1 mod p. Test n=2..13 in a 4-column table (n, (n-1)! mod n, check, prime label). ValueTracker idx_tr walks rows revealing results with YELLOW scanner row-highlight. GREEN ✓ for primes, RED ✗ for composites — always match primality.",
+  "tags": ["wilson_theorem", "factorial_modular", "primality_test", "biconditional", "value_tracker", "always_redraw"],
+  "apis": ["Rectangle", "VGroup", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"]
+}

@@ -1,0 +1,8 @@
+{
+  "id": "ballot_problem",
+  "category": "combinatorics",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS ballot theorem. 6 example vote-sequence paths with a=6, b=4. ValueTracker path_idx_tr walks through samples; always_redraw GREEN line (A stays ahead) or RED line (A falls behind) + cumulative dots. Dashed zero line. Live stays_positive status + formula P=(a-b)/(a+b)=1/5.",
+  "tags": ["ballot_problem", "lattice_path", "random_walk", "catalan_like", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "VMobject", "Dot", "DashedLine", "DecimalNumber", "ValueTracker", "always_redraw", "add_updater", "Tex"]
+}

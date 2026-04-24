@@ -1,0 +1,8 @@
+{
+  "id": "image_convolution_kernel_sweep",
+  "category": "neural_networks",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS: LEFT 10x10 grayscale input image (VGroup of Squares with interpolate_color BLACK-WHITE fill) containing a vertical white stripe. TOP-RIGHT 3x3 Sobel-x kernel colored GREEN (+) / RED (-) / GREY_D (0) with MathTex values. BOTTOM-RIGHT 8x8 output grid starting grey, filled in as the YELLOW 3x3 highlight Rectangle sweeps across 8 sample positions of the input and each target output Square takes on BLUE (positive) / RED (negative) interpolate_color based on Σ kernel*patch. YELLOW caption explains vertical-edge detection.",
+  "tags": ["convolution", "image_processing", "sobel_filter", "kernel", "edge_detection", "cnn"],
+  "apis": ["Square", "Rectangle", "VGroup", "Tex", "MathTex", "interpolate_color", "FadeIn", "Create", "numpy"]
+}

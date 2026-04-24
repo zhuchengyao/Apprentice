@@ -1,0 +1,8 @@
+{
+  "id": "binary_increment_rule",
+  "category": "number_theory",
+  "difficulty": 2,
+  "summary": "Circle the rightmost 0 bit in a 5-bit number and transform bits simultaneously to show the +1 rule (flip that 0 to 1, zero the bits to its right).",
+  "tags": ["binary", "increment", "bits", "algorithm"],
+  "apis": ["MathTex", "VGroup", "Circle", "Transform", "FadeOut"]
+}

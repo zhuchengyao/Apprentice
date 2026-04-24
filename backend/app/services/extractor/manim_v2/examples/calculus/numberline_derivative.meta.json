@@ -1,0 +1,8 @@
+{
+  "id": "numberline_derivative",
+  "category": "calculus",
+  "difficulty": 2,
+  "summary": "TWO-LINE-FOCUS: input number line top, output bottom (f(x)=x²); ValueTracker x_tr moves BLUE input marker + ORANGE dx-interval; YELLOW output marker + ORANGE stretched interval redrawn via always_redraw with dashed connector. Right column has live x, Δx, Δy, ratio, and 2x for comparison.",
+  "tags": ["derivative", "number_line", "stretch_factor", "value_tracker", "always_redraw"],
+  "apis": ["NumberLine", "Dot", "Line", "DashedLine", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

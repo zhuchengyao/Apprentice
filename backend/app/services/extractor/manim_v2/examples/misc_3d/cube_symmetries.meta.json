@@ -1,0 +1,8 @@
+{
+  "id": "cube_symmetries",
+  "category": "misc_3d",
+  "difficulty": 2,
+  "summary": "Rotate a cube 90° around each axis and 120° around its body diagonal; state that the rotation group has 24 elements = 6 faces × 4 rotations.",
+  "tags": ["symmetry_group", "cube", "rotation_group", "3d", "finite_group"],
+  "apis": ["ThreeDScene", "Cube", "Rotate", "add_fixed_in_frame_mobjects"]
+}

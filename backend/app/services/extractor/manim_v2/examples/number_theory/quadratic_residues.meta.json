@@ -1,0 +1,8 @@
+{
+  "id": "quadratic_residues",
+  "category": "number_theory",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: row of cells for 0..p-1 colored GREEN (quadratic residue) or GREY (non-residue). ValueTracker p_idx_tr steps through primes 5, 7, 11, 13, 17, 19, 23; always_redraw cell grid. Live |QR| = (p-1)/2 verification.",
+  "tags": ["quadratic_residue", "modular_arithmetic", "number_theory", "value_tracker", "always_redraw"],
+  "apis": ["Square", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

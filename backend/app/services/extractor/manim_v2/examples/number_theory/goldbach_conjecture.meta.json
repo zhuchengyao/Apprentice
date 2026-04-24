@@ -1,0 +1,8 @@
+{
+  "id": "goldbach_conjecture",
+  "category": "number_theory",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: Goldbach's comet — axes with YELLOW scatter of (n, G(n)) for n = 4, 6, ..., 200, where G(n) = # prime-pair decompositions. ValueTracker n_tr sweeps; comet-shaped scatter reveals; all G(n) ≥ 1 as far as computed (conjecture open).",
+  "tags": ["goldbach_conjecture", "primes", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "Dot", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

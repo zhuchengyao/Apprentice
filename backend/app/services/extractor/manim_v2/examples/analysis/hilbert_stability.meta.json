@@ -1,0 +1,8 @@
+{
+  "id": "hilbert_stability",
+  "category": "analysis",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS: Hilbert curve constructed via L-system rewriting at depths k=1..5. Transform between successive curves; endpoint continuity preserved each refinement; live sup-norm bound √2/2^k shown fading in after each Transform. Square reference outline stays in place.",
+  "tags": ["hilbert_curve", "space_filling", "refinement", "transform", "l_system"],
+  "apis": ["VMobject", "Square", "Transform", "MathTex", "Tex", "VGroup", "FadeIn", "FadeOut"]
+}

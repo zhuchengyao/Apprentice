@@ -1,0 +1,8 @@
+{
+  "id": "conformal_exp_map",
+  "category": "complex",
+  "difficulty": 3,
+  "summary": "TWO_COLUMN: a single complex plane on the left whose vertical and horizontal strip-grid lines morph via ValueTracker s into the image grid under z↦eᶻ — verticals smoothly bend into circles |w|=eˣ, horizontals into radial rays arg w=y. Right column has live s, the interpolant w=(1-s)z+seᶻ, and the |eᶻ| / arg(eᶻ) identities.",
+  "tags": ["conformal_map", "exponential", "value_tracker", "always_redraw", "strip_to_annulus"],
+  "apis": ["ComplexPlane", "VMobject", "set_points_smoothly", "ValueTracker", "always_redraw", "Tex", "MathTex"]
+}

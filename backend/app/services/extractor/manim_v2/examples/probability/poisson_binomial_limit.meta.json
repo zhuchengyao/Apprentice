@@ -1,0 +1,8 @@
+{
+  "id": "poisson_binomial_limit",
+  "category": "probability",
+  "difficulty": 3,
+  "summary": "TWO_COLUMN: axes with BLUE Binomial(n, λ/n) and RED Poisson(λ=4) bars side by side. ValueTracker n_tr steps n = 10, 20, 50, 100, 200; always_redraw both; Binomial converges to Poisson. Live panel shows n, p = λ/n, and KL divergence D_KL(B‖P) decreasing.",
+  "tags": ["poisson_limit", "binomial", "convergence", "kl_divergence", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "Rectangle", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

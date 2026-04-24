@@ -1,0 +1,8 @@
+{
+  "id": "weierstrass_function",
+  "category": "analysis",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS: axes over [-1, 1] with BLUE partial sum W_N(x) = Σ_{k=0}^N 0.5^k cos(5^k πx). ValueTracker N_tr grows 0, 2, 4, 8, 14, 20 via always_redraw; each step adds finer oscillations but keeps continuity. ab=2.5 intentionally under Weierstrass's bound but shows roughness.",
+  "tags": ["weierstrass_function", "continuous_nondifferentiable", "fractal", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "Axes.plot", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

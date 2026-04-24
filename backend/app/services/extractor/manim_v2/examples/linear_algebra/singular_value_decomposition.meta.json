@@ -1,0 +1,8 @@
+{
+  "id": "singular_value_decomposition",
+  "category": "linear_algebra",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS: NumberPlane with YELLOW always_redraw transformed unit-circle shape + RED/BLUE basis arrows under matrix A = [[2,1],[0,1]]. ValueTracker s_tr advances through 3 phases: s∈[0,1] identity→V^T rotation, s∈[1,2] add Σ scaling, s∈[2,3] add U rotation. Live σ_1, σ_2 displayed.",
+  "tags": ["svd", "singular_value_decomposition", "linear_map", "value_tracker", "always_redraw"],
+  "apis": ["NumberPlane", "VMobject", "Arrow", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

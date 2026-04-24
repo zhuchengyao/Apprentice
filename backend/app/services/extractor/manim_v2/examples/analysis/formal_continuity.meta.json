@@ -1,0 +1,8 @@
+{
+  "id": "formal_continuity",
+  "category": "analysis",
+  "difficulty": 2,
+  "summary": "Visualize the ε–δ definition of continuity at a point: shrink the horizontal δ-band until the graph stays inside the vertical ε-band.",
+  "tags": ["continuity", "epsilon_delta", "limit", "analysis", "function"],
+  "apis": ["Axes", "plot", "ValueTracker", "always_redraw", "Rectangle", "MathTex"]
+}

@@ -1,0 +1,8 @@
+{
+  "id": "totient_function",
+  "category": "number_theory",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: row of 20 cells n=1..20 with φ(n) displayed inside; primes colored YELLOW (φ = n-1), composites BLUE. ValueTracker n_tr walks through highlighting each n in RED via always_redraw + live panel showing coprimes list.",
+  "tags": ["totient_function", "euler_phi", "coprime", "value_tracker", "always_redraw"],
+  "apis": ["Square", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

@@ -1,0 +1,8 @@
+{
+  "id": "clacks_pi",
+  "category": "combinatorics",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS: two-run 1D elastic-collision simulation. Wall + floor + heavy BLUE block (mass M) + light ORANGE block (mass 1). ValueTracker t_tr advances precomputed trajectories via always_redraw; live clack count converges to π·10^k for M/m = 10^(2k). Shown for k=0 (3 clacks) and k=1 (31 clacks).",
+  "tags": ["clacks", "pi", "elastic_collision", "value_tracker", "always_redraw"],
+  "apis": ["Rectangle", "Line", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

@@ -1,0 +1,8 @@
+{
+  "id": "laplace_transform",
+  "category": "calculus",
+  "difficulty": 3,
+  "summary": "TWO_COLUMN: Axes left with f(t)=e^(0.5t) plus the damped integrand e^(-st)·e^(at) and its shaded area, both via always_redraw under ValueTracker s. Right column has live s, F(s) value (only valid when s > a), formula 1/(s-a), and a mini F(s)-vs-s plot with vertical asymptote at s=a and a tracking cursor.",
+  "tags": ["laplace_transform", "integral_transform", "value_tracker", "convergence", "asymptote"],
+  "apis": ["Axes", "plot", "get_area", "ValueTracker", "always_redraw", "DashedLine", "Dot", "MathTex", "Tex"]
+}

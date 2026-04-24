@@ -1,0 +1,8 @@
+{
+  "id": "burnside_counting",
+  "category": "combinatorics",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS: 6-bead circular necklace with 3 colors; ValueTracker rot_tr cycles through C_6 rotations via always_redraw. RIGHT table shows i, gcd(6,i), |Fix(g^i)| = k^gcd. YELLOW box highlights active row. Final: Σ|Fix| / |G| = 138/6 = 23 orbits.",
+  "tags": ["burnside_lemma", "orbit_counting", "cyclic_group", "value_tracker", "always_redraw"],
+  "apis": ["Circle", "Dot", "Rectangle", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

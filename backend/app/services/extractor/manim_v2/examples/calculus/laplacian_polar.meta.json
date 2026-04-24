@@ -1,0 +1,8 @@
+{
+  "id": "laplacian_polar",
+  "category": "calculus",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS: 18×18 heatmap of u = x²-y² = r² cos 2θ + GREEN polar grid overlay. ValueTrackers r_tr, theta_tr move YELLOW probe. Live panel verifies Δu = u_rr + (1/r)u_r + (1/r²)u_θθ = 2 cos 2θ + 2 cos 2θ - 4 cos 2θ = 0 (harmonic).",
+  "tags": ["laplacian_polar", "harmonic_function", "polar_coordinates", "value_tracker", "always_redraw"],
+  "apis": ["Square", "VMobject", "Line", "Dot", "VGroup", "ValueTracker", "always_redraw", "interpolate_color", "MathTex", "Tex"]
+}

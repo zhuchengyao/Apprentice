@@ -1,0 +1,8 @@
+{
+  "id": "geodesic_sphere",
+  "category": "misc_3d",
+  "difficulty": 3,
+  "summary": "ThreeDScene: unit sphere + GREEN start P, RED end Q + YELLOW geodesic arc via slerp + ORANGE non-geodesic latitude-interpolated path. ValueTracker t_tr walks a YELLOW traveler along the geodesic; panel compares lengths (geodesic shorter).",
+  "tags": ["geodesic", "sphere", "great_circle", "value_tracker", "always_redraw"],
+  "apis": ["ThreeDScene", "ThreeDAxes", "Sphere", "Dot3D", "VMobject", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

@@ -1,0 +1,8 @@
+{
+  "id": "nine_point_circle",
+  "category": "geometry",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS: variable-apex triangle ABC with 9 special points — 3 BLUE side midpoints, 3 GREEN altitude feet, 3 RED mid-ortho-vertex segments. always_redraw 9 dots + ORANGE 9-point circle through all of them, radius = R_circ/2. Tour apex angles 80°-130°.",
+  "tags": ["nine_point_circle", "triangle_centers", "euler_line", "value_tracker", "always_redraw"],
+  "apis": ["Polygon", "Circle", "Dot", "DashedLine", "VGroup", "ValueTracker", "always_redraw", "Tex"]
+}

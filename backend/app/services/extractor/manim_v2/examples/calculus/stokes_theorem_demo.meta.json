@@ -1,0 +1,8 @@
+{
+  "id": "stokes_theorem_demo",
+  "category": "calculus",
+  "difficulty": 3,
+  "summary": "ThreeDScene: GREEN unit disk at z=0.5 + YELLOW boundary circle ∂S. ValueTracker theta_tr advances RED rider around circle; BLUE F=(-y,x,0) arrow at rider. ∮F·dr = 2π = ∫∫ (∇×F)·n dA = ∫∫ 2 dA = 2π (unit disk area π).",
+  "tags": ["stokes_theorem", "curl", "line_integral", "value_tracker", "always_redraw"],
+  "apis": ["ThreeDScene", "ThreeDAxes", "Surface", "VMobject", "Dot3D", "Line", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

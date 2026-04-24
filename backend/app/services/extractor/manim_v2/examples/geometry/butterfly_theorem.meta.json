@@ -1,0 +1,8 @@
+{
+  "id": "butterfly_theorem",
+  "category": "geometry",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS: BLUE circle with fixed GREEN chord PQ + YELLOW midpoint M. Two chords through M at angles θ and θ+π/3 (RED and ORANGE); cross-diagonals (PURPLE AD, PINK BC) intersect PQ at X, Y. ValueTracker theta_tr tours angles; |MX|=|MY| always.",
+  "tags": ["butterfly_theorem", "circle_chord", "value_tracker", "always_redraw"],
+  "apis": ["Circle", "Line", "Dot", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

@@ -1,0 +1,8 @@
+{
+  "id": "complex_power_spiral",
+  "category": "complex",
+  "difficulty": 3,
+  "summary": "TWO_COLUMN: ValueTracker k advances powers z^k of a complex number on the left ComplexPlane; always_redraw spiral path connects z^0,...,z^⌊k⌋ as chords plus a smooth moving dot at the current k. Two phases: |z|=0.88 (inward spiral) then |z|=1.06 (outward). Right column live |z|, arg(z), k, |z^k|, arg(z^k), and z^k value.",
+  "tags": ["complex_power", "spiral", "value_tracker", "always_redraw", "polar"],
+  "apis": ["ComplexPlane", "Circle", "VMobject", "set_points_as_corners", "ValueTracker", "always_redraw", "Dot", "MathTex", "Tex"]
+}

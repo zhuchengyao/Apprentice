@@ -1,0 +1,8 @@
+{
+  "id": "wonky_hexagon_fractal",
+  "category": "fractals",
+  "difficulty": 2,
+  "summary": "Iterate a hexagonal self-similar rule with children slightly offset from canonical vertex positions.",
+  "tags": ["fractal", "hexagon", "self_similar", "recursion", "tiling"],
+  "apis": ["RegularPolygon", "VGroup", "Transform", "FadeIn", "Text"]
+}

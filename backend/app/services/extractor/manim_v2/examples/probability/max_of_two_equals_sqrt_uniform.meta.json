@@ -1,0 +1,8 @@
+{
+  "id": "max_of_two_equals_sqrt_uniform",
+  "category": "probability",
+  "difficulty": 2,
+  "summary": "COMPARISON two Axes with target density 2x. LEFT BLUE histogram of max(U,V) from 1500 i.i.d. Uniform pairs; RIGHT GREEN histogram of √W from 1500 uniform samples; both fit the f=2x line. 20 bins via numpy.histogram with density=True; Rectangles placed on axes. Bottom derivation uses CDF argument: P(max(U,V)≤x) = x² = P(W ≤ x²) = P(√W ≤ x), proving distributional equality.",
+  "tags": ["order_statistics", "change_of_variables", "uniform", "cdf_argument", "histogram"],
+  "apis": ["Axes", "Axes.plot", "Rectangle", "VGroup", "LaggedStart", "MathTex", "Tex", "numpy"]
+}

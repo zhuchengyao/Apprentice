@@ -1,0 +1,8 @@
+{
+  "id": "quaternion_slerp",
+  "category": "misc_3d",
+  "difficulty": 3,
+  "summary": "ThreeDScene quaternion slerp: interpolate q_0=(1, 0, 0, 0) to q_1=rotation(y, π/2) using sin((1-t)Ω)/sin Ω + sin(tΩ)/sin Ω formula. ValueTracker t_tr sweeps 0→1 with always_redraw: RED/GREEN/BLUE rotated frame axes + YELLOW e_3-image dot tracing great-circle arc on BLUE unit sphere + growing YELLOW trail. Ambient rotation.",
+  "tags": ["quaternion_slerp", "spherical_interpolation", "rotation_matrix", "s3", "value_tracker", "always_redraw"],
+  "apis": ["ThreeDAxes", "Sphere", "Arrow3D", "Dot3D", "VMobject", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"]
+}

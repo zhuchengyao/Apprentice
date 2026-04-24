@@ -1,0 +1,8 @@
+{
+  "id": "gaussian_integral",
+  "category": "calculus",
+  "difficulty": 3,
+  "summary": "TWO_COLUMN: left panel is an 18×18 grid of cells colored by e^(-(x²+y²)) on a Cartesian (x, y) layout that morphs to a polar (r, θ) layout via ValueTracker s; the heatmap stays radially symmetric so the polar warp is the natural one. Right column writes I → I² → polar integral → π → I = √π.",
+  "tags": ["gaussian_integral", "polar_coords", "heatmap", "value_tracker", "sqrt_pi"],
+  "apis": ["Rectangle", "interpolate_color", "ValueTracker", "always_redraw", "VGroup", "MathTex"]
+}

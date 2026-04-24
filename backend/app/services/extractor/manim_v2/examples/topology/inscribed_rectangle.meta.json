@@ -1,0 +1,8 @@
+{
+  "id": "inscribed_rectangle",
+  "category": "topology",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS: smooth closed loop with ValueTracker θ rotating a test direction; two perpendicular chords found via numerical loop sampling form a candidate yellow rectangle that morphs as θ sweeps. Toeplitz inscribed-rectangle theorem captioned.",
+  "tags": ["inscribed_rectangle", "toeplitz", "value_tracker", "always_redraw", "intersection"],
+  "apis": ["ParametricFunction", "Arrow", "Polygon", "ValueTracker", "always_redraw", "MathTex", "Tex", "numpy"]
+}

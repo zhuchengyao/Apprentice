@@ -1,0 +1,8 @@
+{
+  "id": "pi_vs_tau",
+  "category": "geometry",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS rolling demo: ValueTracker θ rolls a unit-R circle one full revolution along a number line; rolled segment length C = R·θ traced via always_redraw. Right column shows live R, d=2R, C, and the two ratios C/d (→π) and C/R (→τ). Conclusion contrasts π=3.14159 vs τ=6.28318=2π.",
+  "tags": ["pi", "tau", "rolling_circle", "value_tracker", "circumference"],
+  "apis": ["Circle", "Line", "NumberLine", "Dot", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

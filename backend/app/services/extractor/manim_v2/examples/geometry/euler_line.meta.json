@@ -1,0 +1,8 @@
+{
+  "id": "euler_line",
+  "category": "geometry",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS: variable-apex triangle with GREEN orthocenter H, BLUE centroid G, PURPLE circumcenter O collinear on RED Euler line. ValueTracker theta_tr moves apex; always_redraw verifies |HG|/|GO| = 2.000 across all apex positions.",
+  "tags": ["euler_line", "triangle_centers", "orthocenter", "value_tracker", "always_redraw"],
+  "apis": ["Polygon", "Line", "Dot", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

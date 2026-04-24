@@ -1,0 +1,8 @@
+{
+  "id": "catalan_dyck_paths",
+  "category": "combinatorics",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: C_4=14 Dyck paths from (0, 0) to (8, 0). 5×3 grid of BLUE mini paths rendered upfront. ValueTracker k_tr walks through them with always_redraw YELLOW scanner rectangle + main zoomed-axes copy. Live path number + C_n formula + C_4 = 1/5·C(8, 4) = 14.",
+  "tags": ["catalan_numbers", "dyck_path", "lattice_path", "enumeration", "value_tracker", "always_redraw"],
+  "apis": ["Rectangle", "VMobject", "Axes", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"]
+}

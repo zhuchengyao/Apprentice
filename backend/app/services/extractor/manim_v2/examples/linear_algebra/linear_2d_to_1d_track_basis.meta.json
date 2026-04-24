@@ -1,0 +1,9 @@
+{
+  "id": "linear_2d_to_1d_track_basis",
+  "category": "linear_algebra",
+  "difficulty": 2,
+  "summary": "TWO_COLUMN: track where î, ĵ land under 2D→1D map L(x, y)=2x-y. LEFT plane with GREEN î, RED ĵ; RIGHT number line with their images. ValueTracker stage_tr animates sequentially. Matrix display rebuilds from ?/? → 2/? → 2/-1. L(x, y) formula stamp.",
+  "tags": ["linear_map", "2d_to_1d", "basis_tracking", "1x2_matrix", "value_tracker", "always_redraw"],
+  "apis": ["NumberPlane", "NumberLine", "Arrow", "Dot", "MathTex", "ValueTracker", "always_redraw", "add_updater", "Tex"],
+  "source": "3b1b/_2016/eola/chapter7.py::ShowMatrix+FollowVectorViaCoordinates"
+}

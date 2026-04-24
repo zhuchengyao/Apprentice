@@ -1,0 +1,8 @@
+{
+  "id": "morera_theorem",
+  "category": "complex",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS: ComplexPlane with 4 different test-loop shapes (circle, shifted circle, ellipse, trefoil clover) cycled by ValueTracker loop_idx_tr. always_redraw current loop + numerical ∮z²dz ≈ 0 for each. If integral vanishes for every loop, function is holomorphic (Morera).",
+  "tags": ["morera_theorem", "cauchy_converse", "contour_integral", "value_tracker", "always_redraw"],
+  "apis": ["ComplexPlane", "VMobject", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

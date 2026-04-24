@@ -1,0 +1,8 @@
+{
+  "id": "vanishing_gradient",
+  "category": "neural_networks",
+  "difficulty": 2,
+  "summary": "TWO_COLUMN: LEFT 8-layer deep network with BLUE neurons; ValueTracker depth_tr advances; always_redraw RED gradient arrows at layer L-1-k with magnitude (1/4)^k shrinking toward zero. RIGHT log-scale plot of |∇| vs depth (straight descending line).",
+  "tags": ["vanishing_gradient", "sigmoid", "chain_rule", "value_tracker", "always_redraw"],
+  "apis": ["Circle", "Line", "Arrow", "Axes", "VMobject", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

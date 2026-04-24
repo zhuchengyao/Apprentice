@@ -1,0 +1,9 @@
+{
+  "id": "dot_product_symmetric_swap",
+  "category": "linear_algebra",
+  "difficulty": 2,
+  "summary": "COMPARISON: symmetry v·w=w·v via projections. LEFT: project v onto w direction; RIGHT: project w onto v direction. Both give |v||w|cos θ=4.5. BLUE v, ORANGE w, YELLOW projection arrows, GREY dashed perpendicular drops. Headers clarify each interpretation.",
+  "tags": ["dot_product_symmetry", "commutativity", "projection", "side_by_side"],
+  "apis": ["NumberPlane", "Arrow", "DashedLine", "Tex"],
+  "source": "3b1b/_2016/eola/chapter7.py::GeometricInterpretationSwapVectors+SymmetricVAndW"
+}

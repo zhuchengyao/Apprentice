@@ -1,0 +1,8 @@
+{
+  "id": "mirror_reflections_unfold",
+  "category": "geometry",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: two parallel horizontal mirrors at y=±1.5; 3-bounce YELLOW zigzag path from A=(-5,-1.5) to B=(5,-1.5). ValueTracker unfold_tr lifts each post-reflection segment into the 'unfolded' strip via always_redraw; GREEN/RED/BLUE endpoint dots; path transitions to a straight line of same length.",
+  "tags": ["reflection", "billiards", "unfolding", "value_tracker", "always_redraw"],
+  "apis": ["Line", "VMobject", "Dot", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

@@ -1,0 +1,8 @@
+{
+  "id": "incircle_excircles_triangle",
+  "category": "geometry",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS: ValueTracker s_tr morphs triangle ABC through 4 configs. always_redraw rebuilds YELLOW triangle + extended GREY side-lines + GREEN incircle (center (aA+bB+cC)/Σ, radius area/s) + 3 excircles BLUE/RED/ORANGE with excenter formulas using signed-length combinations. Live a, b, c, area, r=area/s.",
+  "tags": ["incircle", "excircle", "triangle_centers", "tangent_circles", "value_tracker", "always_redraw"],
+  "apis": ["Polygon", "Circle", "Line", "Dot", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"]
+}

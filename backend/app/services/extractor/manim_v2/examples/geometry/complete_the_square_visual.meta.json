@@ -1,0 +1,8 @@
+{
+  "id": "complete_the_square_visual",
+  "category": "geometry",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: ValueTracker t slides one half-strip of the b·x rectangle from vertical (right of x²-square) into horizontal position underneath, simultaneously rotating its aspect ratio. After t=1 a (b/2)² gap appears, and the big (x+b/2)² square outline is drawn.",
+  "tags": ["completing_the_square", "value_tracker", "always_redraw", "transform", "geometric_algebra"],
+  "apis": ["Square", "Rectangle", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

@@ -1,0 +1,8 @@
+{
+  "id": "prime_spiral",
+  "category": "number_theory",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: ValueTracker N_max sweeps 5→800; prime dots placed at radius √p, angle p rad accumulate via always_redraw. Curving ray patterns emerge as N grows. Right corner shows live N, π(N), N/ln N approximation.",
+  "tags": ["prime_spiral", "sacks_spiral", "value_tracker", "always_redraw", "prime_counting"],
+  "apis": ["Dot", "VGroup", "ValueTracker", "always_redraw", "numpy", "MathTex", "Tex"]
+}

@@ -1,8 +1,0 @@
-{
-  "id": "brace_annotation",
-  "category": "basic",
-  "difficulty": 1,
-  "summary": "Annotate a line segment with a Brace and swap a text label for a LaTeX label.",
-  "tags": ["brace", "annotation", "text", "labels", "replacement_transform"],
-  "apis": ["Line", "Brace", "Brace.get_text", "Brace.get_tex", "GrowFromCenter", "ReplacementTransform", "Write"]
-}

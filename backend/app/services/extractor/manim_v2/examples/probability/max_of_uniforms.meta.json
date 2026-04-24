@@ -1,0 +1,8 @@
+{
+  "id": "max_of_uniforms",
+  "category": "probability",
+  "difficulty": 2,
+  "summary": "Plot the density f(x)=n·x^(n-1) of the maximum of n Uniform[0,1] random variables for n=1,2,5,10 — concentrates near 1 as n grows.",
+  "tags": ["order_statistics", "maximum", "uniform", "density", "cdf"],
+  "apis": ["Axes", "plot", "VGroup", "MathTex"]
+}

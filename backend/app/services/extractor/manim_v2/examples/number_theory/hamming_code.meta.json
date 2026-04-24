@@ -1,0 +1,8 @@
+{
+  "id": "hamming_code",
+  "category": "number_theory",
+  "difficulty": 3,
+  "summary": "4-stage walkthrough: encode 4 data bits to 7-bit Hamming codeword (parities at positions 1,2,4); flip bit 5 (RED); compute 3 syndromes whose binary value gives 5 — the error position; restore (GREEN). All XOR operations shown explicitly.",
+  "tags": ["hamming_code", "error_correction", "parity", "syndrome", "transform"],
+  "apis": ["Square", "VGroup", "Transform", "LaggedStart", "MathTex", "Tex"]
+}

@@ -1,0 +1,8 @@
+{
+  "id": "symmetries_of_square",
+  "category": "geometry",
+  "difficulty": 2,
+  "summary": "Display the eight elements of D₄ as labeled squares (4 rotations + 4 reflections) with corner dots colored so the action is visible.",
+  "tags": ["dihedral_group", "d4", "square", "symmetry", "rotation", "reflection"],
+  "apis": ["Square", "Dot", "MathTex", "rotate", "flip", "LaggedStart"]
+}

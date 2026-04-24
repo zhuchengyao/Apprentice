@@ -1,0 +1,8 @@
+{
+  "id": "pool_shot_angle",
+  "category": "geometry",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: pool table (GREEN). BLUE cue ball top-left, YELLOW target pocket top-right, YELLOW_E mirrored-pocket below cushion (dashed). ORANGE dashed straight cue→mirror line intersects the cushion at the RED aim point. ValueTracker t_tr animates ball along cue→aim→target path with always_redraw trail.",
+  "tags": ["reflection", "pool", "billiards_geometry", "value_tracker", "always_redraw"],
+  "apis": ["Rectangle", "Dot", "DashedLine", "VMobject", "VGroup", "ValueTracker", "always_redraw", "Tex"]
+}

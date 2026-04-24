@@ -1,0 +1,8 @@
+{
+  "id": "torus_surface",
+  "category": "misc_3d",
+  "difficulty": 2,
+  "summary": "ThreeDScene: torus surface always_redraw rebuilt as ValueTrackers R, r sweep through 4 (R, r) configs. Guide major circle (yellow) and minor cross-section (orange) redraw too. Live R, r, V=2π²Rr², A=4π²Rr in fixed corner.",
+  "tags": ["torus", "parametric_surface", "value_tracker", "always_redraw", "volume"],
+  "apis": ["ThreeDScene", "Surface", "ParametricFunction", "ValueTracker", "always_redraw", "ThreeDAxes", "MathTex", "Tex"]
+}

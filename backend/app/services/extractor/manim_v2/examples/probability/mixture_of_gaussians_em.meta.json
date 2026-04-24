@@ -1,0 +1,8 @@
+{
+  "id": "mixture_of_gaussians_em",
+  "category": "probability",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS: axes with GREY data rug (200 bimodal samples at μ=-1 and 1.5). ValueTracker step_tr advances 10 EM iterations with BLUE component-1, ORANGE component-2, GREEN mixture all redrawn via always_redraw. Fits converge from μ_1=-2, μ_2=2 to near-true values.",
+  "tags": ["gaussian_mixture", "em_algorithm", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "Axes.plot", "Line", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

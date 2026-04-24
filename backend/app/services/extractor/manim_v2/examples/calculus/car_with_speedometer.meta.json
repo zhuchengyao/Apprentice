@@ -1,0 +1,9 @@
+{
+  "id": "car_with_speedometer",
+  "category": "calculus",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: car on NumberLine road with position s(t)=t³/10·3. BLUE car body + GREY wheels move via always_redraw on ValueTracker t_tr (0→3). Bottom-left speedometer: WHITE semicircular arc + RED needle whose angle shows v(t)/v_max. Live t, s(t), v(t).",
+  "tags": ["kinematics", "speedometer", "position_velocity", "derivative_physics", "value_tracker", "always_redraw"],
+  "apis": ["NumberLine", "Rectangle", "Dot", "Arc", "Line", "VGroup", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"],
+  "source": "3b1b/_2017/eoc/chapter2.py::IntroduceCar+ShowSpeedometer"
+}

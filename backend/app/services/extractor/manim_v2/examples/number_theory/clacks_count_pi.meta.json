@@ -1,0 +1,8 @@
+{
+  "id": "clacks_count_pi",
+  "category": "number_theory",
+  "difficulty": 3,
+  "summary": "TWO_COLUMN: phase circle with reflection-chord path drawn one chord at a time via always_redraw + ValueTracker step_idx. Three runs at mass ratio 1, 100, 10000 producing 3, 31, 314 clacks (= ⌊π·10ⁿ⌋). Right column shows live ratio, θ, clacks count, expected count.",
+  "tags": ["pi", "colliding_blocks", "value_tracker", "always_redraw", "reflection"],
+  "apis": ["Circle", "VMobject", "set_points_as_corners", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

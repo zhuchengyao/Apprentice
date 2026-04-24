@@ -1,0 +1,9 @@
+{
+  "id": "ax_equals_v_find_x",
+  "category": "linear_algebra",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: solve Ax=v for A=[[2, 1], [2, 3]], v=(-4, -1), x=(-2.2, 1.4). Plane grid deforms by A forward then back via ValueTracker stage_tr. YELLOW v stays fixed in world; PINK x dot appears at the recovered preimage. 'Play in reverse' intuition for inverse.",
+  "tags": ["Ax_equals_v", "inverse_transformation", "preimage", "solve_system", "value_tracker", "always_redraw"],
+  "apis": ["NumberPlane", "VMobject", "Arrow", "Dot", "ValueTracker", "always_redraw", "Tex"],
+  "source": "3b1b/_2016/eola/chapter6.py::LookForX+PlayInReverse"
+}

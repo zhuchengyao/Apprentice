@@ -1,0 +1,8 @@
+{
+  "id": "complex_function_grid",
+  "category": "complex",
+  "difficulty": 2,
+  "summary": "Apply the pointwise function z → z² to a ComplexPlane grid, watching horizontal/vertical grid lines morph into parabolas.",
+  "tags": ["complex", "function", "mapping", "z_squared", "conformal"],
+  "apis": ["ComplexPlane", "ApplyPointwiseFunction", "MathTex"]
+}

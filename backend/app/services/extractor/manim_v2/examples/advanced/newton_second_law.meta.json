@@ -1,8 +1,0 @@
-{
-  "id": "newton_second_law",
-  "category": "advanced",
-  "difficulty": 2,
-  "summary": "Mass as a labeled Square pushed by a force Arrow; VGroup slides, then display F = m a.",
-  "tags": ["physics", "force", "newton", "vector", "equation"],
-  "apis": ["Square", "Arrow", "MathTex", "VGroup", "GrowArrow", "Mobject.animate"]
-}

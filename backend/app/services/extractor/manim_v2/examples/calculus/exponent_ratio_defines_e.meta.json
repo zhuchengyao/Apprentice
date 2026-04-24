@@ -1,0 +1,9 @@
+{
+  "id": "exponent_ratio_defines_e",
+  "category": "calculus",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS: find a where (a^dt - 1)/dt = 1 to define e. BLUE curve of (a^dt-1)/dt with dt=0.01 (≈ln a). GREEN dashed y=1 reference. YELLOW e dot. ValueTracker a_tr tours a={2, 3, 7, 8, e}. Live a, ratio value. At a=e, ratio=1 ⇒ d e^t / dt = e^t.",
+  "tags": ["definition_of_e", "exp_self_derivative", "limit_definition", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "Dot", "DashedLine", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"],
+  "source": "3b1b/_2017/eoc/chapter5.py::AnalyzeExponentRatio+ExponentRatioWithE"
+}

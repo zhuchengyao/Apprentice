@@ -1,0 +1,8 @@
+{
+  "id": "eulers_method_many_tiny_steps",
+  "category": "calculus",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS Axes (0..4 × -1..6). RED exact-solution curve y=x+1 for dy/dx=y−x (with the IC y(0)=1 making the exponential term vanish). Three Euler trajectories plotted as polylines with dots at grid points: BLUE h=0.5 (coarse, drifts), ORANGE h=0.2 (medium), GREEN h=0.05 (fine, tracks truth). Each uses VMobject set_points_as_corners from a manual Euler integration loop. YELLOW bottom caption conveys the pedagogical point: accumulating small tangent ticks traces the full ODE trajectory.",
+  "tags": ["eulers_method", "numerical_ode", "step_size_convergence", "local_tangent", "ode_integration"],
+  "apis": ["Axes", "Axes.plot", "VMobject", "Dot", "VGroup", "MathTex", "Tex", "numpy"]
+}

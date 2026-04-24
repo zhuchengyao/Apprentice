@@ -1,0 +1,8 @@
+{
+  "id": "condition_number",
+  "category": "linear_algebra",
+  "difficulty": 2,
+  "summary": "TWO_COLUMN: condition number κ=σ_max/σ_min for 3 matrices I (κ=1), diag(3, 0.3) (κ=10), diag(10, 0.01) (κ=1000). LEFT plots unit circle + 3 output ellipses in BLUE/GREEN/RED. ValueTracker θ_tr sweeps probe angle; always_redraw dots on each. RIGHT shows live error-amplification ratio |Aδx|/|Ax| per matrix — max approaches κ.",
+  "tags": ["condition_number", "singular_values", "error_amplification", "stability", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "Circle", "VMobject", "Dot", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"]
+}

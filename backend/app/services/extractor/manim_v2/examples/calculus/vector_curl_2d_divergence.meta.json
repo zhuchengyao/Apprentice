@@ -1,0 +1,8 @@
+{
+  "id": "vector_curl_2d_divergence",
+  "category": "calculus",
+  "difficulty": 2,
+  "summary": "TWO_COLUMN: 2D linear vector field F=(ax-by, cx+dy) with curl=c+b, div=a+d. LEFT 8×8 grid of BLUE→RED magnitude-colored arrows via always_redraw. ValueTracker s_tr interpolates between 4 configs: rotation (0, 1, -1, 0), expansion (1, 0, 0, 1), hyperbolic (1, 0, 0, -1), spiral (0.5, -0.5, 0.5, 0.5). Live a, b, c, d, curl, div + dynamic name label.",
+  "tags": ["vector_field", "curl", "divergence", "linear_field", "value_tracker", "always_redraw"],
+  "apis": ["NumberPlane", "Arrow", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"]
+}

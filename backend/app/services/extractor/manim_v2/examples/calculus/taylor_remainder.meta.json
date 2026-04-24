@@ -1,0 +1,8 @@
+{
+  "id": "taylor_remainder",
+  "category": "calculus",
+  "difficulty": 2,
+  "summary": "TWO_COLUMN Taylor remainder for e^x. LEFT axes with BLUE e^x reference + YELLOW partial Taylor polynomial P_n with RED filled |e^x − P_n| error band. ValueTracker n_tr steps 1→8 via always_redraw. RIGHT has live n, sup-error on [-1.5, 1.5], and Lagrange bound e·x_max^(n+1)/(n+1)! — both shrink.",
+  "tags": ["taylor_remainder", "lagrange_form", "error_bound", "polynomial_approximation", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "Polygon", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"]
+}

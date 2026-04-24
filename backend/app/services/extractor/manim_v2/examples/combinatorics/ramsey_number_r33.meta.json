@@ -1,0 +1,8 @@
+{
+  "id": "ramsey_number_r33",
+  "category": "combinatorics",
+  "difficulty": 3,
+  "summary": "COMPARISON: LEFT K_5 with Ramsey-avoiding 2-coloring (pentagon RED, star BLUE, no monochromatic triangle); RIGHT K_6 with random 2-coloring + YELLOW highlighted monochromatic triangle found via search. R(3, 3) = 6.",
+  "tags": ["ramsey_theory", "r_3_3", "graph_coloring", "transform"],
+  "apis": ["Line", "Polygon", "Dot", "VGroup", "Tex", "MathTex"]
+}

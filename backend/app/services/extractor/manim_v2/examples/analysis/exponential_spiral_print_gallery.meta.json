@@ -1,0 +1,8 @@
+{
+  "id": "exponential_spiral_print_gallery",
+  "category": "analysis",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS: ComplexPlane with always_redraw grid curves — vertical lines BLUE, horizontal ORANGE — interpolated via w = (1-s)z + s/2·e^z. ValueTracker s_tr morphs 0 (straight grid) → 1 (spiral grid: circles + rays) and back. Each curve redrawn from 80 interpolated samples.",
+  "tags": ["complex_exponential", "conformal_map", "grid_morph", "value_tracker", "always_redraw"],
+  "apis": ["ComplexPlane", "VMobject", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

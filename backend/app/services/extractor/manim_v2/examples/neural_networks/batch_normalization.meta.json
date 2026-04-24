@@ -1,0 +1,8 @@
+{
+  "id": "batch_normalization",
+  "category": "neural_networks",
+  "difficulty": 2,
+  "summary": "TWO_COLUMN over single NumberPlane: 40 BLUE batch samples initially centered at (1.5, -1.0) with σ=(1.3, 0.8) + RED mean dot + RED covariance ellipse. ValueTracker s_tr morphs s=0→1 normalizing to μ=0, σ=1 via always_redraw.",
+  "tags": ["batch_normalization", "normalization", "value_tracker", "always_redraw"],
+  "apis": ["NumberPlane", "Dot", "Ellipse", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

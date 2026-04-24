@@ -1,0 +1,8 @@
+{
+  "id": "inner_sphere_radius_vs_dimension",
+  "category": "geometry",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS Axes (0..20) × (0..4) plotting BLUE curve r_d = sqrt(d)-1 — the radius of a sphere at the origin tangent to 2^d unit spheres sitting at the corners of [-1,1]^d. Dashed YELLOW y=1 (touches box face at d=4) and ORANGE y=2 (escapes outer [-2,2]^d at d=9). ValueTracker d_tr sweeps 2→3→4→6→9→12→16→20; always_redraw red Dot rider and live readout row (Integer d + DecimalNumber r_d). Right-bottom milestone annotations call out d=4, d=9, d→∞.",
+  "tags": ["high_dimensional", "sphere_radius", "counterintuitive", "value_tracker", "always_redraw", "nested_spheres"],
+  "apis": ["Axes", "DashedLine", "Dot", "ValueTracker", "always_redraw", "Integer", "DecimalNumber", "MathTex", "Tex", "VGroup"]
+}

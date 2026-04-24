@@ -1,0 +1,8 @@
+{
+  "id": "matrix_tree_theorem",
+  "category": "combinatorics",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS: LEFT K_4 graph with 4 YELLOW vertices + 6 BLUE edges. RIGHT Laplacian matrix L = nI - J = 4I - J_4 displayed as colored cells. ValueTracker step_tr reveals 2 stages: strike row/col 0 (RED highlight) → det L_{11} = 16 = Cayley's n^(n-2) count.",
+  "tags": ["matrix_tree_theorem", "kirchhoff", "spanning_trees", "cayley_formula", "value_tracker", "always_redraw"],
+  "apis": ["Circle", "Line", "Square", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

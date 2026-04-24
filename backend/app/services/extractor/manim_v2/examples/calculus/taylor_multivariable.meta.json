@@ -1,0 +1,8 @@
+{
+  "id": "taylor_multivariable",
+  "category": "calculus",
+  "difficulty": 3,
+  "summary": "TWO_COLUMN: 2D Taylor expansion of f(x, y)=sin x cos y around origin. LEFT 20×20 heatmap of error (Taylor - true): GREEN for overshoot, RED for undershoot via always_redraw. ValueTracker order_tr tours orders {1, 3, 5}. RIGHT sup-error on [-1.5, 1.5]² shrinking with order.",
+  "tags": ["taylor_series", "multivariable", "error_heatmap", "partial_sums", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "Rectangle", "VGroup", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"]
+}

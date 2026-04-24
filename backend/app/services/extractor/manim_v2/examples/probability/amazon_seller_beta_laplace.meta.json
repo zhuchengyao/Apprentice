@@ -1,0 +1,8 @@
+{
+  "id": "amazon_seller_beta_laplace",
+  "category": "probability",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS Amazon-seller problem with 3 sellers: A (10/0), B (48/2), C (186/14). Three Beta-distribution posteriors assuming Uniform=Beta(1,1) prior: Beta(11,1) BLUE, Beta(49,3) GREEN, Beta(187,15) ORANGE drawn via Axes.plot using gammaln-based pdf. DashedLine at E[p]=(s+1)/(s+f+2) for each seller with color-matched label. Ranking panel on the left sorts by posterior mean. YELLOW note calls out Laplace's rule of succession — sample size matters even when observed rate is 100%.",
+  "tags": ["beta_distribution", "laplace_rule_of_succession", "bayesian_inference", "posterior", "gammaln"],
+  "apis": ["Axes", "Axes.plot", "DashedLine", "VGroup", "Tex", "MathTex", "LaggedStart", "FadeIn", "scipy.special.gammaln"]
+}

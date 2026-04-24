@@ -1,0 +1,8 @@
+{
+  "id": "fractal_dimension",
+  "category": "fractals",
+  "difficulty": 3,
+  "summary": "TWO_COLUMN: Koch curve depth 4 on the left; ValueTracker box_pow shrinks the box size 1/3^k via always_redraw grid that highlights intersecting boxes only. Right column has a log-log scatter of (log 1/ε, log N) with best-fit line of slope log4/log3 ≈ 1.262 — the box-counting dimension.",
+  "tags": ["box_counting_dimension", "koch_curve", "value_tracker", "log_log", "always_redraw"],
+  "apis": ["VMobject", "set_points_as_corners", "Rectangle", "VGroup", "ValueTracker", "always_redraw", "Axes", "Dot", "plot", "MathTex", "Tex"]
+}

@@ -1,0 +1,8 @@
+{
+  "id": "circle_incenter_incircle",
+  "category": "geometry",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: triangle with fixed A=(-2.5,-1), B=(2.5,-1) and vertex C on upper arc (ValueTracker theta_tr sweeps). always_redraw YELLOW triangle + RED incircle with r = Area/s + incenter dot + BLUE dashed angle-bisector lines. Live a, b, c, s, Area, r, and r·s = Area verification.",
+  "tags": ["incircle", "incenter", "angle_bisector", "value_tracker", "always_redraw"],
+  "apis": ["Polygon", "Circle", "Dot", "DashedLine", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

@@ -1,0 +1,8 @@
+{
+  "id": "mnist_pixel_grid_to_input_layer",
+  "category": "neural_networks",
+  "difficulty": 2,
+  "summary": "TWO_COLUMN: LEFT a 14x14 MNIST-style digit-3 pixel grid built as a VGroup of Squares with fill_opacity = pixel intensity. RIGHT a vertical column of 14 BLUE Circle input neurons (...), with vertical dots above and below indicating the full a^(0) ∈ R^196 input vector. Nine YELLOW Arrows (GrowArrow) shoot from sampled pixels to their matching neurons, simultaneously setting each neuron's fill_opacity to the pixel value. YELLOW caption: 'each pixel intensity in [0,1] becomes one activation.'",
+  "tags": ["mnist", "input_layer", "digit", "pixel_to_activation", "mlp", "grow_arrow"],
+  "apis": ["Square", "Circle", "Arrow", "GrowArrow", "LaggedStart", "VGroup", "MathTex", "Tex", "numpy"]
+}

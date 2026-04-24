@@ -1,0 +1,8 @@
+{
+  "id": "lucas_lehmer_test",
+  "category": "number_theory",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS: Lucas-Lehmer primality test for Mersenne M_7=127. Sequence s_0=4, s_{k+1}=s_k²-2 mod 127 → 4, 14, 67, 42, 111, 0. 6 GREY cells with indices; ValueTracker k_tr reveals s_0..s_5 one at a time via always_redraw. GREEN 0 at s_5 confirms primality. Verdict label updates live.",
+  "tags": ["lucas_lehmer", "mersenne_primes", "primality_test", "recurrence", "value_tracker", "always_redraw"],
+  "apis": ["Rectangle", "VGroup", "DecimalNumber", "ValueTracker", "always_redraw", "add_updater", "Tex"]
+}

@@ -1,0 +1,8 @@
+{
+  "id": "planar_graph_basic",
+  "category": "topology",
+  "difficulty": 2,
+  "summary": "3-stage walkthrough: K₄ drawn as square with diagonal crossing (RED dot at crossing); Transform moves v₄ outside the triangle 1-2-3 so all 6 edges become planar (GREEN label); 3 inner triangle faces colored + outer face labeled; V-E+F = 4-6+4 = 2.",
+  "tags": ["planar_graph", "k4", "euler_formula", "transform", "embedding"],
+  "apis": ["Dot", "Line", "Polygon", "Transform", "VGroup", "MathTex", "Tex"]
+}

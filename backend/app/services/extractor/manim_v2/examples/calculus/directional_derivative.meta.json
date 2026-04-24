@@ -1,0 +1,8 @@
+{
+  "id": "directional_derivative",
+  "category": "calculus",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: NumberPlane with BLUE_D contours of f=x²+3y² + RED point p=(1.5, 0.8) + GREEN ∇f=(3, 4.8) arrow. ValueTracker theta_tr rotates YELLOW unit u arrow through 360°; always_redraw; live D_u f = ∇f · u, max at ‖∇f‖ ≈ 5.66 when u ∥ ∇f.",
+  "tags": ["directional_derivative", "gradient", "value_tracker", "always_redraw"],
+  "apis": ["NumberPlane", "VMobject", "Dot", "Arrow", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

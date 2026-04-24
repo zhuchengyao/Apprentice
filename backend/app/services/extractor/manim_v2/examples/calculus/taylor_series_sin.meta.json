@@ -1,0 +1,8 @@
+{
+  "id": "taylor_series_sin",
+  "category": "calculus",
+  "difficulty": 3,
+  "summary": "Morph a polynomial approximation of sin(x) through 1, 2, 3, and 5 Taylor terms, updating the formula label as it converges to the blue sine curve.",
+  "tags": ["taylor_series", "sine", "polynomial_approximation", "convergence"],
+  "apis": ["Axes", "Axes.plot", "Transform", "MathTex"]
+}

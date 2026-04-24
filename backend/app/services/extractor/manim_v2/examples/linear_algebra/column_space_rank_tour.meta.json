@@ -1,0 +1,9 @@
+{
+  "id": "column_space_rank_tour",
+  "category": "linear_algebra",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS tour: column space + rank for 3×3 matrices of rank 3, 2, 1, 0. ValueTracker idx_tr cycles; always_redraw Matrix + title + description. BLUE rank 3 (ℝ³ span), GREEN rank 2 (plane), ORANGE rank 1 (line), RED rank 0 (origin). Right: rank = dim(col space), full rank ⇔ invertible.",
+  "tags": ["column_space", "rank", "matrix_rank_tour", "span_of_columns", "value_tracker", "always_redraw"],
+  "apis": ["Matrix", "VGroup", "ValueTracker", "always_redraw", "add_updater", "Tex"],
+  "source": "3b1b/_2016/eola/chapter6.py::NameColumnSpace+DefineRank+cycle_through_span_possibilities"
+}

@@ -1,0 +1,8 @@
+{
+  "id": "subset_counting",
+  "category": "combinatorics",
+  "difficulty": 1,
+  "summary": "SINGLE_FOCUS: binary rows showing each subset as a row of YELLOW (in) / GREY (out) boxes with 0/1 labels. Transform morphs through n=1, 2, 3, 4 → 2, 4, 8, 16 rows; live count label, and Σ C(n,k) = 2^n identity in upper right.",
+  "tags": ["subset_counting", "2_n", "power_set", "transform"],
+  "apis": ["Square", "VGroup", "Transform", "MathTex", "Tex"]
+}

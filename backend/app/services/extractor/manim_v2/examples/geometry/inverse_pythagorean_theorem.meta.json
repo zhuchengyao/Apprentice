@@ -1,0 +1,8 @@
+{
+  "id": "inverse_pythagorean_theorem",
+  "category": "geometry",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS triangle with right angle at top vertex C, legs a (BLUE) and b (RED), and the green altitude h from C to the hypotenuse AB (foot F computed via projection formula). Small YELLOW Square marks the top right angle, GREEN Square marks the altitude's right angle. Right panel numerically verifies 1/h² = 1/a² + 1/b² (~0.163 = 0.080 + 0.083 ≈ 0.163 ✓). Bottom note ties it to the Basel proof: splits one lighthouse into two on a larger circle while preserving intensity.",
+  "tags": ["inverse_pythagorean", "basel_lemma", "right_triangle", "altitude", "geometric_mean"],
+  "apis": ["Polygon", "Line", "Square", "VGroup", "MathTex", "Tex", "FadeIn", "numpy"]
+}

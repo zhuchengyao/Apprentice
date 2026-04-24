@@ -1,0 +1,8 @@
+{
+  "id": "function_space",
+  "category": "linear_algebra",
+  "difficulty": 3,
+  "summary": "TWO_COLUMN: Axes with 4 faint basis curves (1, x, x², x³) and always_redraw YELLOW polynomial p(x) = a₀ + a₁x + a₂x² + a₃x³. RIGHT has 4 ValueTracker-driven coefficient bars a₀..a₃ (BLUE/GREEN/RED/PURPLE) + live expression. 6 config tour: constant → linear → quadratic → cubic → mixture → parabola.",
+  "tags": ["function_space", "polynomial_basis", "linear_combination", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "Axes.plot", "Rectangle", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

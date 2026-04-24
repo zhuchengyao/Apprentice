@@ -1,0 +1,8 @@
+{
+  "id": "difference_of_squares",
+  "category": "combinatorics",
+  "difficulty": 1,
+  "summary": "SINGLE_FOCUS: a×a square with b×b corner removed (= a²-b²) on LEFT; equivalent (a+b)×(a-b) rectangle on RIGHT. ValueTracker sweep via Transform through b = 1.2, 2.0, 0.6, 2.8, 1.5; live numeric equality a²-b² = (a+b)(a-b) shown at bottom updating with b.",
+  "tags": ["difference_of_squares", "dissection_proof", "algebraic_identity", "transform"],
+  "apis": ["Rectangle", "VGroup", "Transform", "MathTex", "Tex"]
+}

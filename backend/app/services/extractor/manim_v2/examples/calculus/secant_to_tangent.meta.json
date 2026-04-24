@@ -1,0 +1,8 @@
+{
+  "id": "secant_to_tangent",
+  "category": "calculus",
+  "difficulty": 2,
+  "summary": "Shrink dt from 1.6 to 0.05 on the graph of 0.5·t²; the secant line through (t₀, f(t₀)) and (t₀+dt, f(t₀+dt)) converges to the tangent with slope t₀.",
+  "tags": ["derivative", "tangent", "secant", "limit", "slope"],
+  "apis": ["Axes", "plot", "ValueTracker", "always_redraw", "Line", "Dot", "MathTex"]
+}

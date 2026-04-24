@@ -1,0 +1,8 @@
+{
+  "id": "tower_of_hanoi",
+  "category": "combinatorics",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: 3 pegs + 3 disks (BLUE_D, TEAL, GREEN). Recursive min-strategy solves in 7 moves; each move animates as up/over/drop using .animate.move_to and Transform. Live move counter '1 / 7' ... '7 / 7' updates after each move. Ends with recurrence T(n) = 2T(n-1) + 1 → 2^n - 1.",
+  "tags": ["tower_of_hanoi", "recursion", "animate_move", "transform"],
+  "apis": ["Rectangle", "Line", "VGroup", "Transform", "MathTex", "Tex"]
+}

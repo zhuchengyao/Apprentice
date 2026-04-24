@@ -1,0 +1,8 @@
+{
+  "id": "modular_clock",
+  "category": "number_theory",
+  "difficulty": 2,
+  "summary": "TWO_COLUMN: clock face on left with always_redraw rotating pointer driven by ValueTracker n (cumulative offset, continuous). Sequence of 5 additions 7+8+5+9+6 = 35 ≡ 11 (mod 12); right column shows live cumulative count, the mod-12 reduction, and writes each add line as it completes.",
+  "tags": ["modular_arithmetic", "clock", "value_tracker", "always_redraw", "rotation"],
+  "apis": ["Circle", "Arrow", "Dot", "ValueTracker", "always_redraw", "MathTex", "Tex", "VGroup"]
+}

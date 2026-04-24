@@ -1,0 +1,8 @@
+{
+  "id": "young_diagrams_hook",
+  "category": "combinatorics",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS: hook length formula for λ=(4, 3, 1), n=8. Young diagram drawn as GREY cells with BLUE hook numbers in each. ValueTracker cell_tr walks through cells; always_redraw YELLOW current cell + GREEN right cells + ORANGE below cells showing L-shape hook. Product=576, 8!/576 = 70 SYTs.",
+  "tags": ["young_tableau", "hook_length_formula", "symmetric_group", "combinatorial_identity", "value_tracker", "always_redraw"],
+  "apis": ["Square", "VGroup", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"]
+}

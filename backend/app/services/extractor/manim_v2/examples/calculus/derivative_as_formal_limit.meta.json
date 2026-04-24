@@ -1,0 +1,9 @@
+{
+  "id": "derivative_as_formal_limit",
+  "category": "calculus",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: formal derivative limit. BLUE f=x² on axes with GREEN anchor at x₀=2, ORANGE probe at x₀+h via ValueTracker h_tr 1.2→0.01. always_redraw secant line YELLOW. Live h, difference quotient → 4 = f'(2).",
+  "tags": ["derivative_definition", "limit_definition", "difference_quotient", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "ParametricFunction", "Dot", "Line", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"],
+  "source": "3b1b/_2017/eoc/chapter7.py::RefreshOnDerivativeDefinition+GraphLimitExpression"
+}

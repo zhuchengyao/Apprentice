@@ -1,0 +1,8 @@
+{
+  "id": "feature_hierarchy_layer_by_layer",
+  "category": "neural_networks",
+  "difficulty": 2,
+  "summary": "FOUR_COLUMN layered feature hierarchy. Columns: raw Pixels → Edges (4 BLUE bar icons: horiz, vert, two diag) → Strokes (ORANGE loops + arc) → Digits (YELLOW '0', '8', '3'). GREY lines connect every pair between adjacent columns via Create with lag_ratio. Bottom YELLOW caption calls out that real networks don't actually decompose this cleanly — it's the explanatory story.",
+  "tags": ["mlp", "deep_network", "feature_hierarchy", "pedagogical_intuition", "lagged_start"],
+  "apis": ["Square", "Circle", "Line", "ArcBetweenPoints", "VGroup", "LaggedStart", "Create", "Tex"]
+}

@@ -1,0 +1,8 @@
+{
+  "id": "fermats_little_theorem",
+  "category": "number_theory",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: Fermat's little theorem for p=7. 6×6 table of (j·a) mod 7 for a=1..6, j=1..6. Each row is a permutation of {1, ..., 6}. ValueTracker a_tr walks a=1..6 with always_redraw YELLOW row highlight. Live a^6 mod 7 = 1 check confirmed.",
+  "tags": ["fermats_little_theorem", "modular_arithmetic", "permutation", "group_theory", "value_tracker", "always_redraw"],
+  "apis": ["Square", "Rectangle", "VGroup", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"]
+}

@@ -1,0 +1,8 @@
+{
+  "id": "chinese_remainder",
+  "category": "number_theory",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: 3×5 grid where rows = x mod 3, cols = x mod 5. ValueTracker x_tr steps 0→14; always_redraw YELLOW-fill visited cells + ORANGE-highlight current; labels x, x mod 3, x mod 5. Every cell hit exactly once because gcd(3, 5) = 1.",
+  "tags": ["chinese_remainder", "modular_arithmetic", "bijection", "value_tracker", "always_redraw"],
+  "apis": ["Square", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

@@ -1,0 +1,8 @@
+{
+  "id": "implicit_differentiation_tangent",
+  "category": "calculus",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS: folium of Descartes x³+y³=3xy via parametric (3t/(1+t³), 3t²/(1+t³)). BLUE loop. ValueTracker t_tr tours t={0.3, 1.0, ~2^(1/3), 1.5, 0.7, 0.5} with always_redraw YELLOW point + RED tangent line of slope (y-x²)/(y²-x). Live x, y, dy/dx; vertical tangent at y²=x (t=2^(1/3)).",
+  "tags": ["implicit_differentiation", "folium_of_descartes", "tangent_slope", "parametric_curve", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "VMobject", "Line", "Dot", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"]
+}

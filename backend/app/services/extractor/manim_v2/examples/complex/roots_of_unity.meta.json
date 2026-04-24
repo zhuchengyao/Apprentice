@@ -1,0 +1,8 @@
+{
+  "id": "roots_of_unity",
+  "category": "complex",
+  "difficulty": 2,
+  "summary": "TWO_COLUMN: ValueTracker n_idx steps through n = 2, 3, 4, …, 12; an always_redraw VGroup of n yellow dots and the regular n-gon polygon morph each step. Right column shows live n, the equation z^n = 1, the explicit z_k = e^(2πik/n), and the angular spacing 2π/n in degrees.",
+  "tags": ["roots_of_unity", "regular_polygon", "value_tracker", "always_redraw", "complex_plane"],
+  "apis": ["ComplexPlane", "Circle", "ValueTracker", "always_redraw", "Polygon", "Dot", "MathTex"]
+}

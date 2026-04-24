@@ -1,0 +1,8 @@
+{
+  "id": "em_wave_propagation_3d",
+  "category": "misc_3d",
+  "difficulty": 3,
+  "summary": "ThreeDScene of a plane EM wave travelling along +x. BLUE E-field arrows oscillate along y and YELLOW B-field arrows along z — perpendicular to each other AND to propagation. 26 Arrow3D pairs + two ParametricFunction sinusoidal envelopes (BLUE for E, YELLOW for B) are redrawn each frame via always_redraw as ValueTracker t_tr advances time through two full periods at ω=2, k=2. Fixed-frame title reinforces E ⟂ B ⟂ propagation.",
+  "tags": ["electromagnetic_wave", "plane_wave", "maxwell", "value_tracker", "always_redraw", "3d_wave"],
+  "apis": ["ThreeDAxes", "Arrow3D", "ParametricFunction", "VGroup", "ValueTracker", "always_redraw", "Tex"]
+}

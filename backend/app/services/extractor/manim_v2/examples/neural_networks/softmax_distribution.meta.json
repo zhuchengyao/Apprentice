@@ -1,0 +1,8 @@
+{
+  "id": "softmax_distribution",
+  "category": "neural_networks",
+  "difficulty": 2,
+  "summary": "Show five logits as blue bars, then transform them into normalized softmax probabilities summing to 1; state pᵢ = e^zᵢ / Σⱼ e^zⱼ.",
+  "tags": ["softmax", "logits", "probability_distribution", "exponential", "normalization"],
+  "apis": ["Axes", "Rectangle", "Transform", "MathTex", "Text"]
+}

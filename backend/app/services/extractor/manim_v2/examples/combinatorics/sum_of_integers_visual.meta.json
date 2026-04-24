@@ -1,0 +1,8 @@
+{
+  "id": "sum_of_integers_visual",
+  "category": "combinatorics",
+  "difficulty": 1,
+  "summary": "Build two staircase dot triangles of side n and combine them into an n×(n+1) rectangle — proving 1 + 2 + … + n = n(n+1)/2.",
+  "tags": ["triangular_number", "combinatorial_proof", "sum", "visual_proof", "dots"],
+  "apis": ["VGroup", "Dot", "Transform", "MathTex"]
+}

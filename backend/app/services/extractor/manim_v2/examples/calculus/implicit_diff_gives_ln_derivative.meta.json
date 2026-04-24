@@ -1,0 +1,9 @@
+{
+  "id": "implicit_diff_gives_ln_derivative",
+  "category": "calculus",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: d(ln x)/dx = 1/x via implicit differentiation. 6-line sequence: let y=ln x → e^y=x → d/dx both sides → e^y·y'=1 (BLUE) → y'=1/e^y=1/x (YELLOW) → conclusion (GREEN).",
+  "tags": ["implicit_differentiation", "natural_log_derivative", "e_to_y_trick", "derivation"],
+  "apis": ["MathTex", "VGroup", "Tex"],
+  "source": "3b1b/_2017/eoc/chapter6.py::DerivativeOfNaturalLog+AskAboutNaturalLog"
+}

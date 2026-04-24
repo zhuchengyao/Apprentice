@@ -1,0 +1,8 @@
+{
+  "id": "embedding_analogies",
+  "category": "neural_networks",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: 2D embedding plane with 6 word-vector dots (king, queen, man, woman, prince, princess). Phase 1 ValueTracker t_tr grows 3 parallel arrows man→king (BLUE), woman→queen (RED), prince→+(king-man) (BLUE_D) showing the 'gender direction' is consistent. Phase 2 animates a YELLOW dot along king - man + woman ending near queen.",
+  "tags": ["word_embeddings", "analogy", "vector_arithmetic", "value_tracker", "always_redraw"],
+  "apis": ["NumberPlane", "Dot", "Arrow", "VMobject", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

@@ -1,0 +1,8 @@
+{
+  "id": "sha256_avalanche_property",
+  "category": "number_theory",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: show SHA-256's avalanche property. Top Tex: input A='hello world' (BLUE), input B='hello worle' (GREEN), with note '(only the last character differs)'. Two rows below: the 64-hex-char SHA-256 digests rendered as VGroup of Tex chars, labeled BLUE and GREEN. LaggedStart recolors every differing hex char to RED across both digests. Bottom stats: ~half the hex chars and ~half of 256 output bits flip; digest looks random, no back-calculation.",
+  "tags": ["sha256", "hash_function", "avalanche_property", "one_way", "cryptography", "lagged_start"],
+  "apis": ["Tex", "VGroup", "LaggedStart", "MathTex", "FadeIn", "Write"]
+}

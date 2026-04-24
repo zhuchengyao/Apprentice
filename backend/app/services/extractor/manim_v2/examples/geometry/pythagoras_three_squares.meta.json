@@ -1,0 +1,8 @@
+{
+  "id": "pythagoras_three_squares",
+  "category": "geometry",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: 3-4-5 right triangle with RED a²=16 square, BLUE b²=9 square, GREEN c²=25 square drawn on respective sides. Transform slides scaled copies of the a²/b² squares into positions inside the c² square, visually fitting 16 + 9 = 25 with equations fading in.",
+  "tags": ["pythagoras", "three_squares", "area_proof", "transform"],
+  "apis": ["Polygon", "VGroup", "Transform", "MathTex", "Tex"]
+}

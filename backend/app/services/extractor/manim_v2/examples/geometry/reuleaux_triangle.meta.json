@@ -1,0 +1,8 @@
+{
+  "id": "reuleaux_triangle",
+  "category": "geometry",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: YELLOW Reuleaux triangle (3 equilateral-triangle vertices + 3 circular-arc sides of radius 2) with ValueTracker theta_tr rotating through π. always_redraw RED calipers find bounding horizontal parallel lines; width stays constant = 2.",
+  "tags": ["reuleaux_triangle", "constant_width", "value_tracker", "always_redraw"],
+  "apis": ["VMobject", "Line", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

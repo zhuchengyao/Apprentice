@@ -1,0 +1,8 @@
+{
+  "id": "pell_equation",
+  "category": "number_theory",
+  "difficulty": 2,
+  "summary": "TWO_COLUMN: Pell equation x²-7y²=1 with fundamental solution (8, 3). LEFT axes with BLUE hyperbola branch + always_redraw RED current dot and YELLOW trail of (x_k, y_k) driven by ValueTracker k_tr through k=1..5. Recursion (x,y)→(8x+21y, 3x+8y). RIGHT has live x_k, y_k, x_k²-7y_k²=1 check, and y_k/x_k converging to 1/√7.",
+  "tags": ["pell_equation", "diophantine", "fundamental_solution", "recursion", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "Dot", "VGroup", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"]
+}

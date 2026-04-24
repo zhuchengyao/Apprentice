@@ -1,0 +1,8 @@
+{
+  "id": "circular_polarization_from_two_linear",
+  "category": "misc_3d",
+  "difficulty": 3,
+  "summary": "ThreeDScene: circular polarization = two linear waves 90° out of phase. Along +x, 22 BLUE Arrow3D show E_y = A cos(kx-ωt), 22 YELLOW show E_z = A sin(kx-ωt), and 22 GREEN show the vector sum E = E_y ŷ + E_z ẑ, all redrawn via always_redraw as ValueTracker t_tr advances. A GREEN ParametricFunction helix traces the E-tip path in space. Fixed-frame legend labels each component with MathTex.",
+  "tags": ["circular_polarization", "linear_polarization", "superposition", "helix", "value_tracker", "always_redraw"],
+  "apis": ["ThreeDAxes", "Arrow3D", "ParametricFunction", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

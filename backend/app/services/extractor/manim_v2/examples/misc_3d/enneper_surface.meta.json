@@ -1,0 +1,8 @@
+{
+  "id": "enneper_surface",
+  "category": "misc_3d",
+  "difficulty": 3,
+  "summary": "ThreeDScene: Enneper surface via (u - u³/3 + uv², v - v³/3 + vu², u² - v²). ValueTracker r_tr expands parameter domain from 0.3 → 1.8 via always_redraw; ambient camera rotation. Self-intersections appear for r > 1.5.",
+  "tags": ["enneper_surface", "minimal_surface", "self_intersection", "value_tracker", "always_redraw"],
+  "apis": ["ThreeDScene", "ThreeDAxes", "Surface", "VGroup", "ValueTracker", "always_redraw", "Transform", "MathTex", "Tex"]
+}

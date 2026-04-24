@@ -1,0 +1,8 @@
+{
+  "id": "stars_in_3d",
+  "category": "misc_3d",
+  "difficulty": 2,
+  "summary": "ThreeDScene: 60 random stars in a 4×4×4 box with brightness ∈ [0.4, 1.0]; color interpolates WHITE→YELLOW by brightness; size = 0.05 + 0.05·brightness. ValueTracker t_tr rotates all stars about z-axis via always_redraw — the parallax/motion of a rotating observer.",
+  "tags": ["stars", "3d_rotation", "parallax", "value_tracker", "always_redraw"],
+  "apis": ["ThreeDScene", "ThreeDAxes", "Dot3D", "VGroup", "ValueTracker", "always_redraw", "interpolate_color", "MathTex", "Tex"]
+}

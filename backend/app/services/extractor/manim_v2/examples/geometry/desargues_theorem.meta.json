@@ -1,0 +1,8 @@
+{
+  "id": "desargues_theorem",
+  "category": "geometry",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS Desargues theorem. Fixed RED perspective center P on left. BLUE △ABC and ORANGE △A'B'C' with A'=P+t(A-P) parametrized so AA', BB', CC' concurrent at P. ValueTracker t_tr oscillates ratios. always_redraw triangles + GREY perspective lines + GREEN 3 intersection dots (AB∩A'B', etc.) + GREEN collinearity line — always collinear.",
+  "tags": ["desargues_theorem", "projective_geometry", "perspective", "collinearity", "value_tracker", "always_redraw"],
+  "apis": ["Polygon", "Line", "Dot", "VGroup", "ValueTracker", "always_redraw", "Tex"]
+}

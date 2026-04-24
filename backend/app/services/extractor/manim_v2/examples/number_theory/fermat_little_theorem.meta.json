@@ -1,0 +1,8 @@
+{
+  "id": "fermat_little_theorem",
+  "category": "number_theory",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: 6×7 grid of a^k mod p for p=7, a=1..6, k=0..6. ValueTracker k_tr highlights each column in turn via always_redraw; column k=p-1=6 is YELLOW showing all 1's (Fermat's little theorem). Other columns highlighted BLUE.",
+  "tags": ["fermat_little_theorem", "modular_exponentiation", "value_tracker", "always_redraw"],
+  "apis": ["Square", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

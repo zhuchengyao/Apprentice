@@ -1,0 +1,9 @@
+{
+  "id": "det_versus_rotation_angle",
+  "category": "linear_algebra",
+  "difficulty": 2,
+  "summary": "TWO_COLUMN: M(θ)=[[cos θ, 0], [sin θ, 1]] has det=cos θ. LEFT plane with GREEN î rotated by θ; RED ĵ fixed at (0, 1); parallelogram turns RED when det<0. ValueTracker theta_tr sweeps 0→π. RIGHT: BLUE cos curve + YELLOW trailing dot showing det passing through 0 at π/2.",
+  "tags": ["determinant", "rotation", "cosine", "orientation_flip", "value_tracker", "always_redraw"],
+  "apis": ["NumberPlane", "Axes", "Arrow", "Polygon", "Dot", "VMobject", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"],
+  "source": "3b1b/_2016/eola/chapter5.py::SlowlyRotateIHat+DeterminantGraphForRotatingIHat"
+}

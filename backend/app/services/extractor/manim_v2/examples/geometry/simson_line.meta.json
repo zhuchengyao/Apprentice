@@ -1,0 +1,8 @@
+{
+  "id": "simson_line",
+  "category": "geometry",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS: fixed triangle ABC inscribed in GREY circumcircle of R=2.7. ValueTracker phi_tr moves ORANGE P around circle; always_redraw computes the 3 feet of perpendiculars F_BC, F_CA, F_AB to sides, draws GREEN Simson line through them and YELLOW dashed drops from P. Live DecimalNumber of |F_AB - line(F_BC, F_CA)| stays ~1e-4.",
+  "tags": ["simson_line", "circumcircle", "perpendicular_foot", "collinear", "value_tracker", "always_redraw"],
+  "apis": ["Circle", "Polygon", "Line", "DashedLine", "Dot", "DecimalNumber", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

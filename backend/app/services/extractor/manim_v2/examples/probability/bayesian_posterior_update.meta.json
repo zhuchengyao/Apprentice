@@ -1,0 +1,8 @@
+{
+  "id": "bayesian_posterior_update",
+  "category": "probability",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: axes with BLUE Beta(2, 2) prior + RED posterior Beta(2+k, 2+n-k) for n=20 flips. ValueTracker k_tr sweeps observed heads through 0, 5, 10, 15, 20, 8 via always_redraw. Live posterior mean = (2+k)/(n+4).",
+  "tags": ["bayesian_update", "beta_binomial", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "Axes.plot", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

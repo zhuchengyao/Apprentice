@@ -1,0 +1,8 @@
+{
+  "id": "banach_fixed_point",
+  "category": "analysis",
+  "difficulty": 2,
+  "summary": "TWO_COLUMN: axes with GREY identity line + BLUE contraction T(x) = 0.7x + 0.3 + RED fixed point x*=1. ValueTracker step_tr advances 0→15 iterations from x_0=3.5; always_redraw YELLOW cobweb + ORANGE rider. Convergence rate bounded by k^n.",
+  "tags": ["banach_fixed_point", "contraction_mapping", "cobweb_plot", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "Axes.plot", "VMobject", "Dot", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

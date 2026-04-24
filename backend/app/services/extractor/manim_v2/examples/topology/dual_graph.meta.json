@@ -1,0 +1,8 @@
+{
+  "id": "dual_graph",
+  "category": "topology",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS emergence: primal = rectangle + one diagonal (V=4, E=5, F=3). ValueTracker s ∈ [0,1] moves 3 RED dual vertices from adjacent primal-edge midpoints into face centroids; always_redraw dual edges (5 dashed lines, 2 parallel pairs offset) track the vertices with opacity fading in as s → 1. Euler panel V−E+F=2 shown for primal + dual; final oscillation back to 0 and up to 1.",
+  "tags": ["graph_theory", "dual_graph", "planar", "faces", "euler_formula", "value_tracker", "always_redraw"],
+  "apis": ["Line", "Dot", "DashedLine", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

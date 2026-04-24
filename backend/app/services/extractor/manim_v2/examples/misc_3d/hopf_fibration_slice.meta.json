@@ -1,0 +1,8 @@
+{
+  "id": "hopf_fibration_slice",
+  "category": "misc_3d",
+  "difficulty": 3,
+  "summary": "ThreeDScene: 4 Hopf fibers over distinct S² base points, parametrized in S³ and stereographically projected to ℝ³ as linked circles (RED, BLUE, GREEN, YELLOW). Each great circle of S³ becomes a circle or line under projection. Ambient camera rotation exposes the linking structure.",
+  "tags": ["hopf_fibration", "topology", "3d_projection", "great_circles"],
+  "apis": ["ThreeDScene", "ThreeDAxes", "VMobject", "VGroup", "Tex"]
+}

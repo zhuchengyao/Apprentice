@@ -1,0 +1,8 @@
+{
+  "id": "permutation_cycles",
+  "category": "combinatorics",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: 6 numbered dots on a circle for σ = (1→3, 2→5, 3→4, 4→1, 5→2, 6→6). ValueTracker step_tr reveals arrows i → σ(i) colored by cycle (BLUE cycle (1 3 4), GREEN (2 5), RED fixed point (6)). Cycle type 3+2+1.",
+  "tags": ["permutation", "cycle_decomposition", "value_tracker", "always_redraw"],
+  "apis": ["Circle", "Arrow", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

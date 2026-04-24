@@ -1,0 +1,8 @@
+{
+  "id": "attention_head_circuit",
+  "category": "neural_networks",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS: block-diagram of an attention head — input → W_Q/W_K/W_V → QK^T/√d → softmax → Σ w_i V_i → output. 6 stages reveal via ValueTracker stage_tr + always_redraw blocks + connection arrows; live stage counter.",
+  "tags": ["attention_circuit", "transformer", "signal_flow", "value_tracker", "always_redraw"],
+  "apis": ["Rectangle", "Arrow", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

@@ -1,0 +1,8 @@
+{
+  "id": "continuous_convolution_gaussian",
+  "category": "calculus",
+  "difficulty": 3,
+  "summary": "TWO_COLUMN: top axes with static BLUE 𝒩(0, 0.49) + ORANGE sliding 𝒩(τ, 1.0) + GREEN overlap curve, driven by ValueTracker τ_tr from -3 to +3. Bottom axes shows GREY reference + GREEN growing trail + RED rider of (f*g)(τ) = 𝒩(0, σ² = σ₁²+σ₂²). Live panel has σ₁, σ₂, τ, convolution value, σ_out.",
+  "tags": ["convolution", "gaussian", "continuous", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "Axes.plot", "VMobject", "Dot", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

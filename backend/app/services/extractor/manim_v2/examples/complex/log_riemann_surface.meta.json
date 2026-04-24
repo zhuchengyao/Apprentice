@@ -1,0 +1,8 @@
+{
+  "id": "log_riemann_surface",
+  "category": "complex",
+  "difficulty": 3,
+  "summary": "COMPARISON: LEFT z-plane with BLUE dot winding around origin 2x; RIGHT w = log z = log|z| + iθ plane with YELLOW dot climbing unbounded + dashed sheet boundaries every 2π. Each 2π circuit advances to next sheet (sheet 0 → 1 → 2) — infinitely many branches of log.",
+  "tags": ["log_function", "riemann_surface", "multi_valued", "value_tracker", "always_redraw"],
+  "apis": ["ComplexPlane", "Dot", "VMobject", "DashedLine", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

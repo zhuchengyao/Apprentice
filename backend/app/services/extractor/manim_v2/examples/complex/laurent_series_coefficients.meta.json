@@ -1,0 +1,8 @@
+{
+  "id": "laurent_series_coefficients",
+  "category": "complex",
+  "difficulty": 3,
+  "summary": "TWO_COLUMN Laurent coefficients. LEFT axes with bar chart of a_k for k=-5..5; BLUE negative powers, RED k=0, GREEN positive powers. ValueTracker s_tr morphs between e^(1/z) coefficients (1/|k|! for k≤0) and 1/(z(z-1)) coefficients (-1/z - 1 - z - z² - ...). always_redraw bars + dynamic title + color legend.",
+  "tags": ["laurent_series", "principal_part", "essential_singularity", "pole", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "Rectangle", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"]
+}

@@ -1,0 +1,8 @@
+{
+  "id": "angle_bisector_theorem",
+  "category": "geometry",
+  "difficulty": 1,
+  "summary": "SINGLE_FOCUS: variable triangle with fixed A, B and ValueTracker theta_tr moving C. always_redraw YELLOW triangle + RED bisector AD on BC with D = B + (AB/(AB+AC))·(C-B). Live ratio |AB/AC| ≡ |BD/DC| invariant.",
+  "tags": ["angle_bisector_theorem", "triangle", "value_tracker", "always_redraw"],
+  "apis": ["Polygon", "Line", "Dot", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

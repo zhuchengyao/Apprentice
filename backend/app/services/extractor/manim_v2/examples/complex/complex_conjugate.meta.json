@@ -1,0 +1,8 @@
+{
+  "id": "complex_conjugate",
+  "category": "complex",
+  "difficulty": 2,
+  "summary": "TWO_COLUMN: ComplexPlane left with always_redraw arrows for z (yellow) and z̄ (orange) reflected across the dashed real-axis mirror; both move via two ValueTrackers a, b. Right column shows live a, b, z, z̄, |z|=|z̄|, and z·z̄ = a²+b² always real, plus 4 identity formulas.",
+  "tags": ["complex_conjugate", "reflection", "value_tracker", "always_redraw", "modulus"],
+  "apis": ["ComplexPlane", "Arrow", "Dot", "DashedLine", "Line", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

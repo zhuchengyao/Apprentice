@@ -1,0 +1,8 @@
+{
+  "id": "rolle_theorem",
+  "category": "calculus",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS Rolle's theorem. Axes with BLUE f(x)=s sin(πx)+(1-0.5s)·2x(1-x) on [0, 1] with f(0)=f(1)=0 always. ValueTracker s_tr tours s={0.3, 0.6, 1.0, 0.0, 0.8} via always_redraw. Critical point c found via sign change of numerical f'; RED horizontal tangent line + dot + live f'(c) ≈ 0 readout.",
+  "tags": ["rolle_theorem", "critical_point", "mean_value_theorem", "horizontal_tangent", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "Line", "Dot", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"]
+}

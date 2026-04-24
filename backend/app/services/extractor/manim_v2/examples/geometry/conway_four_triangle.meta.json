@@ -1,0 +1,8 @@
+{
+  "id": "conway_four_triangle",
+  "category": "geometry",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS Conway circle: extend each side of triangle past each vertex by opposite-side length; 6 GREEN endpoints lie on YELLOW circle centered at RED incenter with R=√(r²+s²). ValueTracker s_tr morphs through 3 triangle configs; always_redraw rebuilds tri, GREY extension lines, endpoints, and Conway circle.",
+  "tags": ["conway_circle", "triangle_geometry", "concyclic_points", "incenter", "value_tracker", "always_redraw"],
+  "apis": ["Polygon", "Line", "Circle", "Dot", "VGroup", "ValueTracker", "always_redraw", "Tex"]
+}

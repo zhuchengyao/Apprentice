@@ -1,0 +1,8 @@
+{
+  "id": "slope_field",
+  "category": "calculus",
+  "difficulty": 2,
+  "summary": "TWO_COLUMN: lattice of slope ticks for dy/dx = y - x on axes LEFT; ValueTracker x_tr sweeps x0→1.8 and an always_redraw integral curve through (x0, y0)=(-2.2, -0.7) extends as a BLUE rider dot tracks the solution y = x+1-½e^(x-x_0). RIGHT column shows live x, y, dy/dx = y-x, and the closed form.",
+  "tags": ["differential_equations", "slope_field", "direction_field", "ode", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "Line", "VGroup", "ValueTracker", "always_redraw", "Axes.plot", "MathTex", "Tex", "Dot"]
+}

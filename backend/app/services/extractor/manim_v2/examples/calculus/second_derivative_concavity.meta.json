@@ -1,0 +1,8 @@
+{
+  "id": "second_derivative_concavity",
+  "category": "calculus",
+  "difficulty": 2,
+  "summary": "Slide a point along f(x)=x³−2x; an osculating circle tracks the concavity — red side when f'' < 0, green when f'' > 0.",
+  "tags": ["second_derivative", "concavity", "curvature", "osculating_circle", "calculus"],
+  "apis": ["Axes", "plot", "ValueTracker", "always_redraw", "Circle", "Dot", "MathTex"]
+}

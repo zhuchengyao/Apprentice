@@ -1,0 +1,8 @@
+{
+  "id": "measure_zero_cover",
+  "category": "analysis",
+  "difficulty": 2,
+  "summary": "TWO_COLUMN: 8 rationals on [0,1] number line, each surrounded by a blue interval of width ε/2^k via always_redraw. ValueTracker eps sweeps 1.0→0.05→0.5; total cover length stays = ε. Right column has live ε, sum formula, and the measure-zero conclusion.",
+  "tags": ["measure_zero", "rationals", "covering", "value_tracker", "always_redraw"],
+  "apis": ["NumberLine", "Dot", "Rectangle", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

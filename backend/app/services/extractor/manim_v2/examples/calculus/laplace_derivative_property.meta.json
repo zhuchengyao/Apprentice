@@ -1,0 +1,8 @@
+{
+  "id": "laplace_derivative_property",
+  "category": "calculus",
+  "difficulty": 3,
+  "summary": "TWO_COLUMN stacked: top time-axes with BLUE f(t)=e^(-at) + ORANGE f'(t)=-ae^(-at); bottom Laplace-axes with GREEN F(s)=1/(s+a) + RED sF(s)-f(0)=-a/(s+a). ValueTracker a_tr sweeps 0.5 → 2.5 via always_redraw. Live panel verifies the derivative-property identity.",
+  "tags": ["laplace_transform", "derivative_property", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "Axes.plot", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

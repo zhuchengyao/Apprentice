@@ -1,0 +1,9 @@
+{
+  "id": "area_grows_at_circumference",
+  "category": "calculus",
+  "difficulty": 2,
+  "summary": "TWO_COLUMN: dA/dR = 2πR (circumference). LEFT BLUE disk with growing R, YELLOW outer ring of width dr, RED radius arrow + label. RIGHT A=πR² curve with YELLOW dot tracking + GREEN tangent line showing slope. ValueTracker R_tr sweeps R 1.2→2.5.",
+  "tags": ["dA_dR", "circumference", "derivative_of_area", "circle", "value_tracker", "always_redraw"],
+  "apis": ["Circle", "Difference", "Arrow", "Axes", "Line", "Dot", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"],
+  "source": "3b1b/_2017/eoc/chapter1.py::IntroduceCircle+ApproximateOneRing"
+}

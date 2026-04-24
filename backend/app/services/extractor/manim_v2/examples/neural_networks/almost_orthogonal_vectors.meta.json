@@ -1,0 +1,8 @@
+{
+  "id": "almost_orthogonal_vectors",
+  "category": "neural_networks",
+  "difficulty": 3,
+  "summary": "TWO_COLUMN: histogram of angles between 80-choose-2 pairs from 200 random unit vectors in dimension d. ValueTracker d_tr steps d = 2, 3, 5, 10, 50, 200; always_redraw smooth curve sharpens around 90° as d grows. YELLOW vertical at 90°; live mean angle, σ, and √(1/d)·180/π prediction on the RIGHT.",
+  "tags": ["high_dimensional", "orthogonality", "embeddings", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "DashedLine", "VMobject", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

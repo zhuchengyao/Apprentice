@@ -1,0 +1,9 @@
+{
+  "id": "project_line_onto_uhat",
+  "category": "linear_algebra",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: 5 evenly-spaced dots on vertical line x=1 projected onto YELLOW unit vector û at 25°. ValueTracker t_tr animates projection; always_redraw dots + dashed drops to û-line. Projections remain evenly spaced (linearity preserved).",
+  "tags": ["projection", "unit_vector", "line_projection", "linearity", "value_tracker", "always_redraw"],
+  "apis": ["NumberPlane", "Arrow", "Dot", "DashedLine", "Line", "VGroup", "ValueTracker", "always_redraw", "Tex"],
+  "source": "3b1b/_2016/eola/chapter7.py::ProjectLineOfDots+ProjectOntoUnitVectorNumberline"
+}

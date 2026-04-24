@@ -1,0 +1,8 @@
+{
+  "id": "octahedron",
+  "category": "misc_3d",
+  "difficulty": 1,
+  "summary": "Construct an Octahedron polyhedron and spin it around the vertical axis to show all 8 faces.",
+  "tags": ["3d", "polyhedron", "octahedron", "rotation", "platonic_solid"],
+  "apis": ["ThreeDScene", "Octahedron", "Rotate"]
+}

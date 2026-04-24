@@ -1,0 +1,8 @@
+{
+  "id": "binary_counting_0_to_15",
+  "category": "number_theory",
+  "difficulty": 1,
+  "summary": "Cycle through n=0..15 with the decimal number and its 4-bit binary form stacked, replacing both via Transform each step.",
+  "tags": ["binary", "counting", "number_systems", "loop"],
+  "apis": ["MathTex", "Transform", "Text"]
+}

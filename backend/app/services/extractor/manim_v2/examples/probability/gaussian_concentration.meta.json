@@ -1,0 +1,8 @@
+{
+  "id": "gaussian_concentration",
+  "category": "probability",
+  "difficulty": 3,
+  "summary": "TWO_COLUMN: LEFT standard normal pdf with RED shaded two-tail regions |x|>t + RED dashed vertical at ±t. ValueTracker t_tr tours t=0.5, 1, 2, 3. RIGHT log10 axes comparing BLUE true tail P(|X|>t) and GREEN sub-Gaussian bound 2 exp(-t²/2); both riders track.",
+  "tags": ["gaussian_tail", "concentration_inequality", "sub_gaussian", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "Axes.plot", "Polygon", "DashedLine", "Dot", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

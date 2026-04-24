@@ -1,0 +1,8 @@
+{
+  "id": "young_tableaux",
+  "category": "combinatorics",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS: Young diagram shape λ=(3,2,1) on 6 cells. ValueTracker step_tr reveals 4 stages via always_redraw: diagram → hook lengths {5,3,1,3,1,1} inside cells + ORANGE highlight on hook of (0,0) → hook-length formula f^λ = n!/Π h_ij → f = 6!/45 = 16.",
+  "tags": ["young_tableaux", "hook_length", "ferrers_diagram", "value_tracker", "always_redraw"],
+  "apis": ["Square", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

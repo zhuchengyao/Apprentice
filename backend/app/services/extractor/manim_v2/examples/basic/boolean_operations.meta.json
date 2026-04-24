@@ -1,8 +1,0 @@
-{
-  "id": "boolean_operations",
-  "category": "basic",
-  "difficulty": 2,
-  "summary": "Show union, intersection, and difference of two circles as successive shapes with updating label.",
-  "tags": ["boolean", "set_operations", "shapes", "sets", "transform"],
-  "apis": ["Circle", "Union", "Intersection", "Difference", "ReplacementTransform", "Transform"]
-}

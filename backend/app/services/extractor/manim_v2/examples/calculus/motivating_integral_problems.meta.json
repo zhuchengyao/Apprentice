@@ -1,0 +1,9 @@
+{
+  "id": "motivating_integral_problems",
+  "category": "calculus",
+  "difficulty": 1,
+  "summary": "SINGLE_FOCUS: 6 motivating integral problems in different colors: circle area, distance from velocity, work, probability, Gaussian, arc length. Sequential Write animation. 'sum of little pieces' unifying message.",
+  "tags": ["integral_applications", "motivation", "calculus_preview", "problem_gallery"],
+  "apis": ["VGroup", "Tex"],
+  "source": "3b1b/_2017/eoc/chapter1.py::ExampleIntegralProblems+Introduction"
+}

@@ -1,0 +1,8 @@
+{
+  "id": "polarization_malus_law",
+  "category": "number_theory",
+  "difficulty": 2,
+  "summary": "TWO_COLUMN: LEFT BLUE incident horizontal arrow hits polarizer disk with YELLOW rotatable axis; GREEN transmitted arrow has length cos θ. RIGHT axes plot I/I_0 = cos²θ with YELLOW rider. ValueTracker θ_tr tours 30°, 60°, 90°, 45°, 120°, 0°; always_redraw everywhere.",
+  "tags": ["malus_law", "polarization", "quantum_optics", "value_tracker", "always_redraw"],
+  "apis": ["Arrow", "Circle", "Line", "Axes", "Axes.plot", "Dot", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

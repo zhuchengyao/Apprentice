@@ -1,0 +1,8 @@
+{
+  "id": "schur_decomposition",
+  "category": "linear_algebra",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS: 4×4 matrix shown as color-coded cells (BLUE upper-tri, GREEN→RED by subdiag magnitude). ValueTracker step_tr advances 15 QR iterations (snapshot precomputed); always_redraw matrix. Subdiagonal norm decreases toward 0 → upper-triangular Schur form.",
+  "tags": ["schur_decomposition", "qr_iteration", "upper_triangular", "value_tracker", "always_redraw"],
+  "apis": ["Square", "VGroup", "ValueTracker", "always_redraw", "interpolate_color", "MathTex", "Tex"]
+}

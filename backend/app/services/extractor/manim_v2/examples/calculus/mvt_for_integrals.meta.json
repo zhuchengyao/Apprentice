@@ -1,0 +1,8 @@
+{
+  "id": "mvt_for_integrals",
+  "category": "calculus",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: axes with BLUE f = 1+x+sin²x on [0, 3] + BLUE shaded area + GREEN rectangle of height = avg = 2.586 + GREEN dashed line. ValueTracker c_tr sweeps 0.5→2.8; always_redraw RED cursor + dot. Live f(c) vs avg; 'match!' flag when equal.",
+  "tags": ["mvt_for_integrals", "average_value", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "Axes.plot", "Polygon", "Rectangle", "DashedLine", "Dot", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

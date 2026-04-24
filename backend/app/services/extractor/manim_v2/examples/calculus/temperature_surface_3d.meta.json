@@ -1,0 +1,8 @@
+{
+  "id": "temperature_surface_3d",
+  "category": "calculus",
+  "difficulty": 3,
+  "summary": "ThreeDScene: heat-equation u(x, t) rendered as a 3D parametric surface with x∈[0,1], t∈[0, T]. ValueTracker t_max_tr grows T from 5 to 150 via always_redraw; 10-mode Fourier square-wave IC smooths. Ambient camera rotation; fixed-frame panel with T, decay law, u_t = αu_xx.",
+  "tags": ["heat_equation", "3d_surface", "pde_evolution", "value_tracker", "always_redraw"],
+  "apis": ["ThreeDScene", "ThreeDAxes", "Surface", "VGroup", "ValueTracker", "always_redraw", "Transform", "MathTex", "Tex"]
+}

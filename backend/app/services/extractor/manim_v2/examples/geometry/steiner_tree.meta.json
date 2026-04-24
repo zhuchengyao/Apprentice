@@ -1,0 +1,8 @@
+{
+  "id": "steiner_tree",
+  "category": "geometry",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS: 3 GREEN cities A, B, C. ValueTracker step_tr reveals RED centroid-tree first, then YELLOW Steiner (Fermat) tree with meeting point F (computed via scipy.optimize). always_redraw both; panel shows lengths — Steiner always shorter.",
+  "tags": ["steiner_tree", "fermat_point", "optimization", "value_tracker", "always_redraw"],
+  "apis": ["Line", "Dot", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

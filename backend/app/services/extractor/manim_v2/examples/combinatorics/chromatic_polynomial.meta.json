@@ -1,0 +1,8 @@
+{
+  "id": "chromatic_polynomial",
+  "category": "combinatorics",
+  "difficulty": 2,
+  "summary": "TWO_COLUMN: LEFT K_3 (BLUE edges) with P=k(k-1)(k-2) and C_4 (GREEN edges) with P=(k-1)^4 + (k-1). RIGHT axes plot both chromatic polynomials over k ∈ [0, 5]. ValueTracker k_tr moves riders on both curves through integer values + 2.5.",
+  "tags": ["chromatic_polynomial", "graph_coloring", "value_tracker", "always_redraw"],
+  "apis": ["Line", "Dot", "Axes", "Axes.plot", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

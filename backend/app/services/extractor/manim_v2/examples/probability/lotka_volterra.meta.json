@@ -1,0 +1,8 @@
+{
+  "id": "lotka_volterra",
+  "category": "probability",
+  "difficulty": 3,
+  "summary": "TWO_COLUMN: LEFT phase plane (x prey, y pred) with YELLOW trajectory + RED rider from Euler-integrated LV with α=0.8, β=0.5, δ=0.4, γ=0.6. RIGHT time series BLUE x(t) + RED y(t) showing oscillations. ValueTracker t_tr advances.",
+  "tags": ["lotka_volterra", "predator_prey", "ode_cycle", "value_tracker", "always_redraw"],
+  "apis": ["NumberPlane", "Axes", "VMobject", "Dot", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

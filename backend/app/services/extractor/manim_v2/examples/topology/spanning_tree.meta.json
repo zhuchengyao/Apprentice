@@ -1,0 +1,8 @@
+{
+  "id": "spanning_tree",
+  "category": "topology",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: 7-vertex cycle-plus-chords graph with edges sorted by weight; Kruskal's algorithm visualized. ValueTracker step_tr increments 0 → 14 steps; always_redraw recolors each edge GREEN (in tree) / GREY (rejected cycle) / BLUE (unscanned). Live counts of step, tree edges, rejected edges, n-1 target.",
+  "tags": ["spanning_tree", "kruskal", "graph", "greedy", "value_tracker", "always_redraw"],
+  "apis": ["Line", "Dot", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

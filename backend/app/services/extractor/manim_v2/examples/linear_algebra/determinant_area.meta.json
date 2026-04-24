@@ -1,0 +1,8 @@
+{
+  "id": "determinant_area",
+  "category": "linear_algebra",
+  "difficulty": 2,
+  "summary": "Apply a 2x2 matrix to the unit square, morphing it into a parallelogram, and replace the Area=1 label with Area=|det A|=4.",
+  "tags": ["determinant", "area", "matrix", "unit_square", "linear_transform"],
+  "apis": ["NumberPlane", "Polygon", "ApplyMatrix", "Transform", "MathTex"]
+}

@@ -1,0 +1,8 @@
+{
+  "id": "discrete_fourier_transform",
+  "category": "calculus",
+  "difficulty": 3,
+  "summary": "TWO_COLUMN stacked: top axes with BLUE stem plot of x[n] = cos(2π·2n/N) + 0.6 cos(2π·5n/N) + 0.4 cos(2π·9n/N); bottom axes with RED |X[k]| DFT magnitude spectrum. ValueTracker n_samples_tr grows 4→32; always_redraw on both — peaks at k=2, 5, 9 emerge and sharpen. Live panel notes peak structure.",
+  "tags": ["dft", "spectrum", "signal_processing", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "Line", "Dot", "Rectangle", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

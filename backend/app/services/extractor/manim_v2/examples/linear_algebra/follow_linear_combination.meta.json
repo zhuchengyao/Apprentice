@@ -1,0 +1,9 @@
+{
+  "id": "follow_linear_combination",
+  "category": "linear_algebra",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: v=-1·î+2·ĵ preserves linear combination through transformation. 3-stage ValueTracker: apply transform (GREEN î→(2, 2), RED ĵ→(-2, 1)); draw x·T(î) arrow; add y·T(ĵ) tip-to-tail recovering T(v). always_redraw all arrows. Reinforces T(v)=xT(î)+yT(ĵ).",
+  "tags": ["linear_combination", "linearity", "tip_to_tail", "basis_expansion", "value_tracker", "always_redraw"],
+  "apis": ["NumberPlane", "Arrow", "VMobject", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"],
+  "source": "3b1b/_2016/eola/chapter4.py::FollowLinearCombination"
+}

@@ -1,0 +1,8 @@
+{
+  "id": "euler_formula_addition_invariance",
+  "category": "topology",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: build a planar graph incrementally, watching V-E+F = 2 stay invariant. 6 BLUE Dot vertices appear one by one (V goes 0→6, sum stays balanced by the empty-face F=1). Then 5 WHITE tree edges grow via Create — each with new endpoints already counted, so E grows, but F stays; the sum eventually settles at V-E+F = 2. Finally 2 PURPLE cycle-closing edges each add +1 to E and +1 to F (new face), preserving V-E+F = 2. Right panel Integer V/E/F + YELLOW DecimalNumber sum; bottom Tex note Transforms to narrate each step.",
+  "tags": ["euler_formula", "planar_graph", "invariant", "cycle_edge", "tree_edge", "transform"],
+  "apis": ["Dot", "Line", "VGroup", "Integer", "DecimalNumber", "MathTex", "Tex", "Transform", "Create"]
+}

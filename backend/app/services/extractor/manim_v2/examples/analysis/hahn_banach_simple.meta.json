@@ -1,0 +1,8 @@
+{
+  "id": "hahn_banach_simple",
+  "category": "analysis",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: NumberPlane with BLUE ellipse convex set; RED external point circling at radius 3.5. ValueTracker t_tr rotates point; always_redraw YELLOW separating line (perpendicular to closest-point segment) + GREEN dashed perpendicular + closest-point dot.",
+  "tags": ["hahn_banach", "separating_hyperplane", "convex_set", "value_tracker", "always_redraw"],
+  "apis": ["NumberPlane", "VMobject", "Dot", "Line", "DashedLine", "VGroup", "ValueTracker", "always_redraw", "Tex"]
+}

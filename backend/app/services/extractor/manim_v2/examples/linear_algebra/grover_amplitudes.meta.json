@@ -1,0 +1,8 @@
+{
+  "id": "grover_amplitudes",
+  "category": "linear_algebra",
+  "difficulty": 3,
+  "summary": "Apply 3 Grover iterations to 8 uniform amplitudes (oracle flip + mean-inversion) and Transform rectangular amplitude bars so the target bar grows.",
+  "tags": ["grover", "quantum", "amplitude_amplification", "linear_algebra", "search"],
+  "apis": ["Axes", "Rectangle", "VGroup", "Transform"]
+}

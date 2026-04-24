@@ -1,0 +1,8 @@
+{
+  "id": "complex_vector_field",
+  "category": "complex",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: ComplexPlane with always_redraw 9×7 lattice of arrows from z to f(z), color-coded BLUE→RED by |f(z)|. State dict toggles through 3 functions via Transform-update: z², 1/z, e^z. YELLOW current-function label in upper-right updates each phase.",
+  "tags": ["complex_function", "vector_field", "transform", "always_redraw"],
+  "apis": ["ComplexPlane", "Arrow", "VGroup", "ValueTracker", "always_redraw", "Transform", "interpolate_color", "MathTex", "Tex"]
+}

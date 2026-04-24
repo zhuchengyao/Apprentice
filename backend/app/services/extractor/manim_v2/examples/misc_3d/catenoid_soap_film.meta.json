@@ -1,0 +1,8 @@
+{
+  "id": "catenoid_soap_film",
+  "category": "misc_3d",
+  "difficulty": 3,
+  "summary": "ThreeDScene: catenoid soap film between 2 parallel rings. Parametrization (a cosh(v/a) cos u, a cosh(v/a) sin u, v) with u∈[0, 2π], v∈[-h, h]. ValueTracker neck_tr tours a∈{1.0, 0.7, 0.5, 1.2, 0.9} with always_redraw surface + YELLOW boundary rings at z=±h with radius R=a cosh(h/a). Ambient rotation.",
+  "tags": ["catenoid", "minimal_surface", "surface_of_revolution", "soap_film", "value_tracker", "always_redraw"],
+  "apis": ["ThreeDAxes", "Surface", "VMobject", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"]
+}

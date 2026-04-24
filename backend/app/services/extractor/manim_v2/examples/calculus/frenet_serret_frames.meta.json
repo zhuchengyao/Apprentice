@@ -1,0 +1,8 @@
+{
+  "id": "frenet_serret_frames",
+  "category": "calculus",
+  "difficulty": 3,
+  "summary": "ThreeDScene: Frenet-Serret frame on helix r(t)=(cos t, sin t, 0.3t). ValueTracker t_tr sweeps 0→4π. always_redraw RED T, GREEN N, BLUE B arrows + YELLOW trace + dot at r(t). Fixed-in-frame panel shows κ=1/1.09≈0.917 and τ=0.3/1.09≈0.275 constants for helix + Frenet equations.",
+  "tags": ["frenet_serret", "helix", "curvature", "torsion", "tangent_normal_binormal", "value_tracker", "always_redraw"],
+  "apis": ["ThreeDAxes", "ParametricFunction", "Arrow3D", "Dot3D", "ValueTracker", "always_redraw", "Tex"]
+}

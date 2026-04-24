@@ -1,0 +1,8 @@
+{
+  "id": "sphere_unfold_to_cylinder",
+  "category": "misc_3d",
+  "difficulty": 3,
+  "summary": "ThreeDScene: parametric surface with ValueTracker s_tr morphing radius ρ = (1-s)R sin v + sR at each (u, v). s=0 is sphere; s=1 is cylinder of height 2R, radius R. always_redraw Surface via Archimedes' lateral-area interpretation. Ambient rotation + fixed-frame panel showing s, name, 'area = 4πR²'.",
+  "tags": ["archimedes", "sphere", "cylinder", "surface_area", "value_tracker", "always_redraw"],
+  "apis": ["ThreeDScene", "ThreeDAxes", "Surface", "VGroup", "ValueTracker", "always_redraw", "Transform", "MathTex", "Tex"]
+}

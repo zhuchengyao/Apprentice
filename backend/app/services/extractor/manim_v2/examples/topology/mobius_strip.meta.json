@@ -1,0 +1,8 @@
+{
+  "id": "mobius_strip",
+  "category": "topology",
+  "difficulty": 3,
+  "summary": "ThreeDScene: parametric Möbius strip ((R + v cos(u/2))cos u, (R + v cos(u/2))sin u, v sin(u/2)) with R=1.8, w=0.6. ValueTracker t_tr walks a YELLOW dot along the center circle; RED normal arrow computed numerically flips direction after each loop. Ambient camera rotation.",
+  "tags": ["mobius_strip", "nonorientable", "3d_surface", "value_tracker", "always_redraw"],
+  "apis": ["ThreeDScene", "ThreeDAxes", "Surface", "Dot3D", "Line", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

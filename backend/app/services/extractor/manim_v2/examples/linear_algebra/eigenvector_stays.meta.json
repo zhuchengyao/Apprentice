@@ -1,0 +1,8 @@
+{
+  "id": "eigenvector_stays",
+  "category": "linear_algebra",
+  "difficulty": 3,
+  "summary": "Apply a matrix whose eigenvectors are along the x-axis and y=x; highlight those two lines so they stay mapped to themselves while the grid deforms.",
+  "tags": ["eigenvector", "eigenvalue", "invariant_line", "linear_transform"],
+  "apis": ["NumberPlane", "Line", "ApplyMatrix", "Text"]
+}

@@ -1,0 +1,8 @@
+{
+  "id": "visual_proof_fallacies",
+  "category": "geometry",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: unit right triangle with YELLOW dashed hypotenuse (√2 ≈ 1.414). ValueTracker N_tr steps N = 1, 2, 4, 8, 16, 32; always_redraw RED staircase along the hypotenuse with N rectangular steps. Staircase perimeter stays = 2 regardless of N — showing lim perimeter ≠ perimeter of lim.",
+  "tags": ["visual_paradox", "staircase", "limit", "arc_length", "value_tracker", "always_redraw"],
+  "apis": ["Line", "DashedLine", "VMobject", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

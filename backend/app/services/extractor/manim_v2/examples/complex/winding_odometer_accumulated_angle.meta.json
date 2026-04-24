@@ -1,0 +1,8 @@
+{
+  "id": "winding_odometer_accumulated_angle",
+  "category": "complex",
+  "difficulty": 3,
+  "summary": "TWO_COLUMN: LEFT ComplexPlane (-2..2) with YELLOW unit circle γ(t)=e^(it) traced by ValueTracker t_tr sweeping 0→2π (ParametricFunction + Dot via always_redraw). RIGHT a WHITE odometer Circle of radius 1.6 with 12 tick marks and a RED Arrow representing the argument of f(z)=z². The arrow's angle is accumulated (wrap-aware Δ < π) across frames so total winding shows as revs. DecimalNumber readout below dial tracks the revs-so-far; conclusion MathTex at bottom 'winding(f∘γ, 0) = 2' after the arrow has spun twice.",
+  "tags": ["winding_number", "argument_accumulation", "value_tracker", "always_redraw", "odometer", "z_squared"],
+  "apis": ["ComplexPlane", "Circle", "Arrow", "Line", "ParametricFunction", "Dot", "DecimalNumber", "ValueTracker", "always_redraw", "MathTex", "Tex", "VGroup"]
+}

@@ -1,0 +1,8 @@
+{
+  "id": "catalan_numbers",
+  "category": "combinatorics",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: grid of YELLOW Dyck paths for n=1..5. ValueTracker n_tr advances through values; always_redraw all C_n paths recursively enumerated. Live C_n = 1, 2, 5, 14, 42 = (1/(n+1))·C(2n, n).",
+  "tags": ["catalan_numbers", "dyck_paths", "recursion", "value_tracker", "always_redraw"],
+  "apis": ["VMobject", "Line", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

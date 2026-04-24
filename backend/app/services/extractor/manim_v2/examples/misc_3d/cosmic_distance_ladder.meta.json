@@ -1,0 +1,8 @@
+{
+  "id": "cosmic_distance_ladder",
+  "category": "misc_3d",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: log10-scale distance axis 0..26 (meters). Six stacked color-coded method bands (radar, parallax, Cepheid, Type Ia SNe, redshift, CMB) with distance overlaps. Fixed markers at 10^7 Earth-radius, 10^11 AU, 10^16 light-year, 10^20 Milky Way, 10^22 Andromeda, 10^26 obs. universe. ValueTracker d_tr sweeps cursor with always_redraw reading + active method.",
+  "tags": ["cosmic_distance", "log_scale", "astronomy", "value_tracker", "always_redraw"],
+  "apis": ["NumberLine", "Line", "Rectangle", "Dot", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

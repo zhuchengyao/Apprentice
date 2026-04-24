@@ -1,0 +1,8 @@
+{
+  "id": "legendre_polynomials",
+  "category": "calculus",
+  "difficulty": 3,
+  "summary": "TWO_COLUMN: Legendre polynomials P_0..P_6 on [-1, 1] via Bonnet recurrence. LEFT axes with YELLOW current P_n via always_redraw + fading BLUE→TEAL history of P_0..P_{n-1}. ValueTracker n_tr steps n=0..6. RIGHT has live <P_n, P_n> computed by np.trapezoid matching 2/(2n+1) and orthogonality note.",
+  "tags": ["legendre_polynomials", "orthogonal_polynomials", "recurrence_relation", "orthogonality", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "ParametricFunction", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"]
+}

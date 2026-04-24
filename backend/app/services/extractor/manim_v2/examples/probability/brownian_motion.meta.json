@@ -1,0 +1,8 @@
+{
+  "id": "brownian_motion",
+  "category": "probability",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: axes with GREY ±√t confidence band + 5 precomputed BM paths in BLUE/GREEN/ORANGE/PURPLE/PINK. ValueTracker t_tr advances 0→1; always_redraw path curves growing. Live Var[B_t] = t.",
+  "tags": ["brownian_motion", "wiener_process", "stochastic", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "Axes.plot", "Polygon", "VMobject", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

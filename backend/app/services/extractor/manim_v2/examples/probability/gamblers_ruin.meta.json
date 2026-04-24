@@ -1,0 +1,8 @@
+{
+  "id": "gamblers_ruin",
+  "category": "probability",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS: number line 0 to N=10 with RED ruin boundary and GREEN win boundary. 5 simulations of random walk from k=4 with p=0.48; ValueTracker t_tr drives each precomputed path in sequence via always_redraw stacked trails. Final panel shows empirical vs theoretical P(win) = (1 - (q/p)^k)/(1 - (q/p)^N).",
+  "tags": ["gamblers_ruin", "random_walk", "absorbing_boundaries", "value_tracker", "always_redraw"],
+  "apis": ["NumberLine", "Line", "Dot", "VMobject", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

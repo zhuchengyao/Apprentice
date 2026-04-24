@@ -1,0 +1,8 @@
+{
+  "id": "darboux_sum",
+  "category": "analysis",
+  "difficulty": 2,
+  "summary": "TWO_COLUMN: axes with YELLOW f(x) = x²·sin x + 2 on [0, 3]; GREEN upper-sum rectangles sup-over-subinterval + BLUE lower-sum rectangles inf-over-subinterval. ValueTracker N_tr grows 2, 4, 8, 16, 40 via always_redraw; gap U_N - L_N → 0, both → ∫f.",
+  "tags": ["darboux_sum", "riemann_integral", "upper_lower_sum", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "Axes.plot", "Rectangle", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

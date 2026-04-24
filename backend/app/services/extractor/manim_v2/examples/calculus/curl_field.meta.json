@@ -1,0 +1,8 @@
+{
+  "id": "curl_field",
+  "category": "calculus",
+  "difficulty": 3,
+  "summary": "TWO_COLUMN: NumberPlane with static vector-field arrows on LEFT; always_redraw 4-spoke paddle wheel at origin rotates via ValueTracker phi_tr. Three phases via Transform: F=(-y,x) curl=+2 (fast CCW spin), F=(y,0) curl=-1 (slow CW), F=(1,½) curl=0 (freeze). RIGHT panel shows field, curl, and formula ω = ½(∂Q/∂x - ∂P/∂y).",
+  "tags": ["curl", "vector_field", "paddle_wheel", "value_tracker", "always_redraw", "transform"],
+  "apis": ["NumberPlane", "Arrow", "Line", "Dot", "VGroup", "ValueTracker", "always_redraw", "Transform", "MathTex", "Tex"]
+}

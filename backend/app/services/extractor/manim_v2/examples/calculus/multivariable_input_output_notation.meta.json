@@ -1,0 +1,8 @@
+{
+  "id": "multivariable_input_output_notation",
+  "category": "calculus",
+  "difficulty": 1,
+  "summary": "SINGLE_FOCUS: C(x_1,...,x_n) = output; YELLOW brace over the many inputs, GREEN brace under a decimal ticker. ValueTracker t_tr walks 0 -> 3pi and the decimal add_updater shows 1 + sin(t) as the live scalar. ReplacementTransform collapses to the concrete two-input C(x, y).",
+  "tags": ["multivariable", "notation", "value_tracker", "decimal_ticker", "brace"],
+  "apis": ["MathTex", "Tex", "DecimalNumber", "ValueTracker", "Brace", "ReplacementTransform", "GrowFromCenter"]
+}

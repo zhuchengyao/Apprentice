@@ -1,0 +1,8 @@
+{
+  "id": "cost_function_intuition",
+  "category": "neural_networks",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: NumberPlane with BLUE elliptical contours of C = 2w_1² + 5w_2² + w_1·w_2 (6 levels). ValueTracker step_tr advances a precomputed 20-step gradient-descent trajectory from (2.5, 1.8); always_redraw YELLOW trail + rider + RED -∇C arrow + GREEN min marker.",
+  "tags": ["cost_function", "gradient_descent", "contour", "value_tracker", "always_redraw"],
+  "apis": ["NumberPlane", "VMobject", "Dot", "Arrow", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

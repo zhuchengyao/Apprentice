@@ -1,0 +1,8 @@
+{
+  "id": "gershgorin_disks",
+  "category": "linear_algebra",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS ComplexPlane. 3x3 matrix A(s)=(1-s)A0+sA1 via ValueTracker s_tr. always_redraw: 3 BLUE/GREEN/ORANGE Gershgorin disks centered at diagonal entries with radii = off-diag row sums, plus 3 RED eigenvalue dots (numpy.linalg.eigvals). Eigenvalues stay in union throughout. Live λ_1, λ_2, λ_3 panel.",
+  "tags": ["gershgorin_disks", "eigenvalue_localization", "complex_plane", "matrix_perturbation", "value_tracker", "always_redraw"],
+  "apis": ["ComplexPlane", "Circle", "Dot", "ValueTracker", "always_redraw", "Tex"]
+}

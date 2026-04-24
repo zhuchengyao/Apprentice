@@ -1,0 +1,8 @@
+{
+  "id": "electric_field_charge",
+  "category": "calculus",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: +Q RED point charge at origin; BLUE lattice of radial E-field arrows with 1/r² length; GREEN orbiting test charge on a circle of radius r_tr (tour 1.0, 1.5, 2.0, 0.8). always_redraw orbit circle + YELLOW local field arrow + test charge. Live panel with r, φ, and |E| = 1/r².",
+  "tags": ["electric_field", "coulombs_law", "vector_field", "value_tracker", "always_redraw"],
+  "apis": ["NumberPlane", "Dot", "Arrow", "Circle", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

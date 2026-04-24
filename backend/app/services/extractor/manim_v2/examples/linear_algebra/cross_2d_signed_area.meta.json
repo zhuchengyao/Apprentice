@@ -1,0 +1,9 @@
+{
+  "id": "cross_2d_signed_area",
+  "category": "linear_algebra",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS 2D cross product v×w = v_1 w_2 - v_2 w_1 as signed parallelogram area. BLUE v=(2.5, 0.5) fixed; ORANGE w rotated via ValueTracker w_theta_tr tour {π/3, π/2, 2π/3, π+0.3, 3π/2, π/4}. always_redraw parallelogram GREEN (CCW) / RED (CW) / GREY (parallel). Live θ° and signed area.",
+  "tags": ["cross_product_2d", "signed_area", "orientation", "ad_minus_bc", "value_tracker", "always_redraw"],
+  "apis": ["NumberPlane", "Arrow", "Polygon", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"],
+  "source": "3b1b/_2016/eola/chapter8.py::SimpleDefine2dCrossProduct+Define2dCrossProduct"
+}

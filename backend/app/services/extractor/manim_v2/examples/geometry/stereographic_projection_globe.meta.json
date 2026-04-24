@@ -1,0 +1,8 @@
+{
+  "id": "stereographic_projection_globe",
+  "category": "geometry",
+  "difficulty": 3,
+  "summary": "ThreeDScene globe stereographic projection from north pole to z=0 plane. BLUE sphere with 12 meridians (YELLOW) + 5 latitude circles (GREEN equator, BLUE→ORANGE others). ValueTracker s_tr morphs lines from sphere to plane via (1-s)p + s·stereo(p). always_redraw both line groups. Conformal: angles preserved.",
+  "tags": ["stereographic_projection", "conformal_map", "sphere_to_plane", "latitudes_longitudes", "value_tracker", "always_redraw"],
+  "apis": ["ThreeDAxes", "Sphere", "VMobject", "Dot3D", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"]
+}

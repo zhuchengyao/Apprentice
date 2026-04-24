@@ -1,0 +1,8 @@
+{
+  "id": "inverse_square_law_light_spread",
+  "category": "analysis",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: YELLOW point source with glow; ValueTracker r_tr controls a BLUE expanding always_redraw Circle plus a live bottom panel showing r and I=L/(4πr²) ∝ 1/r² in RED. 6 faint trail rings at r=0.5, 1, 1.5, 2, 3, 4.5 are fixed in the background. Right panel displays a 5-row (r, 1/r²) table. Tour r=0.5→1.0→1.5→2.0→3.0→4.5. Bottom Tex notes luminous power L is conserved across every sphere.",
+  "tags": ["inverse_square_law", "basel_geometric", "physics", "value_tracker", "always_redraw", "intensity"],
+  "apis": ["Circle", "Dot", "VGroup", "ValueTracker", "always_redraw", "DecimalNumber", "LaggedStart", "MathTex", "Tex"]
+}

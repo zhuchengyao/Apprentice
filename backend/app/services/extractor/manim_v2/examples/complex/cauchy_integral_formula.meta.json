@@ -1,0 +1,8 @@
+{
+  "id": "cauchy_integral_formula",
+  "category": "complex",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS: ComplexPlane with BLUE contour γ = {|z|=2} and RED pole z_0 (inside 0.8+0.4i or outside 2.8+0.3i). ValueTracker theta_tr parametrizes γ; always_redraw YELLOW partial arc + rider + numerical ∮ 1/(z - z_0) dz → 2πi (inside) or 0 (outside).",
+  "tags": ["cauchy_integral", "contour_integral", "complex_analysis", "value_tracker", "always_redraw"],
+  "apis": ["ComplexPlane", "Circle", "Dot", "VMobject", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

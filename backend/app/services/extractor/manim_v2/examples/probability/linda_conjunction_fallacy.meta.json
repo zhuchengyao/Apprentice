@@ -1,0 +1,8 @@
+{
+  "id": "linda_conjunction_fallacy",
+  "category": "probability",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: WHITE universe Square ('all people') containing overlapping BLUE 'bank teller' Circle and PURPLE 'feminist' Circle; their YELLOW Intersection is labeled 'both'. Right panel lists A (bank teller) vs A∩B (both), then YELLOW rule P(A∩B) ≤ P(A) with Tex explanation. Indicate flashes both the bank teller circle and the intersection lens to drive home that the conjunction's probability cannot exceed either component.",
+  "tags": ["conjunction_fallacy", "kahneman_tversky", "base_rate", "set_intersection", "bayes_pedagogy"],
+  "apis": ["Square", "Circle", "Intersection", "VGroup", "Tex", "MathTex", "Indicate", "FadeIn", "Create"]
+}

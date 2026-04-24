@@ -1,0 +1,8 @@
+{
+  "id": "bootstrap_resampling",
+  "category": "probability",
+  "difficulty": 3,
+  "summary": "TWO_COLUMN: LEFT top has 15 BLUE data stems + YELLOW sample-mean line. LEFT bottom has histogram of 500 bootstrap means; ValueTracker b_tr grows 1 → 500; always_redraw GREEN bars + ORANGE 2.5/97.5-percentile CI vertical lines. RIGHT panel tracks B, SE*, 95% CI, true μ.",
+  "tags": ["bootstrap", "resampling", "confidence_interval", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "Dot", "DashedLine", "Rectangle", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

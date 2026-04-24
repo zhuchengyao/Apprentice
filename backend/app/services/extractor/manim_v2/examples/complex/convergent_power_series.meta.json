@@ -1,0 +1,8 @@
+{
+  "id": "convergent_power_series",
+  "category": "complex",
+  "difficulty": 3,
+  "summary": "COMPARISON: LEFT ComplexPlane with BLUE shaded |z|<1 disk (Σz^n convergence) + always_redraw z-dot that turns RED when outside. RIGHT ComplexPlane with GREEN shaded full plane (Σz^n/n! converges everywhere). Phases: rotate at r=0.5 (both converge), grow r to 1.8 (LEFT diverges), rotate at r=1.8.",
+  "tags": ["power_series", "radius_of_convergence", "exponential_series", "value_tracker", "always_redraw"],
+  "apis": ["ComplexPlane", "Circle", "Rectangle", "Dot", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

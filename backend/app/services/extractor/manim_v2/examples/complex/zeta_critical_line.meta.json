@@ -1,0 +1,8 @@
+{
+  "id": "zeta_critical_line",
+  "category": "complex",
+  "difficulty": 3,
+  "summary": "TWO_COLUMN: ComplexPlane left with always_redraw partial trace of ζ_N(1/2+it) (N=80) and head dot driven by ValueTracker T sweeping 0.1→40; precomputed values. Right column has live t, |ζ|, arg(ζ), plus a mini |ζ_N| vs t plot with the first nontrivial zero t≈14.135 marked, plus the RH statement.",
+  "tags": ["riemann_zeta", "critical_line", "value_tracker", "always_redraw", "partial_curve"],
+  "apis": ["ComplexPlane", "VMobject", "set_points_smoothly", "ValueTracker", "always_redraw", "Dot", "Axes", "DashedLine", "MathTex", "Tex"]
+}

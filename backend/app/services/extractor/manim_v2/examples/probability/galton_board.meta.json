@@ -1,0 +1,8 @@
+{
+  "id": "galton_board",
+  "category": "probability",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: 10-row triangular peg array + 11 bins below. ValueTracker ball_idx_tr sweeps 0 → 200 balls (precomputed random paths); always_redraw BLUE bin histogram + YELLOW binomial overlay C(10, i)·0.5^10·n. Live panel: N, x̄, σ, and expected σ = √(10/4) ≈ 1.58.",
+  "tags": ["galton_board", "binomial", "clt", "value_tracker", "always_redraw"],
+  "apis": ["Dot", "Rectangle", "VMobject", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

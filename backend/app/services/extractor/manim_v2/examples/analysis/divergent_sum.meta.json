@@ -1,0 +1,8 @@
+{
+  "id": "divergent_sum",
+  "category": "analysis",
+  "difficulty": 2,
+  "summary": "TWO_COLUMN: log-y axes plot 3 partial-sum curves driven by ValueTracker N → 200 via always_redraw — Σ1 (linear, blue), Σ1/n (log, green), Σ1/n² (converges to π²/6, orange). Dashed reference line for Basel limit. Right column has live N, 3 sums, π²/6.",
+  "tags": ["divergent_series", "harmonic", "basel", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "VMobject", "set_points_as_corners", "DashedLine", "ValueTracker", "always_redraw", "MathTex", "Tex", "numpy"]
+}

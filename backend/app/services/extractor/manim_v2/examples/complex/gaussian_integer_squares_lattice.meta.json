@@ -1,0 +1,8 @@
+{
+  "id": "gaussian_integer_squares_lattice",
+  "category": "complex",
+  "difficulty": 2,
+  "summary": "COMPARISON layout: left z-plane shows a 7x7 BLUE lattice of Gaussian integers (u,v in -3..3), right z^2-plane shows where each squares to. RED highlight picks z=2+i -> z^2=3+4i, producing the (3,4,5) triple. LaggedStart sequences all 48 output points; bottom formula label confirms (u^2-v^2, 2uv, u^2+v^2).",
+  "tags": ["gaussian_integers", "pythagorean_triples", "complex_squaring", "lattice", "laggedstart"],
+  "apis": ["NumberPlane", "Dot", "LaggedStart", "TransformFromCopy", "MathTex", "Tex", "VGroup"]
+}

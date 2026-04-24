@@ -1,0 +1,8 @@
+{
+  "id": "earth_morph_torus",
+  "category": "topology",
+  "difficulty": 2,
+  "summary": "Morph a sphere mesh directly into a torus surface via Transform; state that the Euler characteristic drops from 2 to 0 because a handle was added.",
+  "tags": ["sphere", "torus", "morph", "topology", "genus"],
+  "apis": ["ThreeDScene", "Sphere", "Surface", "Transform"]
+}

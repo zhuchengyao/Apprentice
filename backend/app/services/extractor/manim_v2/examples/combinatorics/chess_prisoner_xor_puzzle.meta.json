@@ -1,0 +1,8 @@
+{
+  "id": "chess_prisoner_xor_puzzle",
+  "category": "combinatorics",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS: 8x8 Square chessboard with GREY_B/GREY_D alternation, each cell labeled with its index 0..63 and a GOLD (heads) or GREY_C (tails) Circle coin on top. YELLOW SurroundingRectangle marks the jailer's key square (42). Right panel: current XOR(heads), key value, and the flip-target = XOR ⊕ key computed live with Python reduce/operator.xor. GREEN SurroundingRectangle appears on the target cell, the coin scale-pulses and recolors, and a GREEN verdict confirms the new XOR matches the key.",
+  "tags": ["prisoner_puzzle", "xor", "parity_encoding", "hamming", "chess", "combinatorial"],
+  "apis": ["Square", "Circle", "VGroup", "SurroundingRectangle", "MathTex", "Tex", "FadeIn", "Write", "Create", "reduce", "operator.xor"]
+}

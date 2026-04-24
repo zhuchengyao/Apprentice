@@ -1,0 +1,8 @@
+{
+  "id": "toeplitz_circulant",
+  "category": "linear_algebra",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS: 7×7 circulant matrix derived from c=[3, 1, 0, 0, 0, 1, 2]. Each diagonal color-coded (7-cycle of colors). ValueTracker shift_tr cyclically shifts the top row through 5 values; always_redraw rebuilds entire matrix + top-row banner. Right panel shows DFT eigenvalues (complex) computed via np.fft.fft — circulant is diagonalized by F.",
+  "tags": ["circulant_matrix", "toeplitz", "dft_diagonalization", "cyclic_shift", "value_tracker", "always_redraw"],
+  "apis": ["Square", "VGroup", "ValueTracker", "always_redraw", "Tex"]
+}

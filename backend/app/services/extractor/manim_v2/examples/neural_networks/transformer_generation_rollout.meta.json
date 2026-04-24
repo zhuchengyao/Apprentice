@@ -1,0 +1,8 @@
+{
+  "id": "transformer_generation_rollout",
+  "category": "neural_networks",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: row of BLUE token boxes grows + ORANGE '?' placeholder via ValueTracker step_tr. Bar chart below shows top-7 candidate next-tokens with softmax probabilities; selected (matches ground-truth sentence) is BLUE, others GREY. Sentence: 'The cat sat on the mat .' generated one step at a time.",
+  "tags": ["transformer", "autoregressive", "next_token", "value_tracker", "always_redraw"],
+  "apis": ["Rectangle", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

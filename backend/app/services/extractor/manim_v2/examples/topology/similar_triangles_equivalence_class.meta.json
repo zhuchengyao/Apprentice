@@ -1,0 +1,8 @@
+{
+  "id": "similar_triangles_equivalence_class",
+  "category": "topology",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: 5 BLUE 3:4:5 right triangles drawn at different scales, rotations, and centers across the top of the canvas. 5 YELLOW Arrows shoot from each triangle toward a single RED Dot in the moduli-plane Axes at the bottom-right, showing they all collapse to the point (b/a, γ) = (4/3, π/2). Bottom caption: all 5 triangles represent the same moduli-space point.",
+  "tags": ["moduli_space", "equivalence_classes", "similar_triangles", "quotient_space", "right_triangle"],
+  "apis": ["Polygon", "Arrow", "Axes", "Dot", "VGroup", "LaggedStart", "GrowArrow", "MathTex", "Tex", "numpy"]
+}

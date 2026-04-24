@@ -1,0 +1,8 @@
+{
+  "id": "pentaflake",
+  "category": "fractals",
+  "difficulty": 3,
+  "summary": "Build a pentaflake (5-fold Sierpinski-like fractal) by recursively placing five smaller pentagons around a central one, up to depth 3.",
+  "tags": ["fractal", "pentaflake", "self_similar", "recursion", "pentagon"],
+  "apis": ["RegularPolygon", "VGroup", "Transform", "FadeIn", "Text"]
+}

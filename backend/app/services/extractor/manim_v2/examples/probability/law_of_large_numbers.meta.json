@@ -1,0 +1,8 @@
+{
+  "id": "law_of_large_numbers",
+  "category": "probability",
+  "difficulty": 2,
+  "summary": "Trace the running mean of 2000 simulated coin flips; the noisy curve converges to 0.5, illustrating the weak law of large numbers.",
+  "tags": ["law_of_large_numbers", "coin_flip", "running_mean", "convergence", "simulation"],
+  "apis": ["Axes", "DashedLine", "VMobject", "set_points_smoothly", "always_redraw", "MathTex"]
+}

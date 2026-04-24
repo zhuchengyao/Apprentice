@@ -1,0 +1,8 @@
+{
+  "id": "uniform_squared_density_transform",
+  "category": "probability",
+  "difficulty": 3,
+  "summary": "COMPARISON two Axes side by side: LEFT shows uniform density f_X(x)=1 on [0,1] in BLUE; RIGHT shows the transformed density f_Y(y)=1/(2√y) in RED — the arcsine-like density. 300 sampled BLUE_B dots on the left (uniform in x) connect via grey Lines to RED_B dots on the right (piled up near 0), illustrating the probability mass concentration. Bottom derivation via change of variables: f_Y(y) = f_X(x(y))|dx/dy| = 1·(1/2√y).",
+  "tags": ["change_of_variables", "density_transform", "uniform", "nonlinear_map", "arcsine_distribution"],
+  "apis": ["Axes", "Axes.plot", "Dot", "Line", "VGroup", "LaggedStart", "MathTex", "Tex", "numpy"]
+}

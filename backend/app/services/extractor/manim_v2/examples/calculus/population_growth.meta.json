@@ -1,0 +1,8 @@
+{
+  "id": "population_growth",
+  "category": "calculus",
+  "difficulty": 2,
+  "summary": "TWO_COLUMN: Axes with logistic P(t) = K/(1 + A·e^(-rt)) for K=100, r=0.4, P(0)=5; carrying-capacity K dashed line. ValueTracker t_tr sweeps 0→30; always_redraw BLUE rider dot + RED tangent segment with slope = dP/dt = rP(1-P/K). Live panel has t, P, P/K, dP/dt, and rP(1-P/K) verification.",
+  "tags": ["logistic_growth", "ode", "carrying_capacity", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "Axes.plot", "DashedLine", "Dot", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

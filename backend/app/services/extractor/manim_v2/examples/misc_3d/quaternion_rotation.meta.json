@@ -1,0 +1,8 @@
+{
+  "id": "quaternion_rotation",
+  "category": "misc_3d",
+  "difficulty": 3,
+  "summary": "Rotate a cube by 90° around the axis (1,1,0)/√2 using a unit quaternion and its rotation matrix — shows q = cos(θ/2)+n̂·sin(θ/2).",
+  "tags": ["quaternion", "rotation", "3d", "axis_angle", "cube"],
+  "apis": ["ThreeDScene", "Cube", "ValueTracker", "add_updater", "apply_matrix", "MathTex"]
+}

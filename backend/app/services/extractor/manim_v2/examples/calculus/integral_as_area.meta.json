@@ -1,0 +1,8 @@
+{
+  "id": "integral_as_area",
+  "category": "calculus",
+  "difficulty": 2,
+  "summary": "ValueTracker n sweeps from 4 to 80 rectangles; always_redraw Riemann rectangles refine over the fixed green reference area, and live numeric readouts show the approximate sum converging to the exact integral.",
+  "tags": ["integral", "riemann_sum", "convergence", "area", "value_tracker"],
+  "apis": ["Axes", "get_riemann_rectangles", "get_area", "ValueTracker", "always_redraw", "DecimalNumber", "MathTex"]
+}

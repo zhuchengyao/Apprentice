@@ -1,0 +1,8 @@
+{
+  "id": "convolution_box",
+  "category": "calculus",
+  "difficulty": 2,
+  "summary": "TWO_COLUMN: top axes has fixed BLUE f-box [-1, 1] and sliding ORANGE g_τ = g(τ-t)-box with always_redraw GREEN overlap polygon. ValueTracker τ_tr sweeps -2 → 2; bottom axes traces (f*g)(τ) as GREEN curve with YELLOW rider dot — triangle of base 4 peak 2. Live panel shows τ and current convolution value.",
+  "tags": ["convolution", "sliding_window", "box_function", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "Polygon", "VMobject", "Dot", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

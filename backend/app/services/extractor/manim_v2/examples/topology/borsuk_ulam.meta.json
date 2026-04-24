@@ -1,0 +1,8 @@
+{
+  "id": "borsuk_ulam",
+  "category": "topology",
+  "difficulty": 3,
+  "summary": "1D version of Borsuk-Ulam. Top: small circle with antipodal point pair P, P+π moving via ValueTracker θ. Bottom: f(θ)=sin(2θ)+0.5cos(3θ) plotted, with always_redraw dots at f(θ) and f(θ+π) plus orange gap line. As θ sweeps, the gap hits zero multiple times — antipodal points with same f value.",
+  "tags": ["borsuk_ulam", "antipodal", "value_tracker", "always_redraw", "circle"],
+  "apis": ["Circle", "Axes", "plot", "Dot", "Line", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

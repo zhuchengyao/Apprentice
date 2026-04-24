@@ -1,0 +1,9 @@
+{
+  "id": "concrete_dt_vs_limit",
+  "category": "calculus",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: derivation of d(t³)/dt via secant slope. (t+dt)³ - t³ expanded, divided by dt gives 3t² + 3t·dt + dt². Bottom: ORANGE concrete dt=0.01 gives 12.0601..., GREEN limit dt→0 gives exactly 3t²=12. Limit is cleaner.",
+  "tags": ["derivative_derivation", "power_rule_cube", "limit_vs_concrete", "algebraic_expansion"],
+  "apis": ["MathTex", "VGroup", "Tex"],
+  "source": "3b1b/_2017/eoc/chapter2.py::TCubedExample+ContrastConcreteDtWithLimit"
+}

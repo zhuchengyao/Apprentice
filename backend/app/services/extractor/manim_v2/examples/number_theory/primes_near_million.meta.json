@@ -1,0 +1,8 @@
+{
+  "id": "primes_near_million",
+  "category": "number_theory",
+  "difficulty": 2,
+  "summary": "TWO_COLUMN: number line ±100 around center. ValueTracker center_tr slides center through 1,000,000 → 1,005,000 → 999,000 → 1,003,000 → 1,000,000. always_redraw dots at each integer: YELLOW if prime (radius 0.06), BLUE_D otherwise (radius 0.03). Live window center, prime count, expected 200/ln(x), and π(10^6) = 78,498.",
+  "tags": ["primes", "density", "pnt", "value_tracker", "always_redraw"],
+  "apis": ["NumberLine", "Dot", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

@@ -1,0 +1,8 @@
+{
+  "id": "loop_the_loop",
+  "category": "geometry",
+  "difficulty": 2,
+  "summary": "Plot a parametric loop-the-loop track and animate a ball traversing it with MoveAlongPath.",
+  "tags": ["parametric", "loop", "path", "track", "animation"],
+  "apis": ["ParametricFunction", "Dot", "MoveAlongPath"]
+}

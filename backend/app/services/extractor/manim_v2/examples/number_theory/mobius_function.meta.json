@@ -1,0 +1,8 @@
+{
+  "id": "mobius_function",
+  "category": "number_theory",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: row of 30 cells n=1..30 colored YELLOW (μ=+1), BLUE (μ=-1), GREY_B (μ=0). ValueTracker n_tr highlights each n via RED box; always_redraw + live panel showing n's prime factorization and μ(n).",
+  "tags": ["mobius_function", "number_theory", "squarefree", "value_tracker", "always_redraw"],
+  "apis": ["Square", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

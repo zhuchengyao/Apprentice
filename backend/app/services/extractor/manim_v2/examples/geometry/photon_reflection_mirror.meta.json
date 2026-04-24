@@ -1,0 +1,8 @@
+{
+  "id": "photon_reflection_mirror",
+  "category": "geometry",
+  "difficulty": 2,
+  "summary": "TWO_COLUMN: hatched horizontal mirror with green normal at the hit point on the left. ValueTracker θ_i sweeps the incidence angle through several values (20°, 65°, 30°, 75°, 45°); incident arrow, reflected arrow, both angle arcs, and their labels redraw via always_redraw using θ_r = θ_i. Right column has live θ_i, θ_r, and the law statement.",
+  "tags": ["reflection", "law_of_reflection", "value_tracker", "always_redraw", "optics"],
+  "apis": ["Line", "DashedLine", "Arrow", "Arc", "ValueTracker", "always_redraw", "MathTex"]
+}

@@ -1,0 +1,8 @@
+{
+  "id": "matrix_inverse_2d",
+  "category": "linear_algebra",
+  "difficulty": 1,
+  "summary": "SINGLE_FOCUS: NumberPlane with grey unit-square outline + YELLOW always_redraw transformed square. ValueTracker s_tr in [0, 1] applies A = [[1.5, 0.8], [0.3, 1.2]] then s in [1, 2] applies A^(-1) returning to identity. Panel shows A, A^(-1), det A = 1.56.",
+  "tags": ["matrix_inverse", "2x2_matrix", "value_tracker", "always_redraw"],
+  "apis": ["NumberPlane", "Polygon", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

@@ -1,0 +1,8 @@
+{
+  "id": "beta_distribution",
+  "category": "probability",
+  "difficulty": 2,
+  "summary": "TWO_COLUMN: two ValueTrackers (α, β) drive the Beta pdf via always_redraw, plus a red dashed mean line at μ=α/(α+β). Tour through (1,1) uniform → (2,2) bell → (5,2) left-skewed → (2,5) right-skewed → (0.5,0.5) U-shape → back to (2,2). Right column shows live α, β, μ, mode, and the formula.",
+  "tags": ["beta_distribution", "parameter_sweep", "value_tracker", "pdf", "conjugate"],
+  "apis": ["Axes", "plot", "ValueTracker", "always_redraw", "DashedLine", "MathTex", "math.lgamma"]
+}

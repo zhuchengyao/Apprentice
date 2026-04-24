@@ -1,0 +1,8 @@
+{
+  "id": "linear_ode_vector_field",
+  "category": "linear_algebra",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS: NumberPlane with static vector-field arrows for linear ODE ẋ = Ax with A = [[-0.3, -1.2], [1.0, -0.3]] (eigenvalues -0.3 ± i√1.2, stable spiral). ValueTracker t_tr drives 12 precomputed color-coded tracer dots via always_redraw through their trajectories + growing trails — all spiral inward. Side panel has A, eigenvalues, 'stable spiral'.",
+  "tags": ["linear_ode", "vector_field", "stable_spiral", "value_tracker", "always_redraw"],
+  "apis": ["NumberPlane", "Arrow", "Dot", "VMobject", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

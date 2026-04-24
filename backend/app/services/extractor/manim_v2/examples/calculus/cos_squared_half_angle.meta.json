@@ -1,0 +1,8 @@
+{
+  "id": "cos_squared_half_angle",
+  "category": "calculus",
+  "difficulty": 1,
+  "summary": "SINGLE_FOCUS pointwise identity check: both cos²x (BLUE) and (1 + cos 2x)/2 (YELLOW) drawn on the same axes; ValueTracker x_tr sweeps 0→2π with always_redraw dots on each curve plus a dashed vertical drop. Live panel shows x, cos²x, (1+cos 2x)/2 and |difference| at each x.",
+  "tags": ["trig_identity", "half_angle", "cosine_squared", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "Axes.plot", "ValueTracker", "always_redraw", "Dot", "DashedLine", "MathTex", "Tex", "VGroup"]
+}

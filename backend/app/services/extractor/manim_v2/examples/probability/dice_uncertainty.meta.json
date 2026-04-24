@@ -1,0 +1,8 @@
+{
+  "id": "dice_uncertainty",
+  "category": "probability",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: axes over sum-of-3d6 range [3, 18]; static YELLOW theoretical PMF bars (count/216) and always_redraw BLUE empirical bars updated as ValueTracker n_tr grows 10 → 3000 rolls (precomputed). Empirical bars sharpen toward theory. Live N + legend panel.",
+  "tags": ["dice", "empirical_histogram", "law_of_large_numbers", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "Rectangle", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

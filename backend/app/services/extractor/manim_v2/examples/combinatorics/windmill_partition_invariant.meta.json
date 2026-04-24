@@ -1,0 +1,8 @@
+{
+  "id": "windmill_partition_invariant",
+  "category": "combinatorics",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS: 9 Dots placed in generic position. A WHITE rotating Line pivots through a sequence of 5 points {4, 7, 2, 0, 8} at angles 0.3, 1.2, 2.0, 2.9, 3.6 rad. At each step the pivot Dot turns YELLOW, the rest recolor RED (above the line) vs BLUE (below) via set_color animations; Transform moves the line from the previous configuration to the next. Right panel shows live Integer red-count and blue-count — each stays balanced at 4 vs 4 throughout (the key IMO 2011 invariant).",
+  "tags": ["imo", "windmill", "invariant", "pivot_rotation", "combinatorial_geometry", "point_partition"],
+  "apis": ["Dot", "Line", "VGroup", "Integer", "Transform", "LaggedStart", "MathTex", "Tex", "FadeIn"]
+}

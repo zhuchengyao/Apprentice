@@ -1,0 +1,8 @@
+{
+  "id": "collatz_conjecture",
+  "category": "number_theory",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS Collatz conjecture with 5 starting values {27, 97, 871, 41, 12}. Each path reveals sequentially via ValueTracker idx_tr; current path grows with t_tr via always_redraw. Paths BLUE/GREEN/ORANGE/PURPLE/RED. Live start, steps-to-1, max-value reached (27 reaches 9232 in 111 steps).",
+  "tags": ["collatz_conjecture", "3n_plus_1", "iteration", "open_problem", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "VMobject", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"]
+}

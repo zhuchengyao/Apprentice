@@ -1,0 +1,8 @@
+{
+  "id": "basel_lighthouses_on_number_line",
+  "category": "analysis",
+  "difficulty": 3,
+  "summary": "TWO_ROW: top NumberLine 0..30 with YELLOW observer Dot at 0 and BLUE triangular-lighthouse markers popping up at 1, 2, ..., N via always_redraw as ValueTracker N_tr grows 1→30. Bottom Axes plot of S_N = Σ_{k=1..N} 1/k² drawn via always_redraw VMobject set_points_as_corners, with a YELLOW DashedLine at π²/6 ≈ 1.6449 and a RED rider Dot. Top-right readout shows Integer N, DecimalNumber S_N, and the gap π²/6 − S_N.",
+  "tags": ["basel_problem", "pi_squared_over_six", "partial_sums", "value_tracker", "always_redraw", "zeta_2"],
+  "apis": ["NumberLine", "Axes", "Polygon", "Dot", "DashedLine", "VMobject", "VGroup", "ValueTracker", "always_redraw", "Integer", "DecimalNumber", "MathTex", "Tex"]
+}

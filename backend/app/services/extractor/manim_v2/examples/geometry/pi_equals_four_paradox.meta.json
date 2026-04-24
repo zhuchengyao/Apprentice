@@ -1,0 +1,8 @@
+{
+  "id": "pi_equals_four_paradox",
+  "category": "geometry",
+  "difficulty": 2,
+  "summary": "Approximate a quarter-circle arc by finer staircases whose total length stays 2r; show why pointwise-close curves need not have close arc lengths.",
+  "tags": ["paradox", "arc_length", "limit", "staircase", "rectifiable"],
+  "apis": ["Circle", "Square", "VMobject", "set_points_as_corners", "Transform"]
+}

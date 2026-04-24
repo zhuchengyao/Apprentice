@@ -1,0 +1,8 @@
+{
+  "id": "sir_epidemic",
+  "category": "probability",
+  "difficulty": 3,
+  "summary": "TWO_COLUMN: SIR model curves on left (S, I, R), ValueTracker t_now sweeps with always_redraw vertical cursor + 3 moving dots; right column has live S, I, R, β, γ, R₀=β/γ. After the first sweep, Transform morphs the curves to a higher-β simulation, showing the epidemic peak shift up and earlier.",
+  "tags": ["sir_model", "epidemic", "ode", "value_tracker", "transform"],
+  "apis": ["Axes", "VMobject", "set_points_as_corners", "ValueTracker", "always_redraw", "Transform", "DashedLine", "Dot", "MathTex", "Tex"]
+}

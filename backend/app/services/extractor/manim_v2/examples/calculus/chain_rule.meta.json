@@ -1,0 +1,8 @@
+{
+  "id": "chain_rule",
+  "category": "calculus",
+  "difficulty": 2,
+  "summary": "Three number lines (x, y=sin(x), z=sin²(x)) with a synchronized moving interval on each; ValueTracker sweeps x and a live panel reports the chain-rule product f'(g(x))·g'(x) = 2sin(x)cos(x).",
+  "tags": ["chain_rule", "composition", "derivative", "stretch_factor", "value_tracker"],
+  "apis": ["NumberLine", "ValueTracker", "always_redraw", "Line", "Dot", "Arrow", "MathTex", "VGroup"]
+}

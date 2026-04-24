@@ -1,0 +1,8 @@
+{
+  "id": "ptolemy_theorem",
+  "category": "geometry",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: BLUE_D circle with cyclic quadrilateral ABCD (fixed A at 30°, B at 110°, D at 290°, C variable). ValueTracker theta_tr moves C through 200°, 230°, 170°, 260°, 200°. always_redraw quad + RED diagonals + live Ptolemy equation check |AC||BD| = |AB||CD| + |AD||BC|.",
+  "tags": ["ptolemy_theorem", "cyclic_quadrilateral", "value_tracker", "always_redraw"],
+  "apis": ["Circle", "Polygon", "Line", "Dot", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

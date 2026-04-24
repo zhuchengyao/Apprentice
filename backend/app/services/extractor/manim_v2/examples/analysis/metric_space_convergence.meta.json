@@ -1,0 +1,8 @@
+{
+  "id": "metric_space_convergence",
+  "category": "analysis",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: NumberPlane with RED limit x=(0,0) + 3 YELLOW nested ε-balls (ε=0.5, 0.25, 0.1). ValueTracker n_tr advances sequence x_n=(cos n/n, sin n/n) spiraling inward; BLUE→YELLOW color-graded dots + connecting trail. Live d(x_n, 0) → 0.",
+  "tags": ["metric_space", "convergence", "epsilon_ball", "value_tracker", "always_redraw"],
+  "apis": ["NumberPlane", "Circle", "Dot", "VMobject", "VGroup", "ValueTracker", "always_redraw", "interpolate_color", "MathTex", "Tex"]
+}

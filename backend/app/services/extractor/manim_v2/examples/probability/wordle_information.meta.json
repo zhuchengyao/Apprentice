@@ -1,0 +1,8 @@
+{
+  "id": "wordle_information",
+  "category": "probability",
+  "difficulty": 2,
+  "summary": "State Shannon's entropy formula I = Σ p·log₂(1/p) and plot log₂(1/p) — the information each pattern contributes to a Wordle guess.",
+  "tags": ["information_theory", "entropy", "wordle", "shannon", "bits"],
+  "apis": ["MathTex", "Axes", "plot", "Text"]
+}

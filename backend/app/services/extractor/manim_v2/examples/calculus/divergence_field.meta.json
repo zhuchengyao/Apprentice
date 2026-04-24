@@ -1,0 +1,8 @@
+{
+  "id": "divergence_field",
+  "category": "calculus",
+  "difficulty": 3,
+  "summary": "TWO_COLUMN: NumberPlane with sparse field arrows; GREEN probe disk at origin has radius 0.35·e^(div·s·0.5) driven by ValueTracker s_tr. Three phases via Transform: F=(x,y) div=+2 (expansion), F=(-x,-y) div=-2 (contraction), F=(y,0) div=0 (steady). RIGHT panel has field, div, growth law.",
+  "tags": ["divergence", "vector_field", "area_element", "value_tracker", "always_redraw", "transform"],
+  "apis": ["NumberPlane", "Arrow", "Circle", "VGroup", "ValueTracker", "always_redraw", "Transform", "MathTex", "Tex"]
+}

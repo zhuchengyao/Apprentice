@@ -1,0 +1,8 @@
+{
+  "id": "greens_theorem",
+  "category": "calculus",
+  "difficulty": 2,
+  "summary": "TWO_COLUMN Green's theorem: oval boundary in NumberPlane with F=(-y/2, x/2) so ∂Q/∂x-∂P/∂y=1. ValueTracker t_tr sweeps 0→2π with always_redraw orange partial-arc trace + shoelace-computed live-area DecimalNumber; final ∮ ≈ iint 1 dA matches.",
+  "tags": ["greens_theorem", "line_integral", "curl", "area", "shoelace", "value_tracker", "always_redraw"],
+  "apis": ["NumberPlane", "ParametricFunction", "Dot", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"]
+}

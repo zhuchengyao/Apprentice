@@ -1,0 +1,8 @@
+{
+  "id": "planets_scaled",
+  "category": "misc_3d",
+  "difficulty": 1,
+  "summary": "SINGLE_FOCUS: Sun at left + 8 color-coded planet dots along horizontal axis. ValueTracker zoom_tr interpolates 0 (log scale, all visible) → 1 (linear scale, Mercury/Venus/Earth/Mars collapse near Sun). always_redraw positions + labels; bottom panel announces current mode.",
+  "tags": ["solar_system", "log_vs_linear", "cosmic_distance", "value_tracker", "always_redraw"],
+  "apis": ["Line", "Dot", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

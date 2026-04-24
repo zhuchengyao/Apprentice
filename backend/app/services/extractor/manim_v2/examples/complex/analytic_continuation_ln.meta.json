@@ -1,0 +1,8 @@
+{
+  "id": "analytic_continuation_ln",
+  "category": "complex",
+  "difficulty": 2,
+  "summary": "TWO_COLUMN: analytic continuation of ln z along unit circle. LEFT ComplexPlane with unit circle and YELLOW z=e^(iθ) dot + ORANGE radial line driven by ValueTracker theta_tr ∈ [0, 4π]. RIGHT plane shows GREEN trace of Im ln z=θ spiraling upward past dashed BLUE sheet markers at 0, 2π, 4π. Live θ + Im ln z readouts.",
+  "tags": ["analytic_continuation", "logarithm", "riemann_surface", "branch_cut", "value_tracker", "always_redraw"],
+  "apis": ["ComplexPlane", "Circle", "Line", "DashedLine", "Dot", "VMobject", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"]
+}

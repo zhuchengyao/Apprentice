@@ -1,0 +1,8 @@
+{
+  "id": "sierpinski_carpet",
+  "category": "fractals",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS Sierpinski carpet with fractal dim log 8/log 3 ≈ 1.8928. ValueTracker level_tr steps 0..4 with always_redraw rebuilding 8^L surviving YELLOW subsquares (middle 1/9 removed recursively). Live 8^L count, 3^(-L) side length, (8/9)^L total area shrinking to 0.",
+  "tags": ["sierpinski_carpet", "fractal_dimension", "self_similarity", "recursive_deletion", "value_tracker", "always_redraw"],
+  "apis": ["Rectangle", "VGroup", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"]
+}

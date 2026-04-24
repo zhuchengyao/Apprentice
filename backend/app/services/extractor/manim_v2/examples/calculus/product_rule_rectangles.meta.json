@@ -1,0 +1,8 @@
+{
+  "id": "product_rule_rectangles",
+  "category": "calculus",
+  "difficulty": 2,
+  "summary": "ValueTracker t grows an f×g rectangle (always_redraw), then at a frozen instant three differential strips appear (g·df right, f·dg top, df·dg corner). A Transform shrinks df and dg by 5× to show the red corner vanishes faster than the strips, motivating d(fg) = g·df + f·dg.",
+  "tags": ["product_rule", "differential", "rectangle_growth", "second_order", "value_tracker"],
+  "apis": ["Rectangle", "ValueTracker", "always_redraw", "Transform", "Brace", "MathTex"]
+}

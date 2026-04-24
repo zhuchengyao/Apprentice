@@ -1,0 +1,8 @@
+{
+  "id": "hopf_fibration",
+  "category": "misc_3d",
+  "difficulty": 3,
+  "summary": "ThreeDScene Hopf fibration S³→S². 8 fibers at varying latitudes on S² (red, orange, yellow, green, teal, blue, purple, pink) stereographically projected as linked Hopf-circles in ℝ³. ValueTracker t_tr drives always_redraw color-coded dots traveling around each fiber simultaneously; ambient camera rotation.",
+  "tags": ["hopf_fibration", "stereographic_projection", "s3_to_s2", "linked_circles", "value_tracker", "always_redraw"],
+  "apis": ["ThreeDAxes", "VMobject", "Dot3D", "ValueTracker", "always_redraw", "Tex"]
+}

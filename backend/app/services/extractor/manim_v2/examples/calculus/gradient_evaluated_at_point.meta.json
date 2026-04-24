@@ -1,0 +1,8 @@
+{
+  "id": "gradient_evaluated_at_point",
+  "category": "calculus",
+  "difficulty": 2,
+  "summary": "THREE_ROW: top = symbolic nabla f(x,y) = column(e^(-x^2+cos 2y)(-2x), ...(-2 sin 2y)). TransformFromCopy produces the (1,3) substitution in the middle row; a DecimalMatrix to the right shows the concrete numeric gradient. YELLOW SurroundingRectangle + caption interpret it.",
+  "tags": ["gradient", "evaluation", "decimal_matrix", "substitution"],
+  "apis": ["MathTex", "Matrix", "DecimalMatrix", "TransformFromCopy", "SurroundingRectangle", "VGroup"]
+}

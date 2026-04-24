@@ -1,0 +1,8 @@
+{
+  "id": "branch_cut_sqrt",
+  "category": "complex",
+  "difficulty": 3,
+  "summary": "TWO_COLUMN √z with principal branch cut along (-∞, 0]. LEFT ComplexPlane with RED branch cut line + YELLOW z on unit circle via ValueTracker theta_tr. RIGHT plane with GREEN √z image. always_redraw both dots + trails. Theta sweeps 0 → π, then teleports to -π to demonstrate discontinuity jump in image.",
+  "tags": ["branch_cut", "principal_branch", "square_root", "riemann_surface", "value_tracker", "always_redraw"],
+  "apis": ["ComplexPlane", "Line", "Dot", "VMobject", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"]
+}

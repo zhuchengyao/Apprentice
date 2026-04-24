@@ -1,0 +1,8 @@
+{
+  "id": "derangements",
+  "category": "combinatorics",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: axes showing pairs of bars (GREY_B n!, BLUE D_n) for n=1..7. ValueTracker n_tr reveals bars one step at a time via always_redraw. Live ratio D_n/n! converging from 0, 0.5, 0.333, 0.375, 0.367, 0.368, 0.368 → 1/e = 0.3679.",
+  "tags": ["derangements", "factorial", "inclusion_exclusion", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "Rectangle", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

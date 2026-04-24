@@ -1,0 +1,8 @@
+{
+  "id": "pendulum_time_series",
+  "category": "calculus",
+  "difficulty": 3,
+  "summary": "TWO_COLUMN: LEFT pendulum bob swinging about pivot, driven by ValueTracker t_tr through precomputed nonlinear θ(t). RIGHT axes show RED nonlinear trajectory + BLUE dashed linearized θ₀·e^(-γt)·cos(√(1-γ²)t). YELLOW rider; live θ_nl vs θ_lin gap grows with amplitude. θ₀=1.3 (~75°), γ=0.08.",
+  "tags": ["pendulum", "nonlinear_ode", "linearization", "value_tracker", "always_redraw"],
+  "apis": ["Line", "Dot", "Axes", "Axes.plot", "VMobject", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

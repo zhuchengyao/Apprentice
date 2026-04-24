@@ -1,0 +1,8 @@
+{
+  "id": "derivative_as_slope",
+  "category": "calculus",
+  "difficulty": 3,
+  "summary": "Shrink h from 1.3 to 0.05 with a ValueTracker so the red secant line through (x, f(x)) and (x+h, f(x+h)) becomes the tangent line.",
+  "tags": ["derivative", "secant", "tangent", "limit", "value_tracker"],
+  "apis": ["Axes", "Axes.plot", "Dot", "ValueTracker", "always_redraw", "MathTex"]
+}

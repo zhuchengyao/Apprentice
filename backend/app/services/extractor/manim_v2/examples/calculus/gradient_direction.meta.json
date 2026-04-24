@@ -1,0 +1,8 @@
+{
+  "id": "gradient_direction",
+  "category": "calculus",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: NumberPlane with 3 concentric BLUE level circles of f=x²+y² at c=1, 4, 9. ValueTracker θ_tr walks a GREEN probe dot around x²+y²=4; always_redraw YELLOW ∇f=(2x,2y) gradient arrow + perpendicular RED tangent arrow. Live panel has (x, y), ∇f, and ∇f·t=0 identity.",
+  "tags": ["gradient", "level_curve", "perpendicular", "value_tracker", "always_redraw"],
+  "apis": ["NumberPlane", "Circle", "Arrow", "Dot", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

@@ -1,0 +1,9 @@
+{
+  "id": "ring_to_thin_rectangle",
+  "category": "calculus",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS: unroll a thin ring of radius R=1.8, thickness dr=0.25 into a rectangle. 100-pt polygon morphs via ValueTracker s_tr interpolating each boundary pair between circle and straight strip. Labels reveal 2πR and dr at the end. Area stamp = 2πR·dr.",
+  "tags": ["unroll_ring", "ring_to_rectangle", "infinitesimal_area", "value_tracker", "always_redraw"],
+  "apis": ["Circle", "Polygon", "VGroup", "ValueTracker", "always_redraw", "Tex"],
+  "source": "3b1b/_2017/eoc/chapter1.py::ApproximateOneRing+IntroduceCircle.unwrap_ring"
+}

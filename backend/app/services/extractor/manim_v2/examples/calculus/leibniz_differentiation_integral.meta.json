@@ -1,0 +1,8 @@
+{
+  "id": "leibniz_differentiation_integral",
+  "category": "calculus",
+  "difficulty": 3,
+  "summary": "TWO_COLUMN: LEFT axes with BLUE integrand f(x, t) = x²t on [0, t], YELLOW dashed x=t boundary; shaded area. RIGHT axes with GREEN I(t) = t⁴/3 + YELLOW rider. ValueTracker t_tr advances; panel verifies Leibniz rule dI/dt = f(t,t) + ∫ ∂_t f = t³ + t³/3 = 4t³/3.",
+  "tags": ["leibniz_rule", "differentiation_under_integral", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "Axes.plot", "Polygon", "DashedLine", "Dot", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

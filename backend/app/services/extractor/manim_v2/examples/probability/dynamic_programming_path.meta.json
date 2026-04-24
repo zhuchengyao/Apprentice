@@ -1,0 +1,8 @@
+{
+  "id": "dynamic_programming_path",
+  "category": "probability",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: 5×8 grid with random costs 1..9. ValueTracker step_tr fills dp[r,c] = cost + min(dp[r-1,c], dp[r,c-1]) via always_redraw YELLOW cell highlights + values. Phase 2: path_tr traces optimal path in RED via traceback from bottom-right. Live total cost and cells-filled panel.",
+  "tags": ["dynamic_programming", "grid", "shortest_path", "value_tracker", "always_redraw"],
+  "apis": ["Square", "Dot", "Line", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

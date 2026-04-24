@@ -1,0 +1,8 @@
+{
+  "id": "piano_harmonics_spectrum",
+  "category": "calculus",
+  "difficulty": 2,
+  "summary": "TWO_COLUMN: LEFT axes with BLUE time signal y(t) = Σ A_k cos(2π k f₀ t) for 5 harmonics (A = [1.0, 0.55, 0.35, 0.22, 0.12]); always_redraw YELLOW rider as ValueTracker t_tr sweeps 0→4. RIGHT axes with RED stem spectrum at k=1..5 with amplitudes. Legend text relates time and frequency.",
+  "tags": ["fourier_series", "harmonics", "piano", "spectrum", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "Axes.plot", "Line", "Dot", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

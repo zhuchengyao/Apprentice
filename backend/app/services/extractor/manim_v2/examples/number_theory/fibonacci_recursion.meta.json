@@ -1,0 +1,8 @@
+{
+  "id": "fibonacci_recursion",
+  "category": "number_theory",
+  "difficulty": 1,
+  "summary": "SINGLE_FOCUS: 16 BLUE bar heights proportional to F_0..F_15 (0, 1, 1, 2, 3, 5, 8, 13, ..., 610); ValueTracker n_tr reveals them one at a time via always_redraw. Live panel shows F_n and ratio F_n/F_(n-1) converging to φ ≈ 1.61803.",
+  "tags": ["fibonacci", "golden_ratio", "recursion", "value_tracker", "always_redraw"],
+  "apis": ["Rectangle", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

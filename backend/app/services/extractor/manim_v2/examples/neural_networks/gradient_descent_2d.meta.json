@@ -1,0 +1,8 @@
+{
+  "id": "gradient_descent_2d",
+  "category": "neural_networks",
+  "difficulty": 3,
+  "summary": "Render a paraboloid loss surface in 3D and animate a yellow ball walking 15 gradient-descent steps down to the minimum via MoveAlongPath.",
+  "tags": ["gradient_descent", "optimization", "loss_surface", "3d", "animation"],
+  "apis": ["ThreeDScene", "ThreeDAxes", "Surface", "Sphere", "VMobject", "MoveAlongPath"]
+}

@@ -1,0 +1,8 @@
+{
+  "id": "geometric_series_half",
+  "category": "analysis",
+  "difficulty": 1,
+  "summary": "SINGLE_FOCUS: Unit interval with GREEN fill bar for S_n = 1 - 1/2^n and small YELLOW ticks marking each partial sum. ValueTracker n_tr sweeps 1 → 15 via always_redraw; live panel shows n, S_n, and gap 1/2^n shrinking to 3e-5.",
+  "tags": ["geometric_series", "partial_sums", "convergence", "value_tracker", "always_redraw"],
+  "apis": ["Line", "Rectangle", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

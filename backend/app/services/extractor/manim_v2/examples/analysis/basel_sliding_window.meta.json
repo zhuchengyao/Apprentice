@@ -1,0 +1,8 @@
+{
+  "id": "basel_sliding_window",
+  "category": "analysis",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: number-line from 0 to 2 with YELLOW target π²/6 marker. ValueTracker N_tr grows 1→40; always_redraw a row of BLUE→RED colored bars representing successive terms 1/k² placed left-to-right (cumulative), with a GREEN marker at the running partial sum S_N. Live panel shows N, S_N, gap = π²/6 − S_N, and gap ∼ 1/N.",
+  "tags": ["basel", "partial_sums", "pi_squared_over_six", "value_tracker", "always_redraw"],
+  "apis": ["NumberLine", "Line", "Rectangle", "Dot", "VGroup", "ValueTracker", "always_redraw", "interpolate_color", "MathTex", "Tex"]
+}

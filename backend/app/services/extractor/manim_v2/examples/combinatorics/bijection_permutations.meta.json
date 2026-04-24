@@ -1,0 +1,8 @@
+{
+  "id": "bijection_permutations",
+  "category": "combinatorics",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: composition of permutations σ=(3, 5, 4, 1, 2), τ=(2, 1, 4, 5, 3) on n=5 elements. Three rows: BLUE top, GREEN middle, ORANGE bottom. ValueTracker t_tr phases through drawing GREEN σ arrows, ORANGE τ arrows, then RED direct τ∘σ=(4, 3, 5, 2, 1) arrows via always_redraw.",
+  "tags": ["permutations", "group_composition", "bijection", "symmetric_group", "value_tracker", "always_redraw"],
+  "apis": ["Dot", "Arrow", "VGroup", "ValueTracker", "always_redraw", "Tex"]
+}

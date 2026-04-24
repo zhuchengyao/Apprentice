@@ -1,0 +1,8 @@
+{
+  "id": "ladybug_on_stick",
+  "category": "geometry",
+  "difficulty": 2,
+  "summary": "Ladybug walks a fixed distance; the stick stretches uniformly between steps. The bug's proportional position is preserved, so it eventually reaches the end.",
+  "tags": ["ant_on_rubber_rope", "puzzle", "limit", "proportional_position", "harmonic_series"],
+  "apis": ["Line", "Dot", "Transform", "MathTex"]
+}

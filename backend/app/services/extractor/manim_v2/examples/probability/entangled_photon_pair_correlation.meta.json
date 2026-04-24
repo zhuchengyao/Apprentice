@@ -1,0 +1,8 @@
+{
+  "id": "entangled_photon_pair_correlation",
+  "category": "probability",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS: top schematic of a YELLOW central source sending entangled photons to a fixed BLUE filter A (θ=0°) and a rotatable GREEN filter B with angle driven by ValueTracker theta_tr. always_redraw rebuilds filter B with rotated Line axis and MathTex angle label. Bottom Axes plot of the QM disagreement-probability curve P(differ) = sin²θ (PURPLE). YELLOW always_redraw rider Dot on the curve + top-right always_redraw readout showing θ, P(match)=1-sin²θ GREEN, P(differ)=sin²θ RED. Tour 30°→45°→60°→90°→22.5°.",
+  "tags": ["entanglement", "bell_test", "polarization_correlation", "value_tracker", "always_redraw", "quantum_optics"],
+  "apis": ["Circle", "Line", "Dot", "Axes", "Axes.plot", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

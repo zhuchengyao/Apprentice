@@ -1,0 +1,9 @@
+{
+  "id": "cross_determinant_trick",
+  "category": "linear_algebra",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: determinant mnemonic for 3D cross. Top: v×w = det of [[î, ĵ, k̂], [v_1, v_2, v_3], [w_1, w_2, w_3]]. Laplace expansion along first row gives three terms î(v_2 w_3-v_3 w_2) - ĵ(...) + k̂(...). Bottom example with (1, 2, 3)×(4, -1, 2).",
+  "tags": ["cross_product_formula", "determinant_trick", "laplace_expansion", "3d_cross"],
+  "apis": ["MathTex", "VGroup", "Tex"],
+  "source": "3b1b/_2016/eola/chapter8.py::DeterminantTrick+ShowCrossProductFormula"
+}

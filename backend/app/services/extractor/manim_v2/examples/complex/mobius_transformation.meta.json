@@ -1,0 +1,8 @@
+{
+  "id": "mobius_transformation",
+  "category": "complex",
+  "difficulty": 3,
+  "summary": "COMPARISON: LEFT z-plane with 3 concentric circles (r=0.5, 1, 2) and vertical/horizontal lines; RIGHT w-plane with w = 1/z image. ValueTracker s_tr morphs each point from source to target via (1-s)z + s/z. Circles radius<1 become radius>1 and vice versa; straight lines become circles through origin.",
+  "tags": ["mobius_transformation", "complex_inversion", "conformal_map", "value_tracker", "always_redraw"],
+  "apis": ["ComplexPlane", "VMobject", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

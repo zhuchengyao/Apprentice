@@ -1,0 +1,8 @@
+{
+  "id": "law_of_cosines",
+  "category": "geometry",
+  "difficulty": 1,
+  "summary": "SINGLE_FOCUS: triangle with fixed sides a=2.5, b=1.7; ValueTracker gamma_tr sweeps included angle through 60°, 90° (Pythagoras), 120°, 30°, 150°. always_redraw triangle + BLUE angle arc + side labels. Live c² = a²+b²-2ab cos γ panel verifies identity.",
+  "tags": ["law_of_cosines", "triangle", "trigonometric_identity", "value_tracker", "always_redraw"],
+  "apis": ["Polygon", "Arc", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

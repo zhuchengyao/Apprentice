@@ -1,0 +1,8 @@
+{
+  "id": "gaussian_uncertainty",
+  "category": "probability",
+  "difficulty": 2,
+  "summary": "Show a position Gaussian and its momentum Fourier partner widening when the other narrows, illustrating σx·σp ≥ ℏ/2.",
+  "tags": ["uncertainty_principle", "gaussian", "fourier", "quantum", "variance"],
+  "apis": ["Axes", "plot", "ValueTracker", "always_redraw", "MathTex"]
+}

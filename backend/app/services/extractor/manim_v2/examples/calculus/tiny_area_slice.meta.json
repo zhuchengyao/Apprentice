@@ -1,0 +1,8 @@
+{
+  "id": "tiny_area_slice",
+  "category": "calculus",
+  "difficulty": 2,
+  "summary": "Shade area under f(x)=0.4x²+0.3 from 0 to x₀; shrink a thin yellow rectangle of width dx at x₀ to motivate dA/dx = f(x).",
+  "tags": ["fundamental_theorem", "area_function", "derivative", "integral", "slice"],
+  "apis": ["Axes", "plot", "get_area", "ValueTracker", "always_redraw", "Polygon", "MathTex"]
+}

@@ -1,0 +1,8 @@
+{
+  "id": "recurrent_lstm",
+  "category": "neural_networks",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS: block diagram of LSTM cell — input → 4 gates (f forget, i input, g tanh, o output) → combine with c_{t-1} via ⊙ and + → c_t → tanh → ⊙o → h_t. ValueTracker step_tr reveals 5 stages via always_redraw blocks + arrows.",
+  "tags": ["lstm", "recurrent", "gates", "value_tracker", "always_redraw"],
+  "apis": ["Rectangle", "Arrow", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

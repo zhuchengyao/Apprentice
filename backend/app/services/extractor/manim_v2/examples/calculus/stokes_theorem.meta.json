@@ -1,0 +1,8 @@
+{
+  "id": "stokes_theorem",
+  "category": "calculus",
+  "difficulty": 3,
+  "summary": "ThreeDScene for Stokes' theorem on upper hemisphere with F=(-y,x,0). ValueTracker phi_tr sweeps boundary dr parameter 0→2π with always_redraw orange arc and GREEN tangent probe. LHS = 2π. Phase 2 adds 60 surface-normal arrows color-coded by (∇×F)·n=2cos u to show RHS = 2π.",
+  "tags": ["stokes_theorem", "vector_calculus", "curl", "surface_integral", "line_integral", "value_tracker", "always_redraw"],
+  "apis": ["ThreeDAxes", "Surface", "ParametricFunction", "Arrow3D", "ValueTracker", "always_redraw", "Tex"]
+}

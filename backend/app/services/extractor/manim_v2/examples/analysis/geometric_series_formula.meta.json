@@ -1,0 +1,8 @@
+{
+  "id": "geometric_series_formula",
+  "category": "analysis",
+  "difficulty": 2,
+  "summary": "TWO_COLUMN: Axes left with always_redraw partial-sum curve S_N and dashed limit line 1/(1-r). Two ValueTrackers r and N. Three phases: r=0.5 N→30, then r=-0.5 (alternating), then r=0.9 (slow climb to 10). Right column has live r, N, S_N, limit, and gap.",
+  "tags": ["geometric_series", "convergence", "value_tracker", "always_redraw", "limit"],
+  "apis": ["Axes", "VMobject", "set_points_as_corners", "DashedLine", "ValueTracker", "always_redraw", "Dot", "MathTex", "Tex"]
+}

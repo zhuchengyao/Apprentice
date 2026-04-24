@@ -1,0 +1,8 @@
+{
+  "id": "stereographic_from_sphere",
+  "category": "misc_3d",
+  "difficulty": 3,
+  "summary": "ThreeDScene: unit sphere + equatorial plane + RED north pole N. ValueTracker phi_tr moves GREEN point along a latitude circle; always_redraw YELLOW ray from N to ORANGE projection on plane + GREEN lat circle + ORANGE projected circle. Two phases at latitudes 45° and 75° (larger projection).",
+  "tags": ["stereographic_projection", "sphere", "conformal_map", "value_tracker", "always_redraw"],
+  "apis": ["ThreeDScene", "ThreeDAxes", "Sphere", "Square", "Line", "Dot3D", "VMobject", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

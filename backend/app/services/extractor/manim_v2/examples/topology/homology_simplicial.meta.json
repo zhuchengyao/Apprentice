@@ -1,0 +1,8 @@
+{
+  "id": "homology_simplicial",
+  "category": "topology",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS simplicial homology of triangulated annulus. 8 BLUE outer + 8 GREEN inner vertices; 32 edges progressively revealed (ring + cross + diagonal) via ValueTracker step_tr, then 16 triangular faces (YELLOW→ORANGE). Live V=16, E=32, F=16 ⇒ V-E+F=0 matching β_0-β_1=1-1=0 for annulus.",
+  "tags": ["simplicial_homology", "annulus", "euler_characteristic", "betti_numbers", "value_tracker", "always_redraw"],
+  "apis": ["Dot", "Line", "Polygon", "VGroup", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"]
+}

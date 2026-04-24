@@ -1,0 +1,8 @@
+{
+  "id": "envelope_of_lines",
+  "category": "geometry",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS: NumberPlane with 50 BLUE lines x cos t + y sin t = 1 (tangents to unit circle) revealed progressively by ValueTracker t_tr via always_redraw. At n≥40, YELLOW envelope unit circle appears as the tangent-to-every-line curve.",
+  "tags": ["envelope_of_lines", "tangent_family", "value_tracker", "always_redraw"],
+  "apis": ["NumberPlane", "Line", "Circle", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

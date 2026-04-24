@@ -1,0 +1,8 @@
+{
+  "id": "rayleigh_quotient",
+  "category": "linear_algebra",
+  "difficulty": 2,
+  "summary": "TWO_COLUMN Rayleigh quotient for A=[[3, 1], [1, 2]] (λ≈3.618, 1.382). LEFT NumberPlane with BLUE unit circle + RED min-λ and GREEN max-λ eigenvector dashes + YELLOW rotating x arrow + ORANGE Ax/2 arrow. RIGHT axes with YELLOW R(θ)=x^T A x curve, dashed λ references. ValueTracker theta_tr sweeps 0→2π; live θ, R(x).",
+  "tags": ["rayleigh_quotient", "symmetric_matrix", "eigenvalue", "quadratic_form", "value_tracker", "always_redraw"],
+  "apis": ["NumberPlane", "Axes", "Circle", "Arrow", "DashedLine", "Dot", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"]
+}

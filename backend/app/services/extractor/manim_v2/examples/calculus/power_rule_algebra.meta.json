@@ -1,0 +1,9 @@
+{
+  "id": "power_rule_algebra",
+  "category": "calculus",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: power rule d(x^n)/dx = n·x^(n-1) derivation. 3-line sequence: binomial expansion (x+dx)^n = x^n + n x^(n-1) dx + C(n, 2) x^(n-2) dx² + ...; divide by dx; limit dx→0 keeps only n x^(n-1). Examples for n=2, 3, 5.",
+  "tags": ["power_rule", "binomial_expansion", "general_derivative", "limit_derivation"],
+  "apis": ["MathTex", "VGroup", "Tex"],
+  "source": "3b1b/_2017/eoc/chapter3.py::PatternForPowerRule+PowerRuleAlgebra"
+}

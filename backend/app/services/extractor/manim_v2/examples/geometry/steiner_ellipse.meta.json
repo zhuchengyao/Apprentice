@@ -1,0 +1,8 @@
+{
+  "id": "steiner_ellipse",
+  "category": "geometry",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS: variable-apex triangle ABC with always_redraw GREEN Steiner inellipse (tangent to all sides at midpoints) computed via affine transform of unit circle mapping equilateral reference triangle to ABC. RED midpoint dots, BLUE centroid (= ellipse center). ValueTracker theta_tr tours apex angles.",
+  "tags": ["steiner_ellipse", "inscribed_ellipse", "triangle_geometry", "value_tracker", "always_redraw"],
+  "apis": ["Polygon", "VMobject", "Dot", "VGroup", "ValueTracker", "always_redraw", "Tex"]
+}

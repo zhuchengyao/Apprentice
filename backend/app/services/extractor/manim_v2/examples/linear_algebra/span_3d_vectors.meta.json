@@ -1,0 +1,8 @@
+{
+  "id": "span_3d_vectors",
+  "category": "linear_algebra",
+  "difficulty": 3,
+  "summary": "3D scene: three column-vectors RED/GREEN/BLUE + YELLOW always_redraw parallelepiped. State cycles through M_full (rank 3, full 3D span), M_plane (rank 2, planar span), M_line (rank 1, line span). Ambient camera rotation; Transform swaps fixed-frame panels showing |det|, rank, and span description.",
+  "tags": ["span", "3d_vectors", "rank", "value_tracker", "always_redraw", "transform"],
+  "apis": ["ThreeDScene", "ThreeDAxes", "Line", "Polygon", "VGroup", "ValueTracker", "always_redraw", "Transform", "MathTex", "Tex"]
+}

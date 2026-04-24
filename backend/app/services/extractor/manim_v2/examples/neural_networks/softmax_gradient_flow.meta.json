@@ -1,0 +1,8 @@
+{
+  "id": "softmax_gradient_flow",
+  "category": "neural_networks",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS softmax Jacobian for 4 classes. 4×4 heatmap of ∂p_i/∂z_j = p_i(δ_ij - p_j); diagonal GREEN (positive), off-diagonal RED (negative). ValueTracker scale_tr multiplies logits by {0.5, 1.5, 3.0, 0.1, 5.0, 1.0} showing Jacobian dynamics: high scale → near-one-hot → small gradients. Live p_1..p_4.",
+  "tags": ["softmax_jacobian", "gradient_flow", "delta_function", "backprop", "value_tracker", "always_redraw"],
+  "apis": ["Square", "VGroup", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"]
+}

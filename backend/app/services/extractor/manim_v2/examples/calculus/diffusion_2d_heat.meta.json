@@ -1,0 +1,8 @@
+{
+  "id": "diffusion_2d_heat",
+  "category": "calculus",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: 25×15 heat-map grid colored BLUE_E → RED by u(x,y,t) = σ₀²/(4αt+σ₀²) · exp(-(x²+y²)/(4αt+σ₀²)). ValueTracker t_tr advances 0 → 5; always_redraw cells; spatial std σ = √(4αt+σ₀²) grows from 0.3 toward 2.0. Live panel t, σ, α.",
+  "tags": ["heat_diffusion", "2d_pde", "gaussian_spreading", "value_tracker", "always_redraw"],
+  "apis": ["Square", "VGroup", "ValueTracker", "always_redraw", "interpolate_color", "MathTex", "Tex"]
+}

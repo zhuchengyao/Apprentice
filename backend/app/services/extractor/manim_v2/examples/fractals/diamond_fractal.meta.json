@@ -1,0 +1,8 @@
+{
+  "id": "diamond_fractal",
+  "category": "fractals",
+  "difficulty": 2,
+  "summary": "Replace each diamond (square at 45°) with four half-size diamonds at its vertex directions, iterating four times.",
+  "tags": ["fractal", "diamond", "sierpinski", "self_similar", "recursion"],
+  "apis": ["Polygon", "VGroup", "Transform", "FadeIn"]
+}

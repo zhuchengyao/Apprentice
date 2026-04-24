@@ -1,0 +1,8 @@
+{
+  "id": "medical_test_bayes",
+  "category": "probability",
+  "difficulty": 3,
+  "summary": "TWO_COLUMN: 10×10 dot population on left whose colors recolor each frame as ValueTracker prior_pct sweeps 1%→30%; sick dots (RED) and false positives (ORANGE) update by counts. Right column has live prior, P(+|sick), P(+|healthy), P(+), posterior, plus a mini-axes plot of posterior vs prior with a moving cursor.",
+  "tags": ["bayes", "medical_test", "value_tracker", "always_redraw", "posterior_curve"],
+  "apis": ["Dot", "VGroup", "ValueTracker", "always_redraw", "Axes", "plot", "MathTex", "Tex"]
+}

@@ -1,0 +1,8 @@
+{
+  "id": "bayes_theorem",
+  "category": "probability",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS unit-square contingency table: 4 always_redraw cells (TP/FN yellow/red on left H column, FP/TN orange/blue on right ¬H column) update via 3 ValueTrackers (prior, P(E|H), P(E|¬H)). Sweep through 5 (prior, likelihoods) configs including the rare-disease case. Right column has live values + posterior.",
+  "tags": ["bayes", "contingency_table", "value_tracker", "always_redraw", "posterior"],
+  "apis": ["Rectangle", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

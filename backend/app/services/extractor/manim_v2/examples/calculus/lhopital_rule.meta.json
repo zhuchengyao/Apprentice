@@ -1,0 +1,8 @@
+{
+  "id": "lhopital_rule",
+  "category": "calculus",
+  "difficulty": 2,
+  "summary": "TWO_COLUMN: top-left axes show f(x)=sin x and g(x)=x with always_redraw dots; bottom-left axes show their ratio sin(x)/x (with safe_ratio handling x≈0). ValueTracker x sweeps 1.5→0.001. Right column shows live f, g, f/g, f', g', f'/g' = 1.",
+  "tags": ["lhopital", "limit", "ratio", "value_tracker", "indeterminate_form"],
+  "apis": ["Axes", "plot", "ValueTracker", "always_redraw", "Dot", "MathTex", "Tex"]
+}

@@ -1,0 +1,8 @@
+{
+  "id": "polya_enumeration",
+  "category": "combinatorics",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS: 4-bead necklace with ValueTracker k_tr (color count 1-4). always_redraw colored beads in pattern + counts. Pólya formula Z(C_4)·k = (k^4+k²+2k)/4 gives distinct necklaces under rotation: 1, 6, 24, 70 for k=1,2,3,4.",
+  "tags": ["polya_enumeration", "burnside", "necklace", "value_tracker", "always_redraw"],
+  "apis": ["Circle", "Line", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

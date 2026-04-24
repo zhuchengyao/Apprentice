@@ -1,0 +1,8 @@
+{
+  "id": "two_to_the_256",
+  "category": "number_theory",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: log10 scale 0..80 with fixed reference markers (10^9 seconds-in-30y, 10^22 stars, 10^50 atoms in Earth, 10^80 atoms in universe). ValueTracker k_tr steps k = 8, 16, 32, 64, 128, 256 via always_redraw YELLOW cursor + reading 2^k. Final: 2^256 ≈ 1.158 × 10^77.",
+  "tags": ["powers_of_two", "large_numbers", "log_scale", "value_tracker", "always_redraw"],
+  "apis": ["NumberLine", "Line", "Dot", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

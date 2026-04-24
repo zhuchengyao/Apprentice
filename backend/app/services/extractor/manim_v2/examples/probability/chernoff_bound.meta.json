@@ -1,0 +1,8 @@
+{
+  "id": "chernoff_bound",
+  "category": "probability",
+  "difficulty": 3,
+  "summary": "TWO_COLUMN: axes with BLUE static Bin(40, 0.4) PMF; RED shaded tail k ≥ (1+δ)np + YELLOW dashed threshold. ValueTracker delta_tr tours δ=0.2, 0.4, 0.8, 1.2; always_redraw tail region. Live empirical P vs Chernoff bound exp(-δ²np/(2+δ)).",
+  "tags": ["chernoff_bound", "concentration_inequality", "binomial_tail", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "Rectangle", "DashedLine", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

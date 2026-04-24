@@ -1,0 +1,8 @@
+{
+  "id": "bertrands_paradox",
+  "category": "probability",
+  "difficulty": 3,
+  "summary": "COMPARISON 3-panel: Bertrand's paradox via three sampling methods — random endpoints, radial midpoint, interior midpoint. Each circle has 50 precomputed chords; ValueTracker n_tr grows the sample count via always_redraw, drawing YELLOW chords for length > √3·R, grey otherwise. Live p̂ and theoretical limit 1/3, 1/2, 1/4 below each panel.",
+  "tags": ["bertrand_paradox", "random_chord", "value_tracker", "always_redraw"],
+  "apis": ["Circle", "Line", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

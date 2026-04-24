@@ -1,0 +1,8 @@
+{
+  "id": "gaussian_integer_lattice_ring_count",
+  "category": "number_theory",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS: NumberPlane (-6..6) with BLUE Gaussian integer dots (a,b) for a^2+b^2 ≤ 25. ValueTracker r2_tr steps through r^2 = 1,2,4,5,8,9,10,13,16,17,18,20,25 drawing a YELLOW always_redraw Circle of radius sqrt(r^2) and highlighting the matching RED lattice points for each r^2. Panel on right shows live Integer r^2 and Integer count via set_value.",
+  "tags": ["gaussian_integers", "lattice_points", "sum_of_two_squares", "value_tracker", "always_redraw", "ring_count"],
+  "apis": ["NumberPlane", "Circle", "Dot", "VGroup", "ValueTracker", "always_redraw", "Integer", "MathTex", "Tex", "LaggedStart"]
+}

@@ -1,0 +1,8 @@
+{
+  "id": "zeckendorf_representation",
+  "category": "combinatorics",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: Zeckendorf decomposition. 11 BLUE Fibonacci boxes F_2..F_12 = 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144. ValueTracker n_idx_tr tours n∈{37, 100, 57, 64, 78, 123, 100} triggering greedy algorithm; always_redraw YELLOW highlight boxes + equation at bottom n=F_a+F_b+... (never consecutive indices).",
+  "tags": ["zeckendorf", "fibonacci_numbers", "greedy_algorithm", "unique_representation", "value_tracker", "always_redraw"],
+  "apis": ["Rectangle", "VGroup", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"]
+}

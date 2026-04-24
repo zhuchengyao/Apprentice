@@ -1,0 +1,8 @@
+{
+  "id": "multilayered_refraction",
+  "category": "geometry",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS: stratified medium with N layers (each refractive index increasing top to bottom); ValueTracker N_layers steps 1, 3, 8, 16, 30. always_redraw recomputes the broken-line ray path through each layer using Snell's invariant n·sin(θ) = const. Right column has live N, Snell formula.",
+  "tags": ["snell_law", "refraction", "value_tracker", "always_redraw", "stratified"],
+  "apis": ["Rectangle", "VMobject", "set_points_as_corners", "VGroup", "ValueTracker", "always_redraw", "interpolate_color", "MathTex", "Tex"]
+}

@@ -1,0 +1,8 @@
+{
+  "id": "koch_snowflake",
+  "category": "fractals",
+  "difficulty": 3,
+  "summary": "Start from an equilateral triangle and iteratively replace each segment's middle third with a bumped-outward triangle, Transform-ing through four Koch iterations.",
+  "tags": ["fractal", "koch_snowflake", "self_similar", "recursion", "iterated"],
+  "apis": ["VMobject", "VMobject.set_points_as_corners", "Transform"]
+}

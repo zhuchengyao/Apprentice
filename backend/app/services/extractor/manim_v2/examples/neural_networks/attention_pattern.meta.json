@@ -1,0 +1,8 @@
+{
+  "id": "attention_pattern",
+  "category": "neural_networks",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: 5×5 attention heatmap on tokens [the, cat, sat, on, mat]. ValueTracker query_idx steps through queries; always_redraw recolors the active row in ORANGE and highlights it with a yellow box. Right column shows current query and its top-attended key with weight, plus the softmax formula.",
+  "tags": ["attention", "softmax", "transformer", "value_tracker", "always_redraw"],
+  "apis": ["Rectangle", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

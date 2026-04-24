@@ -1,0 +1,8 @@
+{
+  "id": "softmax_temperature",
+  "category": "neural_networks",
+  "difficulty": 2,
+  "summary": "TWO_COLUMN softmax with temperature T. LEFT 8 colored bars for p_i(T)=exp(x_i/T)/Z over logits [2.1, -1.3, 0.5, 3.0, 1.2, -0.4, 2.4, -2.5] via always_redraw. ValueTracker T_tr tours T={2, 0.5, 0.15, 0.05, 1, 5, 20, 1}. T→0: 1-hot. T→∞: uniform. RIGHT live T, entropy H(p), log 8 bound.",
+  "tags": ["softmax", "temperature_scaling", "entropy", "sampling", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "Rectangle", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"]
+}

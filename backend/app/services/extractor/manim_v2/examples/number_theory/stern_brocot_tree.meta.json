@@ -1,0 +1,8 @@
+{
+  "id": "stern_brocot_tree",
+  "category": "number_theory",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS Stern-Brocot tree. ValueTracker level_tr reveals levels 1→5; always_redraw builds each level by inserting mediants (a+c)/(b+d) between consecutive pairs. RED endpoints 0/1, ∞; BLUE→TEAL interior ancestor levels; YELLOW current level; GREY edges connect each mediant to its two parents. Live 2^L+1 fraction count.",
+  "tags": ["stern_brocot", "mediant", "rationals_enumeration", "continued_fractions", "value_tracker", "always_redraw"],
+  "apis": ["Line", "VGroup", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"]
+}

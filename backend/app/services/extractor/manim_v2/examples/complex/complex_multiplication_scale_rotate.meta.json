@@ -1,0 +1,8 @@
+{
+  "id": "complex_multiplication_scale_rotate",
+  "category": "complex",
+  "difficulty": 2,
+  "summary": "Move a point p=2 along a curved arc to (1+i)p, leaving a trail, to show multiplication by 1+i as simultaneous scale-by-sqrt(2) and rotate-by-45-degrees.",
+  "tags": ["complex_numbers", "multiplication", "rotation", "scaling", "path_arc"],
+  "apis": ["ComplexPlane", "Dot", "TracedPath", "Transform", "MathTex"]
+}

@@ -1,0 +1,8 @@
+{
+  "id": "exponential_memoryless",
+  "category": "probability",
+  "difficulty": 2,
+  "summary": "TWO_COLUMN: axes with BLUE Exp(0.8) pdf. ValueTracker s_tr slides conditioning point 0→3; always_redraw GREY shaded {t>s} tail + GREEN dashed vertical + ORANGE conditional-density curve (same shape, shifted right). Live P(X>s), and ORANGE = BLUE scaled identically — memoryless.",
+  "tags": ["exponential_distribution", "memoryless", "conditional_probability", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "Axes.plot", "Polygon", "DashedLine", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

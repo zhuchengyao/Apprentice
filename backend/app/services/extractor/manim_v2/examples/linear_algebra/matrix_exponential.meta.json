@@ -1,0 +1,8 @@
+{
+  "id": "matrix_exponential",
+  "category": "linear_algebra",
+  "difficulty": 3,
+  "summary": "TWO_COLUMN: ValueTracker t rotates î (green) and ĵ (red) on the left plane via e^(At) for A=[[0,-1],[1,0]]. Right column has live t, cos t, sin t, the closed-form rotation matrix, AND a 7-term partial-sum approximation that agrees to ~4 decimals — showing the series and matrix exponential are the same object.",
+  "tags": ["matrix_exponential", "rotation", "taylor_series", "value_tracker", "always_redraw"],
+  "apis": ["NumberPlane", "Arrow", "ValueTracker", "always_redraw", "MathTex", "Tex", "numpy"]
+}

@@ -1,0 +1,8 @@
+{
+  "id": "torus_knot",
+  "category": "misc_3d",
+  "difficulty": 3,
+  "summary": "ThreeDScene: T(3, q) torus knot on BLUE torus (R=2, r=0.7). Parametric curve ((R+r cos qθ)cos pθ, (R+r cos qθ)sin pθ, r sin qθ). Phase 1: ValueTracker t_max_tr grows YELLOW knot 0→2π. Phase 2: q_tr morphs q: 2 (trefoil) → 5 → 2. always_redraw surface + curve; ambient rotation.",
+  "tags": ["torus_knot", "trefoil", "parametric_curve", "knot_theory", "value_tracker", "always_redraw"],
+  "apis": ["ThreeDAxes", "Surface", "VMobject", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"]
+}

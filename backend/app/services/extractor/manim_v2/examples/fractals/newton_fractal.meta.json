@@ -1,0 +1,8 @@
+{
+  "id": "newton_fractal",
+  "category": "fractals",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS heatmap: 80×60 cells colored by which of the 3 cube roots of 1 attracts each starting z₀ under Newton iteration. ValueTracker iters sweeps 1→25, history precomputed; basin boundaries materialize as iter count grows. Three black-dot roots overlaid; legend below; live iter readout + iteration formula.",
+  "tags": ["newton_fractal", "basin_of_attraction", "value_tracker", "always_redraw", "complex"],
+  "apis": ["Rectangle", "VGroup", "ValueTracker", "always_redraw", "Dot", "numpy", "MathTex", "Tex"]
+}

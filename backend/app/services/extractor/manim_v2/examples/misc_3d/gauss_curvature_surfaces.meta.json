@@ -1,0 +1,8 @@
+{
+  "id": "gauss_curvature_surfaces",
+  "category": "misc_3d",
+  "difficulty": 3,
+  "summary": "ThreeDScene: Gauss curvature comparison. ValueTracker s_tr morphs between sphere (K>0, BLUE-TEAL), cylinder (K=0, GREEN-YELLOW), and saddle z=xy (K<0, ORANGE-RED) via surface-point interpolation. always_redraw Surface with gradient coloring. Dynamic description text at bottom; live morph parameter.",
+  "tags": ["gauss_curvature", "surface_geometry", "positive_zero_negative", "extrinsic_curvature", "value_tracker", "always_redraw"],
+  "apis": ["ThreeDAxes", "Surface", "DecimalNumber", "ValueTracker", "always_redraw", "add_updater", "Tex"]
+}

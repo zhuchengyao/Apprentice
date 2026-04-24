@@ -1,0 +1,8 @@
+{
+  "id": "euclid_gcd_algorithm",
+  "category": "number_theory",
+  "difficulty": 1,
+  "summary": "SINGLE_FOCUS: step-by-step gcd(1071, 462) = 21 shown as rows '1071 = 2·462 + 147', '462 = 3·147 + 21', '147 = 7·21 + 0'. ValueTracker step_tr reveals rows via always_redraw; final gcd boxed in YELLOW. Side panel shows current a, b, quotient, remainder.",
+  "tags": ["euclid_algorithm", "gcd", "value_tracker", "always_redraw"],
+  "apis": ["Rectangle", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

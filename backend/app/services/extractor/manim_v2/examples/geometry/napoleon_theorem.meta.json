@@ -1,0 +1,8 @@
+{
+  "id": "napoleon_theorem",
+  "category": "geometry",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS: variable-apex triangle ABC (YELLOW) + 3 outer BLUE equilateral triangles built on each side. GREEN Napoleon-triangle through the 3 centroids always equilateral. ValueTracker theta_tr moves apex; always_redraw everything + live panel verifies |s_1|=|s_2|=|s_3|.",
+  "tags": ["napoleon_theorem", "equilateral_triangle", "value_tracker", "always_redraw"],
+  "apis": ["Polygon", "Dot", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

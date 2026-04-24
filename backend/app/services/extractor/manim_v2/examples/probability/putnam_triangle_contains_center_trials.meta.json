@@ -1,0 +1,8 @@
+{
+  "id": "putnam_triangle_contains_center_trials",
+  "category": "probability",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS: NumberPlane with BLUE unit circle + WHITE center dot. 60-trial loop: draws 3 random points on the circle, connects them into a GREEN-filled triangle if it contains the center else RED-filled. Right panel has Integer trial count, Integer contained count, DecimalNumber running fraction converging to the YELLOW theory value 1/4.",
+  "tags": ["probability", "putnam", "monte_carlo", "empirical", "running_fraction", "triangle"],
+  "apis": ["NumberPlane", "Circle", "Polygon", "Dot", "Integer", "DecimalNumber", "MathTex", "Tex", "VGroup"]
+}

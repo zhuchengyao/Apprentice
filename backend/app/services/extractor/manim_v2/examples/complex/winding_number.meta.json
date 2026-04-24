@@ -1,0 +1,8 @@
+{
+  "id": "winding_number",
+  "category": "complex",
+  "difficulty": 2,
+  "summary": "TWO_COLUMN layout: ValueTracker t sweeps 0→2π, the partial curve (radius-modulated) and radial pointer redraw via always_redraw on the left plane; right column stacks live readouts of t, cumulative Δθ, Δθ/(2π), and the winding number n.",
+  "tags": ["winding_number", "complex_analysis", "cumulative_angle", "value_tracker", "parametric"],
+  "apis": ["ComplexPlane", "ValueTracker", "always_redraw", "VMobject", "set_points_smoothly", "Line", "MathTex"]
+}

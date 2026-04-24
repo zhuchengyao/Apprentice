@@ -1,0 +1,8 @@
+{
+  "id": "peano_curve",
+  "category": "fractals",
+  "difficulty": 3,
+  "summary": "Construct successive iterations of the Peano space-filling curve (order 1,2,3) on a 3×3 self-similar grid.",
+  "tags": ["peano_curve", "space_filling", "fractal", "self_similar", "curve"],
+  "apis": ["VMobject", "set_points_as_corners", "Transform", "Create", "Text"]
+}

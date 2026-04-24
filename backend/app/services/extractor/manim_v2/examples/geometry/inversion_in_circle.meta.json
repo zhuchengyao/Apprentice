@@ -1,0 +1,8 @@
+{
+  "id": "inversion_in_circle",
+  "category": "geometry",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: YELLOW reference circle |z|=R=1.5 on NumberPlane. ValueTracker z_ang_tr rotates a source direction; BLUE source at |z|=0.7 (inside) paired with RED image at R²/|z|≈3.2 (outside); dashed GREY radial line connects them through origin. Phase 2 switches source to outside r=2.2.",
+  "tags": ["inversion", "conformal_map", "circle_geometry", "value_tracker", "always_redraw"],
+  "apis": ["NumberPlane", "Circle", "Dot", "DashedLine", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

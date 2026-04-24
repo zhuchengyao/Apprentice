@@ -1,0 +1,8 @@
+{
+  "id": "cassini_ovals",
+  "category": "geometry",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS: fixed foci F_1=(-1,0) and F_2=(1,0). ValueTracker c_tr sweeps through 0.8 (two-oval), 1.0 (lemniscate), 1.2, 1.5 (single oval); always_redraw YELLOW Cassini locus parametrized polarly. Sample point at θ=π/3 with GREEN dot + BLUE radii to foci; live |PF_1|·|PF_2| = c² check.",
+  "tags": ["cassini_oval", "locus", "lemniscate", "value_tracker", "always_redraw"],
+  "apis": ["Dot", "Line", "VMobject", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

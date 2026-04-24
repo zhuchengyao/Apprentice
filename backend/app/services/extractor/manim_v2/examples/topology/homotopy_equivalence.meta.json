@@ -1,0 +1,8 @@
+{
+  "id": "homotopy_equivalence",
+  "category": "topology",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS annulus ≃ S¹ homotopy equivalence. NumberPlane with BLUE outer ring + GREEN inner ring + fill; ValueTracker s_tr deforms outer boundary R_out → R_in via always_redraw AnnularSector. YELLOW sample dots on 12 rays slide along GREY radial lines from outside to inner circle. Deformation retract; same π_1=ℤ.",
+  "tags": ["homotopy_equivalence", "deformation_retract", "annulus_s1", "fundamental_group", "value_tracker", "always_redraw"],
+  "apis": ["NumberPlane", "Circle", "AnnularSector", "Dot", "DashedLine", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"]
+}

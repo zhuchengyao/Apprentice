@@ -1,0 +1,8 @@
+{
+  "id": "leibniz_pi_formula",
+  "category": "analysis",
+  "difficulty": 2,
+  "summary": "TWO_COLUMN: Axes left with the Leibniz partial sums S_N traced via always_redraw as ValueTracker N sweeps 1→200; horizontal dashed π/4 target line. The classic alternating zigzag is visible. Right column shows live N, S_N, π/4, gap, and the |gap| < 1/(2N+1) bound.",
+  "tags": ["leibniz_pi", "partial_sums", "alternating_series", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "VMobject", "set_points_as_corners", "DashedLine", "ValueTracker", "always_redraw", "Dot", "MathTex", "Tex"]
+}

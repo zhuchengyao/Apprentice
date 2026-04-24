@@ -1,0 +1,8 @@
+{
+  "id": "birthday_paradox",
+  "category": "probability",
+  "difficulty": 2,
+  "summary": "Plot P(two people share a birthday) vs group size from 1 to 59 and mark the crossover at n=23 where P ≈ 0.5.",
+  "tags": ["birthday_problem", "probability", "collision", "counterintuitive", "complement"],
+  "apis": ["Axes", "VMobject", "set_points_smoothly", "DashedLine", "MathTex", "Dot"]
+}

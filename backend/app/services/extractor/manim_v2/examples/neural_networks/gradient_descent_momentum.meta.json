@@ -1,0 +1,8 @@
+{
+  "id": "gradient_descent_momentum",
+  "category": "neural_networks",
+  "difficulty": 2,
+  "summary": "TWO_COLUMN: narrow-valley quadratic f=0.08x²+0.9y² contours on axes. Both vanilla GD (BLUE) and GD+momentum μ=0.9 (GREEN) run 60 iterations from (3.5, 2.2). ValueTracker t_tr reveals both trajectories via always_redraw paths + dots; momentum dampens zigzag. Right panel has live iter, ‖x‖, f(x) for each.",
+  "tags": ["gradient_descent", "momentum", "optimization", "narrow_valley", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "VMobject", "Dot", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"]
+}

@@ -1,0 +1,8 @@
+{
+  "id": "wheat_and_chessboard",
+  "category": "number_theory",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: 8×8 chessboard grid (alternating GREY_B/GREY_D). ValueTracker k_tr sweeps 0 → 64; always_redraw overlays YELLOW squares on the first k with opacity ∝ log(grain count). Live panel: square index, grains on this square (2^(k-1)), cumulative 2^k - 1 including final 2^64-1 = 18.4 quintillion.",
+  "tags": ["wheat_chessboard", "powers_of_two", "exponential", "value_tracker", "always_redraw"],
+  "apis": ["Square", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

@@ -1,0 +1,8 @@
+{
+  "id": "implicit_function_theorem",
+  "category": "calculus",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS: NumberPlane with BLUE unit circle. ValueTracker theta_tr walks YELLOW point around; always_redraw GREEN tangent line with slope y'=-x/y (or RED dashed vertical when y≈0), ORANGE ∇F=(2x,2y) arrow. Live panel flags 'cannot solve' near (±1, 0).",
+  "tags": ["implicit_function_theorem", "level_set", "tangent_line", "value_tracker", "always_redraw"],
+  "apis": ["NumberPlane", "Circle", "Dot", "Line", "DashedLine", "Arrow", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

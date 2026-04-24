@@ -1,0 +1,8 @@
+{
+  "id": "heat_equation_diffusion",
+  "category": "calculus",
+  "difficulty": 2,
+  "summary": "Advance time from 0.05 to 3; a point source diffuses into a widening Gaussian — the fundamental solution of ∂ₜu = ∂ₓₓu.",
+  "tags": ["heat_equation", "diffusion", "gaussian", "pde", "fundamental_solution"],
+  "apis": ["Axes", "plot", "ValueTracker", "always_redraw", "MathTex"]
+}

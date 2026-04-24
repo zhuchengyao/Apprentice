@@ -1,0 +1,8 @@
+{
+  "id": "holder_inequality",
+  "category": "analysis",
+  "difficulty": 3,
+  "summary": "TWO_COLUMN Hölder inequality. LEFT axes with BLUE x bars fixed + ORANGE y bars rotated in 4 pair-blocks by ValueTracker θ_tr ∈ [0, 2π]. RIGHT shows live p, q=p/(p-1), <x,y>, ‖x‖_p, ‖y‖_q, their product, and the gap = RHS−|LHS| (always ≥0). Phase 2 morphs p via ValueTracker p_tr through 1.5, 4, 2.5, 2.",
+  "tags": ["holder_inequality", "cauchy_schwarz", "lp_norms", "duality", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "Rectangle", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"]
+}

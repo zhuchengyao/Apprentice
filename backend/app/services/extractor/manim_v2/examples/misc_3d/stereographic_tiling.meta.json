@@ -1,0 +1,8 @@
+{
+  "id": "stereographic_tiling",
+  "category": "misc_3d",
+  "difficulty": 3,
+  "summary": "ThreeDScene: triangular tiling on z=0 plane stereographically projected to unit sphere (through south pole). ValueTracker s_tr morphs between plane (s=0) and sphere (s=1) via interp of sub-divided line segments to preserve circular arcs. always_redraw YELLOW grid. BLUE sphere underlay. Ambient rotation. Live s + conformal-angle note.",
+  "tags": ["stereographic_projection", "triangular_tiling", "conformal", "plane_to_sphere", "value_tracker", "always_redraw"],
+  "apis": ["ThreeDAxes", "Sphere", "VMobject", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"]
+}

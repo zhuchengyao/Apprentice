@@ -1,0 +1,8 @@
+{
+  "id": "backprop_gradient_descent",
+  "category": "neural_networks",
+  "difficulty": 3,
+  "summary": "TWO_COLUMN: NumberPlane with BLUE level-set rings of L(w_1, w_2) = (w_1-1.5)² + 5(w_2-0.5)² + 2·sin(w_1)·cos(w_2); GREEN min marker; 60-step precomputed GD trajectory from (-2, 2.2) drawn via always_redraw YELLOW trail + current dot. ValueTracker step_tr advances iterations; live panel with step, w_1, w_2, L, ‖∇L‖, η.",
+  "tags": ["gradient_descent", "backprop", "loss_landscape", "value_tracker", "always_redraw"],
+  "apis": ["NumberPlane", "Dot", "VMobject", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

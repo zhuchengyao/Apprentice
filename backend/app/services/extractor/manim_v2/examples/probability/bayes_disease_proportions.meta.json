@@ -1,0 +1,8 @@
+{
+  "id": "bayes_disease_proportions",
+  "category": "probability",
+  "difficulty": 2,
+  "summary": "TWO_COLUMN: LEFT 3×3 unit area split into 4 color-coded regions (RED TP, ORANGE FN, YELLOW FP, GREEN TN) with sens=0.99, spec=0.95. ValueTracker prior_tr sweeps P(D) from 0.01 → 0.20; always_redraw cell sizes. RIGHT has live prior/sens/spec/P(+)/P(D|+) + small posterior-vs-prior plot with YELLOW cursor.",
+  "tags": ["bayes", "disease_test", "base_rate", "value_tracker", "always_redraw"],
+  "apis": ["Rectangle", "Axes", "Axes.plot", "Dot", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

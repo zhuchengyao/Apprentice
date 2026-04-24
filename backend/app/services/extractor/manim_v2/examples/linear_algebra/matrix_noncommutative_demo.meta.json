@@ -1,0 +1,9 @@
+{
+  "id": "matrix_noncommutative_demo",
+  "category": "linear_algebra",
+  "difficulty": 2,
+  "summary": "COMPARISON: matrix multiplication not commutative. TOP: shear then rotation via ValueTracker t_tr ∈ [0, 2], composite RS = [[0, -1], [1, 1]]. BOTTOM: rotation then shear, composite SR = [[1, -1], [1, 0]]. Both grids (BLUE horiz, ORANGE vert) + GREEN î, RED ĵ via always_redraw. Final matrix displays + RED 'RS ≠ SR' stamp.",
+  "tags": ["noncommutative", "matrix_multiplication", "order_matters", "rotation_shear", "value_tracker", "always_redraw"],
+  "apis": ["VMobject", "Arrow", "MathTex", "ValueTracker", "always_redraw", "Tex"],
+  "source": "3b1b/_2016/eola/chapter4.py::AskAboutCommutativity+FirstShearThenRotation+RotationThenShear"
+}

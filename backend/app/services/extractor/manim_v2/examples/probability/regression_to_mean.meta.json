@@ -1,0 +1,8 @@
+{
+  "id": "regression_to_mean",
+  "category": "probability",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: NumberPlane with 200 BLUE_D bivariate-normal samples (ρ=0.6) + RED regression line y=ρx + GREY dashed y=x reference. ValueTracker x_tr tours x ∈ [-2.5, 2.5]; always_redraw YELLOW vertical + conditional mean ρx + ORANGE on y=x. Conditional mean regresses toward 0.",
+  "tags": ["regression_to_mean", "bivariate_normal", "conditional_mean", "value_tracker", "always_redraw"],
+  "apis": ["NumberPlane", "Dot", "Line", "DashedLine", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

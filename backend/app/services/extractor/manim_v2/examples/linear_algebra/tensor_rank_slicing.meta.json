@@ -1,0 +1,8 @@
+{
+  "id": "tensor_rank_slicing",
+  "category": "linear_algebra",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS: 3-tensor T∈ℝ^(4×3×2) with 2 mode-3 slices shown side-by-side as colored cell grids. ValueTracker s_tr morphs T → best rank-1 σ u⊗v⊗w via power method (40 iters). always_redraw both slices + static GREEN u, ORANGE v, PURPLE w factor vectors. Live ‖T - T̂‖ Frobenius error.",
+  "tags": ["tensor_decomposition", "rank_one", "power_method", "outer_product", "value_tracker", "always_redraw"],
+  "apis": ["Square", "VGroup", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"]
+}

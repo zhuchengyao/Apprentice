@@ -1,0 +1,9 @@
+{
+  "id": "diagonal_matrix_eigen",
+  "category": "linear_algebra",
+  "difficulty": 2,
+  "summary": "TWO_COLUMN: diagonal D=[[3, 0], [0, 2]] has GREEN î (λ=3) and RED ĵ (λ=2) as eigenvectors. ValueTracker morphs; always_redraw basis arrows stay on their spans. Powers D^k = diag(λ_1^k, λ_2^k) noted.",
+  "tags": ["diagonal_matrix", "standard_basis_eigenvectors", "easy_powers", "value_tracker", "always_redraw"],
+  "apis": ["NumberPlane", "Arrow", "VGroup", "ValueTracker", "always_redraw", "Tex"],
+  "source": "3b1b/_2016/eola/chapter10.py::BasisVectorsAreEigenvectors+DefineDiagonalMatrix"
+}

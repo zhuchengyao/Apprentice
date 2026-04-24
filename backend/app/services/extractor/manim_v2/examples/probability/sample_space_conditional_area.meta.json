@@ -1,0 +1,8 @@
+{
+  "id": "sample_space_conditional_area",
+  "category": "probability",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS unit Square sample space. First split vertically by P(B)=0.35 (BLUE column) vs P(B^c)=0.65 (GREY_B column). Then each column splits horizontally with GREEN overlay of height P(A|B)=0.7 (strong GREEN fill 0.55) and P(A|B^c)=0.2 (faded GREEN fill 0.25). Right panel: Bayes' derivation P(A|B) = P(A∩B)/P(B) = 0.245/0.35 = 0.7 and P(A) = P(A∩B)+P(A∩B^c) = 0.375 via FadeIn/Write.",
+  "tags": ["conditional_probability", "sample_space", "bayes", "area_model", "eop"],
+  "apis": ["Square", "Rectangle", "VGroup", "MathTex", "Tex", "FadeIn", "Write"]
+}

@@ -1,0 +1,8 @@
+{
+  "id": "fundamental_group_circle",
+  "category": "topology",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS NumberPlane with BLUE circle of R=2 and RED hole at origin. Two ValueTrackers: wind_tr toured through 1, 2, 3, -1, 0.5, 1 changes winding count of always_redraw YELLOW loop γ(t)=r·(cos wt, sin wt) with r=c·(2+0.4 sin 3t); contract_tr shrinks wind=0 loop to point (homotopy to identity), then restores and tries wind=1 which blocks.",
+  "tags": ["fundamental_group", "winding_number", "homotopy", "S1", "value_tracker", "always_redraw"],
+  "apis": ["NumberPlane", "Circle", "ParametricFunction", "Dot", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"]
+}

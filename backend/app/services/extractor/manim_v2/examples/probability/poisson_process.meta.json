@@ -1,0 +1,8 @@
+{
+  "id": "poisson_process",
+  "category": "probability",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: axes with GREEN dashed λt expectation line + BLUE step function N(t) + YELLOW arrival ticks. ValueTracker t_tr sweeps 0→20 advancing precomputed Exp(1) inter-arrival Poisson process. Live N(t), λt, fluctuation.",
+  "tags": ["poisson_process", "exponential_interarrival", "counting_process", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "DashedLine", "Line", "VMobject", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

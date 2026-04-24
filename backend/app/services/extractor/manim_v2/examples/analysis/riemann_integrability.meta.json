@@ -1,0 +1,8 @@
+{
+  "id": "riemann_integrability",
+  "category": "analysis",
+  "difficulty": 3,
+  "summary": "COMPARISON: LEFT axes with BLUE f=x² + YELLOW Riemann rectangles (U_N, L_N → ∫); RIGHT Dirichlet-like function with RED upper=1, BLUE lower=0 constant — U-L always 1. ValueTracker N_tr grows 4, 8, 15, 30 via always_redraw.",
+  "tags": ["riemann_integrability", "dirichlet_function", "upper_lower_sum", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "Axes.plot", "Rectangle", "DashedLine", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

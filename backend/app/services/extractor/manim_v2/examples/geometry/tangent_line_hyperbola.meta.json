@@ -1,0 +1,8 @@
+{
+  "id": "tangent_line_hyperbola",
+  "category": "geometry",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: BLUE hyperbola x²/4 - y²/2.25 = 1 both branches + GREY dashed asymptotes y = ±(b/a)x. ValueTracker theta_tr moves tangent point (a cosh t, b sinh t) on right branch; always_redraw RED tangent line + YELLOW point. Live panel shows (x_0, y_0) and identity check.",
+  "tags": ["hyperbola", "tangent_line", "asymptote", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "VMobject", "DashedLine", "Line", "Dot", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

@@ -1,0 +1,8 @@
+{
+  "id": "nine_point_circle_rebuild",
+  "category": "geometry",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS: Euler nine-point circle. ValueTracker s_tr morphs BLUE triangle through 4 configs. always_redraw rebuilds: 3 midpoints of sides, 3 feet of altitudes (via DashedLine perpendicular drops from vertices), 3 midpoints between vertices and orthocenter H — all 9 RED dots on YELLOW circle of center (O+H)/2 and radius R/2. Legend for O, H, np-center.",
+  "tags": ["nine_point_circle", "euler_circle", "orthocenter", "circumcenter", "value_tracker", "always_redraw"],
+  "apis": ["Polygon", "Circle", "DashedLine", "Dot", "ValueTracker", "always_redraw", "Tex"]
+}

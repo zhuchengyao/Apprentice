@@ -1,0 +1,8 @@
+{
+  "id": "lattice_points_vs_circle_area",
+  "category": "number_theory",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS Gaussian integer lattice plus a growing YELLOW disk. ValueTracker R_tr sweeps 0.5→1→1.5→2.5→3.5→4.5→5.5→6 with always_redraw Circle of radius R; BLUE dots inside are re-highlighted YELLOW each frame. Right panel: R (DecimalNumber), count (Integer), πR² (DecimalNumber GREEN), and count/πR² (DecimalNumber BLUE) — the ratio visibly approaches 1 as R grows, the geometric heart of the Gauss circle problem and the bridge to Leibniz π/4.",
+  "tags": ["gauss_circle_problem", "lattice_points", "area_approximation", "value_tracker", "always_redraw", "pi"],
+  "apis": ["NumberPlane", "Circle", "Dot", "VGroup", "ValueTracker", "always_redraw", "Integer", "DecimalNumber", "MathTex", "Tex"]
+}

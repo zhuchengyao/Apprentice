@@ -1,0 +1,8 @@
+{
+  "id": "non_planar_k5",
+  "category": "topology",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS: K_5 with 5 YELLOW vertices and all 10 BLUE edges. ValueTracker layout_tr morphs vertex positions between pentagon (L1) and outer-triangle+inner (L3) layouts; always_redraw edges + RED crossing dots + live-count panel. No layout achieves zero crossings; V=5, E=10 > 3V-6=9 fails Euler's planarity bound.",
+  "tags": ["non_planar", "k5", "kuratowski", "crossings", "value_tracker", "always_redraw"],
+  "apis": ["Line", "Dot", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

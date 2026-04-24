@@ -1,0 +1,8 @@
+{
+  "id": "refraction_bending_waves",
+  "category": "calculus",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: horizontal air/glass interface with n_1=1.0, n_2=1.5. ValueTracker th1_tr sweeps incident angle through 10°, 45°, 60°, 80°, 30°; always_redraw YELLOW incoming arrow + ORANGE refracted arrow (Snell-computed θ_2) + angle arcs + dashed normal. Live panel shows both angles and the invariant n_1 sin θ_1 = n_2 sin θ_2.",
+  "tags": ["snell_law", "refraction", "optics", "value_tracker", "always_redraw"],
+  "apis": ["Line", "Rectangle", "Arrow", "DashedLine", "Arc", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

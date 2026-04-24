@@ -1,0 +1,8 @@
+{
+  "id": "chords_and_intersections",
+  "category": "combinatorics",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: Circle with n YELLOW points, all C(n,2) BLUE chords, all C(n,4) RED interior intersection dots — all rebuilt via always_redraw. ValueTracker n_tr steps n = 3, 4, 5, 6, 7, 8, 9; live count panel shows n, C(n,2), C(n,4).",
+  "tags": ["chords", "intersections", "circle", "combinatorics", "value_tracker", "always_redraw"],
+  "apis": ["Circle", "Line", "Dot", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

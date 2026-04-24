@@ -1,0 +1,8 @@
+{
+  "id": "eulers_formula_cube",
+  "category": "topology",
+  "difficulty": 2,
+  "summary": "TWO_COLUMN: 3D-projected cube wireframe built up in stages on the left — 8 vertices, then 12 edges in 3 batches, then 6 colored faces; right column has live ValueTracker counters V, E, F, and the running invariant V - E + F that locks at 2 by the end.",
+  "tags": ["euler_formula", "cube", "polyhedron", "value_tracker", "incremental_construction"],
+  "apis": ["Dot", "Line", "Polygon", "ValueTracker", "always_redraw", "LaggedStart", "increment_value", "MathTex", "Tex"]
+}

@@ -1,0 +1,8 @@
+{
+  "id": "finger_binary",
+  "category": "number_theory",
+  "difficulty": 1,
+  "summary": "SINGLE_FOCUS: 5 finger boxes labeled 16, 8, 4, 2, 1; ValueTracker n_tr steps 0→31. always_redraw highlights raised fingers in YELLOW per binary bit; live equation shows the sum and binary representation.",
+  "tags": ["binary", "finger_counting", "value_tracker", "always_redraw", "powers_of_two"],
+  "apis": ["Square", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

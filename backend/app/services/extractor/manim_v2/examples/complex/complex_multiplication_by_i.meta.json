@@ -1,0 +1,8 @@
+{
+  "id": "complex_multiplication_by_i",
+  "category": "complex",
+  "difficulty": 1,
+  "summary": "Rotate a labeled point z by 90 degrees around the origin of a ComplexPlane to show that multiplication by i is a quarter turn.",
+  "tags": ["complex_numbers", "multiplication", "rotation", "imaginary_unit"],
+  "apis": ["ComplexPlane", "ComplexPlane.n2p", "Dot", "MathTex", "Rotate", "Mobject.add_updater"]
+}

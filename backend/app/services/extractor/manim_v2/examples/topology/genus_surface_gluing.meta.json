@@ -1,0 +1,8 @@
+{
+  "id": "genus_surface_gluing",
+  "category": "topology",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS surface classification via polygon gluing. ValueTracker g_tr ∈ {1, 2, 3} determines 4g-gon. always_redraw builds polygon with RED/GREEN color-coded arrows labeled a_1, b_1, a_1^(-1), b_1^(-1), ... identifying edges. Live g, side count 4g, χ=2-2g.",
+  "tags": ["surface_classification", "genus", "polygon_gluing", "fundamental_polygon", "value_tracker", "always_redraw"],
+  "apis": ["Arrow", "VGroup", "DecimalNumber", "ValueTracker", "always_redraw", "add_updater", "Tex"]
+}

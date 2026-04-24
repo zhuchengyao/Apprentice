@@ -1,0 +1,9 @@
+{
+  "id": "rotation_then_shear_composition",
+  "category": "linear_algebra",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: 90° rotation R then shear S on colored grid. 2-stage ValueTracker interpolates identity→R (phase 1), then R→C=SR (phase 2). always_redraw grid lines + GREEN î, RED ĵ arrows + dynamic matrix display M(t). Final C=[[1, -1], [1, 0]] columns are where î, ĵ land.",
+  "tags": ["composition", "rotation_shear", "matrix_product", "concrete_example", "value_tracker", "always_redraw"],
+  "apis": ["VMobject", "Arrow", "DecimalNumber", "ValueTracker", "always_redraw", "add_updater", "Tex"],
+  "source": "3b1b/_2016/eola/chapter4.py::RotationThenShear"
+}

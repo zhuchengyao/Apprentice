@@ -1,0 +1,8 @@
+{
+  "id": "lebesgue_outer_measure",
+  "category": "analysis",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS Lebesgue outer measure. NumberLine [0, 1] with BLUE E=[0.2, 0.7] + YELLOW cover intervals via always_redraw on ValueTracker n_tr (1→20 pieces). Cover overlaps by small margin 0.5/n; total Σ|I_k| shrinks toward |E|=0.5 as n grows. Live n, Σ|I_k|, m*(E) = 0.5.",
+  "tags": ["lebesgue_measure", "outer_measure", "open_cover", "infimum", "value_tracker", "always_redraw"],
+  "apis": ["NumberLine", "Line", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"]
+}

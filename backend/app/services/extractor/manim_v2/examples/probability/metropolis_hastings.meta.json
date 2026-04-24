@@ -1,0 +1,8 @@
+{
+  "id": "metropolis_hastings",
+  "category": "probability",
+  "difficulty": 3,
+  "summary": "TWO_COLUMN Metropolis-Hastings MCMC on bimodal Gaussian mixture target. LEFT axes show BLUE target density + always_redraw YELLOW chain trace + ORANGE current-sample dot driven by ValueTracker step_tr sweeping 0→2000. RIGHT axes show histogram of accepted samples matching target density. Proposal N(x, σ²=0.25).",
+  "tags": ["metropolis_hastings", "mcmc", "sampling", "gaussian_mixture", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "VMobject", "Dot", "Rectangle", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"]
+}

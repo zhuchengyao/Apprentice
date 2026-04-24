@@ -1,0 +1,8 @@
+{
+  "id": "mean_value_theorem",
+  "category": "analysis",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: axes with BLUE f(x) = x + sin x on [0.5, 6] + static ORANGE secant. ValueTracker c_tr sweeps c from 1 to 5.5; always_redraw GREEN tangent at c + dashed vertical + YELLOW rider. Live panel flashes 'match!' when f'(c) = secant-slope (MVT c-value).",
+  "tags": ["mean_value_theorem", "tangent_secant", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "Axes.plot", "DashedLine", "Dot", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

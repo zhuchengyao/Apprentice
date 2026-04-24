@@ -1,0 +1,8 @@
+{
+  "id": "entropy_maximization",
+  "category": "probability",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS: parametric Gaussian p_β(x)=e^(-βx²)/Z with ValueTracker beta_tr touring 0.15, 2.0, 0.8, 0.5. always_redraw YELLOW density curve + BLUE β=0.5 reference. Live numeric H=-∫p log p via np.trapezoid matches analytic ½ log(2πeσ²) with σ²=1/(2β); proves Gaussian maximizes entropy at fixed variance.",
+  "tags": ["max_entropy", "gaussian", "differential_entropy", "variance_constraint", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "ParametricFunction", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"]
+}

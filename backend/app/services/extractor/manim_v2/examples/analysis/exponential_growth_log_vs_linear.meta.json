@@ -1,0 +1,8 @@
+{
+  "id": "exponential_growth_log_vs_linear",
+  "category": "analysis",
+  "difficulty": 2,
+  "summary": "COMPARISON two Axes, same 30-day exponential data y=3·1.28^t. LEFT BLUE linear y-axis (0..6000) shows classic 'flat then exploding' curve via BLUE Dots + Axes.plot. RIGHT GREEN log10-y axis shows a perfect straight line. MathTex captions: y=3r^t vs log y = log 3 + t log r. YELLOW bottom note: slope of log line = log10(1.28) ≈ 0.107 — a constant slope that reveals the growth rate.",
+  "tags": ["exponential_growth", "semi_log_plot", "log_scale", "growth_rate", "covid_visualization"],
+  "apis": ["Axes", "Axes.plot", "Dot", "VGroup", "LaggedStart", "MathTex", "Tex", "numpy"]
+}

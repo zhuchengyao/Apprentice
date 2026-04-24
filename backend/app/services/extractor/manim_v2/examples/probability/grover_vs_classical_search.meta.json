@@ -1,0 +1,8 @@
+{
+  "id": "grover_vs_classical_search",
+  "category": "probability",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS Axes (0..1000 × 0..500). RED curve N/2 = expected classical query count; GREEN curve (π/4)√N = Grover's quantum query count. Right-side table compares 4 N values (100, 10⁴, 10⁶, 10⁹) with classical ~N/2 vs quantum ~(π/4)√N counts. YELLOW bottom caption: quadratic speedup dominates at scale.",
+  "tags": ["grover", "quantum_search", "complexity", "sqrt_n_speedup", "scaling"],
+  "apis": ["Axes", "Axes.plot", "MathTex", "Tex", "VGroup", "LaggedStart", "FadeIn", "Write", "Create"]
+}

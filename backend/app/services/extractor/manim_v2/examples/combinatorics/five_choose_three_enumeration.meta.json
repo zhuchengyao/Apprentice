@@ -1,0 +1,8 @@
+{
+  "id": "five_choose_three_enumeration",
+  "category": "combinatorics",
+  "difficulty": 1,
+  "summary": "SINGLE_FOCUS: a top row of 5 people (labeled A-E) as lettered Circles. Below, a 5-column grid of 10 miniature-scaled copies of the row (via helper make_row(highlight=set)) with the chosen 3 rendered YELLOW fill and excluded 2 faded GREY_B — every element of C(5,3). YELLOW subset label in {·,·,·} under each mini-row. Bottom MathTex formula C(5,3) = 5!/(3!2!) = 10 boxed in YELLOW SurroundingRectangle.",
+  "tags": ["combinations", "binomial_coefficient", "enumeration", "eop", "lagged_start"],
+  "apis": ["Circle", "Tex", "VGroup", "LaggedStart", "MathTex", "SurroundingRectangle", "FadeIn", "itertools"]
+}

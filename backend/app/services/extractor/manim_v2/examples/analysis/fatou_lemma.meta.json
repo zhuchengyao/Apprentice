@@ -1,0 +1,8 @@
+{
+  "id": "fatou_lemma",
+  "category": "analysis",
+  "difficulty": 3,
+  "summary": "TWO_COLUMN: LEFT axes with BLUE f_n = n·𝟙_[0, 1/n] — tall+narrow spike with ∫=1 for all n. RIGHT axes with RED zero-line liminf f_n = 0 a.e. ValueTracker n_tr tours 1, 2, 5, 10, 20; always_redraw. Illustrates strict Fatou inequality 0 < 1.",
+  "tags": ["fatou_lemma", "measure_theory", "liminf", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "Axes.plot", "Rectangle", "Line", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

@@ -1,0 +1,8 @@
+{
+  "id": "martingale_convergence",
+  "category": "probability",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS: axes with YELLOW E[X_n]=0.5 reference + 10 color-coded bounded martingale paths (Polya's urn X_n = red fraction). ValueTracker t_tr advances 0→200; always_redraw; each path converges a.s. to its own limit — martingale convergence.",
+  "tags": ["martingale", "polya_urn", "almost_sure_convergence", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "DashedLine", "VMobject", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

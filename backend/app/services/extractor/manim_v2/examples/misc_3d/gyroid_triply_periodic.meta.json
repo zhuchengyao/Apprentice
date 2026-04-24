@@ -1,0 +1,8 @@
+{
+  "id": "gyroid_triply_periodic",
+  "category": "misc_3d",
+  "difficulty": 3,
+  "summary": "ThreeDScene: z-slice of gyroid implicit surface sin x cos y + sin y cos z + sin z cos x = 0 rendered as 25×25 BLUE_E→RED colored squares. ValueTracker z_tr sweeps z from 0 to 2π via always_redraw; ambient rotation.",
+  "tags": ["gyroid", "triply_periodic_minimal_surface", "implicit", "value_tracker", "always_redraw"],
+  "apis": ["ThreeDScene", "ThreeDAxes", "Square", "VGroup", "ValueTracker", "always_redraw", "interpolate_color", "MathTex", "Tex"]
+}

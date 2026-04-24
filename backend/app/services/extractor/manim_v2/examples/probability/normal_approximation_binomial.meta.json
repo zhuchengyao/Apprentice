@@ -1,0 +1,8 @@
+{
+  "id": "normal_approximation_binomial",
+  "category": "probability",
+  "difficulty": 2,
+  "summary": "TWO_COLUMN: axes over x=k/n with BLUE Binomial(n, 0.5) density-scaled bars + RED Normal(μ=0.5, σ²=1/(4n)) overlay. ValueTracker n_tr grows 4, 8, 16, 32, 64, 80; always_redraw both. Live σ/μ = 1/√n shrinking.",
+  "tags": ["de_moivre_laplace", "binomial_normal", "clt", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "Axes.plot", "Rectangle", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

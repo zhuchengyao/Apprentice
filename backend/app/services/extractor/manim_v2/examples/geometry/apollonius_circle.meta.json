@@ -1,0 +1,8 @@
+{
+  "id": "apollonius_circle",
+  "category": "geometry",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: fixed A=(-2.5, 0), B=(2.5, 0); ValueTracker k_tr sweeps ratio |PA|/|PB| through k=2, 0.5, 3, 1.2, 0.8. always_redraw YELLOW Apollonius circle with center (k²B-A)/(k²-1) and radius k·|AB|/|k²-1|, plus 10 sample points on it + active top P with GREEN/RED distance lines.",
+  "tags": ["apollonius_circle", "locus", "distance_ratio", "value_tracker", "always_redraw"],
+  "apis": ["Circle", "Line", "Dot", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

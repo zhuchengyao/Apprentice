@@ -1,0 +1,8 @@
+{
+  "id": "rationals_in_interval",
+  "category": "analysis",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: NumberLine [0, 1]; ValueTracker q_max_tr sweeps Q from 1 to 20. always_redraw rebuilds Farey sequence F_Q (all p/q in lowest terms with q ≤ Q) each frame, showing dots with radius ∝ 1/q so small-denominator points stand out. Live |F_Q| and the asymptotic (3/π²)Q².",
+  "tags": ["rationals", "density", "farey_sequence", "value_tracker", "always_redraw"],
+  "apis": ["NumberLine", "Dot", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

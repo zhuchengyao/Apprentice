@@ -1,0 +1,8 @@
+{
+  "id": "shadow_area_lemma",
+  "category": "geometry",
+  "difficulty": 3,
+  "summary": "ThreeDScene: unit cube rotates about axis (0.6, 0.7, 0.4) via Rodrigues formula + ValueTracker θ_tr through 6 phases to 3π. always_redraw wireframe cube + YELLOW convex-hull shadow polygon onto z=-2 plane. Fixed-frame panel shows θ, instantaneous shadow area, running-average → 1.5 (Cauchy's formula: mean shadow = 1/4 · surface area = 6/4).",
+  "tags": ["cauchy_shadow_formula", "convex_body", "averaging", "value_tracker", "always_redraw"],
+  "apis": ["ThreeDScene", "ThreeDAxes", "Line", "Polygon", "VGroup", "ValueTracker", "always_redraw", "Transform", "MathTex", "Tex"]
+}

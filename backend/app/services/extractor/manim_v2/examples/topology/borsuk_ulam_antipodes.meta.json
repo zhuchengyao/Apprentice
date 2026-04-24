@@ -1,0 +1,8 @@
+{
+  "id": "borsuk_ulam_antipodes",
+  "category": "topology",
+  "difficulty": 3,
+  "summary": "TWO_COLUMN: LEFT unit circle with BLUE and ORANGE antipodal probe dots (θ and θ+π) connected by dashed chord, all redrawn as ValueTracker θ_tr sweeps 0→2π. RIGHT axes show g(θ) = f(θ) - f(θ+π) with RED dashed y=0; YELLOW always_redraw rider traces g; live panel highlights when |g|<0.05 — the zeros guaranteed by Borsuk-Ulam.",
+  "tags": ["borsuk_ulam", "antipodes", "continuity", "value_tracker", "always_redraw"],
+  "apis": ["Circle", "Dot", "DashedLine", "Axes", "Axes.plot", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

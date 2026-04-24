@@ -1,0 +1,8 @@
+{
+  "id": "contact_tracing_graph",
+  "category": "probability",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: 18-node random proximity graph; ValueTracker hop_n steps through BFS rounds 0..max from seed=3. Each node colored by its discovery round (RED→ORANGE→YELLOW→PURPLE→TEAL→GREEN; unreached BLUE). Live infected/total readout.",
+  "tags": ["bfs", "graph", "contact_tracing", "value_tracker", "always_redraw"],
+  "apis": ["Dot", "Line", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

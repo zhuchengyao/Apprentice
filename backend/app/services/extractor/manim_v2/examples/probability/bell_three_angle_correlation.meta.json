@@ -1,0 +1,8 @@
+{
+  "id": "bell_three_angle_correlation",
+  "category": "probability",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS Bell inequality demonstration. Three polarizer Circles A=0° (BLUE), B=22.5° (PURPLE), C=45° (GREEN) rendered with rotatable Line axes across the top. Left column: three MathTex rows giving QM predictions P(A≠B)=sin²(22.5°)≈0.146, P(B≠C)≈0.146, P(A≠C)=sin²(45°)=0.5. Right column: the LHV triangle bound P(A≠C) ≤ P(A≠B)+P(B≠C), then the explicit violation 0.500 ≰ 0.293 in RED boxed by SurroundingRectangle, and YELLOW conclusion that local hidden variables are excluded.",
+  "tags": ["bell_inequality", "quantum_entanglement", "hidden_variables", "polarization", "triangle_inequality"],
+  "apis": ["Circle", "Line", "MathTex", "Tex", "VGroup", "LaggedStart", "SurroundingRectangle", "FadeIn"]
+}

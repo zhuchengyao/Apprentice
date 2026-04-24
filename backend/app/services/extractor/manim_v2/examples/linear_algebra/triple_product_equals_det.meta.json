@@ -1,0 +1,9 @@
+{
+  "id": "triple_product_equals_det",
+  "category": "linear_algebra",
+  "difficulty": 3,
+  "summary": "ThreeDScene: scalar triple product (v×w)·u equals det[v|w|u] equals signed volume. v=(2, 0, 0) BLUE, w=(1, 2, 0) ORANGE, u=(0.5, 0.5, 2) GREEN. YELLOW parallelepiped + PURPLE v×w arrow (perpendicular). Ambient rotation. Both triple product and determinant computed numerically and shown equal.",
+  "tags": ["triple_product", "scalar_triple", "parallelepiped_volume", "determinant_identity", "3d"],
+  "apis": ["ThreeDAxes", "Arrow3D", "Polygon", "VGroup", "DecimalNumber", "Tex"],
+  "source": "3b1b/_2016/eola/chapter8p2.py::ThreeDTripleCrossProduct+BruteForceVerification"
+}

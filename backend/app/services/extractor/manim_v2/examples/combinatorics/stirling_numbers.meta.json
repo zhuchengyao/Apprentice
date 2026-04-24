@@ -1,0 +1,8 @@
+{
+  "id": "stirling_numbers",
+  "category": "combinatorics",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: Stirling-number triangle S(n, k) for n=0..6 built row-by-row via ValueTracker n_tr. Each cell colored BLUE_E → YELLOW by log value intensity. Live row-sum = Bell number B_n; recurrence S(n+1, k) = k·S(n, k) + S(n, k-1).",
+  "tags": ["stirling_numbers", "set_partitions", "bell_numbers", "value_tracker", "always_redraw"],
+  "apis": ["Square", "VGroup", "ValueTracker", "always_redraw", "interpolate_color", "MathTex", "Tex"]
+}

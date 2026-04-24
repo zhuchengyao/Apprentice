@@ -1,0 +1,8 @@
+{
+  "id": "cantor_staircase",
+  "category": "fractals",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS: Cantor devil's staircase built via recursive cantor_f(x, L) evaluation on 600 sample points. ValueTracker level_tr steps L=1..6 with always_redraw YELLOW staircase + GREY reference y=x diagonal. 2^L-1 plateaus; f(0)=0, f(1)=1 bounds noted; Hausdorff dim log2/log3 annotated.",
+  "tags": ["cantor_staircase", "devil_staircase", "singular_function", "cantor_set", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "VMobject", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"]
+}

@@ -1,0 +1,8 @@
+{
+  "id": "mcmc_acceptance_rate",
+  "category": "probability",
+  "difficulty": 3,
+  "summary": "TWO_COLUMN: MCMC acceptance rate vs step σ for N(0, 1) target. 4 precomputed 2000-step runs with σ∈{0.1, 0.5, 1.5, 3.0}. LEFT always_redraw YELLOW trace curve. RIGHT BLUE target density + YELLOW histogram. ValueTracker sigma_idx_tr walks σ values. Live acceptance rate; 0.234 RGG optimality noted.",
+  "tags": ["mcmc", "acceptance_rate", "proposal_tuning", "random_walk", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "VMobject", "Rectangle", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"]
+}

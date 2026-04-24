@@ -1,0 +1,8 @@
+{
+  "id": "borwein_integral",
+  "category": "analysis",
+  "difficulty": 3,
+  "summary": "TWO_COLUMN: Axes left with always_redraw sinc-product integrand and shaded area; ValueTracker N_idx steps through N = 0, 1, 2, 4, 6, 7, 8. Right column has live N value and integral comparison to π/2 — the breakdown at N=7 (gap ≈ 2.3e-11) is highlighted RED.",
+  "tags": ["borwein_integral", "sinc", "value_tracker", "always_redraw", "surprise"],
+  "apis": ["Axes", "plot", "get_area", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

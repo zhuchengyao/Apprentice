@@ -1,0 +1,8 @@
+{
+  "id": "eigenvalues_mean_product_trick",
+  "category": "linear_algebra",
+  "difficulty": 2,
+  "summary": "TWO_COLUMN: LEFT derivation walk from det(A-λI)=0 for 2×2 A=[[a,b],[c,d]]: λ²-(a+d)λ+(ad-bc)=0 → m = tr/2, p = det → λ = m ± sqrt(m²-p), final GREEN equation in SurroundingRectangle. RIGHT three worked examples: symmetric [[2,1],[1,2]] → (3, 1), mixed [[3,-1],[2,0]] → (2.56, 0.44), rotation [[0,-1],[1,0]] → 0 ± i. Each example card has the matrix, m/p, and the λ values.",
+  "tags": ["eigenvalue_trick", "trace_determinant", "quadratic_formula", "2x2_matrix", "characteristic_polynomial"],
+  "apis": ["MathTex", "Tex", "VGroup", "SurroundingRectangle", "LaggedStart", "FadeIn", "Write", "Create"]
+}

@@ -1,0 +1,9 @@
+{
+  "id": "det_eigen_basis_independent",
+  "category": "linear_algebra",
+  "difficulty": 3,
+  "summary": "COMPARISON: A=[[3, 1], [0, 2]] (BLUE) vs A_J = P^(-1) A P with P=[[2, 1], [1, 1]] (ORANGE). Different-looking matrices but same det=6, same eigenvalues {2, 3}. These invariants are basis-independent.",
+  "tags": ["basis_independence", "determinant_invariant", "eigenvalue_invariant", "similarity"],
+  "apis": ["MathTex", "Tex"],
+  "source": "3b1b/_2016/eola/chapter11.py::DeterminantAndEigenvectorDontCare+ManyCoordinateSystems"
+}

@@ -1,0 +1,8 @@
+{
+  "id": "spherical_triangle_average",
+  "category": "probability",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS: 2D version of Putnam random-triangle problem — 80 precomputed triangles from 3 uniform points on a circle. ValueTracker trial_tr steps 0 → 80; always_redraw current triangle (GREEN if contains origin else RED) + origin dot; live panel with trial count, running p̂, and theoretical 1/4.",
+  "tags": ["random_triangle", "putnam", "value_tracker", "always_redraw", "monte_carlo"],
+  "apis": ["Circle", "Polygon", "Dot", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

@@ -1,0 +1,8 @@
+{
+  "id": "conditional_independence",
+  "category": "probability",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS conditional independence X⊥Y|Z. 2×2 joint/conditional heatmap cells with YELLOW intensity. ValueTracker s_tr interpolates marginal → P(X, Y|Z=1) → P(X, Y|Z=0). always_redraw rebuilds heatmap. Live joint vs product check: marginal joint ≠ product, conditional joint = product exactly (naive Bayes).",
+  "tags": ["conditional_independence", "naive_bayes", "joint_distribution", "bayesian_network", "value_tracker", "always_redraw"],
+  "apis": ["Square", "VGroup", "DecimalNumber", "ValueTracker", "always_redraw", "add_updater", "Tex"]
+}

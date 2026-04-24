@@ -1,0 +1,8 @@
+{
+  "id": "dragon_curve",
+  "category": "fractals",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS Heighway dragon curve via L-system axiom FX, rules X→X+YF+, Y→-FX-Y. Turtle interpretation with 90° turns. ValueTracker level_tr steps 1..12 with always_redraw rebuilding curve at each depth. BLUE→RED gradient by position. Live level, segment count 2^L. Dim=2, space-filling.",
+  "tags": ["dragon_curve", "l_system", "heighway", "space_filling", "value_tracker", "always_redraw"],
+  "apis": ["Line", "VGroup", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"]
+}

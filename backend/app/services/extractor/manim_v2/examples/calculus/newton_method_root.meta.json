@@ -1,0 +1,8 @@
+{
+  "id": "newton_method_root",
+  "category": "calculus",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: axes with BLUE f(x) = x³ - 2x - 5 + RED true root ≈ 2.0946. ValueTracker step_tr advances Newton iterations 0..6 from x_0=4; always_redraw YELLOW dots on curve + axis + GREEN tangent-line constructions + dashed drop. Live error panel shows quadratic convergence.",
+  "tags": ["newton_method", "root_finding", "tangent_iteration", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "Axes.plot", "Dot", "DashedLine", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

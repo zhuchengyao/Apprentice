@@ -1,0 +1,8 @@
+{
+  "id": "fourier_heat_modes",
+  "category": "calculus",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS: 5 stacked axes showing first 5 Fourier modes a_k·sin(kπx/L)·exp(-α(kπ/L)²t) + bottom sum axes. BLUE → RED color gradient with mode index. ValueTracker t_tr sweeps 0→200; always_redraw each mode + sum; higher modes decay faster (time constants τ_k ∝ 1/k²).",
+  "tags": ["heat_equation", "fourier_modes", "mode_decay", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "Axes.plot", "VGroup", "ValueTracker", "always_redraw", "interpolate_color", "MathTex", "Tex"]
+}

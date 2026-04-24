@@ -1,0 +1,8 @@
+{
+  "id": "volume_derivative_equals_surface_area",
+  "category": "geometry",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: BLUE inner circle + YELLOW always_redraw annular shell (Difference of outer and inner Circle) around it, driven by ValueTracker r_tr sweeping 1→1.4→1.7→2.1→1.3→1.9. Right panel: circle math (A=πR², A'=2πR = circumference, (2πR)dR ≈ ΔA) in sequential FadeIn, then sphere math (V=4πR³/3, V'=4πR² = surface area). YELLOW bottom caption reveals the principle: new-volume shell = (surface area) · dR.",
+  "tags": ["volume_derivative", "surface_area", "shell_integration", "value_tracker", "always_redraw", "circle_area"],
+  "apis": ["Circle", "Difference", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex", "FadeIn"]
+}

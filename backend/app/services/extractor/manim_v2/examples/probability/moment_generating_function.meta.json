@@ -1,0 +1,8 @@
+{
+  "id": "moment_generating_function",
+  "category": "probability",
+  "difficulty": 3,
+  "summary": "TWO_COLUMN for X~Exp(λ=1.5): left axes show the always_redraw integrand λ·e^((t-λ)x) with shaded area, plus the reference pdf λ·e^(-λx). ValueTracker t sweeps -1.0 → 1.45 (just below λ); right column has live t, M(t)=λ/(λ-t), the moment expansion, and a mini M(t) plot with vertical asymptote at t=λ.",
+  "tags": ["mgf", "exponential", "value_tracker", "always_redraw", "asymptote"],
+  "apis": ["Axes", "plot", "get_area", "ValueTracker", "always_redraw", "DashedLine", "Dot", "MathTex", "Tex"]
+}

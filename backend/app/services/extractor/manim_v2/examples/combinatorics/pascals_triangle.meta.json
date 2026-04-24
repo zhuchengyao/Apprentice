@@ -1,0 +1,8 @@
+{
+  "id": "pascals_triangle",
+  "category": "combinatorics",
+  "difficulty": 1,
+  "summary": "SINGLE_FOCUS: Pascal's triangle built row by row via always_redraw as ValueTracker row_tr steps 0→9. Edge-column entries (k=0, k=n) in YELLOW, interior WHITE. Row-counter in bottom-right updates live. Secondary phase announces row-n sums = 2^n for n = 3, 5, 7, 9.",
+  "tags": ["pascals_triangle", "binomial_coefficient", "value_tracker", "always_redraw"],
+  "apis": ["VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

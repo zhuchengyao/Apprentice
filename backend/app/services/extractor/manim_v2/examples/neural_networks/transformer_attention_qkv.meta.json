@@ -1,0 +1,8 @@
+{
+  "id": "transformer_attention_qkv",
+  "category": "neural_networks",
+  "difficulty": 3,
+  "summary": "TWO_COLUMN: 3 color-coded 5×4 matrices Q (BLUE), K (GREEN), V (RED) at top-left with color intensity from |value|; always_redraw YELLOW box highlights active query row as ValueTracker query_idx cycles 0..4. RIGHT bar chart shows softmax(Q·K^T/√d) weights via always_redraw; live weighted output = Σ w_k V_k.",
+  "tags": ["transformer", "attention", "softmax", "query_key_value", "value_tracker", "always_redraw"],
+  "apis": ["Square", "Rectangle", "VGroup", "ValueTracker", "always_redraw", "interpolate_color", "MathTex", "Tex"]
+}

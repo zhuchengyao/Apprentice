@@ -1,0 +1,8 @@
+{
+  "id": "surjections_count",
+  "category": "combinatorics",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS: n-element domain + k-element codomain with color-coded surjection arrows. ValueTrackers n_tr, k_tr tour (4, 2), (5, 3), (6, 3), (5, 4), (4, 3); always_redraw example map + live inclusion-exclusion formula Σ(-1)^j C(k,j) (k-j)^n + count.",
+  "tags": ["surjection_count", "inclusion_exclusion", "stirling", "value_tracker", "always_redraw"],
+  "apis": ["Circle", "Arrow", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

@@ -1,0 +1,8 @@
+{
+  "id": "inscribed_angle_theorem",
+  "category": "geometry",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: circle with fixed chord AB (YELLOW) and O center, GREEN central ∠AOB = 120°. ValueTracker phi_tr moves RED apex P around the major arc; always_redraw RED PA, PB, ∠APB. Live panel confirms ∠APB = 60° constantly — half the central angle.",
+  "tags": ["inscribed_angle", "circle_theorem", "value_tracker", "always_redraw"],
+  "apis": ["Circle", "Line", "Dot", "Arc", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

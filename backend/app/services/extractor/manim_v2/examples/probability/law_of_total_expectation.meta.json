@@ -1,0 +1,8 @@
+{
+  "id": "law_of_total_expectation",
+  "category": "probability",
+  "difficulty": 2,
+  "summary": "TWO_COLUMN tower rule E[X]=E[E[X|Y]]. LEFT axes with 3 conditional normal densities (μ=-2, 0.5, 2.5; σ=0.7) and YELLOW mixture + always_redraw vlines at each μ_k. ValueTracker w_tr interpolates prior p between (0.4, 0.3, 0.3) and (0.15, 0.35, 0.5). RIGHT DecimalNumbers show live p_k and Σp_k μ_k.",
+  "tags": ["tower_rule", "total_expectation", "conditional_expectation", "mixture_model", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "DashedLine", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"]
+}

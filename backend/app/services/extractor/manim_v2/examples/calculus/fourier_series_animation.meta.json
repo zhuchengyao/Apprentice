@@ -1,0 +1,8 @@
+{
+  "id": "fourier_series_animation",
+  "category": "calculus",
+  "difficulty": 3,
+  "summary": "Rotate three frequency-scaled circles chained tip-to-tail; the outermost tip traces a wave graph on the right — visual Fourier series.",
+  "tags": ["fourier_series", "rotating_vectors", "epicycles", "synthesis", "trace"],
+  "apis": ["Circle", "Line", "ValueTracker", "always_redraw", "VMobject", "set_points_as_corners"]
+}

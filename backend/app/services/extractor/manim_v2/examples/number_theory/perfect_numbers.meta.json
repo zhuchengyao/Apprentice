@@ -1,0 +1,8 @@
+{
+  "id": "perfect_numbers",
+  "category": "number_theory",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: perfect number n=28 = 1+2+4+7+14. 4×7 grid of 1..28 with n=28 marked RED. ValueTracker d_tr walks through proper divisors {1, 2, 4, 7, 14} with always_redraw GREEN cell highlights + running-sum equation rebuilt each frame. Live divisor index + running sum converging to 28. Euclid-Euler table in corner.",
+  "tags": ["perfect_number", "divisor_sum", "mersenne_prime", "euclid_euler", "value_tracker", "always_redraw"],
+  "apis": ["Square", "VGroup", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"]
+}

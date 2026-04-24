@@ -1,0 +1,8 @@
+{
+  "id": "l2_inner_product",
+  "category": "analysis",
+  "difficulty": 3,
+  "summary": "TWO_COLUMN (stacked vertically): top axes with BLUE sin(nx) + ORANGE sin(mx); bottom axes with GREEN product sin(nx) sin(mx) + shaded integral. ValueTrackers n_tr, m_tr tour (2, 3), (3, 3), (4, 5), (5, 5), (2, 3); panel reports inner product = π/2 iff n=m else 0.",
+  "tags": ["l2_inner_product", "orthogonality", "sine_basis", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "Axes.plot", "Polygon", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

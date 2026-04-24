@@ -1,0 +1,8 @@
+{
+  "id": "riemann_zeta_series",
+  "category": "complex",
+  "difficulty": 3,
+  "summary": "TWO_COLUMN: ζ(s) plotted on real axis 1<s<6 with always_redraw moving dot + dashed vertical line driven by ValueTracker s_tr sweeping 2→3→5→1.5→2→1.1. Right column has live s, ζ(s) value (1000-term truncation), plus special values ζ(2)=π²/6, ζ(4)=π⁴/90, ζ(6)=π⁶/945, and asymptotic behavior.",
+  "tags": ["riemann_zeta", "series", "value_tracker", "always_redraw", "special_values"],
+  "apis": ["Axes", "plot", "ValueTracker", "always_redraw", "DashedLine", "Dot", "MathTex", "Tex"]
+}

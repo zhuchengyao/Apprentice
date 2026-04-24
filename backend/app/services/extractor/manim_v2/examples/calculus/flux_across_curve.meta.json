@@ -1,0 +1,8 @@
+{
+  "id": "flux_across_curve",
+  "category": "calculus",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: NumberPlane with BLUE_D radial field F=(x,y) + YELLOW unit circle. ValueTracker t_tr walks RED rider around; always_redraw GREEN outward normal + ORANGE F arrow (F·n=1 constant). Running flux = θ → 2π (total). Equals ∫∫ ∇·F dA = 2π.",
+  "tags": ["flux", "divergence_theorem", "closed_curve", "value_tracker", "always_redraw"],
+  "apis": ["NumberPlane", "Circle", "Arrow", "Dot", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

@@ -1,0 +1,8 @@
+{
+  "id": "winding_polynomial_zeros",
+  "category": "complex",
+  "difficulty": 3,
+  "summary": "TWO_COLUMN argument principle for p(z)=z³-2z+1. LEFT z-plane with RED roots + YELLOW input circle |z|=r via ValueTracker r_tr. RIGHT p(γ) image curve via always_redraw 200-pt smooth path. Radius tour {0.4, 0.9, 1.8, 0.5, 1.3, 1.9}. Live r, zeros inside, winding number — always match.",
+  "tags": ["argument_principle", "winding_number", "polynomial_roots", "contour_integration", "value_tracker", "always_redraw"],
+  "apis": ["ComplexPlane", "Circle", "VMobject", "Dot", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"]
+}

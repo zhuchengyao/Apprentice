@@ -1,0 +1,8 @@
+{
+  "id": "right_triangle_complementary_angles",
+  "category": "geometry",
+  "difficulty": 1,
+  "summary": "SINGLE_FOCUS: right triangle with legs in ratio b/a driven by ValueTracker ratio_tr through 1, 0.3, 2.5, 5, 0.8, 1.2. always_redraw triangle, right-angle mark, RED arc for α at B, BLUE arc for β at C, live α and β degree labels. Live panel reads α + β = 90° exactly every frame.",
+  "tags": ["right_triangle", "complementary_angles", "value_tracker", "always_redraw"],
+  "apis": ["Polygon", "Arc", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

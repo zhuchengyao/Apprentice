@@ -1,0 +1,8 @@
+{
+  "id": "divergence_theorem_3d",
+  "category": "calculus",
+  "difficulty": 3,
+  "summary": "ThreeDScene: BLUE_D unit sphere. ValueTracker t_tr reveals 40 YELLOW outward radial flux arrows placed via Fibonacci-sphere distribution. F=(x,y,z) has ∇·F=3, so ∫∫∫ 3 dV = 3·(4π/3) = 4π = ∮ F·n dA. Ambient camera rotation.",
+  "tags": ["divergence_theorem", "gauss_theorem", "3d_flux", "value_tracker", "always_redraw"],
+  "apis": ["ThreeDScene", "ThreeDAxes", "Sphere", "Line", "VGroup", "ValueTracker", "always_redraw", "Transform", "MathTex", "Tex"]
+}

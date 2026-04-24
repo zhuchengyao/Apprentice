@@ -1,0 +1,8 @@
+{
+  "id": "gaussian_herschel_derivation",
+  "category": "calculus",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS: NumberPlane with BLUE always_redraw contour rings of exp(-α(x²+y²)) at levels 0.8, 0.5, 0.25, 0.1. RIGHT axes with ORANGE marginal f(x) = e^(-αx²). ValueTracker alpha_tr tours 0.2, 0.8, 1.5, 0.5; live identity f(x)f(y) = g(r²).",
+  "tags": ["gaussian", "herschel_derivation", "radial_symmetry", "value_tracker", "always_redraw"],
+  "apis": ["NumberPlane", "Axes", "Axes.plot", "VMobject", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

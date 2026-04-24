@@ -1,0 +1,8 @@
+{
+  "id": "fatou_lemma_demo",
+  "category": "analysis",
+  "difficulty": 3,
+  "summary": "TWO_COLUMN Fatou lemma strict-inequality example: f_n=n·1_[0, 1/n]. LEFT axes with YELLOW rectangle of height n (clipped at 12) and width 1/n via always_redraw as ValueTracker n_idx_tr tours n={1, 2, 5, 10, 25, 100}. ∫f_n=1 always. BLUE y=0 shows pointwise limit. RIGHT shows 0=∫liminf < liminf∫=1.",
+  "tags": ["fatou_lemma", "lebesgue_integral", "liminf", "counterexample", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "Rectangle", "ParametricFunction", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"]
+}

@@ -1,0 +1,8 @@
+{
+  "id": "law_of_large_numbers_coin",
+  "category": "probability",
+  "difficulty": 1,
+  "summary": "TWO_COLUMN: axes of running mean p̂_N for precomputed 800 coin flips (seed 111); BLUE always_redraw curve + RED rider + YELLOW dashed target p=0.5. Live N, heads, tails, p̂_N, and ±1.96·√(p̂(1-p̂)/N) CI.",
+  "tags": ["law_of_large_numbers", "coin_flips", "empirical_rate", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "DashedLine", "VMobject", "Dot", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

@@ -1,0 +1,8 @@
+{
+  "id": "fermats_principle",
+  "category": "geometry",
+  "difficulty": 3,
+  "summary": "TWO_COLUMN: air/water interface with light A→P→B; ValueTracker px slides P along interface. Right column has live |AP|, |PB|, t_air, t_water, total T plus mini-axes plot of T(px) with moving marker — viewer sees the minimum, optimum marked in green, with Snell's law captioned.",
+  "tags": ["fermat", "snell", "minimization", "value_tracker", "refraction"],
+  "apis": ["Rectangle", "Line", "Dot", "ValueTracker", "always_redraw", "Axes", "plot", "DashedLine", "MathTex", "Tex"]
+}

@@ -1,0 +1,8 @@
+{
+  "id": "givens_rotation",
+  "category": "linear_algebra",
+  "difficulty": 2,
+  "summary": "TWO_COLUMN: Givens rotation in (1, 2)-plane of ℝ³ embedding. LEFT NumberPlane with GREEN v=(3, 4) arrow rotating via ValueTracker theta_tr → (5, 0) target; GREY radius-5 arc + YELLOW trail via always_redraw. RIGHT shows 3×3 G(θ) matrix rebuilt per frame + live θ, v_y (→ 0), |v| (constant 5).",
+  "tags": ["givens_rotation", "qr_factorization", "orthogonal_transformation", "plane_rotation", "value_tracker", "always_redraw"],
+  "apis": ["NumberPlane", "Arrow", "Circle", "VMobject", "Dot", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"]
+}

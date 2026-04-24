@@ -1,0 +1,8 @@
+{
+  "id": "gaussian_kl_divergence",
+  "category": "probability",
+  "difficulty": 2,
+  "summary": "TWO_COLUMN KL divergence between 1D Gaussians. LEFT axes with BLUE fixed p=N(0, 1) and ORANGE always_redraw q=N(μ_q, σ_q²) driven by 2 ValueTrackers. Tour 5 configs including p=q for KL=0. RIGHT live μ_q, σ_q, D_KL; Gibbs inequality ≥0, minimum at p=q; asymmetry note.",
+  "tags": ["kl_divergence", "gaussian", "information_theory", "gibbs_inequality", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "ParametricFunction", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"]
+}

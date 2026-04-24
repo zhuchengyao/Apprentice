@@ -1,0 +1,8 @@
+{
+  "id": "radical_axis_circles",
+  "category": "geometry",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: BLUE circle at C_1=(-2.5, 0) r_1=1.5 fixed + ORANGE circle at (x, 0.5) r_2=1.2 (ValueTracker C2_x_tr moves); always_redraw RED radical axis — line of equal power, perpendicular to C_1 C_2.",
+  "tags": ["radical_axis", "circle_power", "value_tracker", "always_redraw"],
+  "apis": ["Circle", "Line", "Dot", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

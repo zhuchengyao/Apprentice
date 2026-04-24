@@ -1,0 +1,8 @@
+{
+  "id": "weierstrass_approximation",
+  "category": "analysis",
+  "difficulty": 3,
+  "summary": "TWO_COLUMN Weierstrass approximation via Bernstein polynomials. LEFT axes with BLUE non-smooth f(x)=|x-0.5|+0.15 sin(6πx) reference + YELLOW B_n(f) via always_redraw sampled at 60 points. ValueTracker n_idx_tr steps through n=2, 5, 10, 20, 50, 200. RIGHT shows live n and sup-error shrinking to 0.",
+  "tags": ["weierstrass_theorem", "bernstein_polynomial", "uniform_approximation", "binomial_coefficients", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "ParametricFunction", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"]
+}

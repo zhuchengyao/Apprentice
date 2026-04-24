@@ -1,0 +1,9 @@
+{
+  "id": "d_x_squared_via_square",
+  "category": "calculus",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: d(x²)/dx = 2x geometric derivation. BLUE x·x square + 2 GREEN x·dx strips + RED dx·dx corner via always_redraw on ValueTracker dx_tr which shrinks 0.4→0.08. Algebraic expansion on right: (x+dx)²=x²+2x dx+dx², dA=2x dx+dx², dA/dx=2x+dx → 2x in limit.",
+  "tags": ["power_rule", "geometric_derivative", "nudge_square", "d_x_squared", "value_tracker", "always_redraw"],
+  "apis": ["Square", "Rectangle", "MathTex", "VGroup", "ValueTracker", "always_redraw", "Tex"],
+  "source": "3b1b/_2017/eoc/chapter3.py::NudgeSideLengthOfSquare+ChangeInAreaOverChangeInX"
+}

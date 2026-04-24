@@ -1,0 +1,8 @@
+{
+  "id": "riemann_rearrangement",
+  "category": "analysis",
+  "difficulty": 3,
+  "summary": "TWO_COLUMN: LEFT axes with BLUE cumulative sum of Σ(-1)^(n+1)/n → ln 2 ≈ 0.693 (GREEN dashed). RIGHT axes with RED cumulative sum of rearranged (2 pos, 1 neg) → (3/2) ln 2 ≈ 1.039 (ORANGE dashed). ValueTracker N_tr grows 1→100 via always_redraw.",
+  "tags": ["riemann_rearrangement", "conditional_convergence", "alternating_series", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "DashedLine", "VMobject", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

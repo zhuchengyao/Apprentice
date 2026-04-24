@@ -1,0 +1,8 @@
+{
+  "id": "mean_value_theorem_cauchy",
+  "category": "calculus",
+  "difficulty": 3,
+  "summary": "TWO_COLUMN: Cauchy MVT for (g(t), f(t))=(t³, t²) on [0, 2]. LEFT axes show BLUE parametric curve + GREEN secant from (0, 0) to (8, 4) + RED tangent at c=4/3 via always_redraw on ValueTracker c_tr. Tangent direction (3c², 2c). RIGHT panel: secant slope 1/2 = f'(c)/g'(c) = 2/(3c) at c=4/3.",
+  "tags": ["mean_value_theorem", "cauchy_mvt", "parametric_curve", "tangent_secant", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "Line", "Dot", "ParametricFunction", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"]
+}

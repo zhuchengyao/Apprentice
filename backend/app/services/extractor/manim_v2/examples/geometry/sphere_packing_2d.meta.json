@@ -1,0 +1,8 @@
+{
+  "id": "sphere_packing_2d",
+  "category": "geometry",
+  "difficulty": 2,
+  "summary": "COMPARISON: LEFT static square-lattice packing with π/4 density label; RIGHT hex lattice morphs from square (s=0) to hex (s=1) via ValueTracker s_tr with always_redraw circles + rhombic unit cell + live density label. Final ρ_hex = π/(2√3).",
+  "tags": ["sphere_packing", "hex_lattice", "density", "value_tracker", "always_redraw"],
+  "apis": ["Circle", "Square", "Polygon", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

@@ -1,0 +1,8 @@
+{
+  "id": "domino_chain",
+  "category": "probability",
+  "difficulty": 1,
+  "summary": "Line up ten dominoes and topple them one by one to illustrate mathematical induction: base case + step case gives every n.",
+  "tags": ["induction", "domino", "proof_technique", "analogy", "sequential"],
+  "apis": ["Rectangle", "VGroup", "Rotate", "LaggedStart", "MathTex"]
+}

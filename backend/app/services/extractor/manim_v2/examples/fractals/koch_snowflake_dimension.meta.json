@@ -1,0 +1,8 @@
+{
+  "id": "koch_snowflake_dimension",
+  "category": "fractals",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS Koch snowflake with fractal dimension log 4/log 3 ≈ 1.2619. Initial equilateral triangle (side 3.6). ValueTracker level_tr steps 0..5 with always_redraw rebuilding BLUE snowflake via recursive Koch curve on each side. Live perimeter 3s(4/3)^n (→∞) and area (→ 2√3/5 · s²) readouts.",
+  "tags": ["koch_snowflake", "fractal_dimension", "self_similarity", "recursive_curve", "value_tracker", "always_redraw"],
+  "apis": ["VMobject", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"]
+}

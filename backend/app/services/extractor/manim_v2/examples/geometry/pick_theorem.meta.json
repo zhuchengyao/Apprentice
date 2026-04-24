@@ -1,0 +1,8 @@
+{
+  "id": "pick_theorem",
+  "category": "geometry",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: lattice grid + YELLOW polygon with 4 fixed vertices + 1 variable (ValueTracker vx_tr tours x=0, 1, 2, -1, 0). always_redraw polygon + GREEN interior lattice dots + RED boundary lattice dots. Live Pick's check A = I + B/2 - 1.",
+  "tags": ["pick_theorem", "lattice_polygon", "value_tracker", "always_redraw"],
+  "apis": ["NumberPlane", "Polygon", "Dot", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

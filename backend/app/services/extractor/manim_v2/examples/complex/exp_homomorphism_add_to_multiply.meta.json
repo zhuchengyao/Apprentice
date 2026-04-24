@@ -1,0 +1,8 @@
+{
+  "id": "exp_homomorphism_add_to_multiply",
+  "category": "complex",
+  "difficulty": 3,
+  "summary": "TWO_ROW: top GREEN NumberLine (-1..3) for (R, +); bottom ORANGE NumberLine (0..10) for (R_>0, ×). ValueTracker a_tr sweeps 0→0.7→1.2→2→-0.5; always_redraw renders a YELLOW Dot at a on the additive line, a RED Dot at e^a on the multiplicative line, and a BLUE Arrow connecting them — the homomorphism exp. Bottom-right readout shows live a (DecimalNumber) and e^a (DecimalNumber). Caption: 'slide by a ⟺ stretch by e^a'.",
+  "tags": ["exp", "group_homomorphism", "additive_to_multiplicative", "value_tracker", "always_redraw", "euler"],
+  "apis": ["NumberLine", "Dot", "Arrow", "ValueTracker", "always_redraw", "DecimalNumber", "MathTex", "Tex", "VGroup"]
+}

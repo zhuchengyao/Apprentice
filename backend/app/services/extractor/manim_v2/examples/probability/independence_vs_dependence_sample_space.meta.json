@@ -1,0 +1,8 @@
+{
+  "id": "independence_vs_dependence_sample_space",
+  "category": "probability",
+  "difficulty": 2,
+  "summary": "COMPARISON two unit Squares. LEFT 'Independent' (GREEN caption): BLUE B column with GREEN A∩B and A∩B^c both of equal height 0.6 — P(A|B) = P(A|B^c). RIGHT 'Dependent' (RED caption): same BLUE column but A∩B height 0.85 vs A∩B^c height 0.25 — the green region's height jumps across the B boundary. Bottom caption states the independence rule P(A|B)=P(A|B^c) and its negation for the dependent panel.",
+  "tags": ["independence", "conditional_probability", "sample_space", "dependence", "area_model"],
+  "apis": ["Square", "Rectangle", "VGroup", "MathTex", "Tex", "FadeIn"]
+}

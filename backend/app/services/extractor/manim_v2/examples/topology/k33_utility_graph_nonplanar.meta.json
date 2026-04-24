@@ -1,0 +1,8 @@
+{
+  "id": "k33_utility_graph_nonplanar",
+  "category": "topology",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS: three BLUE house icons (Square + roof Polygon) on top row, three colored utility Circles (YELLOW water / TEAL gas / ORANGE electricity) on bottom row. LaggedStart draws all 9 Lines of the complete bipartite K_{3,3}. LEFT panel: V=6, E=9. RIGHT panel: progressive argument 'planar ⇒ F = 5; bipartite ⇒ every face ≥4 edges; 2E ≥ 4F ⇒ E ≥ 10; but E = 9 — contradiction', escalated YELLOW→RED.",
+  "tags": ["k33", "utility_puzzle", "non_planar", "euler_formula", "bipartite_graph", "pigeonhole"],
+  "apis": ["Square", "Polygon", "Circle", "Line", "LaggedStart", "VGroup", "MathTex", "Tex"]
+}

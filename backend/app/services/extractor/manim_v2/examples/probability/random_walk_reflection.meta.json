@@ -1,0 +1,8 @@
+{
+  "id": "random_walk_reflection",
+  "category": "probability",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS: 16-step random walk with RED dashed barrier a=3. ValueTracker t_tr advances; always_redraw BLUE original path + ORANGE reflected path (after barrier touch at t = hit_idx, reflected across a). Illustrates reflection principle.",
+  "tags": ["random_walk", "reflection_principle", "first_passage", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "DashedLine", "VMobject", "Dot", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

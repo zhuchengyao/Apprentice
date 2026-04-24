@@ -1,0 +1,8 @@
+{
+  "id": "isoperimetric_inequality",
+  "category": "geometry",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS: 5 shapes with equal perimeter L=2π cycled via ValueTracker step_tr through circle, square, equilateral triangle, ellipse, star. always_redraw shape + live panel shows area/max_ratio; circle achieves the theoretical maximum A=π = L²/(4π).",
+  "tags": ["isoperimetric_inequality", "perimeter_area", "value_tracker", "always_redraw"],
+  "apis": ["Circle", "Square", "Polygon", "VMobject", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

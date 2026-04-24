@@ -1,0 +1,9 @@
+{
+  "id": "taylor_factorial_intuition",
+  "category": "calculus",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: why n! appears in Taylor series. 6-line sequence: P(x)=Σ c_n x^n; d^n/dx^n(x^n)=n! (BLUE); P^(n)(0)=c_n·n!; match f^(n)(0); c_n = f^(n)(0)/n! (YELLOW); final Taylor formula (GREEN).",
+  "tags": ["taylor_series_coefficients", "factorial_intuition", "derivative_matching"],
+  "apis": ["MathTex", "VGroup", "Tex"],
+  "source": "3b1b/_2017/eoc/chapter10.py::FactorialTerms+EachTermControlsOneDerivative"
+}

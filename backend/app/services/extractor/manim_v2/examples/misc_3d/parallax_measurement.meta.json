@@ -1,0 +1,8 @@
+{
+  "id": "parallax_measurement",
+  "category": "misc_3d",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: Sun + Earth orbit + nearby star + 40 fixed background stars. ValueTracker θ moves Earth around the orbit; always_redraw line of sight from Earth to star projects to an ORANGE 'apparent position' dot on a far background screen which oscillates left-right as Earth orbits — the parallax effect.",
+  "tags": ["parallax", "value_tracker", "always_redraw", "astronomy", "orbit"],
+  "apis": ["Dot", "Circle", "Line", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

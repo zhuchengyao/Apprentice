@@ -1,0 +1,8 @@
+{
+  "id": "bitcoin_mining_nonce_lottery",
+  "category": "number_theory",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS Bitcoin mining simulation. Top: header Tex and target prefix '000'. Center live display of Integer nonce + current SHA-256 hash + prefix-comparison status. Iterates up to 120 nonces starting from a random seed, showing 12 RED failed attempts (prefix mismatch), then Transforms to the winning nonce — hash, status, and GREEN SurroundingRectangle highlight. Bottom-right RED Integer failed_count ticks up. Summary: expected tries ≈ 16^k for k leading zeros. Uses actual hashlib.sha256 computation.",
+  "tags": ["bitcoin", "sha256", "proof_of_work", "nonce", "mining", "cryptography"],
+  "apis": ["Tex", "Integer", "VGroup", "Transform", "SurroundingRectangle", "FadeIn", "hashlib"]
+}

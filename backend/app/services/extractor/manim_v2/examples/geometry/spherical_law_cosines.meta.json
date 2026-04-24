@@ -1,0 +1,8 @@
+{
+  "id": "spherical_law_cosines",
+  "category": "geometry",
+  "difficulty": 3,
+  "summary": "ThreeDScene: spherical triangle on unit sphere with fixed A = north pole, B on prime meridian at arclength c=1.0; C parametrized on small circle of radius b=0.9 around A at angle A_tr (swept through π/2, 2π/3, π/4, 5π/6, π/3). always_redraw YELLOW/GREEN/RED great-circle arcs via slerp + vertex dots. Fixed panel shows LHS cos a vs RHS cos b cos c + sin b sin c cos A — match to 1e-4.",
+  "tags": ["spherical_geometry", "law_of_cosines", "great_circle_arc", "slerp", "value_tracker", "always_redraw"],
+  "apis": ["Sphere", "VMobject", "Dot3D", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"]
+}

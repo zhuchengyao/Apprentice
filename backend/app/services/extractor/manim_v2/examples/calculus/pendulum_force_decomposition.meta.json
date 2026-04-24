@@ -1,0 +1,8 @@
+{
+  "id": "pendulum_force_decomposition",
+  "category": "calculus",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS pendulum diagram: WHITE pivot + GREY_B rod of length L=3 + BLUE bob at θ=0.75 rad. YELLOW Arc and MathTex mark θ. A WHITE gravity Arrow g points down from the bob. Decomposition via radial and tangential basis: RED Arrow for g cos θ (absorbed by tension) and GREEN Arrow for g sin θ (drives motion), with DashedLine closures back to g's tip. Right-bottom derivation: mLθ'' = −mg sin θ ⇒ θ'' = −(g/L)sin θ, the exact pendulum ODE, in YELLOW SurroundingRectangle.",
+  "tags": ["pendulum", "ode", "force_decomposition", "newtonian_mechanics", "sin_theta", "diffyq"],
+  "apis": ["Dot", "Line", "Arc", "Arrow", "DashedLine", "MathTex", "Tex", "VGroup", "SurroundingRectangle", "GrowArrow"]
+}

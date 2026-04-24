@@ -1,0 +1,8 @@
+{
+  "id": "two_d_to_three_d_map",
+  "category": "linear_algebra",
+  "difficulty": 2,
+  "summary": "Send a 2D integer grid through a 3×2 matrix into 3D — the image is a tilted plane embedded in ℝ³.",
+  "tags": ["linear_transform", "nonsquare", "embedding", "rank", "3d"],
+  "apis": ["ThreeDScene", "ThreeDAxes", "Dot3D", "Transform", "MathTex", "add_fixed_in_frame_mobjects"]
+}

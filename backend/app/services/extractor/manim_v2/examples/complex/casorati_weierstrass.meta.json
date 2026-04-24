@@ -1,0 +1,8 @@
+{
+  "id": "casorati_weierstrass",
+  "category": "complex",
+  "difficulty": 3,
+  "summary": "TWO_COLUMN Casorati–Weierstrass for f(z)=e^(1/z) at essential singularity z=0. LEFT: ComplexPlane with always_redraw yellow shrinking circle of radius r on ValueTracker r_tr (0.6→0.05). RIGHT: ComplexPlane with always_redraw ORANGE image cloud of 480 points from |z|=r, 0.7r, 0.4r mapped through e^(1/z); cloud visibly densifies in ℂ as r→0.",
+  "tags": ["casorati_weierstrass", "essential_singularity", "dense_image", "complex_analysis", "value_tracker", "always_redraw"],
+  "apis": ["ComplexPlane", "Circle", "Dot", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"]
+}

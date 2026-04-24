@@ -1,0 +1,8 @@
+{
+  "id": "cauchy_product_series",
+  "category": "analysis",
+  "difficulty": 3,
+  "summary": "TWO_COLUMN Cauchy product for a_n=b_n=1/n!; c_n=2^n/n!. LEFT axes with 3 partial-sum curves (BLUE A, GREEN B, YELLOW C) via always_redraw on ValueTracker N_tr 0→15. GREY e and ORANGE e² reference dashed lines. RIGHT live S_N^A, S_N^B, S_N^C, product — S^C → e², matches S^A·S^B.",
+  "tags": ["cauchy_product", "series_multiplication", "absolute_convergence", "exponential", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "VMobject", "DashedLine", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"]
+}

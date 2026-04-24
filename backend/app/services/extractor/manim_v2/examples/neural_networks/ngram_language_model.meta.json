@@ -1,0 +1,8 @@
+{
+  "id": "ngram_language_model",
+  "category": "neural_networks",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: 3-sentence corpus at top; query 'after the cat'. ValueTracker n_gram_tr cycles through 1-gram (prior), 2-gram (given 'cat'), 3-gram (given 'the cat'). always_redraw BLUE bar chart of P(w) over vocabulary with probability labels + method label. Higher n sharpens to 'sat' and 'ate'.",
+  "tags": ["ngram", "language_model", "counts", "conditional_probability", "value_tracker", "always_redraw"],
+  "apis": ["Rectangle", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

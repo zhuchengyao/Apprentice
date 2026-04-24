@@ -1,0 +1,8 @@
+{
+  "id": "moser_pattern_break",
+  "category": "combinatorics",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: chord diagram on LEFT (always_redraw as ValueTracker n_tr steps 1..6); RIGHT has a table always_redraw comparing guessed pattern 2^(n-1) vs actual R_n = 1+C(n,2)+C(n,4). Rows turn from GREY to GREEN or RED as n increases — the n=6 row flashes RED because 2^5=32 but R_6=31.",
+  "tags": ["moser", "pattern", "conjecture", "value_tracker", "always_redraw"],
+  "apis": ["Circle", "Line", "Dot", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

@@ -1,0 +1,8 @@
+{
+  "id": "menger_sponge",
+  "category": "misc_3d",
+  "difficulty": 3,
+  "summary": "ThreeDScene Menger sponge with fractal dim log 20/log 3 ≈ 2.727. ValueTracker level_tr steps 0→2 (level 3 prohibitive). always_redraw rebuilds surviving 20^L subcubes (keep if ≥2 nonzero among dx, dy, dz; 6 face + 1 center removed per 27). BLUE→ORANGE color gradient based on position. Live level, count, (20/27)^L volume.",
+  "tags": ["menger_sponge", "fractal_dimension", "3d_fractal", "recursive_carving", "value_tracker", "always_redraw"],
+  "apis": ["ThreeDAxes", "Cube", "VGroup", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"]
+}

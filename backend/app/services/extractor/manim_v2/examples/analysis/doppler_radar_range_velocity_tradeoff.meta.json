@@ -1,0 +1,8 @@
+{
+  "id": "doppler_radar_range_velocity_tradeoff",
+  "category": "analysis",
+  "difficulty": 2,
+  "summary": "COMPARISON two side-by-side panels, each a pair of stacked Axes (time-pulse on top, frequency-echo on bottom). LEFT BLUE 'Short pulse' σ=0.3 shows a narrow time envelope (sharp range) and wide Gaussian spectrum (broad velocity). RIGHT RED 'Long pulse' σ=1.5 shows a wide time envelope (fuzzy range) and narrow spectrum (sharp velocity). Bottom MathTex: σ_t · σ_f ≥ 1/(4π) ⇒ the range-velocity tradeoff is unavoidable.",
+  "tags": ["doppler_radar", "uncertainty_principle", "time_frequency_tradeoff", "gaussian_pulse", "physics"],
+  "apis": ["Axes", "Axes.plot", "VGroup", "MathTex", "Tex", "FadeIn", "Write"]
+}

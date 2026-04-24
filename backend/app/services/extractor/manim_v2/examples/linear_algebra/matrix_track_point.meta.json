@@ -1,0 +1,8 @@
+{
+  "id": "matrix_track_point",
+  "category": "linear_algebra",
+  "difficulty": 2,
+  "summary": "Track a highlighted dot v=(1,2) as a 2x2 shear matrix is applied: the dot follows the grid and the new coordinates appear afterward.",
+  "tags": ["matrix", "linear_transform", "vector", "tracking", "shear"],
+  "apis": ["NumberPlane", "Dot", "MathTex", "ApplyMatrix", "Mobject.animate"]
+}

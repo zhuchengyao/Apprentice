@@ -1,0 +1,9 @@
+{
+  "id": "a_inverse_a_equals_identity",
+  "category": "linear_algebra",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: A^(-1) A = I. A=[[1.5, 0.8], [0.5, 1.5]]. 2-stage ValueTracker: identity → A (grid deformed) → identity restored. always_redraw BLUE/ORANGE grid + GREEN î, RED ĵ. Right panel: PINK A · GREEN A^(-1) = YELLOW I with identity matrix shown. Stage labels.",
+  "tags": ["matrix_inverse", "identity_matrix", "inverse_property", "do_nothing_matrix", "value_tracker", "always_redraw"],
+  "apis": ["NumberPlane", "VMobject", "Arrow", "MathTex", "ValueTracker", "always_redraw", "add_updater", "Tex"],
+  "source": "3b1b/_2016/eola/chapter6.py::MultiplyToIdentity"
+}

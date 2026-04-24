@@ -1,0 +1,8 @@
+{
+  "id": "instantaneous_velocity_paradox",
+  "category": "calculus",
+  "difficulty": 2,
+  "summary": "TWO_COLUMN: Axes with s(t) = t² - t³/4 curve; t₀ = 1.5 fixed. ValueTracker dt_tr shrinks Δt from 1.2 to 0.002; always_redraw GREEN secant line + YELLOW/ORANGE endpoint dots. Secant slope approaches s'(t₀) = 3/4 · 2·1.5 - 3·1.5²/4 = 1.3125. Live panel has Δt, secant slope, s'(t₀), error.",
+  "tags": ["derivative_limit", "secant_to_tangent", "zeno", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "Axes.plot", "Dot", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

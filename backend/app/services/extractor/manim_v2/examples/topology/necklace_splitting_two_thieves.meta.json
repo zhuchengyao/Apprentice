@@ -1,0 +1,8 @@
+{
+  "id": "necklace_splitting_two_thieves",
+  "category": "topology",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS: 10-jewel necklace drawn as a horizontal GREY Line with 10 RED/BLUE alternating Circles strung along it. Two YELLOW DashedLine cuts fall after positions 3 and 7, separating the chain into three pieces that are assigned in an A-B-A pattern by GREEN / PURPLE underlines and owner Tex labels. Bottom MathTex verifies that each thief ends with equal red count and equal blue count — a concrete Borsuk-Ulam consequence for 2 thieves, 2 colors, 2 cuts.",
+  "tags": ["borsuk_ulam", "necklace_splitting", "combinatorial_topology", "fair_division", "dashed_line"],
+  "apis": ["Circle", "Line", "DashedLine", "VGroup", "LaggedStart", "MathTex", "Tex"]
+}

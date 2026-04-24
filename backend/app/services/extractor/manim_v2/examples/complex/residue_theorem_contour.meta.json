@@ -1,0 +1,8 @@
+{
+  "id": "residue_theorem_contour",
+  "category": "complex",
+  "difficulty": 3,
+  "summary": "TWO_COLUMN residue theorem for f(z)=1/(z²+1). LEFT ComplexPlane with RED poles at ±i + YELLOW growing circle via ValueTracker r_tr (radius tour through 1.5, 0.5, 2.0, 0.8, 1.2). always_redraw contour. RIGHT shows live poles-inside count and numerical integral via 500-point Riemann sum on circle — approaches π for r>1, 0 for r<1.",
+  "tags": ["residue_theorem", "contour_integral", "simple_poles", "numerical_integration", "value_tracker", "always_redraw"],
+  "apis": ["ComplexPlane", "Circle", "Dot", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"]
+}

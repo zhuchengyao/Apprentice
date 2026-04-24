@@ -1,0 +1,9 @@
+{
+  "id": "sneaky_eigenvector_eigenspace",
+  "category": "linear_algebra",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: A=[[3, 1], [0, 2]] has a second 'sneaky' eigenvector direction (-1, 1) with λ=2. ORANGE line span + 5 ORANGE dots on line stay on line after A (scaled by 2). ValueTracker t_tr animates transformation.",
+  "tags": ["eigenvector", "eigenspace", "non_axis_aligned", "value_tracker", "always_redraw"],
+  "apis": ["NumberPlane", "Line", "Dot", "VGroup", "ValueTracker", "always_redraw", "Tex"],
+  "source": "3b1b/_2016/eola/chapter10.py::SneakierEigenVector+FullSneakyEigenspace"
+}

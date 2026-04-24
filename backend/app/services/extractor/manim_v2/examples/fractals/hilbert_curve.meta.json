@@ -1,0 +1,8 @@
+{
+  "id": "hilbert_curve",
+  "category": "fractals",
+  "difficulty": 3,
+  "summary": "Generate the Hilbert space-filling curve recursively for orders 1..4 and smoothly Transform between successive iterations inside a square.",
+  "tags": ["fractal", "hilbert", "space_filling", "recursion"],
+  "apis": ["VMobject", "VMobject.set_points_as_corners", "Transform"]
+}

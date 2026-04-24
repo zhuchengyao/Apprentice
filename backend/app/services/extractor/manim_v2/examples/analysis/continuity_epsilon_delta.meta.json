@@ -1,0 +1,8 @@
+{
+  "id": "continuity_epsilon_delta",
+  "category": "analysis",
+  "difficulty": 2,
+  "summary": "TWO_COLUMN: axes with BLUE y = x² + RED target (2, 4). ValueTracker eps_tr tours ε = 2.0, 4.0, 0.5, 0.1, 2.0; always_redraw YELLOW horizontal ε-band around y=4 and GREEN vertical δ-band around x=2 with δ = -2 + √(4+ε). Live implication panel.",
+  "tags": ["continuity", "epsilon_delta", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "Axes.plot", "Dot", "Rectangle", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

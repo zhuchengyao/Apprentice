@@ -1,0 +1,8 @@
+{
+  "id": "tetrahedron_circumsphere",
+  "category": "geometry",
+  "difficulty": 3,
+  "summary": "ThreeDScene: tetrahedron circumsphere. ValueTracker s_tr morphs through 3 tetrahedra configs. always_redraw rebuilds BLUE edges + vertex dots + YELLOW circumsphere (center solved from 3×3 linear system on |C-v_i|=R) + RED center dot. Ambient camera rotation; legend explains geometry.",
+  "tags": ["circumsphere", "tetrahedron", "circumcenter", "equidistant_center", "value_tracker", "always_redraw"],
+  "apis": ["ThreeDAxes", "Sphere", "Line", "Dot3D", "VGroup", "ValueTracker", "always_redraw", "Tex"]
+}

@@ -1,0 +1,8 @@
+{
+  "id": "aliquot_sequence",
+  "category": "number_theory",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: 4 aliquot sequences from starting numbers 12, 95, 30, 220 displayed as colored chains; ValueTracker step_idx advances and always_redraw shows visible boxes per row. Color codes: BLUE iterating, GREEN perfect/amicable, RED terminates at 0. Bottom legend explains.",
+  "tags": ["aliquot", "perfect_number", "amicable", "value_tracker", "always_redraw"],
+  "apis": ["RoundedRectangle", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

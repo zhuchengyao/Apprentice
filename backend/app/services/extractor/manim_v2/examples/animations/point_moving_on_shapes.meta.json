@@ -1,8 +1,0 @@
-{
-  "id": "point_moving_on_shapes",
-  "category": "animations",
-  "difficulty": 2,
-  "summary": "Move a Dot along a Circle with MoveAlongPath, morph circle into a Square, then rotate it.",
-  "tags": ["path", "move_along_path", "rotating", "transform", "circular_motion"],
-  "apis": ["MoveAlongPath", "Circle", "Square", "Rotating", "ReplacementTransform", "point_from_proportion"]
-}

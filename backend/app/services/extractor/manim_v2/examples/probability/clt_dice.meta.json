@@ -1,0 +1,8 @@
+{
+  "id": "clt_dice",
+  "category": "probability",
+  "difficulty": 2,
+  "summary": "TWO_COLUMN: axes with static YELLOW N(0,1) pdf overlay + always_redraw BLUE histogram of standardized sum of n d6 across 2000 trials. ValueTracker n_idx_tr steps through n=1, 2, 4, 8, 16, 30; histogram sharpens toward N(0, 1).",
+  "tags": ["clt", "dice_sum", "standardization", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "Axes.plot", "Rectangle", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

@@ -1,0 +1,8 @@
+{
+  "id": "parametric_surface_area",
+  "category": "calculus",
+  "difficulty": 3,
+  "summary": "ThreeDScene: unit hemisphere BLUE_D + YELLOW parallelogram patches from Riemann grid (u, v) ∈ [0, π/2] × [0, 2π]. ValueTracker N_tr grows 3, 5, 10, 15; always_redraw patches; area → 2π.",
+  "tags": ["surface_area", "parametric_surface", "riemann_sum", "value_tracker", "always_redraw"],
+  "apis": ["ThreeDScene", "ThreeDAxes", "Surface", "Polygon", "VGroup", "ValueTracker", "always_redraw", "Transform", "MathTex", "Tex"]
+}

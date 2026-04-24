@@ -1,0 +1,8 @@
+{
+  "id": "newtons_method_quadratic_convergence",
+  "category": "analysis",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS Axes with BLUE curve f(x)=x³-2x-5 on [1,3]. GREEN Dot at true root x* ≈ 2.0946. 5 Newton iterations from x₀=2.5: at each step a YELLOW x-axis Dot + GREY_B DashedLine + RED Dot on curve + ORANGE tangent Line Extending to next x-axis YELLOW Dot. Right log table shows (iter, x_n, |x_n-x*|) with errors dropping 1.4→0.13→7e-3→3e-5→3e-10 — quadratic convergence visible in the exponent roughly doubling per step. YELLOW bottom caption reinforces the quadratic rate.",
+  "tags": ["newtons_method", "root_finding", "tangent_line", "quadratic_convergence", "numerical_analysis"],
+  "apis": ["Axes", "Axes.plot", "Dot", "Line", "DashedLine", "VGroup", "MathTex", "Tex", "FadeIn", "Create"]
+}

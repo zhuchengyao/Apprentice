@@ -1,0 +1,8 @@
+{
+  "id": "double_integral_volume",
+  "category": "calculus",
+  "difficulty": 3,
+  "summary": "ThreeDScene: GREEN paraboloid z = x² + y² over [0, 1]² + YELLOW Riemann prisms (N×N grid). ValueTracker N_tr refines 2, 4, 8, 12 via always_redraw; approximation ∑f(x_i, y_j) Δx Δy converges to ∫∫ = 2/3.",
+  "tags": ["double_integral", "riemann_sum", "3d_volume", "value_tracker", "always_redraw"],
+  "apis": ["ThreeDScene", "ThreeDAxes", "Surface", "Polygon", "VGroup", "ValueTracker", "always_redraw", "Transform", "MathTex", "Tex"]
+}

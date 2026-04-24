@@ -1,0 +1,8 @@
+{
+  "id": "six_trig_functions_on_unit_circle",
+  "category": "geometry",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS: NumberPlane with BLUE unit circle; ValueTracker theta_tr drives a WHITE radius and YELLOW point. Eight always_redraw segments color-code all six trig functions: RED sin (vertical), GREEN cos (horizontal), ORANGE tan (tangent at x=1), PURPLE sec (radius extended to x=1), TEAL cot (tangent at y=1), PINK csc (radius extended to y=1). Legend + live theta panel on right. Sweep 0.6 -> 1.2 -> 0.35 -> 1.0.",
+  "tags": ["trigonometry", "unit_circle", "geometric_interpretation", "value_tracker", "always_redraw", "sin", "cos", "tan", "sec", "csc", "cot"],
+  "apis": ["NumberPlane", "Circle", "Line", "Dot", "ValueTracker", "always_redraw", "DecimalNumber", "Tex", "MathTex", "VGroup"]
+}

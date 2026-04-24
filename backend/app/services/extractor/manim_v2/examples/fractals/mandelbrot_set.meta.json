@@ -1,0 +1,8 @@
+{
+  "id": "mandelbrot_set",
+  "category": "fractals",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS heatmap: 100×60 cells over c ∈ [-2.1, 0.7] × [-1.1, 1.1] colored by precomputed escape time. ValueTracker iters sweeps 4→60 — cells whose orbit hasn't yet escaped at the current iter limit stay BLACK; the Mandelbrot boundary emerges progressively. Right corner has live max-iter readout and the iteration formula.",
+  "tags": ["mandelbrot", "fractal", "escape_time", "value_tracker", "heatmap"],
+  "apis": ["Rectangle", "interpolate_color", "VGroup", "ValueTracker", "always_redraw", "numpy", "MathTex", "Tex"]
+}

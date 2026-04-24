@@ -1,0 +1,9 @@
+{
+  "id": "orientation_flip_negative_det",
+  "category": "linear_algebra",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: negative determinant reverses orientation. A=[[1, 1], [2, -1]] has det=-3. ValueTracker t_tr morphs identity→A with always_redraw GREEN î, RED ĵ + YELLOW arc from î to ĵ — arc direction flips from CCW to CW when det passes through 0. Status text updates live.",
+  "tags": ["negative_determinant", "orientation", "arc_flip", "signed_area", "value_tracker", "always_redraw"],
+  "apis": ["NumberPlane", "Arrow", "Arc", "ValueTracker", "always_redraw", "add_updater", "Tex"],
+  "source": "3b1b/_2016/eola/chapter5.py::IHatJHatOrientation+NegativeDeterminantTransformation+FlipSpaceOver"
+}

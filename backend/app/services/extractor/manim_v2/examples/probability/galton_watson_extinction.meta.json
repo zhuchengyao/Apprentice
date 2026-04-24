@@ -1,0 +1,8 @@
+{
+  "id": "galton_watson_extinction",
+  "category": "probability",
+  "difficulty": 3,
+  "summary": "TWO_COLUMN Galton-Watson branching process with Poisson(λ) offspring. LEFT: GREEN nodes + TEAL edges form genealogical tree growing via gen_tr. RIGHT axes with BLUE φ(q)=e^(λ(q-1)) intersecting GREY y=q at RED extinction-probability fixed points; ValueTracker lambda_tr morphs λ∈[0.8, 1.5] showing bifurcation.",
+  "tags": ["galton_watson", "branching_process", "extinction_probability", "fixed_point", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "Dot", "Line", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"]
+}

@@ -1,0 +1,8 @@
+{
+  "id": "fluid_flow_streamline",
+  "category": "calculus",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS: Unit cylinder at origin with 11 precomputed BLUE streamlines from inviscid potential flow u=1-R²(x²-y²)/r⁴, v=-2R²xy/r⁴. ValueTracker t_tr drives 20 YELLOW tracer particles along their precomputed trajectories via always_redraw — particles split around cylinder and rejoin downstream.",
+  "tags": ["fluid_flow", "streamlines", "potential_flow", "value_tracker", "always_redraw"],
+  "apis": ["Circle", "VMobject", "Dot", "VGroup", "ValueTracker", "always_redraw", "Tex"]
+}

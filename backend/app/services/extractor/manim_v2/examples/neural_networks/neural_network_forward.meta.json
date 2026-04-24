@@ -1,0 +1,8 @@
+{
+  "id": "neural_network_forward",
+  "category": "neural_networks",
+  "difficulty": 3,
+  "summary": "4→5→3 network with concrete random weights. Stage 0: input values populate blue nodes; Stage 1: edges colored ORANGE/PURPLE by sign of weight·input contribution, hidden ReLU activations populate green nodes; Stage 2: same for layer-2 weights, softmax populates yellow output nodes. Argmax highlighted at the end. Bottom equations.",
+  "tags": ["neural_network", "forward_pass", "relu", "softmax", "weighted_edges"],
+  "apis": ["Circle", "Line", "VGroup", "Mobject.animate.set_stroke", "MathTex", "Tex", "numpy"]
+}

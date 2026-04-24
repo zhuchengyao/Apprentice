@@ -1,0 +1,8 @@
+{
+  "id": "gaussian_prime_splitting_mod_four",
+  "category": "number_theory",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS complex plane with primes on real axis: GREEN primes 5, 13, 17 (≡ 1 mod 4) split in Z[i], RED primes 3, 7, 11 (≡ 3 mod 4) stay inert. Animate the three splittings by drawing YELLOW arrows from the integer prime up to (a+bi) and down to (a-bi), with MathTex factorization equations (5=(2+i)(2-i), 13=(3+2i)(3-2i), 17=(4+i)(4-i)). BLUE caption notes 2 ramifies as -i(1+i)^2. Legend at top-left shows color coding.",
+  "tags": ["gaussian_primes", "fermat_two_squares", "splitting_primes", "mod_4", "quadratic_reciprocity"],
+  "apis": ["NumberPlane", "Dot", "Arrow", "GrowArrow", "MathTex", "Tex", "VGroup"]
+}

@@ -1,0 +1,8 @@
+{
+  "id": "schwarz_lemma",
+  "category": "complex",
+  "difficulty": 3,
+  "summary": "TWO_COLUMN: LEFT axes with RED bound y=|z| line and BLUE |f(z)|=|z|² curve for f(z)=z². ValueTracker r_tr sweeps |z| 0→1; always_redraw RED rider on bound and BLUE rider below. RIGHT unit disk with angle π/3 shows z and f(z) = z² paired.",
+  "tags": ["schwarz_lemma", "unit_disk", "holomorphic", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "Axes.plot", "ComplexPlane", "Circle", "Dot", "DashedLine", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

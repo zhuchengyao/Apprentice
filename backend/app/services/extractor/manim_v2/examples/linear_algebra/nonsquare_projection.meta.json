@@ -1,0 +1,8 @@
+{
+  "id": "nonsquare_projection",
+  "category": "linear_algebra",
+  "difficulty": 3,
+  "summary": "TWO_COLUMN: ℝ³ input rendered as 3 z-slice rows of colored dots on the left; ℝ² output plane on the right showing all images. Middle column shows the matrix A and ker A = span((1,-1,1)). ValueTracker t slides a YELLOW input dot along the kernel direction; the output marker stays pinned at origin.",
+  "tags": ["nonsquare_matrix", "kernel", "linear_map", "value_tracker", "always_redraw"],
+  "apis": ["NumberPlane", "Dot", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

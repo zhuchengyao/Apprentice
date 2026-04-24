@@ -1,0 +1,8 @@
+{
+  "id": "hoeffding_inequality",
+  "category": "probability",
+  "difficulty": 2,
+  "summary": "TWO_COLUMN Hoeffding inequality: P(|X̄_n-0.5|≥0.1) ≤ 2 e^(-2nt²). LEFT axes with RED dashed 2e^(-2nt²) bound curve + always_redraw YELLOW empirical dots + line from 1000 Monte Carlo runs at n=5, 10, 20, ..., 2000. ValueTracker idx_tr reveals points. RIGHT live n, empirical tail, and bound — empirical always below.",
+  "tags": ["hoeffding_inequality", "concentration_inequality", "exponential_bound", "monte_carlo", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "Dot", "VMobject", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"]
+}

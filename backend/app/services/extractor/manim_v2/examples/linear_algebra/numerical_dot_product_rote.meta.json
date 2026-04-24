@@ -1,0 +1,9 @@
+{
+  "id": "numerical_dot_product_rote",
+  "category": "linear_algebra",
+  "difficulty": 1,
+  "summary": "SINGLE_FOCUS: numerical dot product v·w=Σv_i w_i. 2D example (1, 2)·(3, -1)=1 with YELLOW SurroundingRectangle highlights on paired entries. 4D example (2, 5, -3, 1)·(1, -2, 0, 4)=-4. Bottom note: pair up, multiply, add — any dimension.",
+  "tags": ["dot_product", "numerical_computation", "entrywise_product", "2d_4d"],
+  "apis": ["Matrix", "MathTex", "SurroundingRectangle", "VGroup", "Tex"],
+  "source": "3b1b/_2016/eola/chapter7.py::ShowNumericalDotProduct+TwoDDotProductExample+FourDDotProductExample"
+}

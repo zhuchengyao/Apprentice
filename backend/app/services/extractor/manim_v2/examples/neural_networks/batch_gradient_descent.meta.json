@@ -1,0 +1,8 @@
+{
+  "id": "batch_gradient_descent",
+  "category": "neural_networks",
+  "difficulty": 2,
+  "summary": "TWO_COLUMN: SGD (batch=1), minibatch, full-batch compared on f=(w_1² + 3w_2²)/2 with decreasing gradient-noise scale. Axes with contours + 3 always_redraw trails (BLUE/GREEN/ORANGE) + 3 dots. ValueTracker t_tr reveals 80 iterations. RIGHT panel has live per-method loss + YELLOW minimum marker.",
+  "tags": ["gradient_descent", "sgd", "minibatch", "stochastic_optimization", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "VMobject", "Dot", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"]
+}

@@ -1,0 +1,8 @@
+{
+  "id": "projection_matrix",
+  "category": "linear_algebra",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: NumberPlane with YELLOW v=(2, 1.3) + BLUE u-axis (ValueTracker theta_tr rotates u through 30°, 60°, 130°, 10°, 90°). always_redraw ORANGE projection Pv=(v·u)u + GREY dashed perpendicular drop. Live panel: u, Pv, idempotency ‖P²-P‖ ≈ 0.",
+  "tags": ["projection_matrix", "idempotent", "outer_product", "value_tracker", "always_redraw"],
+  "apis": ["NumberPlane", "Line", "Arrow", "DashedLine", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

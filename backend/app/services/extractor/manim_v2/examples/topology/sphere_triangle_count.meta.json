@@ -1,0 +1,8 @@
+{
+  "id": "sphere_triangle_count",
+  "category": "topology",
+  "difficulty": 3,
+  "summary": "ThreeDScene: build an octahedral triangulation of a sphere (V=6, E=12, F=8) then refine each face into 4 sub-triangles via snapped edge midpoints (V'=18, E'=48, F'=32). Right-side ValueTracker counters drive an always_redraw V, E, F, V-E+F panel that stays = 2 across both stages.",
+  "tags": ["euler_characteristic", "sphere", "triangulation", "refinement", "value_tracker"],
+  "apis": ["ThreeDScene", "Dot3D", "Line", "Polygon", "ValueTracker", "always_redraw", "LaggedStart", "MathTex", "Tex"]
+}

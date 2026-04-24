@@ -1,0 +1,8 @@
+{
+  "id": "wave_machine_coupled",
+  "category": "calculus",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS: 20 pendulums hanging from a horizontal GREY support bar, each with length linearly increasing L ∈ [1.4, 3.5] m so ω_i = √(g/L_i) differ. ValueTracker t_tr advances time 0→30s; always_redraw pendulum rods + BLUE→YELLOW colored bobs phase-shifted per pendulum produce a snake-like traveling wave.",
+  "tags": ["wave_machine", "coupled_pendulums", "phase_wave", "value_tracker", "always_redraw"],
+  "apis": ["Line", "Dot", "VGroup", "ValueTracker", "always_redraw", "interpolate_color", "MathTex", "Tex"]
+}

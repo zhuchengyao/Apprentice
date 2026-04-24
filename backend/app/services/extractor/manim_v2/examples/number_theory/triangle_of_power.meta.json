@@ -1,0 +1,8 @@
+{
+  "id": "triangle_of_power",
+  "category": "number_theory",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: Triangle with 3 corners (a=2 top-left, b=8 bottom, c=3 top-right). Transform cycles through 3 problem types: exponent (b=a^c), root (a = c-th root of b), log (c = log_a b) — each time one corner is YELLOW-highlighted as the unknown; equation updates at bottom.",
+  "tags": ["triangle_of_power", "exponent", "log", "root", "notation", "transform"],
+  "apis": ["Polygon", "Circle", "VGroup", "Transform", "MathTex", "Tex"]
+}

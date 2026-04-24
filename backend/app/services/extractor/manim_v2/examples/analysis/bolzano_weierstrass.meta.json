@@ -1,0 +1,8 @@
+{
+  "id": "bolzano_weierstrass",
+  "category": "analysis",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: number line [-1.2, 1.2] with 30 BLUE_D random samples (cluster near 0.5 every 3rd index). YELLOW dashed vertical marks lim=0.5. ValueTracker step_tr progressively highlights the subsequence (every 3rd index) in RED; always_redraw. Live distance |a_{n_k} - 0.5| → 0.",
+  "tags": ["bolzano_weierstrass", "bounded_sequence", "subsequence", "value_tracker", "always_redraw"],
+  "apis": ["NumberLine", "Dot", "DashedLine", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

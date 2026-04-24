@@ -1,0 +1,9 @@
+{
+  "id": "limit_counterexample_discontinuous",
+  "category": "calculus",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: limit doesn't exist at x=2 for step function (1 for x<2, 3 for x≥2). BLUE left segment, GREEN right segment, open/closed dots at jump. ValueTracker x_tr approaches 2 from left (limit 1), jumps, then from right (limit 3). Limit nonexistent.",
+  "tags": ["limit_nonexistence", "discontinuity", "left_right_limits", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "Line", "Dot", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"],
+  "source": "3b1b/_2017/eoc/chapter7.py::LimitCounterExample"
+}

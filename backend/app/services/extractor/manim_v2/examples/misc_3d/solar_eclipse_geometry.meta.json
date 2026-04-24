@@ -1,0 +1,8 @@
+{
+  "id": "solar_eclipse_geometry",
+  "category": "misc_3d",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: 2D side view of Sun (YELLOW R=0.7) at x=-6, Moon (GREY r=0.12) at x≈0.5, Earth (BLUE r=0.3) at x=5. ValueTracker moon_offset_tr slides Moon up/down; always_redraw Moon + ORANGE tangent-line umbra cone from Sun edges. Live panel shows Moon offset and Sun coverage fraction.",
+  "tags": ["eclipse", "astronomy", "angular_size", "value_tracker", "always_redraw"],
+  "apis": ["Circle", "Line", "Polygon", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

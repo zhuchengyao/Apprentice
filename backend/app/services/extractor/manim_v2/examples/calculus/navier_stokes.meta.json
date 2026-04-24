@@ -1,0 +1,8 @@
+{
+  "id": "navier_stokes",
+  "category": "calculus",
+  "difficulty": 3,
+  "summary": "TWO_COLUMN: cylinder in flow with 24 always_redraw YELLOW tracer particles advected through a precomputed Karman-style vortex wake; ValueTracker t_tr advances particle phase, nu_tr varies viscosity (live Re). RIGHT column has the NS equation terms color-coded (unsteady BLUE, advection GREEN, pressure YELLOW, viscous RED) + live ν, Re.",
+  "tags": ["navier_stokes", "karman_vortex", "fluid", "value_tracker", "always_redraw"],
+  "apis": ["Circle", "Dot", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

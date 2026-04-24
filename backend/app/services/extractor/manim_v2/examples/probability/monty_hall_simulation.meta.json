@@ -1,0 +1,8 @@
+{
+  "id": "monty_hall_simulation",
+  "category": "probability",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: 3 door boxes top + axes below. ValueTracker trial_tr runs 200 precomputed trials for both 'stay' and 'switch' strategies; RED + GREEN always_redraw running-rate curves converge to 1/3 and 2/3 (dashed reference lines). Live win-rate panel.",
+  "tags": ["monty_hall", "conditional_probability", "simulation", "value_tracker", "always_redraw"],
+  "apis": ["Rectangle", "Axes", "DashedLine", "VMobject", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

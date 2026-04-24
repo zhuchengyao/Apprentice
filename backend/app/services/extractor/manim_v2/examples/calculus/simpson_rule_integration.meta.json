@@ -1,0 +1,8 @@
+{
+  "id": "simpson_rule_integration",
+  "category": "calculus",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: axes with BLUE f(x) = e^(-x²/2)·(1 + sin 2x). ValueTracker N_tr grows 2, 4, 6, 10, 20; always_redraw YELLOW parabolic shade segments fitted through 3 points each via Lagrange interpolation. Live Simpson approx vs true integral (error ∼ 1/N⁴).",
+  "tags": ["simpson_rule", "numerical_integration", "parabolic_approximation", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "Axes.plot", "Polygon", "VMobject", "Line", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

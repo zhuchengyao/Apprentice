@@ -1,0 +1,8 @@
+{
+  "id": "adding_waves_superposition",
+  "category": "calculus",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS with 3 stacked axes: BLUE A = cos(πx) static; ORANGE B = cos(πx + φ) and GREEN A+B via always_redraw; YELLOW dashed envelope ±2|cos(φ/2)|. ValueTracker phi_tr sweeps 0→2π. Live panel flags constructive / destructive / partial interference by amplitude.",
+  "tags": ["wave_superposition", "interference", "phase", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "Axes.plot", "DashedLine", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

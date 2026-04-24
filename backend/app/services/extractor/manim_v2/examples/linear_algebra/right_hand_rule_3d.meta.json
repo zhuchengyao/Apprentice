@@ -1,0 +1,9 @@
+{
+  "id": "right_hand_rule_3d",
+  "category": "linear_algebra",
+  "difficulty": 3,
+  "summary": "ThreeDScene: right-hand rule for 3D orientation. ValueTracker t_tr interpolates identity → F=diag(1, 1, -1) (z-flip). GREEN î, RED ĵ, BLUE k̂ basis + PURPLE/YELLOW î×ĵ cross product arrow (PURPLE when aligned with k̂ = right-handed, YELLOW when opposite = left-handed). Live t, det, handedness status.",
+  "tags": ["right_hand_rule", "3d_orientation", "cross_product", "handedness", "value_tracker", "always_redraw"],
+  "apis": ["ThreeDAxes", "Arrow3D", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"],
+  "source": "3b1b/_2016/eola/chapter5.py::RightHandRule+LeftHandRule"
+}

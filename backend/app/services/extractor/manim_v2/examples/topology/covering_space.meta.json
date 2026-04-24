@@ -1,0 +1,8 @@
+{
+  "id": "covering_space",
+  "category": "topology",
+  "difficulty": 2,
+  "summary": "TWO_COLUMN covering map p:ℝ→S¹. LEFT NumberPlane with BLUE unit circle and YELLOW dot at (cos t, sin t) + 2π-trail. RIGHT NumberLine [-2, 14] with GREEN lifted dot at t and full trail. Dashed projection arrow connects lift to image. ValueTracker t_tr sweeps 0→4π. Live t, t mod 2π, ⌊t/2π⌋ winding.",
+  "tags": ["covering_space", "universal_cover", "winding_number", "lifting_property", "value_tracker", "always_redraw"],
+  "apis": ["NumberPlane", "NumberLine", "Circle", "VMobject", "DashedLine", "Dot", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"]
+}

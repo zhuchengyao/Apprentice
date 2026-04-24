@@ -1,0 +1,8 @@
+{
+  "id": "higher_order_derivatives",
+  "category": "calculus",
+  "difficulty": 2,
+  "summary": "Four stacked axes for f, f', f'', f''' of sin(x); ValueTracker x sweeps -2π→2π; vertical dashed cursor spans all four panels with always_redraw dots tracking each curve's value. Right column shows live numeric values.",
+  "tags": ["derivative", "higher_order", "sine", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "plot", "ValueTracker", "always_redraw", "DashedLine", "Dot", "MathTex", "Tex"]
+}

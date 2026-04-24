@@ -1,0 +1,8 @@
+{
+  "id": "markov_inequality",
+  "category": "probability",
+  "difficulty": 2,
+  "summary": "TWO_COLUMN: LEFT histogram of 500 Exp(1) samples + RED dashed threshold a + RED tail-shade. ValueTracker a_tr tours a=0.5, 1.0, 2.0, 3.5, 1.5; always_redraw. RIGHT axes show GREEN Markov bound E[X]/a = 1/a + YELLOW empirical P(X≥a) rider.",
+  "tags": ["markov_inequality", "tail_bound", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "Axes.plot", "Rectangle", "DashedLine", "Dot", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

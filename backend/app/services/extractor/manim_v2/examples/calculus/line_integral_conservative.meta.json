@@ -1,0 +1,8 @@
+{
+  "id": "line_integral_conservative",
+  "category": "calculus",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS: NumberPlane with GREEN start A=(0,0), RED end B=(2, 1.5), and 2 paths (BLUE straight, ORANGE staircase). ValueTracker s_tr advances both; always_redraw trails + rider dots + both line integrals converging to 3 = φ(B)-φ(A) for φ=xy.",
+  "tags": ["line_integral", "conservative_field", "path_independence", "value_tracker", "always_redraw"],
+  "apis": ["NumberPlane", "Dot", "VMobject", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

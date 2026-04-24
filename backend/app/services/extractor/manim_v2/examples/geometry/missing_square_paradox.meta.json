@@ -1,0 +1,8 @@
+{
+  "id": "missing_square_paradox",
+  "category": "geometry",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: 13×5 grid arrangement with RED (3-8), BLUE (2-5), YELLOW, GREEN pieces. Transform between 'no gap' and 'with 1×1 gap' versions. Overlaid ORANGE dashed true 5/13 diagonal exposes that red (3/8) and blue (2/5) slopes differ slightly. RIGHT slope-comparison panel.",
+  "tags": ["missing_square", "visual_paradox", "slope_illusion", "transform"],
+  "apis": ["Polygon", "DashedLine", "VGroup", "Transform", "MathTex", "Tex"]
+}

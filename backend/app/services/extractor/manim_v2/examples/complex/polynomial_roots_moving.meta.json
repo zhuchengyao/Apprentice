@@ -1,0 +1,8 @@
+{
+  "id": "polynomial_roots_moving",
+  "category": "complex",
+  "difficulty": 2,
+  "summary": "Sweep c from -2 to +2 in p(z)=z³+c·z+1 and track the three roots on the complex plane; at the discriminant zero two real roots become a complex conjugate pair.",
+  "tags": ["polynomial", "roots", "complex_plane", "bifurcation", "cubic"],
+  "apis": ["ComplexPlane", "ValueTracker", "always_redraw", "Dot", "MathTex"]
+}

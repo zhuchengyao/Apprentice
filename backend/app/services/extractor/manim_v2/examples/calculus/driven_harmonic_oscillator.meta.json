@@ -1,0 +1,8 @@
+{
+  "id": "driven_harmonic_oscillator",
+  "category": "calculus",
+  "difficulty": 3,
+  "summary": "TWO_COLUMN: LEFT Lorentzian A(ω) amplitude curve with BLUE line; always_redraw YELLOW rider + dashed drop as ValueTracker w_tr sweeps through resonance. RIGHT steady-state x(t) = A cos(ωt - φ) in RED via always_redraw. 5-target tour: 1.5, 2.0 (resonance), 2.3, 3.0, 4.0. Live ω, ω_0, γ, amplitude, phase.",
+  "tags": ["driven_oscillator", "resonance", "lorentzian", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "Axes.plot", "DashedLine", "Dot", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

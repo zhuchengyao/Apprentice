@@ -1,0 +1,8 @@
+{
+  "id": "harmonic_divergence",
+  "category": "analysis",
+  "difficulty": 2,
+  "summary": "TWO_COLUMN: axes with GREEN ln(N)+γ reference curve and YELLOW always_redraw partial-sum curve growing via ValueTracker N_tr 1→200; RED rider. Live panel: N, S_N, ln N + γ, S_N - ln N → γ≈0.5772 (Euler-Mascheroni).",
+  "tags": ["harmonic_series", "divergence", "euler_mascheroni", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "Axes.plot", "VMobject", "Dot", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

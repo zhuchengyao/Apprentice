@@ -1,0 +1,8 @@
+{
+  "id": "random_walk_return",
+  "category": "combinatorics",
+  "difficulty": 3,
+  "summary": "COMPARISON: LEFT 1D walk on number line with always_redraw BLUE dot + live return count (recurrent). RIGHT axes of distance from origin over time for a precomputed 3D walk with ORANGE trail + rider dot + √t reference curve (transient). ValueTracker t_tr advances precomputed 400-step walks in lockstep; live panel shows both positions, return counts, and Pólya's theorem facts.",
+  "tags": ["random_walk", "polya_theorem", "recurrence", "transience", "value_tracker", "always_redraw"],
+  "apis": ["NumberLine", "Axes", "Axes.plot", "Dot", "VMobject", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

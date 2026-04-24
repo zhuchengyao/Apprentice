@@ -1,0 +1,8 @@
+{
+  "id": "normal_distribution",
+  "category": "probability",
+  "difficulty": 2,
+  "summary": "Two ValueTrackers (μ and σ) drive the normal pdf via always_redraw: the curve first slides in mean from -2 to +2, then the spread widens to σ=2 and narrows to σ=0.5. A yellow shaded 1-σ band and live readouts track μ, σ, and the ≈68% probability.",
+  "tags": ["normal_distribution", "gaussian", "parameter_sweep", "value_tracker", "pdf"],
+  "apis": ["Axes", "plot", "get_area", "ValueTracker", "always_redraw", "DashedLine", "MathTex"]
+}

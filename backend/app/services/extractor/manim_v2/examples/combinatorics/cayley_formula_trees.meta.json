@@ -1,0 +1,8 @@
+{
+  "id": "cayley_formula_trees",
+  "category": "combinatorics",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: ValueTracker n_tr toggles between n=3 (all 3 labeled trees drawn) and n=4 (first 8 of 16 labeled trees: 4 stars + 4 path-like). always_redraw displays trees with YELLOW vertices, BLUE edges. Count formula n^(n-2).",
+  "tags": ["cayley_formula", "labeled_trees", "value_tracker", "always_redraw"],
+  "apis": ["Line", "Dot", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

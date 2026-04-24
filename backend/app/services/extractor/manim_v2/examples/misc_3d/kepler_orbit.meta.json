@@ -1,0 +1,8 @@
+{
+  "id": "kepler_orbit",
+  "category": "misc_3d",
+  "difficulty": 2,
+  "summary": "Draw an ellipse with the Sun at one focus and two equal-area wedges — a short fat wedge near perihelion and a long thin wedge near aphelion.",
+  "tags": ["kepler", "orbit", "ellipse", "equal_areas", "conservation"],
+  "apis": ["Ellipse", "Polygon", "Dot", "MoveAlongPath", "Arc", "MathTex"]
+}

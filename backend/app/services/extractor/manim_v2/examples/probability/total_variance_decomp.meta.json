@@ -1,0 +1,8 @@
+{
+  "id": "total_variance_decomp",
+  "category": "probability",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: axes with GREEN cluster-1 at -gap/2, ORANGE cluster-2 at +gap/2 (both σ=0.8) + BLUE mixture density. ValueTracker gap_tr separates from 0 to 3. Live decomposition Var(Y) = 0.64 (within) + gap²/4 (between) = total.",
+  "tags": ["total_variance_decomposition", "law_of_total_variance", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "Axes.plot", "DashedLine", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

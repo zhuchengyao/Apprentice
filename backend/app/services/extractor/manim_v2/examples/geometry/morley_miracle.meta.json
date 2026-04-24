@@ -1,0 +1,8 @@
+{
+  "id": "morley_miracle",
+  "category": "geometry",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS: variable-apex triangle + GREEN Morley triangle formed by intersections of adjacent-side angle trisectors. ValueTracker theta_tr moves apex; always_redraw everything + panel verifies equilateral (|s_1|=|s_2|=|s_3|).",
+  "tags": ["morley_triangle", "angle_trisectors", "value_tracker", "always_redraw"],
+  "apis": ["Polygon", "Dot", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

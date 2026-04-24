@@ -1,0 +1,8 @@
+{
+  "id": "cardioid",
+  "category": "geometry",
+  "difficulty": 2,
+  "summary": "Roll a circle around a fixed circle of equal radius; the traced boundary point forms a cardioid r = 2R(1 − cos θ).",
+  "tags": ["cardioid", "epicycloid", "parametric", "locus", "heart_shape"],
+  "apis": ["Circle", "ValueTracker", "always_redraw", "ParametricFunction", "Create", "MathTex"]
+}

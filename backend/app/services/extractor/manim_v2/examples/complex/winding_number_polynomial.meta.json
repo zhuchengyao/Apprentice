@@ -1,0 +1,8 @@
+{
+  "id": "winding_number_polynomial",
+  "category": "complex",
+  "difficulty": 3,
+  "summary": "TWO_COLUMN: LEFT z-plane with BLUE circle |z|=1.5 and BLUE rider. RIGHT w-plane with YELLOW w = z³ - 1 trail and RED rider; as θ sweeps 0→2π, w winds 3 times around origin. Live winding count n·θ/2π → 3; illustrates FTA: polynomial of degree n has n roots.",
+  "tags": ["winding_number", "fta", "polynomial_roots", "value_tracker", "always_redraw"],
+  "apis": ["ComplexPlane", "Circle", "Dot", "VMobject", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

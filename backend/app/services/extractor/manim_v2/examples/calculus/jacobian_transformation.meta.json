@@ -1,0 +1,8 @@
+{
+  "id": "jacobian_transformation",
+  "category": "calculus",
+  "difficulty": 3,
+  "summary": "COMPARISON: LEFT (r, θ) plane with uniform grid cells; RIGHT (x, y) plane with the polar image. ValueTracker s_tr morphs each corner linearly from source to target; always_redraw cells colored BLUE→RED by r value. |det J| = r visually: small r cells shrink, large r cells expand.",
+  "tags": ["jacobian", "polar_coordinates", "change_of_variables", "value_tracker", "always_redraw"],
+  "apis": ["NumberPlane", "Polygon", "VGroup", "ValueTracker", "always_redraw", "interpolate_color", "MathTex", "Tex"]
+}

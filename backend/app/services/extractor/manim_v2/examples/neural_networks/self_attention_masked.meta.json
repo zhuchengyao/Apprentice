@@ -1,0 +1,8 @@
+{
+  "id": "self_attention_masked",
+  "category": "neural_networks",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS: 8×8 attention heatmap with BLUE_E→YELLOW softmax weights on lower triangle + GREY upper triangle (masked). ValueTracker q_idx_tr highlights active query row RED; always_redraw. Token i attends to tokens 0..i only (causal).",
+  "tags": ["self_attention", "causal_mask", "transformer", "value_tracker", "always_redraw"],
+  "apis": ["Square", "Rectangle", "VGroup", "ValueTracker", "always_redraw", "interpolate_color", "MathTex", "Tex"]
+}

@@ -1,0 +1,8 @@
+{
+  "id": "fourier_time_frequency_tradeoff",
+  "category": "analysis",
+  "difficulty": 3,
+  "summary": "TWO_ROW stacked Axes. TOP: time-domain Gaussian-modulated cosine s(t)=exp(-t²/2σ²)·cos(2πf₀t) in BLUE with BLUE_E envelope, drawn via always_redraw as ValueTracker sigma_tr sweeps {0.3, 0.6, 1.0, 1.5, 2.0, 0.5}. BOTTOM: spectrum |ŝ(f)| — Gaussian centered at f₀=4 with width σ_f=1/(2πσ) in RED. Bottom readout via always_redraw shows σ_t (BLUE), σ_f (RED), and product σ_t·σ_f (YELLOW) — product stays at 1/(2π) ≈ 0.159, the Fourier uncertainty bound.",
+  "tags": ["fourier_uncertainty", "heisenberg", "time_frequency", "gaussian_wavepacket", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "Axes.plot", "VGroup", "ValueTracker", "always_redraw", "DecimalNumber", "MathTex", "Tex"]
+}

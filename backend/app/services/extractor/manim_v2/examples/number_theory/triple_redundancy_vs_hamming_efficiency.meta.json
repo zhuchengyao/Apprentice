@@ -1,0 +1,8 @@
+{
+  "id": "triple_redundancy_vs_hamming_efficiency",
+  "category": "number_theory",
+  "difficulty": 3,
+  "summary": "COMPARISON: LEFT RED 'Triple redundancy' — 1 BLUE data bit becomes 3 RED sent bits via TransformFromCopy; middle bit flipped to ORANGE; Indicate then majority-vote reveals correct decode. Rate 1/3 ≈ 33%. RIGHT GREEN 'Hamming(7,4)' — 4 BLUE data bits become 7 GREEN sent bits with parity positions highlighted via color nuance; rate 4/7 ≈ 57% with YELLOW SurroundingRectangle winner.",
+  "tags": ["error_correction", "hamming_code", "repetition_code", "rate_comparison", "transform_from_copy"],
+  "apis": ["Square", "Tex", "MathTex", "VGroup", "TransformFromCopy", "Indicate", "SurroundingRectangle", "FadeIn", "Write"]
+}

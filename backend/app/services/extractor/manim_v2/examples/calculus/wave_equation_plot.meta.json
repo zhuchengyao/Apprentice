@@ -1,0 +1,8 @@
+{
+  "id": "wave_equation_plot",
+  "category": "calculus",
+  "difficulty": 2,
+  "summary": "Advance a ValueTracker to translate a two-mode waveform sin(x-ct) + 0.4 sin(2(x-ct)) across the axes, illustrating a travelling wave.",
+  "tags": ["wave_equation", "partial_differential_equation", "traveling_wave", "value_tracker"],
+  "apis": ["Axes", "Axes.plot", "ValueTracker", "always_redraw", "MathTex"]
+}

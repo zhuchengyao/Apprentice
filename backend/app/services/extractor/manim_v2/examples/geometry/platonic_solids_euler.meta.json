@@ -1,0 +1,8 @@
+{
+  "id": "platonic_solids_euler",
+  "category": "geometry",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: table of 5 Platonic solids (tetrahedron 4/6/4, cube 8/12/6, octahedron 6/12/8, dodecahedron 20/30/12, icosahedron 12/30/20) with Euler formula V-E+F=2. ValueTracker idx_tr reveals rows via always_redraw; all GREEN.",
+  "tags": ["platonic_solids", "euler_formula", "value_tracker", "always_redraw"],
+  "apis": ["VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

@@ -1,0 +1,8 @@
+{
+  "id": "backprop_chain_rule",
+  "category": "neural_networks",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: 5-node computational chain x → h → g → f → L with forward GREY arrows + backward RED arrows. ValueTracker t_tr reveals backward gradients step-by-step via always_redraw. Final formula: ∂L/∂x = ∂L/∂f · f'(g) · g'(h) · h'(x).",
+  "tags": ["backprop", "chain_rule", "computational_graph", "value_tracker", "always_redraw"],
+  "apis": ["Circle", "Arrow", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

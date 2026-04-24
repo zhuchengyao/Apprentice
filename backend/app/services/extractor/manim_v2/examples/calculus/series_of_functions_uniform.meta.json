@@ -1,0 +1,8 @@
+{
+  "id": "series_of_functions_uniform",
+  "category": "calculus",
+  "difficulty": 3,
+  "summary": "TWO_COLUMN Weierstrass M-test for Σ sin(nx)/n² on [0, π]. LEFT axes with YELLOW partial sum S_N(x) and GREY reference S_∞. ValueTracker N_tr steps through N={1, 3, 8, 20, 40, 60}. RIGHT has live sup-gap and tail Σ_{n>N} 1/n² (which bounds the gap per M-test); limit π²/6 noted.",
+  "tags": ["weierstrass_m_test", "uniform_convergence", "series_of_functions", "basel_series", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "ParametricFunction", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"]
+}

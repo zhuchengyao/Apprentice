@@ -1,0 +1,8 @@
+{
+  "id": "clacks_phase_circle",
+  "category": "combinatorics",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS: phase-circle proof of clacks = π·10^k. BLUE wall edge + RED √Mv=√mu edge at angle θ = arctan(1/√(M/m)) for M/m=100 → θ≈5.71°. ValueTracker step_tr draws YELLOW chords connecting successive reflection points at angles k·θ via always_redraw; each chord = one collision. Live count → 31 reflections.",
+  "tags": ["clacks", "phase_circle", "unfolded_reflection", "value_tracker", "always_redraw"],
+  "apis": ["Circle", "Line", "Dot", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

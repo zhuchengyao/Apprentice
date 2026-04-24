@@ -1,0 +1,8 @@
+{
+  "id": "parametric_curve_drawn",
+  "category": "calculus",
+  "difficulty": 3,
+  "summary": "Sweep a ValueTracker from 0 to 10 so a green position vector and a growing yellow ParametricFunction trace out the spiral (t cos t, t sin t) together.",
+  "tags": ["parametric", "curve", "value_tracker", "always_redraw", "spiral"],
+  "apis": ["Axes", "Arrow", "ParametricFunction", "ValueTracker", "always_redraw"]
+}

@@ -1,0 +1,8 @@
+{
+  "id": "hidden_neuron_weights_as_pixel_mask",
+  "category": "neural_networks",
+  "difficulty": 3,
+  "summary": "THREE_COLUMN: LEFT 14x14 weight mask for a single hidden neuron, fill_color GREEN/RED by sign and fill_opacity = |w|/max|w| — a blurred ring-detector kernel. CENTER a 14x14 input digit mask (ring) in WHITE. RIGHT the element-wise Hadamard product w⊙x, TransformFromCopy from input to product grid. Bottom summary MathTex shows z = Σ w_i x_i + b numerically and a = σ(z) in YELLOW.",
+  "tags": ["mlp", "neuron_weights", "pixel_mask", "hadamard_product", "visualize_weights", "sigmoid"],
+  "apis": ["Square", "VGroup", "TransformFromCopy", "MathTex", "Tex", "FadeIn", "numpy"]
+}

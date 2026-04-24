@@ -1,0 +1,8 @@
+{
+  "id": "latin_square",
+  "category": "combinatorics",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: example Latin square for n=2, 3, 4, 5 toggled by ValueTracker n_tr; always_redraw grid cells colored by symbol value (BLUE/GREEN/ORANGE/PURPLE/PINK). Live counts L(n) = 1, 2, 12, 576, 161280.",
+  "tags": ["latin_square", "combinatorial_design", "value_tracker", "always_redraw"],
+  "apis": ["Square", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

@@ -1,0 +1,8 @@
+{
+  "id": "open_interval",
+  "category": "analysis",
+  "difficulty": 1,
+  "summary": "SINGLE_FOCUS: NumberLine with OPEN endpoints a=0, b=1 as hollow circles. ValueTracker x_tr moves a YELLOW interior point through (0, 1); always_redraw BLUE δ-bar of width min(x, 1-x) contracts as x approaches an endpoint but never vanishes. Live panel shows x, δ, and (x-δ, x+δ) ⊂ (0, 1).",
+  "tags": ["open_interval", "topology", "real_analysis", "value_tracker", "always_redraw"],
+  "apis": ["NumberLine", "Rectangle", "Circle", "Dot", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

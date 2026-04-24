@@ -1,0 +1,9 @@
+{
+  "id": "change_of_basis_matrix_apply",
+  "category": "linear_algebra",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: change of basis matrix [b_1 | b_2] translates Jenny's coords to standard. b_1=(2, 1) BLUE, b_2=(-1, 1) PURPLE. Jenny-coords (1, 2) → standard (0, 3). Braces label each matrix.",
+  "tags": ["change_of_basis", "basis_matrix", "translation_coordinates"],
+  "apis": ["Matrix", "MathTex", "Brace", "VGroup", "Tex"],
+  "source": "3b1b/_2016/eola/chapter9.py::TalkThroughChangeOfBasisMatrix+ChangeOfBasisExample"
+}

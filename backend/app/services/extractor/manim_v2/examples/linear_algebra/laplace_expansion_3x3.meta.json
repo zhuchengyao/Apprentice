@@ -1,0 +1,9 @@
+{
+  "id": "laplace_expansion_3x3",
+  "category": "linear_algebra",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS: Laplace expansion det A = a|M_a| - b|M_b| + c|M_c| for 3×3 symbolic matrix. Top: 3×3 A_tex with BLUE/GREEN/ORANGE columns; ValueTracker step_tr walks YELLOW strike rectangles on row 1 + col 1, 2, 3 while 3 minors + alternating signs reveal below.",
+  "tags": ["laplace_expansion", "cofactor", "3x3_determinant", "minor", "value_tracker", "always_redraw"],
+  "apis": ["Matrix", "MathTex", "SurroundingRectangle", "VGroup", "ValueTracker", "always_redraw", "Tex"],
+  "source": "3b1b/_2016/eola/chapter5.py::ThreeDDetFormula"
+}

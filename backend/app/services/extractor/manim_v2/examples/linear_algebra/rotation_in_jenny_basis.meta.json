@@ -1,0 +1,9 @@
+{
+  "id": "rotation_in_jenny_basis",
+  "category": "linear_algebra",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS: 90° rotation R=[[0, -1], [1, 0]] in standard basis; A=[[2, -1], [1, 1]] change-of-basis. R_J = A^(-1) R A = (1/3)[[1, -2], [5, -1]].",
+  "tags": ["change_of_basis", "rotation_matrix", "similarity_numerical"],
+  "apis": ["Matrix", "MathTex", "VGroup", "Tex"],
+  "source": "3b1b/_2016/eola/chapter9.py::RotationExample+JennyWatchesRotation"
+}

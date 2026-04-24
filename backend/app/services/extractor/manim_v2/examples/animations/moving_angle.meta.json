@@ -1,8 +1,0 @@
-{
-  "id": "moving_angle",
-  "category": "animations",
-  "difficulty": 3,
-  "summary": "Rotate a line about a point with a ValueTracker; update an Angle and a DecimalNumber every frame.",
-  "tags": ["value_tracker", "updater", "angle", "rotation", "always_redraw"],
-  "apis": ["ValueTracker", "Line", "Angle", "always_redraw", "DecimalNumber", "add_updater", "rotate"]
-}

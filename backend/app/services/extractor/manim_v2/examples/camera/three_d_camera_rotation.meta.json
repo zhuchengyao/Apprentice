@@ -1,8 +1,0 @@
-{
-  "id": "three_d_camera_rotation",
-  "category": "camera",
-  "difficulty": 2,
-  "summary": "Spin the camera around a Cube with begin_ambient_camera_rotation / stop_ambient_camera_rotation.",
-  "tags": ["3d", "camera", "rotation", "ambient", "cube"],
-  "apis": ["ThreeDScene", "Cube", "ThreeDAxes", "begin_ambient_camera_rotation", "stop_ambient_camera_rotation"]
-}

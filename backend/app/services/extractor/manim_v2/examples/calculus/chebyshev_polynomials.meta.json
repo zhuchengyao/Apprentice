@@ -1,0 +1,8 @@
+{
+  "id": "chebyshev_polynomials",
+  "category": "calculus",
+  "difficulty": 2,
+  "summary": "TWO_COLUMN: Chebyshev T_n(x) via recurrence T_{n+1}=2x T_n - T_{n-1}. LEFT axes with YELLOW current T_n curve + BLUE→TEAL history + RED n+1 extrema dots at x=cos(kπ/n) on always_redraw. ValueTracker n_tr steps 0..6. Right: minimax property + live extrema count + root formula.",
+  "tags": ["chebyshev_polynomials", "orthogonal_polynomials", "minimax", "equioscillation", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "ParametricFunction", "Dot", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"]
+}

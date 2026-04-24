@@ -1,0 +1,8 @@
+{
+  "id": "gamma_convolution",
+  "category": "probability",
+  "difficulty": 3,
+  "summary": "TWO_COLUMN: two ValueTrackers k_x, k_y drive Γ(k_x, θ) (blue), Γ(k_y, θ) (green), and Γ(k_x+k_y, θ) (yellow) via always_redraw. Sweep through 4 (k_x, k_y) pairs. Right column shows live shape parameters, means, and the convolution formula.",
+  "tags": ["gamma_distribution", "convolution", "value_tracker", "always_redraw", "shape_parameter"],
+  "apis": ["Axes", "plot", "ValueTracker", "always_redraw", "MathTex", "Tex", "gamma_function"]
+}

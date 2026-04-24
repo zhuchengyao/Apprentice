@@ -1,0 +1,8 @@
+{
+  "id": "quintic_polynomial_roots",
+  "category": "complex",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS: ComplexPlane with 5 color-coded always_redraw root dots for z⁵ + (2s)·z - 1 = 0 (uses numpy.roots). ValueTracker s_tr sweeps 0→1; starting from 5th roots of unity, roots move to new locations; persistent trails via phantom-updater-driven history dict. Live panel shows current polynomial.",
+  "tags": ["quintic", "polynomial_roots", "fundamental_theorem_of_algebra", "value_tracker", "always_redraw"],
+  "apis": ["ComplexPlane", "Dot", "VMobject", "Mobject", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

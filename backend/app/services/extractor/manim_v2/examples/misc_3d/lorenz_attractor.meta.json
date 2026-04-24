@@ -1,0 +1,8 @@
+{
+  "id": "lorenz_attractor",
+  "category": "misc_3d",
+  "difficulty": 3,
+  "summary": "ThreeDScene: 6000-step Euler-integrated Lorenz trajectory with σ=10, ρ=28, β=8/3 starting at (0.1, 0, 0). ValueTracker t_tr progressively reveals the BLUE butterfly trail + YELLOW rider via always_redraw. Ambient camera rotation emphasizes 3D structure. Fixed-frame panel has t, (x,y,z), parameters.",
+  "tags": ["lorenz", "chaos", "strange_attractor", "value_tracker", "always_redraw"],
+  "apis": ["ThreeDScene", "ThreeDAxes", "VMobject", "Dot3D", "VGroup", "ValueTracker", "always_redraw", "Transform", "MathTex", "Tex"]
+}

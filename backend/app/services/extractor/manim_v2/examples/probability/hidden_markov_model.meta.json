@@ -1,0 +1,8 @@
+{
+  "id": "hidden_markov_model",
+  "category": "probability",
+  "difficulty": 3,
+  "summary": "TWO_COLUMN: LEFT two rows of 15 cells — top hidden states X_t (BLUE=H, ORANGE=L) with Markov transitions P=[[0.8, 0.2], [0.3, 0.7]]; bottom observations Y_t (RED/GREEN/BLUE) from emissions. ValueTracker t_tr reveals step-by-step via always_redraw + emission arrows. RIGHT shows P matrix + emission probabilities.",
+  "tags": ["hidden_markov_model", "markov_chain", "value_tracker", "always_redraw"],
+  "apis": ["Rectangle", "Arrow", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

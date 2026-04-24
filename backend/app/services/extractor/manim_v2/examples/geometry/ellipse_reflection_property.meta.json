@@ -1,0 +1,8 @@
+{
+  "id": "ellipse_reflection_property",
+  "category": "geometry",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: ellipse a=3, b=2 with F_1 GREEN and F_2 RED foci at (±√5, 0). ValueTracker theta_tr rotates launch direction from F_1; always_redraw GREEN incident + RED reflected ray + YELLOW hit point P. Live panel: |PF_1|+|PF_2| = 2a = 6 constant (defining property).",
+  "tags": ["ellipse", "reflection_property", "foci", "value_tracker", "always_redraw"],
+  "apis": ["VMobject", "Dot", "Line", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

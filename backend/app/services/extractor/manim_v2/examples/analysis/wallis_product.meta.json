@@ -1,0 +1,8 @@
+{
+  "id": "wallis_product",
+  "category": "analysis",
+  "difficulty": 2,
+  "summary": "TWO_COLUMN: Axes left with always_redraw partial-product curve P_N as ValueTracker N sweeps 1→100; horizontal dashed π/2 limit line. Right column has live N, P_N, gap, and the alternating product expansion. Convergence is logarithmically slow — gap remains visible at N=100.",
+  "tags": ["wallis_product", "pi_over_two", "partial_product", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "VMobject", "set_points_as_corners", "DashedLine", "ValueTracker", "always_redraw", "Dot", "MathTex", "Tex"]
+}

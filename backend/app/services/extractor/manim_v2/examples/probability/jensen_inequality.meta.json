@@ -1,0 +1,8 @@
+{
+  "id": "jensen_inequality",
+  "category": "probability",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS Jensen's inequality for convex φ(x)=x². Axes with BLUE φ + 5 sample points (BLUE on x-axis, RED on φ) spreading via ValueTracker xs_tr. always_redraw: GREEN vertical mean line at E[X] with φ(E[X]) marker + ORANGE E[φ(X)] marker above. Live E[X], (E[X])², E[X²], gap=Var(X)≥0.",
+  "tags": ["jensen_inequality", "convex_function", "variance", "expected_value", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "Dot", "DashedLine", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"]
+}

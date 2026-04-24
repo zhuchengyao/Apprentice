@@ -1,0 +1,8 @@
+{
+  "id": "euler_phi_product",
+  "category": "number_theory",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: Euler totient φ(360)=96. 12×30 grid of integers 1..360 colored BLUE (all) then sieved GREY_D (removed multiples of 2, then 3, then 5). ValueTracker step_tr steps 0→3 with always_redraw recoloring. Remaining YELLOW cells = φ. Live count matches n·Π(1-1/p) formula → 96.",
+  "tags": ["euler_totient", "coprime", "sieve", "multiplicative_function", "value_tracker", "always_redraw"],
+  "apis": ["Square", "VGroup", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"]
+}

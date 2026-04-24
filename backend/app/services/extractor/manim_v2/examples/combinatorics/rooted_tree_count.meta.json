@@ -1,0 +1,8 @@
+{
+  "id": "rooted_tree_count",
+  "category": "combinatorics",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS Cayley's formula: 4^(4-2)=16 labeled trees on {1, 2, 3, 4}. Enumerate via all length-2 Prüfer sequences on 4 vertices. ValueTracker idx_tr cycles through 16 trees with always_redraw colored vertex dots at fixed square positions + YELLOW edges. Live tree #, formula.",
+  "tags": ["cayley_formula", "labeled_trees", "prufer_sequence", "tree_enumeration", "value_tracker", "always_redraw"],
+  "apis": ["Line", "Dot", "VGroup", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"]
+}

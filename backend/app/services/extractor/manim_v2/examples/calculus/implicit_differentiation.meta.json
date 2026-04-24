@@ -1,0 +1,8 @@
+{
+  "id": "implicit_differentiation",
+  "category": "calculus",
+  "difficulty": 2,
+  "summary": "TWO_COLUMN: ValueTracker θ moves a point around the unit circle x²+y²=1; always_redraw tangent line of slope dy/dx = -x/y at the moving point. Right column has the 4 derivation steps plus live x, y, and slope values (handles vertical tangent at y=0).",
+  "tags": ["implicit_differentiation", "unit_circle", "tangent", "value_tracker", "always_redraw"],
+  "apis": ["NumberPlane", "Circle", "Line", "Dot", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

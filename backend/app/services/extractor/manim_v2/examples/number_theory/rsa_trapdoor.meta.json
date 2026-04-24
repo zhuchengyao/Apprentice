@@ -1,0 +1,8 @@
+{
+  "id": "rsa_trapdoor",
+  "category": "number_theory",
+  "difficulty": 2,
+  "summary": "Contrast easy multiplication p·q=n with hard factorization n→(p,q), the asymmetry at the heart of RSA's public-key scheme.",
+  "tags": ["rsa", "cryptography", "factoring", "trapdoor", "public_key"],
+  "apis": ["MathTex", "Arrow", "GrowArrow", "Text", "Transform"]
+}

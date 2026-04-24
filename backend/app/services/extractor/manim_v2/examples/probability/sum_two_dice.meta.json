@@ -1,0 +1,8 @@
+{
+  "id": "sum_two_dice",
+  "category": "probability",
+  "difficulty": 1,
+  "summary": "SINGLE_FOCUS: axes over sum 2..12. YELLOW theoretical PMF bars + BLUE empirical bars updated via always_redraw as ValueTracker N_tr grows 0→2000; dice sprites at top show current roll. Live N, empirical mean → 7.",
+  "tags": ["sum_two_dice", "triangular_pmf", "empirical_vs_theory", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "Rectangle", "Square", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

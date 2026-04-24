@@ -1,0 +1,8 @@
+{
+  "id": "mug_donut",
+  "category": "topology",
+  "difficulty": 3,
+  "summary": "Actual homeomorphism animation: ValueTracker s slides 0→1→0→0.6, an always_redraw VMobject linearly interpolates the mug-silhouette boundary points (outer + handle-hole inner) toward a torus-annulus boundary with the same point count, so the hole persists unbroken. Right column shows s, genus=1, and Euler characteristic χ=0.",
+  "tags": ["topology", "genus", "homeomorphism", "continuous_deformation", "value_tracker"],
+  "apis": ["VMobject", "ValueTracker", "always_redraw", "set_points_as_corners", "MathTex"]
+}

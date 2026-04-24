@@ -1,0 +1,8 @@
+{
+  "id": "reuleaux_polygons",
+  "category": "geometry",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS: Reuleaux polygons for k=3, 5, 7, 9 (odd). YELLOW curve of constant width built via circular arcs centered at each regular-k-gon vertex spanning to the two vertices opposite. ValueTracker theta_tr rotates ORANGE caliper pair; ValueTracker k_tr steps through k values. Live k, θ, width — constant across θ.",
+  "tags": ["reuleaux_polygon", "constant_width", "curve_of_constant_width", "rotating_calipers", "value_tracker", "always_redraw"],
+  "apis": ["VMobject", "Dot", "Line", "DashedLine", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"]
+}

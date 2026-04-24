@@ -1,0 +1,9 @@
+{
+  "id": "integral_as_limit_of_sums",
+  "category": "calculus",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: ∫_0^3 (x²/2+1) dx = 7.5 approximated by Riemann midpoint sums. BLUE f curve + GREEN rectangles via always_redraw on ValueTracker n_tr stepping through n∈{4, 8, 16, 32, 64}. Live n, Riemann sum, exact, error → 0.",
+  "tags": ["riemann_sum", "limit_of_sums", "integral_definition", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "ParametricFunction", "Rectangle", "VGroup", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"],
+  "source": "3b1b/_2017/eoc/chapter1.py::AreaUnderParabola+PlayingTowardsDADX"
+}

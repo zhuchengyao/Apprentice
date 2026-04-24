@@ -1,0 +1,8 @@
+{
+  "id": "next_token_softmax",
+  "category": "neural_networks",
+  "difficulty": 2,
+  "summary": "TWO_COLUMN: 8-token vocab (the, cat, sat, on, a, mat, !, </s>) with fixed logits. ValueTracker T_tr sweeps temperature through 0.3, 0.5, 1.0, 2.0, 3.0, 1.0; always_redraw BLUE softmax-probability bars + token labels. Live RIGHT panel: T, argmax token + probability, Shannon entropy H in bits.",
+  "tags": ["softmax", "temperature", "entropy", "generation", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "Rectangle", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

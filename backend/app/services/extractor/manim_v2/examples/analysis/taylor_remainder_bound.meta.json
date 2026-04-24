@@ -1,0 +1,8 @@
+{
+  "id": "taylor_remainder_bound",
+  "category": "analysis",
+  "difficulty": 2,
+  "summary": "TWO_COLUMN: axes with BLUE cos x and YELLOW Taylor partial sum T_N(x). ValueTracker N_tr grows 2, 4, 6, 8, 12; always_redraw T_N. RED dashed cursor at x=2. Live |R_N(2)| vs Lagrange bound 2^(N+1)/(N+1)! (tight upper bound via |cos^(k)| ≤ 1).",
+  "tags": ["taylor_remainder", "lagrange_bound", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "Axes.plot", "DashedLine", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

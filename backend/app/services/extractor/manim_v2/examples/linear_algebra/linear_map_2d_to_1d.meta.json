@@ -1,0 +1,9 @@
+{
+  "id": "linear_map_2d_to_1d",
+  "category": "linear_algebra",
+  "difficulty": 2,
+  "summary": "TWO_COLUMN: L(x, y)=x+2y maps ℝ²→ℝ. LEFT NumberPlane with 5 colored sample points; RIGHT NumberLine destination. ValueTracker t_tr animates all 5 points from plane to number line simultaneously via always_redraw. Final landing values shown as labels.",
+  "tags": ["linear_map", "2d_to_1d", "dimension_reduction", "functional", "value_tracker", "always_redraw"],
+  "apis": ["NumberPlane", "NumberLine", "Dot", "VGroup", "ValueTracker", "always_redraw", "Tex"],
+  "source": "3b1b/_2016/eola/chapter7.py::Introduce2Dto1DLinearTransformations"
+}

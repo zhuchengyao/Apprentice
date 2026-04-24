@@ -1,0 +1,8 @@
+{
+  "id": "primitive_roots",
+  "category": "number_theory",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: two rows showing k=1..6 labels and 3^k mod 7 = 3, 2, 6, 4, 5, 1. ValueTracker k_tr highlights current column YELLOW; always_redraw GREEN-fills visited residues in a base row {1,2,3,4,5,6}. All 6 hit → g=3 is primitive root of 7.",
+  "tags": ["primitive_root", "modular_arithmetic", "cyclic_group", "value_tracker", "always_redraw"],
+  "apis": ["Square", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

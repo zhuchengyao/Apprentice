@@ -1,0 +1,9 @@
+{
+  "id": "natural_log_inverse_exp",
+  "category": "calculus",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: ln x as inverse of e^x, reflected over y=x line. RED e^x, GREEN ln x, GREY y=x on axes. ValueTracker x_tr sweeps 1→4.5 with always_redraw YELLOW probe on ln + ORANGE tangent with slope 1/x. Live x, ln x, 1/x.",
+  "tags": ["natural_log", "inverse_function", "d_ln_dx", "exp_inverse", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "ParametricFunction", "Dot", "Line", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"],
+  "source": "3b1b/_2017/eoc/chapter5.py::NaturalLog+GraphOfExp"
+}

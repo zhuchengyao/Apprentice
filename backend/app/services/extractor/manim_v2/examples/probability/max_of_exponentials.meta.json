@@ -1,0 +1,8 @@
+{
+  "id": "max_of_exponentials",
+  "category": "probability",
+  "difficulty": 2,
+  "summary": "TWO_COLUMN: Axes on LEFT with always_redraw PDF f_n(x) = n·e^(-x)·(1-e^(-x))^(n-1) + YELLOW dashed mean line at H_n and mean dot. ValueTracker n_tr steps through n = 1, 2, 3, 5, 10, 20, 50. RIGHT panel has live n, E[max]=H_n, mode ≈ ln n, 90th-percentile q_.9, and H_n ~ ln n + γ.",
+  "tags": ["max_of_exponentials", "order_statistics", "harmonic_number", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "Axes.plot", "DashedLine", "Dot", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

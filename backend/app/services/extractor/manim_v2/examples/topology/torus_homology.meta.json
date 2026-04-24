@@ -1,0 +1,8 @@
+{
+  "id": "torus_homology",
+  "category": "topology",
+  "difficulty": 3,
+  "summary": "ThreeDScene torus T² with 3 circles: RED meridian (v varies), GREEN longitude (u varies), YELLOW contractible small circle. ValueTracker s_tr shrinks contractible circle to point via always_redraw. H_0=ℤ, H_1=ℤ² (meridian, longitude generators), H_2=ℤ; χ=0. Ambient rotation.",
+  "tags": ["torus_homology", "betti_numbers", "contractible_loop", "generators", "value_tracker", "always_redraw"],
+  "apis": ["ThreeDAxes", "Surface", "ParametricFunction", "VMobject", "ValueTracker", "always_redraw", "Tex"]
+}

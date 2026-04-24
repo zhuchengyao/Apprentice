@@ -1,0 +1,8 @@
+{
+  "id": "mobius_stress_test",
+  "category": "complex",
+  "difficulty": 3,
+  "summary": "TWO_COLUMN Möbius f(z)=(z+1)/(z-1) applied to grid of 4 concentric circles + 8 radial lines. LEFT ComplexPlane input + RED pole at z=1. RIGHT shows image. ValueTracker t_tr interpolates (1-t)z + t·f(z) for each curve via always_redraw; circles/lines ↔ circles/lines (extended plane). Pole z=1 → ∞, z=-1 → 0.",
+  "tags": ["mobius_transformation", "circle_preserving", "fractional_linear", "conformal_map", "value_tracker", "always_redraw"],
+  "apis": ["ComplexPlane", "VMobject", "Dot", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"]
+}

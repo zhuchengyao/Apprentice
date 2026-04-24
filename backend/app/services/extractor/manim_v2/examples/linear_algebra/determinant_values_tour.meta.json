@@ -1,0 +1,9 @@
+{
+  "id": "determinant_values_tour",
+  "category": "linear_algebra",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: 6-config tour of 2×2 matrices with dets {1, 6, -2, 3, 0.5, 0}. ValueTracker idx_tr interpolates. always_redraw: YELLOW unit square (GREEN if det>0, RED if det<0, GREY if det≈0), GREEN î / RED ĵ arrows, det label inside square. Right panel: live config index, det, legend for orientation.",
+  "tags": ["determinant_tour", "orientation", "unit_square", "signed_area", "value_tracker", "always_redraw"],
+  "apis": ["NumberPlane", "Polygon", "Arrow", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"],
+  "source": "3b1b/_2016/eola/chapter5.py::NameDeterminant+SecondDeterminantExample+DeterminantIsThree+OneHalf+Zero"
+}

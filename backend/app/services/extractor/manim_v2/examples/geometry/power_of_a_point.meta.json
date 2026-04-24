@@ -1,0 +1,8 @@
+{
+  "id": "power_of_a_point",
+  "category": "geometry",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: BLUE circle radius R=2 at origin + YELLOW external point P = (4, 1). ValueTracker theta_tr rotates a RED line through P; always_redraw GREEN and ORANGE intersection points A, B; live |PA|·|PB| constant at d² - R² = 13 regardless of θ.",
+  "tags": ["power_of_point", "circle_geometry", "value_tracker", "always_redraw"],
+  "apis": ["Circle", "Line", "Dot", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

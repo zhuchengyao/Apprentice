@@ -1,0 +1,9 @@
+{
+  "id": "antiderivative_plus_constant",
+  "category": "calculus",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: F(x)=x²/2+C for C∈{-2, -1, 0, 1, 2}. 5 parallel curves (BLUE/TEAL/GREEN/YELLOW/ORANGE) with matching color labels. ValueTracker x_tr sweeps -2→2; always_redraw shows 5 parallel tangent lines of same slope x + dots. All antiderivatives share same derivative.",
+  "tags": ["antiderivative", "plus_constant_c", "parallel_curves", "same_derivative", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "ParametricFunction", "Line", "Dot", "VGroup", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"],
+  "source": "3b1b/_2017/eoc/chapter8.py::FindAntiderivative+GraphSPlusC"
+}

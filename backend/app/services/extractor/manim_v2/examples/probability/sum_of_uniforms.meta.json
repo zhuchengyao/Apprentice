@@ -1,0 +1,8 @@
+{
+  "id": "sum_of_uniforms",
+  "category": "probability",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: Irwin-Hall density of S_n = Σ U_i for U_i ~ Uniform(0,1). ValueTracker n_idx steps through n = 1,2,3,4,5,7,10; Transform-morphs the curve from rectangle to bell shape. Right corner shows live n, μ=n/2, σ²=n/12; bottom flags the CLT.",
+  "tags": ["irwin_hall", "uniform", "convolution", "value_tracker", "transform"],
+  "apis": ["Axes", "plot", "ValueTracker", "Transform", "always_redraw", "MathTex", "Tex"]
+}

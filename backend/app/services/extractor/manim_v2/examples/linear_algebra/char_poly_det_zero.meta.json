@@ -1,0 +1,9 @@
+{
+  "id": "char_poly_det_zero",
+  "category": "linear_algebra",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: characteristic polynomial derivation. Line 1: Av=λv. Line 2: (A-λI)v=0. Line 3: det(A-λI)=0 (YELLOW boxed). Example A=[[3, 1], [0, 2]]: (3-λ)(2-λ)=0 ⇒ λ=3, 2.",
+  "tags": ["characteristic_polynomial", "eigenvalue_equation", "det_equals_zero"],
+  "apis": ["MathTex", "Tex"],
+  "source": "3b1b/_2016/eola/chapter10.py::SymbolicEigenvectors+LineOfReasoning"
+}

@@ -1,0 +1,9 @@
+{
+  "id": "velocity_requires_two_times",
+  "category": "calculus",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: velocity requires two times. Axes with BLUE s(t)=t² curve + fixed GREEN dot at t_1=1.5, ORANGE dot at t_1+Δt, YELLOW secant line. ValueTracker dt_tr sweeps Δt 1.0→0.05. Live Δs/Δt → 2 t_1 = 3. Shows velocity as ratio of change, not a single-time quantity.",
+  "tags": ["derivative_paradox", "two_times", "velocity_definition", "secant_slope", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "Dot", "Line", "DashedLine", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"],
+  "source": "3b1b/_2017/eoc/chapter2.py::VelocityAtIndividualPointsVsPairs+CompareTwoTimes+SidestepParadox"
+}

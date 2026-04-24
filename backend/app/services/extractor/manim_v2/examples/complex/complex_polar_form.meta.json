@@ -1,0 +1,8 @@
+{
+  "id": "complex_polar_form",
+  "category": "complex",
+  "difficulty": 2,
+  "summary": "TWO_COLUMN: complex plane with z = r·e^(iθ) drawn as arrow + dot + radius label + angle arc, all redrawn via always_redraw. Two ValueTrackers r and θ, plus a persistent yellow trail. Tour: first θ sweeps 2π at fixed r=2 (traces circle), then r sweeps 0.4→2.8 at fixed θ=π/3 (traces ray). Right column shows live r, θ in deg/rad, Re(z), Im(z), and z numerically.",
+  "tags": ["polar_form", "complex_number", "value_tracker", "trail", "euler"],
+  "apis": ["ComplexPlane", "Arrow", "Dot", "Arc", "ValueTracker", "always_redraw", "VMobject", "add_updater", "MathTex", "Tex"]
+}

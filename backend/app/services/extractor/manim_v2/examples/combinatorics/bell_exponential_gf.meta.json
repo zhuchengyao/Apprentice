@@ -1,0 +1,8 @@
+{
+  "id": "bell_exponential_gf",
+  "category": "combinatorics",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS: axes with GREY_B true g(x) = e^(e^x - 1) and BLUE partial sum S_N(x) = Σ_{n=0}^N B_n x^n/n!. ValueTracker N_tr grows 1, 2, 4, 6, 8, 11; always_redraw; agreement widens. Live S_N(1) approaching e^(e-1).",
+  "tags": ["bell_numbers", "generating_function", "exponential_gf", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "Axes.plot", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

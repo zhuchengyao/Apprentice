@@ -1,0 +1,8 @@
+{
+  "id": "steve_librarian_bayes",
+  "category": "probability",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: 200-person population recolors via always_redraw as ValueTracker base_tr changes the librarian count between 1 and 100. 40% of librarians and 10% of farmers match Steve's description (YELLOW). Right column shows live counts and posterior P(lib|Steve) which can swing from 0.07 to 0.87.",
+  "tags": ["base_rate_fallacy", "bayes", "value_tracker", "always_redraw", "kahneman"],
+  "apis": ["Dot", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

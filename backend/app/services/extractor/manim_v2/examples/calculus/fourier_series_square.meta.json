@@ -1,0 +1,8 @@
+{
+  "id": "fourier_series_square",
+  "category": "calculus",
+  "difficulty": 3,
+  "summary": "Morph the partial Fourier series of a square wave from 1 term up to 10 terms using Transform, watching the approximation converge to the square wave.",
+  "tags": ["fourier", "series", "square_wave", "approximation"],
+  "apis": ["Axes", "Axes.plot", "Transform", "MathTex", "color_gradient"]
+}

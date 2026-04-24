@@ -1,0 +1,8 @@
+{
+  "id": "quadratic_formula_derivation",
+  "category": "calculus",
+  "difficulty": 2,
+  "summary": "TWO_COLUMN: Axes left with always_redraw parabola y=ax²+bx+c, vertex (orange), and roots (yellow when real). Three ValueTrackers a, b, c sweep through 5 (a,b,c) configurations including double root and complex roots. Right column has live coefficients, discriminant, formula, and roots; bottom shows derivation steps.",
+  "tags": ["quadratic_formula", "discriminant", "value_tracker", "always_redraw", "parabola"],
+  "apis": ["Axes", "plot", "Dot", "ValueTracker", "always_redraw", "MathTex", "Tex", "numpy"]
+}

@@ -1,0 +1,9 @@
+{
+  "id": "coordinates_on_basis_scalars",
+  "category": "linear_algebra",
+  "difficulty": 1,
+  "summary": "SINGLE_FOCUS: v=(3, 2)=3î+2ĵ. NumberPlane with GREEN î, RED ĵ; scale î by 3; add 2ĵ shifted to (3, 0); YELLOW v=(3, 2) arrow; bottom formula decomposition.",
+  "tags": ["coordinates_as_scalars", "linear_combination_basis", "standard_basis"],
+  "apis": ["NumberPlane", "Arrow", "MathTex", "Transform", "Tex"],
+  "source": "3b1b/_2016/eola/chapter9.py::RemindOfCoordinates"
+}

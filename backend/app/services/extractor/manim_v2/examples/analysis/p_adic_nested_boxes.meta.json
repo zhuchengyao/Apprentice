@@ -1,0 +1,8 @@
+{
+  "id": "p_adic_nested_boxes",
+  "category": "analysis",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS: 64 integers 0..63 arranged in 2 rows; each colored by the largest k where x=25 ≡ y (mod 3^k). Color gradient BLUE_E (k=0, far) → WHITE (k=6, equal). Reference integer circled in WHITE; bottom-right legend explains 3-adic distance |x-y|_3 = 3^(-k).",
+  "tags": ["p_adic", "ultrametric", "nested_clusters", "color_coded", "valuation"],
+  "apis": ["Dot", "Circle", "VGroup", "MathTex", "Tex"]
+}

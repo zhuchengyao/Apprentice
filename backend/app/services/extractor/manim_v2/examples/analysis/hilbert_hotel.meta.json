@@ -1,0 +1,8 @@
+{
+  "id": "hilbert_hotel",
+  "category": "analysis",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS two-phase: 12 visible rooms with '...' suffix. Phase 1: ValueTracker shift_tr slides each BLUE guest from room n to n+1 via always_redraw; YELLOW new guest pops into room 1 at s>0.5. Phase 2: shift_tr2 sends guest n → room 2n (BLUE dots spread out); ORANGE bus-guests fill odd rooms 1, 3, 5, .... Captions explain ∞+1 = ∞+∞ = ℵ₀.",
+  "tags": ["hilbert_hotel", "countable_infinity", "cardinality", "value_tracker", "always_redraw"],
+  "apis": ["Rectangle", "Dot", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

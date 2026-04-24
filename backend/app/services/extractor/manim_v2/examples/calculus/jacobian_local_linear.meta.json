@@ -1,0 +1,8 @@
+{
+  "id": "jacobian_local_linear",
+  "category": "calculus",
+  "difficulty": 3,
+  "summary": "Apply a nonlinear pointwise map to a tiny NumberPlane patch around (0,0) so the small-region distortion approximates the matrix [[1,1.5],[1.5,1]] = DF|(0,0).",
+  "tags": ["jacobian", "linearization", "nonlinear", "derivative", "local"],
+  "apis": ["NumberPlane", "ApplyPointwiseFunction", "MathTex"]
+}

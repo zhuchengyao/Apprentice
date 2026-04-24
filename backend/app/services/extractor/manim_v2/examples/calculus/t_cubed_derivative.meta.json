@@ -1,0 +1,8 @@
+{
+  "id": "t_cubed_derivative",
+  "category": "calculus",
+  "difficulty": 2,
+  "summary": "TWO_COLUMN: graph of y=t³ on the left with a fixed anchor at t₀=1.5 and a moving second point at t₀+dt; the secant line redraws via always_redraw as ValueTracker dt sweeps 1.5→0.05. Right column shows the algebraic expansion plus live numeric secant slope vs the exact limit 3t₀² = 6.75.",
+  "tags": ["derivative", "secant_to_tangent", "power_rule", "limit", "value_tracker"],
+  "apis": ["Axes", "plot", "ValueTracker", "always_redraw", "Line", "Dot", "MathTex"]
+}

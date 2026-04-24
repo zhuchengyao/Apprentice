@@ -1,0 +1,8 @@
+{
+  "id": "darts_uncertainty",
+  "category": "probability",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS LEFT: dartboard with 4 color-coded rings; 150 precomputed Gaussian dart hits (σ=0.6) drop via ValueTracker t_tr; always_redraw colors each hit by its ring. RIGHT axes plot empirical P(|hit|<1.0) YELLOW vs theoretical 1-exp(-1/(2σ²)) GREEN dashed. Live count + empirical vs theory.",
+  "tags": ["darts", "gaussian_scatter", "empirical_vs_theory", "value_tracker", "always_redraw"],
+  "apis": ["Circle", "Dot", "Axes", "DashedLine", "VMobject", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

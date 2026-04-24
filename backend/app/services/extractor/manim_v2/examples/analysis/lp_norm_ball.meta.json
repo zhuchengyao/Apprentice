@@ -1,0 +1,8 @@
+{
+  "id": "lp_norm_ball",
+  "category": "analysis",
+  "difficulty": 2,
+  "summary": "SINGLE_FOCUS: NumberPlane with YELLOW L^p unit ball {(x, y): |x|^p + |y|^p = 1} via always_redraw. ValueTracker p_tr tours p = 0.5, 1 (diamond), 2 (disk), 4, 20 (≈square), 2. Panel names shape at each p.",
+  "tags": ["lp_norm", "unit_ball", "value_tracker", "always_redraw"],
+  "apis": ["NumberPlane", "VMobject", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

@@ -1,0 +1,8 @@
+{
+  "id": "laplace_shifted_delta",
+  "category": "calculus",
+  "difficulty": 2,
+  "summary": "TWO_COLUMN stacked vertically: top time-axes with a YELLOW spike at t=a (driven by ValueTracker a_tr), bottom Laplace-axes plotting F(s) = e^(-a s) as GREEN curve with RED dashed cursor at s=1 showing F(1) = e^(-a). a_tr tours through 0.5, 2.0, 3.5, 1.0, 2.5. Live panel links shift-in-t to scaling-of-F.",
+  "tags": ["laplace_transform", "delta_function", "shifting_property", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "Axes.plot", "Line", "Triangle", "DashedLine", "Dot", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}

@@ -1,0 +1,8 @@
+{
+  "id": "uniform_continuity_heine",
+  "category": "analysis",
+  "difficulty": 3,
+  "summary": "SINGLE_FOCUS Heine-Cantor: f=1/x on (0, 1] continuous but not uniformly continuous. Axes with BLUE f curve. ValueTracker x_tr tours x={0.5, 0.3, 0.15, 0.08, 0.05, 0.6}. always_redraw YELLOW dashed ε=1.5 band + ORANGE δ-interval shrinking as x→0 + RED current dot. Live δ(x)=εx²/(1+εx) → 0 ⇒ no uniform δ on (0, 1].",
+  "tags": ["uniform_continuity", "heine_cantor", "compactness", "epsilon_delta", "value_tracker", "always_redraw"],
+  "apis": ["Axes", "ParametricFunction", "DashedLine", "Rectangle", "Dot", "DecimalNumber", "ValueTracker", "always_redraw", "Tex"]
+}

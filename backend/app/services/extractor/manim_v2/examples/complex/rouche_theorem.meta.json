@@ -1,0 +1,8 @@
+{
+  "id": "rouche_theorem",
+  "category": "complex",
+  "difficulty": 3,
+  "summary": "COMPARISON: LEFT z-plane with BLUE |z|=2 circle + blue rider; RIGHT w-plane with GREEN f=z^5 and YELLOW f+g = z^5-3z² trails (both wind 5 times around RED origin). |f|=32>|g|=12 on |z|=2, so Rouché ⇒ both have 5 zeros inside.",
+  "tags": ["rouche_theorem", "winding_number", "polynomial_zeros", "value_tracker", "always_redraw"],
+  "apis": ["ComplexPlane", "Circle", "Dot", "VMobject", "VGroup", "ValueTracker", "always_redraw", "MathTex", "Tex"]
+}
