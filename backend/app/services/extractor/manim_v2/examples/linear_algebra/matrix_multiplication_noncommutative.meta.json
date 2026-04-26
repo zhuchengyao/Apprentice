@@ -1,0 +1,9 @@
+{
+  "id": "matrix_multiplication_noncommutative",
+  "category": "linear_algebra",
+  "difficulty": 2,
+  "summary": "SIDE_BY_SIDE transformation example. Two identical grids start with the same unit square and a PINK vector attached to the square's upper-right corner. The left applies rotation then shear to show S(Rx); the right applies shear then rotation to show R(Sx). The final formula emphasizes SR != RS.",
+  "tags": ["linear_algebra", "matrix_multiplication", "composition", "noncommutative", "linear_transformation"],
+  "apis": ["NumberPlane", "Polygon", "Line", "add_tip", "ApplyMatrix", "MathTex", "Tex", "Circumscribe", "numpy"],
+  "source": "3b1b/_2016/eola/chapter4.py::FirstShearThenRotation+RotationThenShear+AskAboutCommutativity"
+}

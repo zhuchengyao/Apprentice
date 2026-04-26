@@ -1,0 +1,9 @@
+{
+  "id": "eigenvector_invariant_line",
+  "category": "linear_algebra",
+  "difficulty": 2,
+  "summary": "TWO_COLUMN eigenvector intuition. Left: a maroon eigenspace line y=x, a YELLOW vector u on that line, and a BLUE generic vector x are transformed by A = [[3,0],[1,2]]. Under ApplyMatrix, the line stays invariant and the YELLOW vector scales to 3u, while the BLUE vector changes direction. Right: the matrix and the equation A u = 3u.",
+  "tags": ["linear_algebra", "eigenvector", "eigenvalue", "eigenspace", "apply_matrix", "invariant_line"],
+  "apis": ["NumberPlane", "Arrow", "Line", "ApplyMatrix", "MathTex", "Tex", "SurroundingRectangle", "numpy"],
+  "source": "3b1b/_2016/eola/chapter10.py::VectorRemainsOnSpan+SneakierEigenVector"
+}

@@ -7,7 +7,7 @@ from sqlalchemy.ext.asyncio import async_engine_from_config
 from alembic import context
 
 from app.database import Base
-from app.models import book, user, billing, tutor, usage, study  # noqa: F401 — register models
+from app.models import animation, book, user, billing, tutor, usage, study  # noqa: F401 — register models
 
 config = context.config
 

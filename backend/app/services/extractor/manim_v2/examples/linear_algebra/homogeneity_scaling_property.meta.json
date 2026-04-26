@@ -1,0 +1,9 @@
+{
+  "id": "homogeneity_scaling_property",
+  "category": "linear_algebra",
+  "difficulty": 2,
+  "summary": "TWO_COLUMN homogeneity example. Left: route 1 animates v -> c v -> A(c v), then leaves the final vector as a grey ghost. Route 2 animates v -> A v -> c A v and lands on the same endpoint, making A(c v)=c A v visually explicit. Right: scalar, matrix, route formulas, and the final homogeneity equation.",
+  "tags": ["linear_algebra", "linearity", "homogeneity", "scalar_multiplication", "linear_transformation"],
+  "apis": ["NumberPlane", "Arrow", "Transform", "MathTex", "Tex", "SurroundingRectangle", "Circumscribe", "numpy"],
+  "source": "3b1b/_2016/eola/chapter3.py::PrepareForFormalDefinition+chapter11.py::FormalDefinitionOfLinear"
+}

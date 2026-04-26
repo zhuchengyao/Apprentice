@@ -1,0 +1,9 @@
+{
+  "id": "cramers_rule_area_ratio",
+  "category": "linear_algebra",
+  "difficulty": 3,
+  "summary": "THREE_PANEL Cramer's rule in 2D. Left: the original column parallelogram built from v (RED) and w (GREEN) with area det(A)=3. Middle: replace the first column by b (YELLOW) to get a new parallelogram of area 6. Right: the coordinate formula x = det([b w]) / det([v w]) = 6/3 = 2, with the companion y formula shown underneath.",
+  "tags": ["linear_algebra", "cramers_rule", "determinant_ratio", "linear_systems", "area_ratio", "parallelogram"],
+  "apis": ["NumberPlane", "Arrow", "Polygon", "TransformFromCopy", "MathTex", "Tex", "SurroundingRectangle", "numpy"],
+  "source": "3b1b/_2018/cramer.py::ThinkOfPuzzleAsLinearCombination+WriteCramersRule"
+}

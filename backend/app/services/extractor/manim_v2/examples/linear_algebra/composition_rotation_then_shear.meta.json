@@ -1,0 +1,9 @@
+{
+  "id": "composition_rotation_then_shear",
+  "category": "linear_algebra",
+  "difficulty": 2,
+  "summary": "TWO_COLUMN composition example. Left: a static NumberPlane anchors the view while a translucent square, short reference axes, and YELLOW vector x undergo two ApplyMatrix steps: first a 90-degree rotation R, then a shear S. Right: the matrices R and S are shown explicitly, followed by the combined matrix SR and the relation S(Rx) = (SR)x. The vector label updates from x to R x to S(R x).",
+  "tags": ["linear_algebra", "composition", "matrix_multiplication", "rotation", "shear", "apply_matrix"],
+  "apis": ["NumberPlane", "Polygon", "Arrow", "ApplyMatrix", "MathTex", "Tex", "SurroundingRectangle", "numpy"],
+  "source": "3b1b/_2016/eola/chapter4.py::RotationThenShear+IntroduceIdeaOfComposition"
+}

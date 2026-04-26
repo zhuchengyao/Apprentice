@@ -1,0 +1,9 @@
+{
+  "id": "rotation_no_real_eigenvectors",
+  "category": "linear_algebra",
+  "difficulty": 2,
+  "summary": "TWO_COLUMN eigenvector counterexample. Left: a YELLOW vector and its span are copied, then rotated 90 degrees into ORANGE. Right: the rotation matrix and eigenvector equation show why Rv cannot equal lambda v for a nonzero real vector.",
+  "tags": ["linear_algebra", "eigenvectors", "rotation", "eigenvalues", "real_vector_space"],
+  "apis": ["NumberPlane", "Line", "Arrow", "Rotate", "MathTex", "Tex", "SurroundingRectangle", "Circumscribe", "numpy"],
+  "source": "3b1b/_2016/eola/chapter10.py::ThereMightNotBeEigenvectors+Rotate90Degrees"
+}

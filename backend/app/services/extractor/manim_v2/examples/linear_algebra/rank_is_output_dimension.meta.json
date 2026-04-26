@@ -1,0 +1,9 @@
+{
+  "id": "rank_is_output_dimension",
+  "category": "linear_algebra",
+  "difficulty": 2,
+  "summary": "SIDE_BY_SIDE rank comparison. A TEAL unit disk on the left undergoes a full-rank matrix and remains a 2D ellipse, while a YELLOW_E unit disk on the right undergoes a rank-1 matrix and collapses to a line segment. Captions tie this directly to the definition 'rank = dimension of the output space'.",
+  "tags": ["linear_algebra", "rank", "column_space", "output_dimension", "apply_matrix", "singular_matrix"],
+  "apis": ["NumberPlane", "Circle", "ApplyMatrix", "Tex", "VGroup", "numpy"],
+  "source": "3b1b/_2016/eola/chapter6.py::DefineRank+ShowVInAndOutOfColumnSpace"
+}

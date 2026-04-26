@@ -114,3 +114,43 @@ class BookPage(Base):
     created_at: Mapped[datetime] = mapped_column(DateTime, default=lambda: datetime.now(UTC).replace(tzinfo=None))
 
     book: Mapped["Book"] = relationship(back_populates="pages")
+
+
+class Scope(Base):
+    """Parse-stage artifact: an ordered, thematically-grouped unit of study
+    within a chapter. Computed once during chapter processing (LLM-driven
+    `plan_scopes`) and reused across all sessions, instead of being rebuilt
+    per session. `kp_ids` may be a strict subset of the chapter's KPs —
+    the LLM is allowed to drop trivia/redundant KPs when planning.
+
+    `source_anchors` are validated + (optionally) repaired at parse time
+    against `BookPage.html_content`, so the frontend highlighter hits a
+    precise span instead of falling back to a full-container box-shadow.
+
+    `explanation_text` is the pre-warmed scope-level EXPLAIN payload; if
+    non-null the frontend can skip the LLM stream on first entry.
+    """
+    __tablename__ = "scopes"
+    __table_args__ = (
+        UniqueConstraint("chapter_id", "index", name="uq_scopes_chapter_index"),
+    )
+
+    id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    chapter_id: Mapped[uuid.UUID] = mapped_column(
+        ForeignKey("chapters.id", ondelete="CASCADE"), index=True
+    )
+    index: Mapped[int] = mapped_column(Integer)
+    title: Mapped[str] = mapped_column(String(200))
+    anchor_hint: Mapped[str | None] = mapped_column(Text, nullable=True)
+    kp_ids: Mapped[list[str]] = mapped_column(JSONB)
+    source_anchors: Mapped[list[str]] = mapped_column(JSONB)
+    anchors_repaired: Mapped[int] = mapped_column(Integer, default=0)
+    anchors_unmatched: Mapped[int] = mapped_column(Integer, default=0)
+    explanation_text: Mapped[str | None] = mapped_column(Text, nullable=True)
+    plan_model: Mapped[str | None] = mapped_column(String(80), nullable=True)
+    plan_hash: Mapped[str | None] = mapped_column(String(64), nullable=True)
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime, default=lambda: datetime.now(UTC).replace(tzinfo=None)
+    )
+
+    chapter: Mapped["Chapter"] = relationship()

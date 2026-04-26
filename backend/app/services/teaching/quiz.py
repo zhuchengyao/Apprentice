@@ -199,10 +199,13 @@ async def generate_quiz_for_scope(
     try:
         raw = await chat_completion(
             messages=[{"role": "user", "content": "Generate the questions now."}],
-            # Reasoning models (gpt-5-class) can burn most of the budget on
-            # internal reasoning; a tight ceiling leaves no room for the JSON
-            # output and the caller receives an empty/invalid response.
-            max_tokens=8192,
+            # Reasoning models (gpt-5-class) can burn a sizable chunk of the
+            # budget on internal reasoning before any content surfaces. On top
+            # of that, non-English MCQs (CJK + LaTeX + explanations) easily
+            # push output past 4k tokens for 3–5 questions. 16k gives enough
+            # headroom for both reasoning and content without risking silent
+            # mid-string truncation.
+            max_tokens=16384,
             model=settings.tutor_model,
             caller="study_generate_mcq",
             system=system_blocks,
@@ -213,9 +216,13 @@ async def generate_quiz_for_scope(
 
     try:
         parsed = json.loads(_strip_json_fence(raw))
-    except json.JSONDecodeError:
+    except json.JSONDecodeError as e:
+        # Surface the tail so truncation vs. malformed-JSON is obvious in
+        # the log. Truncation looks like "…mid-string" at the very end;
+        # malformed JSON shows a structural error at a specific column.
         logger.warning(
-            "generate_quiz_for_scope: invalid JSON. Raw: %s", raw[:400]
+            "generate_quiz_for_scope: invalid JSON (%s). raw_len=%d head=%s tail=%s",
+            e, len(raw), raw[:300], raw[-300:],
         )
         return []
     if not isinstance(parsed, list) or not parsed:

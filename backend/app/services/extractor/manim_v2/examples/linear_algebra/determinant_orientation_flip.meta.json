@@ -1,0 +1,9 @@
+{
+  "id": "determinant_orientation_flip",
+  "category": "linear_algebra",
+  "difficulty": 2,
+  "summary": "TWO_COLUMN determinant sign intuition. Left: the unit square, basis arrows, and a curved CCW orientation marker are all transformed by a matrix with determinant -2. The square keeps nonzero area but the orientation label changes from CCW to CW. Right: det(A)=-2<0 is interpreted as area scaling plus an orientation flip.",
+  "tags": ["linear_algebra", "determinant", "orientation", "negative_determinant", "apply_matrix", "area_scaling"],
+  "apis": ["NumberPlane", "Arrow", "CurvedArrow", "Polygon", "ApplyMatrix", "MathTex", "Tex", "SurroundingRectangle", "numpy"],
+  "source": "3b1b/_2016/eola/chapter5.py::NegativeDeterminant+FlipSpaceOver"
+}

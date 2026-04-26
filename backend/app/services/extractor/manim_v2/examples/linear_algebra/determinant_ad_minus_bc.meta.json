@@ -1,0 +1,9 @@
+{
+  "id": "determinant_ad_minus_bc",
+  "category": "linear_algebra",
+  "difficulty": 2,
+  "summary": "TWO_COLUMN determinant formula example. Left: RED and GREEN column vectors span a live YELLOW parallelogram while b changes. Right: the 2x2 matrix and det(A)=ad-bc update with a live DecimalNumber, tying the formula to signed area.",
+  "tags": ["linear_algebra", "determinant", "signed_area", "parallelogram", "formula", "value_tracker"],
+  "apis": ["NumberPlane", "Polygon", "Line", "add_tip", "ValueTracker", "always_redraw", "DecimalNumber", "MathTex", "Tex", "SurroundingRectangle", "numpy"],
+  "source": "3b1b/_2016/eola/chapter5.py::TwoDDeterminantFormulaIntuition+FullFormulaExplanation"
+}

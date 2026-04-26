@@ -226,7 +226,7 @@ class SceneSpec(BaseModel):
 
     scene_id: str = Field(..., min_length=1, max_length=64)
     learning_objective: str = Field(..., max_length=400)
-    duration_s: float = Field(..., ge=4.0, le=18.0,
+    duration_s: float = Field(..., ge=2.0, le=30.0,
                               description="Target wall-clock length; codegen should honor this")
     camera: Camera = Field(default_factory=Camera)
     trackers: list[ValueTrackerSpec] = Field(default_factory=list)

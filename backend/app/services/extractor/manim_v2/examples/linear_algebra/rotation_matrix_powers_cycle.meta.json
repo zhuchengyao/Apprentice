@@ -1,0 +1,9 @@
+{
+  "id": "rotation_matrix_powers_cycle",
+  "category": "linear_algebra",
+  "difficulty": 2,
+  "summary": "TWO_COLUMN quarter-turn power cycle. Left: a YELLOW vector x is repeatedly transformed by the 90-degree rotation matrix R using ApplyMatrix, leaving semi-transparent ghosts at R x, R^2 x, and R^3 x before returning to its starting direction. Right: the matrix R, the statement R^4 = I, and the full orbit x -> R x -> R^2 x -> R^3 x -> x.",
+  "tags": ["linear_algebra", "matrix_powers", "rotation_matrix", "cyclic", "apply_matrix", "identity"],
+  "apis": ["NumberPlane", "Arrow", "ApplyMatrix", "MathTex", "Tex", "SurroundingRectangle", "numpy"],
+  "source": "3b1b/_2021/matrix_exp.py::Show90DegreePowers"
+}

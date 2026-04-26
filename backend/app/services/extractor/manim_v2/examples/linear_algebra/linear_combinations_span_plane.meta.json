@@ -1,0 +1,9 @@
+{
+  "id": "linear_combinations_span_plane",
+  "category": "linear_algebra",
+  "difficulty": 2,
+  "summary": "TWO_COLUMN span intuition. Left: two non-parallel vectors v (RED) and w (GREEN) on a NumberPlane, with ValueTrackers a and b driving a semi-transparent parallelogram, the scaled copy a v, the shifted copy b w, and the YELLOW sum a v + b w; the label avoids the frame edge as coefficients go negative. Right: stacked live readouts of a, b, and the resulting coordinates. Final beat fades in a grid of sample endpoints to show that varying both coefficients fills the plane.",
+  "tags": ["linear_algebra", "linear_combination", "span", "basis", "value_tracker", "always_redraw"],
+  "apis": ["NumberPlane", "Line", "add_tip", "Polygon", "Dot", "ValueTracker", "always_redraw", "DecimalNumber", "DecimalMatrix", "MathTex", "Tex", "numpy"],
+  "source": "3b1b/_2016/eola/chapter2.py::ShowVaryingLinearCombinations+AnimationUnderSpanDefinition"
+}

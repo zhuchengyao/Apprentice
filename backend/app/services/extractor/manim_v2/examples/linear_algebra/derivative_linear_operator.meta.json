@@ -1,0 +1,9 @@
+{
+  "id": "derivative_linear_operator",
+  "category": "linear_algebra",
+  "difficulty": 3,
+  "summary": "TWO_COLUMN function-space linearity. Left route 1 builds f+g, differentiates it into D(f+g), and leaves that curve as a faint grey ghost. Route 2 redraws f and g, transforms them into Df and Dg, then uses a left-to-right sweep where Df and Dg disappear at the same x-speed that the green Df+Dg curve appears. Right: route formulas and D(f+g)=Df+Dg make the additivity property explicit.",
+  "tags": ["linear_algebra", "vector_space", "functions", "derivative", "linear_operator", "transform"],
+  "apis": ["Axes", "plot", "Create", "Transform", "UpdateFromAlphaFunc", "MathTex", "Tex", "SurroundingRectangle", "Circumscribe"],
+  "source": "3b1b/_2016/eola/chapter11.py::DerivativeIsLinear"
+}

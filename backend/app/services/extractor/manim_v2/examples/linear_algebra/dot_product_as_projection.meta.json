@@ -1,0 +1,9 @@
+{
+  "id": "dot_product_as_projection",
+  "category": "linear_algebra",
+  "difficulty": 2,
+  "summary": "TWO_COLUMN geometric dot-product scene. Left: RED v is fixed, GREEN w rotates via a ValueTracker, and a dashed drop plus YELLOW projection vector show the signed projection of w onto the line through v. Right: live readouts for |v|, proj_v(w), and v·w. As w rotates past 90 degrees relative to v, the projection and the dot product become negative.",
+  "tags": ["linear_algebra", "dot_product", "projection", "signed_projection", "value_tracker", "always_redraw"],
+  "apis": ["NumberPlane", "Line", "add_tip", "DashedLine", "ValueTracker", "always_redraw", "DecimalNumber", "MathTex", "Tex", "SurroundingRectangle", "numpy"],
+  "source": "3b1b/_2016/eola/chapter7.py::GeometricInterpretation+GeometricInterpretationNegative"
+}

@@ -1,0 +1,9 @@
+{
+  "id": "column_space_null_space",
+  "category": "linear_algebra",
+  "difficulty": 3,
+  "summary": "SIDE_BY_SIDE rank-deficient map example. First, a PURPLE null-space vector n is mapped to the zero output, establishing An=0. Then a YELLOW input x is extended by the same null-space vector to form the different ORANGE input x+n. Copies of x and x+n map to the same output point because A(x+n)=Ax+An=Ax. The final beat uses ValueTracker-driven YELLOW input/output arrows to show x changing while Ax moves along the TEAL column-space line.",
+  "tags": ["linear_algebra", "column_space", "null_space", "rank", "linear_systems", "transform"],
+  "apis": ["NumberPlane", "Line", "add_tip", "Dot", "Transform", "ValueTracker", "always_redraw", "MathTex", "Tex", "RoundedRectangle", "Circumscribe", "numpy"],
+  "source": "3b1b/_2016/eola/chapter6.py::DefineColumnSpace+NameNullSpace+OffsetNullSpace"
+}

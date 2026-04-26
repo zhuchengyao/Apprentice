@@ -1,0 +1,9 @@
+{
+  "id": "diagonal_eigenbasis_repeated_powers",
+  "category": "linear_algebra",
+  "difficulty": 3,
+  "summary": "TWO_COLUMN eigenbasis example. Left: RED and GREEN eigen-directions scale independently while a YELLOW vector tracks their sum. Right: a live n value and D^n [1 1]^T = [1.45^n 0.72^n]^T explain why diagonal matrices make repeated multiplication simple.",
+  "tags": ["linear_algebra", "eigenbasis", "eigenvalues", "diagonal_matrix", "matrix_powers", "value_tracker"],
+  "apis": ["NumberPlane", "Line", "add_tip", "ValueTracker", "always_redraw", "DecimalNumber", "MathTex", "Tex", "SurroundingRectangle", "Circumscribe", "numpy"],
+  "source": "3b1b/_2016/eola/chapter10.py::BasisVectorsAreEigenvectors+DefineDiagonalMatrix+RepeatedMultiplicationInAction"
+}

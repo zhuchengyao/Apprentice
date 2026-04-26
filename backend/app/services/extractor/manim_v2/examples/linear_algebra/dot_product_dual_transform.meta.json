@@ -1,0 +1,9 @@
+{
+  "id": "dot_product_dual_transform",
+  "category": "linear_algebra",
+  "difficulty": 3,
+  "summary": "TWO_PANEL duality view of the dot product. Left: a fixed TEAL vector v and a moving YELLOW input x on a plane. Right-bottom: a PINK output on a number line updates as v dot x changes. Right-top: the dot product is rewritten as a row-matrix transformation from 2D to 1D, with a live DecimalNumber output.",
+  "tags": ["linear_algebra", "dot_product", "duality", "linear_functional", "row_matrix", "value_tracker"],
+  "apis": ["NumberPlane", "NumberLine", "Line", "add_tip", "Dot", "ValueTracker", "always_redraw", "DecimalNumber", "MathTex", "Tex", "SurroundingRectangle", "numpy"],
+  "source": "3b1b/_2016/eola/chapter8p2.py::DotProductToTransformSymbol+DefineDualTransform"
+}

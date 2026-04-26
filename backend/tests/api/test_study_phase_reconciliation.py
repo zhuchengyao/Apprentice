@@ -42,6 +42,28 @@ def _make_session(fake_user, *, scope_index: int = 0) -> StudySession:
     return s
 
 
+def _make_read_session_with_cached_explanation(fake_user) -> StudySession:
+    """A freshly-started session whose scope was prewarmed at parse time."""
+    return StudySession(
+        id=uuid.uuid4(),
+        user_id=fake_user.id,
+        book_id=uuid.uuid4(),
+        chapter_id=uuid.uuid4(),
+        phase=StudyPhase.read,
+        scope_plan=[
+            {
+                "title": "Scope 0",
+                "kp_ids": KP_CURRENT,
+                "anchor_hint": "",
+                "explanation_text": "Cached explanation.",
+                "explanation_language": "en",
+            },
+        ],
+        current_scope_index=0,
+        current_question_index=0,
+    )
+
+
 def _install_session(monkeypatch: pytest.MonkeyPatch, session: StudySession) -> None:
     """Patch study.py's _load_session to return our hand-built session."""
     import app.api.study as study_mod
@@ -129,3 +151,22 @@ def test_response_schemas_include_phase():
 
     assert "phase" in AnswerResponse.model_fields
     assert "phase" in QuestionsResponse.model_fields
+
+
+@pytest.mark.asyncio
+async def test_cached_advance_moves_read_session_to_practice(
+    client, fake_user, mock_db, monkeypatch
+):
+    """Prewarmed explanations still have to drive the server phase machine."""
+    session = _make_read_session_with_cached_explanation(fake_user)
+    _install_session(monkeypatch, session)
+    mock_db.commit = AsyncMock()
+
+    response = await client.post(f"/api/study/sessions/{session.id}/advance")
+
+    assert response.status_code == 200
+    assert session.phase == StudyPhase.practice
+    mock_db.commit.assert_awaited_once()
+    assert "event: done" in response.text
+    assert '"next_phase": "practice"' in response.text
+    assert '"cached": true' in response.text

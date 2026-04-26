@@ -1,4 +1,4 @@
-"""Stage 1 — free-form pedagogical plan from concept + explanation."""
+"""Stage 1 — free-form pedagogical plan from the concept label."""
 
 from __future__ import annotations
 
@@ -21,18 +21,12 @@ class PlannerDecline(Exception):
 
 async def generate_plan(
     concept: str,
-    explanation: str,
     *,
-    chapter_title: str | None,
-    section_title: str | None,
     model: str,
     caller: str,
 ) -> str:
     """Return the plan markdown. Raise `PlannerDecline` if the plan says no."""
-    user = planner_prompt.build_user_message(
-        concept, explanation,
-        chapter_title=chapter_title, section_title=section_title,
-    )
+    user = planner_prompt.build_user_message(concept)
     text = await chat_completion(
         messages=[{"role": "user", "content": user}],
         system=planner_prompt.build_system_blocks(),

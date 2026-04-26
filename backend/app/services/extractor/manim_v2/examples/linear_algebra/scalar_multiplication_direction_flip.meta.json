@@ -1,0 +1,9 @@
+{
+  "id": "scalar_multiplication_direction_flip",
+  "category": "linear_algebra",
+  "difficulty": 1,
+  "summary": "TWO_COLUMN scalar multiplication. Left: a fixed GREY_B vector defines a span line, while a YELLOW copy updates via ValueTracker with a constant-size arrowhead so the visual emphasis is lengthening, shortening, and direction reversal as a changes from 2 to 0.35 to -1.2. Right: a compact rule panel states the geometric effect of each scalar regime.",
+  "tags": ["linear_algebra", "vectors", "scalar_multiplication", "stretch", "flip", "value_tracker"],
+  "apis": ["NumberPlane", "Line", "add_tip", "ValueTracker", "always_redraw", "DecimalNumber", "MathTex", "Tex", "SurroundingRectangle", "numpy"],
+  "source": "3b1b/_2016/eola/chapter1.py::ShowScalarMultiplication+ScalingNumerically"
+}

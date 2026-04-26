@@ -1,0 +1,9 @@
+{
+  "id": "eigen_directions_stretch_unit_disk",
+  "category": "linear_algebra",
+  "difficulty": 3,
+  "summary": "TWO_COLUMN eigenvalue intuition from a deformed unit disk. Left: a YELLOW unit disk and two colored eigen-direction arrows live on top of fixed invariant lines; ApplyMatrix turns the disk into an ellipse while the eigen arrows stay on their lines and only change length. Right: the equations A u_i = λ_i u_i are paired with the corresponding stretch and shrink factors.",
+  "tags": ["linear_algebra", "eigenvectors", "eigenvalues", "invariant_lines", "apply_matrix", "unit_disk"],
+  "apis": ["NumberPlane", "Circle", "Line", "Arrow", "ApplyMatrix", "MathTex", "Tex", "SurroundingRectangle", "numpy"],
+  "source": "3b1b/_2021/quick_eigen.py::ShowSquishingAndStretching"
+}

@@ -1,0 +1,9 @@
+{
+  "id": "columns_to_basis_vectors",
+  "category": "linear_algebra",
+  "difficulty": 2,
+  "summary": "TWO_COLUMN core EOLA matrix intuition. Left: NumberPlane with a translucent unit square, RED basis vector e1, GREEN basis vector e2, and YELLOW x=[-1,2]. Right: A=[[3,1],[1,2]] with columns highlighted, then formulas A e1=[3,1]^T and A e2=[1,2]^T. ApplyMatrix transforms the whole plane about its own origin so e1 and e2 visibly land on the matrix columns. Final step decomposes A x as -1 A e1 + 2 A e2, using semi-transparent vector copies to land on the YELLOW result.",
+  "tags": ["linear_algebra", "matrix_columns", "basis_vectors", "matrix_vector_multiplication", "apply_matrix", "eola"],
+  "apis": ["NumberPlane", "Polygon", "Arrow", "Matrix", "MathTex", "Tex", "ApplyMatrix", "SurroundingRectangle", "Flash", "numpy"],
+  "source": "3b1b/_2016/eola/chapter3.py::ColumnsToBasisVectors"
+}

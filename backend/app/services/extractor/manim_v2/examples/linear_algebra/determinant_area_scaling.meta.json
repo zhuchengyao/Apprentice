@@ -1,0 +1,9 @@
+{
+  "id": "determinant_area_scaling",
+  "category": "linear_algebra",
+  "difficulty": 2,
+  "summary": "TWO_COLUMN determinant intuition via a diagonal matrix. Left: the unit square and basis arrows are transformed by ApplyMatrix with A = [[3,0],[0,2]], so the square becomes a 3-by-2 rectangle. Braces label the new width and height, and an area label updates from 1 to 6. Right: the matrix, det(A)=6, and the rule new area = |det(A)| * old area.",
+  "tags": ["linear_algebra", "determinant", "area_scaling", "unit_square", "apply_matrix", "signed_area"],
+  "apis": ["NumberPlane", "Polygon", "Arrow", "ApplyMatrix", "Brace", "MathTex", "Tex", "SurroundingRectangle", "numpy"],
+  "source": "3b1b/_2016/eola/chapter5.py::DiagonalExampleWithSquare+NameDeterminant"
+}

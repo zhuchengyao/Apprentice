@@ -1,0 +1,9 @@
+{
+  "id": "determinant_product_successive",
+  "category": "linear_algebra",
+  "difficulty": 3,
+  "summary": "TWO_COLUMN determinant product rule. Left: an enlarged square with a ghost original outline undergoes two ApplyMatrix transformations in sequence; its area label stays attached to the transformed region and updates from A to det(M2)A to the final numeric multiple. Right: det(M1M2)=det(M1)det(M2) is shown numerically and circumscribed after the second transformation.",
+  "tags": ["linear_algebra", "determinant", "composition", "area_scaling", "apply_matrix", "product_rule"],
+  "apis": ["NumberPlane", "Polygon", "ApplyMatrix", "MathTex", "Tex", "SurroundingRectangle", "Circumscribe", "numpy"],
+  "source": "3b1b/_2018/determinant_puzzle.py::SuccessiveLinearTransformations"
+}

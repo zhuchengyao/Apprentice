@@ -1,0 +1,9 @@
+{
+  "id": "two_d_cross_product_signed_area",
+  "category": "linear_algebra",
+  "difficulty": 2,
+  "summary": "TWO_COLUMN 2D cross-product intuition. Left: RED v stays fixed while GREEN w rotates with a ValueTracker, dragging a translucent parallelogram. Right: the scalar cross product is shown as det[v w] with a live value. As w crosses from counterclockwise to clockwise relative to v, the signed area changes from positive to negative.",
+  "tags": ["linear_algebra", "cross_product", "signed_area", "orientation", "value_tracker", "determinant"],
+  "apis": ["NumberPlane", "Line", "add_tip", "Polygon", "ValueTracker", "always_redraw", "DecimalNumber", "MathTex", "Tex", "SurroundingRectangle", "numpy"],
+  "source": "3b1b/_2016/eola/chapter8.py::Define2dCrossProduct+show_sign"
+}

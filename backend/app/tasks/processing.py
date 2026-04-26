@@ -13,20 +13,21 @@ from app.config import settings
 from app.constants import (
     BATCH_SIZE,
     ILLUSTRATION_CONCURRENCY,
-    ILLUSTRATION_MIN_DIFFICULTY,
     ILLUSTRATION_QUALITY,
 )
 from app.models.book import Book, BookPage, BookStatus, Chapter, Section, KnowledgePoint
 from app.services.ai_context import ai_user_context
-from app.services.extractor.manim_v2 import (
-    ManimInput,
-    ManimOutcome,
-    generate_manim_batch,
-    log_manim_outcome,
+from app.services.extractor.manim_v2.jobs import (
+    enqueue_animation_jobs_for_kps,
+    process_queued_animation_jobs_for_chapter,
 )
 from app.services.extractor.knowledge import extract_knowledge_points
 from app.services.parser.pdf_parser import parse_pdf_metadata
 from app.services.parser.vision_converter import convert_page_batch
+from app.services.teaching.study_planner import (
+    plan_and_persist_scopes_for_chapter,
+    prewarm_scope_explanations,
+)
 
 logger = logging.getLogger(__name__)
 
@@ -83,22 +84,15 @@ async def process_chapter(
 ):
     """Process a chapter via GPT-5.4 vision, saving pages in small batches.
 
-    After each batch of BATCH_SIZE pages is converted, the results are flushed
-    to the database so that progress is visible to polling clients.
+    Each batch commits its own transaction so the SSE progress poller
+    (which runs in a separate session under READ COMMITTED isolation) can
+    actually see rows as they arrive. Holding one long transaction across
+    the entire chapter — which is what `flush()`-only did — made progress
+    invisible until the very end, producing a 0 → 100% jump.
     """
     if book is None:
         book = chapter.book
     book_id = str(book.id)
-
-    # Serialize concurrent chapter workers for the same book. Overlapping
-    # chapter page-ranges (common when the TOC has level-1 + level-2
-    # entries that share pages) would otherwise race on the per-row
-    # INSERT ... ON CONFLICT lock and occasionally deadlock. The xact
-    # lock auto-releases on commit/rollback.
-    await db.execute(
-        text("SELECT pg_advisory_xact_lock(hashtextextended(:key, 0))"),
-        {"key": f"book_pages:{book_id}"},
-    )
 
     import fitz
     doc = fitz.open(book.file_path)
@@ -119,8 +113,19 @@ async def process_chapter(
 
     for batch_start in range(0, total, BATCH_SIZE):
         batch = all_pages[batch_start : batch_start + BATCH_SIZE]
+        # Vision HTTP call is expensive; keep it OUTSIDE any DB transaction
+        # so we don't hold connections/locks across network I/O.
         results = await convert_page_batch(doc, book_id, batch, image_dir)
 
+        # Serialize concurrent chapter workers for the same book only
+        # during the write window. Overlapping chapter page-ranges (common
+        # with TOC level-1 + level-2) would otherwise race on the per-row
+        # INSERT … ON CONFLICT lock and occasionally deadlock. The xact
+        # lock auto-releases on commit.
+        await db.execute(
+            text("SELECT pg_advisory_xact_lock(hashtextextended(:key, 0))"),
+            {"key": f"book_pages:{book_id}"},
+        )
         for hp in results:
             stmt = pg_insert(BookPage).values(
                 book_id=book.id,
@@ -131,7 +136,7 @@ async def process_chapter(
                 set_={"html_content": hp.html},
             )
             await db.execute(stmt)
-        await db.flush()
+        await db.commit()
 
         done = min(batch_start + BATCH_SIZE, total)
         logger.info("Chapter '%s': %d/%d pages done", chapter.title, done, total)
@@ -205,37 +210,6 @@ async def _extract_chapter_knowledge(
     db.add(section)
     await db.flush()
 
-    # Decide which KPs get an animation before inserting — skip trivial
-    # facts (difficulty == 1). Heavy concepts benefit most from a visual,
-    # and Manim rendering is expensive (LLM + subprocess + FFmpeg).
-    illustration_targets: list[tuple[int, ManimInput]] = [
-        (
-            idx,
-            ManimInput(
-                concept=(kp.get("concept") or "")[:300],
-                explanation=(kp.get("explanation") or "")[:2000],
-                chapter_title=chapter.title,
-                section_title=section.title,
-                kp_index=idx,
-            ),
-        )
-        for idx, kp in enumerate(kps)
-        if int(kp.get("difficulty") or 1) >= ILLUSTRATION_MIN_DIFFICULTY
-        and (kp.get("concept") or "").strip()
-    ]
-    outcomes_by_idx: dict[int, ManimOutcome] = {}
-    video_filenames: dict[int, str] = {}
-    if illustration_targets:
-        outcomes = await generate_manim_batch(
-            [inp for _, inp in illustration_targets],
-            concurrency=ILLUSTRATION_CONCURRENCY,
-            quality=ILLUSTRATION_QUALITY,
-        )
-        for (idx, _), outcome in zip(illustration_targets, outcomes):
-            outcomes_by_idx[idx] = outcome
-            if outcome.output_path is not None:
-                video_filenames[idx] = outcome.output_path.name
-
     kp_rows: list[tuple[int, KnowledgePoint]] = []
     for idx, kp in enumerate(kps):
         image_refs = kp.get("image_refs") or []
@@ -248,31 +222,51 @@ async def _extract_chapter_knowledge(
             order_index=int(kp.get("order_index", idx)),
             image_urls=image_urls,
             source_anchor=kp.get("source_anchor") or None,
-            illustration_video=video_filenames.get(idx),
         )
         db.add(row)
         kp_rows.append((idx, row))
     await db.flush()
 
-    # After flush, KP rows have real ids — emit one structured log record per
-    # animation attempt (success or failure) so acceptance rate and failure
-    # modes are visible in logs.
-    for idx, row in kp_rows:
-        outcome = outcomes_by_idx.get(idx)
-        if outcome is None:
-            continue
-        log_manim_outcome(
-            outcome,
-            book_id=str(book.id),
-            chapter_id=str(chapter.id),
-            kp_id=str(row.id),
-            concept=row.concept,
-        )
+    animation_jobs = await enqueue_animation_jobs_for_kps(
+        db,
+        book=book,
+        chapter=chapter,
+        kps=[row for _, row in kp_rows],
+    )
 
     logger.info(
-        "Chapter '%s': extracted %d KPs (%d animated)",
-        chapter.title, len(kps), len(video_filenames),
+        "Chapter '%s': extracted %d KPs (%d animation jobs queued)",
+        chapter.title, len(kps), len(animation_jobs),
     )
+
+    # Parse-stage scope plan. Runs once per chapter and is shared across
+    # every learner's session; session creation hydrates its scope_plan
+    # JSONB from these rows instead of re-calling the LLM per session.
+    try:
+        persisted_kps = [row for _, row in kp_rows]
+        await plan_and_persist_scopes_for_chapter(
+            db,
+            chapter,
+            book_title=book.title or "",
+            chapter_content=content,
+            kps=persisted_kps,
+            language=settings.prewarm_language,
+        )
+        if settings.prewarm_scope_explanations:
+            await prewarm_scope_explanations(
+                db,
+                chapter,
+                book_title=book.title or "",
+                chapter_content=content,
+                kps=persisted_kps,
+                language=settings.prewarm_language,
+            )
+    except Exception as e:
+        logger.error(
+            "scope prep failed for chapter '%s' (%s): %s — "
+            "session-time fallback will plan on demand",
+            chapter.title, chapter.id, e,
+        )
 
 
 # ---------------------------------------------------------------------------
@@ -304,6 +298,23 @@ async def _process_chapter_standalone(chapter_id: str):
                 with ai_user_context(user_id):
                     await process_chapter(db, chapter)
                 await db.commit()
+                try:
+                    count = await process_queued_animation_jobs_for_chapter(
+                        chapter.id,
+                        user_id=user_id,
+                        concurrency=ILLUSTRATION_CONCURRENCY,
+                        quality=ILLUSTRATION_QUALITY,
+                    )
+                    if count:
+                        logger.info(
+                            "Chapter '%s': processed %d queued animation jobs",
+                            chapter.title, count,
+                        )
+                except Exception as e:
+                    logger.exception(
+                        "Animation jobs failed for chapter %s after parsing completed: %s",
+                        chapter_id, e,
+                    )
             except Exception as e:
                 logger.error("Chapter processing failed for %s: %s", chapter_id, e)
                 await db.rollback()

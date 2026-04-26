@@ -1,12 +1,9 @@
 """Manually drive the Manim animation pipeline from the shell.
 
 Usage (from backend/):
-    python -m scripts.manim_demo "Newton's second law" "F = ma: net force \
-    equals mass times acceleration."
+    python -m scripts.manim_demo "Newton's second law"
 
     # Optional flags:
-    #   --chapter "Ch 3: Mechanics"
-    #   --section "3.2 Forces"
     #   --model claude-opus-4-7
     #   --quality medium   # low | medium | high
     #   --out /tmp/my.mp4  # write MP4 here (default: backend/uploads/manim/)
@@ -28,9 +25,6 @@ from app.services.extractor.manim_v2 import generate_manim_animation
 def _parse_args() -> argparse.Namespace:
     p = argparse.ArgumentParser(description="Render a Manim animation for a concept.")
     p.add_argument("concept", help="Short concept label (e.g. 'Newton's second law')")
-    p.add_argument("explanation", help="Full explanation sentence(s) for the concept")
-    p.add_argument("--chapter", default=None, help="Chapter title for context")
-    p.add_argument("--section", default=None, help="Section title for context")
     p.add_argument("--model", default=None,
                    help="Override model (defaults to illustration_model or ai_model)")
     p.add_argument("--quality", default="low", choices=["low", "medium", "high"])
@@ -53,9 +47,6 @@ async def _main() -> int:
 
     outcome = await generate_manim_animation(
         args.concept,
-        args.explanation,
-        chapter_title=args.chapter,
-        section_title=args.section,
         model=args.model,
         quality=args.quality,
         output_dir=out_dir,

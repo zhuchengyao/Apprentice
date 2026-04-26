@@ -1,0 +1,9 @@
+{
+  "id": "zero_determinant_many_or_none",
+  "category": "linear_algebra",
+  "difficulty": 3,
+  "summary": "TWO_COLUMN singular-map intuition. Left: a YELLOW line of different input points is shown on the plane, then ApplyMatrix with det(A)=0 collapses that whole family to one output point; a RED target off the output line is added to show an unreachable vector. Right: the panel ties this to Ax=v, det(A)=0, many-to-one collapse, and no-solution targets.",
+  "tags": ["linear_algebra", "singular_matrix", "determinant_zero", "linear_systems", "null_space", "column_space"],
+  "apis": ["NumberPlane", "Line", "Dot", "Arrow", "ApplyMatrix", "MathTex", "Tex", "SurroundingRectangle", "numpy"],
+  "source": "3b1b/_2018/cramer.py::ShowZeroDeterminantCase"
+}

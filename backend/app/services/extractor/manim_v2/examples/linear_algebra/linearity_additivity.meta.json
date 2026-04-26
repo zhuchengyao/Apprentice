@@ -1,0 +1,9 @@
+{
+  "id": "linearity_additivity",
+  "category": "linear_algebra",
+  "difficulty": 2,
+  "summary": "TWO_COLUMN additivity for linear maps. Left route 1 builds v+w head-to-tail, transforms that sum to A(v+w), and leaves the result as a grey ghost vector. Route 2 separately transforms v and w into Av and Aw, shifts Aw head-to-tail after Av, and draws the final green Av+Aw vector on top of the grey result. Right: route formulas and A(v+w)=Av+Aw explain why the endpoints coincide.",
+  "tags": ["linear_algebra", "linear_transformation", "linearity", "additivity", "transform", "head_to_tail"],
+  "apis": ["NumberPlane", "Arrow", "Polygon", "Transform", "TransformFromCopy", "MathTex", "Tex", "SurroundingRectangle", "Circumscribe", "numpy"],
+  "source": "3b1b/_2016/eola/chapter6.py::ShowAdditivityProperty"
+}

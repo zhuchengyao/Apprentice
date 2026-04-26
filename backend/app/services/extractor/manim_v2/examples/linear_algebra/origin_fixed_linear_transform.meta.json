@@ -1,0 +1,9 @@
+{
+  "id": "origin_fixed_linear_transform",
+  "category": "linear_algebra",
+  "difficulty": 1,
+  "summary": "SIDE_BY_SIDE linearity test. The left grid undergoes a shear and the yellow origin stays fixed, while the right grid is translated and its origin moves. Bottom labels contrast 0 -> 0 with 0 -> b != 0.",
+  "tags": ["linear_algebra", "linear_transformation", "origin", "translation", "grid"],
+  "apis": ["NumberPlane", "Dot", "ApplyMatrix", "ApplyFunction", "MathTex", "Tex", "Circumscribe", "numpy"],
+  "source": "3b1b/_2016/eola/chapter3.py::MovingOrigin+IntroduceLinearTransformations"
+}

@@ -1,0 +1,9 @@
+{
+  "id": "coordinates_as_scalars",
+  "category": "linear_algebra",
+  "difficulty": 1,
+  "summary": "TWO_COLUMN coordinate example. Left: a moving YELLOW vector is decomposed into RED and GREEN scalar walks along e1 and e2 on a NumberPlane. Right: the static equation v = x e1 + y e2, stacked live DecimalNumber readouts for x and y, and the coordinate column [x y]^T avoid overlap when coefficients become negative.",
+  "tags": ["linear_algebra", "coordinates", "basis", "scalars", "vectors", "value_tracker"],
+  "apis": ["NumberPlane", "Arrow", "Line", "add_tip", "Dot", "DashedLine", "ValueTracker", "always_redraw", "DecimalNumber", "MathTex", "Tex", "SurroundingRectangle", "numpy"],
+  "source": "3b1b/_2016/eola/chapter2.py::CoordinatesAsScalars"
+}

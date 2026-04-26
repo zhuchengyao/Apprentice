@@ -1,6 +1,6 @@
 """Experimental Manim animation endpoints.
 
-POST /api/manim/generate       → render an MP4 for a concept + explanation.
+POST /api/manim/generate       → render an MP4 for a concept label.
 GET  /api/manim/video/{name}   → stream a previously-rendered MP4.
 
 Used by the `/manim-lab` frontend page — not part of the KP flow yet.
@@ -31,9 +31,6 @@ _SAFE_NAME_RE = re.compile(r"^manim_[a-f0-9]{32}\.mp4$")
 
 class ManimGenerateRequest(BaseModel):
     concept: str = Field(min_length=1, max_length=300)
-    explanation: str = Field(min_length=1, max_length=8000)
-    chapter_title: str | None = Field(default=None, max_length=300)
-    section_title: str | None = Field(default=None, max_length=300)
     quality: str = Field(default="low", pattern=r"^(low|medium|high)$")
     model: str | None = None
 
@@ -56,9 +53,6 @@ async def generate(
 ) -> ManimGenerateResponse:
     outcome = await generate_manim_animation(
         body.concept,
-        body.explanation,
-        chapter_title=body.chapter_title,
-        section_title=body.section_title,
         model=body.model,
         quality=body.quality,
         caller="manim_lab",

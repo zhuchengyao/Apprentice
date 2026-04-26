@@ -1,0 +1,9 @@
+{
+  "id": "change_of_basis_same_vector",
+  "category": "linear_algebra",
+  "difficulty": 2,
+  "summary": "TWO_COLUMN change-of-basis intuition. Left: the YELLOW vector x is first constructed head-to-tail from the standard basis as 1.5 i + 2.5 j, then reconstructed to the exact same endpoint from the alternate basis as 2 b1 + 1 b2. Right: staged cards show the two coordinate columns and conclude that different basis coordinates can name the same geometric vector.",
+  "tags": ["linear_algebra", "change_of_basis", "coordinates", "basis", "same_vector", "transform"],
+  "apis": ["NumberPlane", "Line", "add_tip", "Dot", "Create", "FadeIn", "MathTex", "Tex", "RoundedRectangle", "Circumscribe", "numpy"],
+  "source": "3b1b/_2016/eola/chapter9.py::JennysGrid+ChangeOfBasisExample"
+}

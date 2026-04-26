@@ -1,0 +1,9 @@
+{
+  "id": "change_basis_matrix_columns",
+  "category": "linear_algebra",
+  "difficulty": 2,
+  "summary": "TWO_COLUMN change-of-basis example. Left: an example vector u=[2,-1] is first built from standard basis scalars 2 and -1. Then P's columns are shown as the moved basis vectors b1=P i and b2=P j, the same scalars build 2b1-b2, and finally the whole standard grid is transformed by P so the moved grid, basis vectors, and vector overlap their target ghosts. Right: staged panel cards keep the scalar, column, and whole-grid interpretations separate.",
+  "tags": ["linear_algebra", "change_of_basis", "basis", "coordinates", "matrix_columns"],
+  "apis": ["NumberPlane", "Line", "add_tip", "Matrix", "ApplyMatrix", "MathTex", "Tex", "RoundedRectangle", "SurroundingRectangle", "ReplacementTransform", "Circumscribe", "numpy"],
+  "source": "3b1b/_2016/eola/chapter9.py::TalkThroughChangeOfBasisMatrix+ChangeOfBasisExample"
+}

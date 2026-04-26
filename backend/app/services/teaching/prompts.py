@@ -298,9 +298,11 @@ def build_answer_task(kp_index: int, concept: str) -> str:
 
 TASK_PLAN_SCOPES = """\
 Plan the student's study path through this chapter as an ordered list of \
-"scopes". Each scope gathers knowledge points that genuinely belong \
-together — by theme, by argument, or by the mental move the reader must \
-make. Scopes may cross section boundaries.
+"scopes". Each scope must correspond to one small, contiguous reading \
+range in the source text. The frontend will highlight the passage from \
+the first kept knowledge point's source_anchor to the last kept knowledge \
+point's source_anchor, so do not group knowledge points that live far apart \
+in the chapter even if they share a theme.
 
 Curate, don't enumerate:
 - DROP knowledge points that are trivia, redundant restatements, minor \
@@ -312,19 +314,22 @@ not need to justify drops; unlisted KPs are implicitly skipped.
 points shown above. Each KP that you keep appears in exactly one scope.
 
 Size and shape:
-- Group by theme and pedagogical progression, NOT by the order KPs \
-appeared in the source. A scope may contain as few as 1 KP when the \
-idea stands alone, or up to ~6 when they form one tight cluster. Err on \
-the smaller side — the student should not have to read too much at once.
-- Ordering of scopes should reflect how a teacher would unfold the \
-material, not the page order of the source.
+- Preserve source order. The ordered list of scopes should follow the \
+chapter's reading order, and the kp_ids inside each scope should also \
+follow source order.
+- Group only neighboring knowledge points that are explained in the same \
+short passage. A scope may contain as few as 1 KP when the idea stands \
+alone, or up to ~4 when they are adjacent and tightly connected.
+- Err on the smaller side — the student should read a small chunk, then \
+receive explanation and practice, instead of being asked to read a broad \
+section.
 
 For each scope, provide:
 - "title": a short human-readable label (3-8 words) naming the idea.
 - "kp_ids": ordered list of knowledge-point IDs in this scope, using \
 the exact IDs shown above.
-- "anchor_hint": a short phrase that helps the reader locate the \
-starting passage in the chapter.
+- "anchor_hint": a short phrase from or near the beginning of the source \
+range that helps the reader locate the starting passage in the chapter.
 
 Output ONLY a JSON array — no surrounding prose, no markdown fences. Example:
 
@@ -435,4 +440,3 @@ def build_generate_mcq_task(
         .replace("__TARGET_DIFFICULTY__", str(target_difficulty))
         .replace("__SCOPE_KP_BLOCK__", _format_kp_block(kps))
     )
-

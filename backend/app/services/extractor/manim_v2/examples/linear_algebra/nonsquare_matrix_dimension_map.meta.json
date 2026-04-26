@@ -1,0 +1,9 @@
+{
+  "id": "nonsquare_matrix_dimension_map",
+  "category": "linear_algebra",
+  "difficulty": 2,
+  "summary": "TWO_PANEL nonsquare-matrix example. Left: a moving YELLOW 2D input vector lives on a NumberPlane. Right-bottom: its PINK 1D output moves on a NumberLine. Right-top: the row matrix [1 0.5] times [x y]^T is shown as a map into R, with a live DecimalNumber for L(x).",
+  "tags": ["linear_algebra", "nonsquare_matrix", "linear_map", "dimension", "row_matrix", "value_tracker"],
+  "apis": ["NumberPlane", "NumberLine", "Line", "add_tip", "Dot", "ValueTracker", "always_redraw", "DecimalNumber", "MathTex", "Tex", "SurroundingRectangle", "numpy"],
+  "source": "3b1b/_2016/eola/footnote2.py::Symbolic2To1DTransform+TwoDTo1DTransform"
+}

@@ -1,0 +1,9 @@
+{
+  "id": "three_d_basis_columns_matrix",
+  "category": "linear_algebra",
+  "difficulty": 3,
+  "summary": "A 3D matrix-column intuition scene. A true ThreeDScene stage uses neutral gray ticked axes, translucent coordinate planes, fixed-orientation labels, and an updater that rotates the shifted 3D stage about its own local Z-axis. It shows the standard basis vectors, transforms copies of them to their landing vectors, then a fixed right panel records each landing point as a column and copies those columns into the final 3x3 matrix.",
+  "tags": ["linear_algebra", "3d", "basis_vectors", "matrix_columns", "linear_transformation", "transform_from_copy"],
+  "apis": ["ThreeDScene", "ThreeDAxes", "Arrow3D", "Dot3D", "Matrix", "MathTex", "Tex", "TransformFromCopy", "LaggedStart", "Indicate", "SurroundingRectangle", "RoundedRectangle", "add_fixed_in_frame_mobjects", "add_fixed_orientation_mobjects", "add_updater", "rotate", "Z_AXIS", "numpy"],
+  "source": "3b1b/_2016/eola/footnote.py::PutTogether3x3Matrix+TransformOnlyBasisVectors"
+}

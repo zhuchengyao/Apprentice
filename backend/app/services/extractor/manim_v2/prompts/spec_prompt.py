@@ -23,7 +23,7 @@ timeline.actions[].target and in Brace/Angle/SurroundingRectangle \
 params (target_id) when applicable.
 - `timeline` is ordered by `t` ascending. Times inside one beat play in \
 parallel; the next beat's `t` should be ≥ prior beat's `t + max(duration)`.
-- `duration_s` must be within 4–18 and roughly equal \
+- `duration_s` must be within 2–30 and roughly equal \
 max(beat.t + max(action.duration)) across the timeline.
 - Use built-in Manim color names (BLUE, RED, GREEN, YELLOW, WHITE, \
 TEAL, ORANGE, PURPLE, GRAY) in `style.color` / `style.fill_color` \

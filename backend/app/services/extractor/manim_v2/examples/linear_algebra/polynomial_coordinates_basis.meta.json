@@ -1,0 +1,9 @@
+{
+  "id": "polynomial_coordinates_basis",
+  "category": "linear_algebra",
+  "difficulty": 2,
+  "summary": "THREE_PANEL polynomial-as-vector example. Left: the basis 1, x, x^2, x^3, ... is listed with colors. Center: p(x)=5+3x+x^2. Right: the coefficient vector [5,3,1,0,...]^T appears, with TransformFromCopy connecting the polynomial terms to the coordinate entries.",
+  "tags": ["linear_algebra", "vector_space", "polynomials", "basis", "coordinates", "transform_from_copy"],
+  "apis": ["VGroup", "MathTex", "Tex", "Matrix", "TransformFromCopy", "SurroundingRectangle"],
+  "source": "3b1b/_2016/eola/chapter11.py::GeneneralPolynomialCoordinates+IntroducePolynomialSpace"
+}

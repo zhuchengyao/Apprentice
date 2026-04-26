@@ -13,7 +13,6 @@ from __future__ import annotations
 import json
 import logging
 import math
-from functools import lru_cache
 from pathlib import Path
 
 from app.services.embedding import generate_embedding
@@ -26,22 +25,40 @@ _EXAMPLES_DIR = Path(__file__).parent / "examples"
 _INDEX_PATH = _EXAMPLES_DIR / "_index.json"
 
 
-@lru_cache(maxsize=1)
+# mtime-aware cache: reload the index if _index.json is rebuilt while the
+# process is running. An lru_cache locks the first result forever, which
+# causes "no RAG" in a server that was started before the index existed.
+_cache_entries: list[dict] = []
+_cache_mtime_ns: int = -1
+
+
 def _load_index() -> list[dict]:
+    global _cache_entries, _cache_mtime_ns
     if not _INDEX_PATH.exists():
-        logger.warning(
-            "manim_v2 example index not found at %s; retrieval will return [] — "
-            "run `python -m scripts.build_manim_example_index` to build it.",
-            _INDEX_PATH,
-        )
-        return []
+        if _cache_mtime_ns != -2:
+            logger.warning(
+                "manim_v2 example index not found at %s; retrieval will return [] — "
+                "run `python -m scripts.build_manim_example_index` to build it.",
+                _INDEX_PATH,
+            )
+            _cache_mtime_ns = -2  # "warned once" sentinel
+        _cache_entries = []
+        return _cache_entries
+    mtime_ns = _INDEX_PATH.stat().st_mtime_ns
+    if mtime_ns == _cache_mtime_ns and _cache_entries:
+        return _cache_entries
     with _INDEX_PATH.open("r", encoding="utf-8") as f:
         payload = json.load(f)
-    # Attach resolved code paths so callers can read on demand.
     entries = payload.get("entries") or []
     for e in entries:
         e["_code_path"] = str(_EXAMPLES_DIR / e["code_path"])
-    return entries
+    _cache_entries = entries
+    _cache_mtime_ns = mtime_ns
+    logger.info(
+        "manim_v2 retrieval: loaded index from %s (%d entries, mtime_ns=%d)",
+        _INDEX_PATH, len(entries), mtime_ns,
+    )
+    return _cache_entries
 
 
 def _read_code(entry: dict) -> str:
@@ -96,6 +113,11 @@ async def retrieve_examples(
     """Return up to `k` examples ranked by cosine similarity to the spec."""
     entries = _load_index()
     if not entries:
+        logger.warning(
+            "retrieve_examples: index empty — no RAG context will be injected "
+            "(concept=%r). Rebuild with `python -m scripts.build_manim_example_index`.",
+            concept[:80],
+        )
         return []
     query = _spec_query_text(concept, plan_markdown, spec)
     try:
@@ -123,6 +145,11 @@ async def retrieve_examples(
                 "code": _read_code(entry),
             }
         )
+    logger.info(
+        "retrieve_examples: concept=%r k=%d index=%d picked=%s",
+        concept[:60], k, len(entries),
+        [(r["id"], r["score"]) for r in results],
+    )
     return results
 
 

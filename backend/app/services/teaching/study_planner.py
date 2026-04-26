@@ -1,21 +1,29 @@
 """Scope planner — decides how to carve a chapter's knowledge points into
-ordered 3–5-KP "scopes" for a guided study session.
+thematic "scopes" for a guided study session.
 
-One LLM call per session, at session start. The plan is persisted onto
-`StudySession.scope_plan` as JSONB and never re-called unless KP IDs
-drift (chapter re-parsed).
+The plan is computed once at chapter parse time (see
+`plan_and_persist_scopes_for_chapter`) and stored in the `scopes` table,
+then hydrated into `StudySession.scope_plan` at session creation. The
+LLM is allowed to drop KPs it judges as trivia/redundant; any KP not
+assigned to a scope is implicitly skipped.
 """
 
 from __future__ import annotations
 
+import hashlib
 import json
 import logging
 import re
 from dataclasses import dataclass
 
+import sqlalchemy as sa
+from sqlalchemy import select
+from sqlalchemy.ext.asyncio import AsyncSession
+
 from app.config import settings
-from app.models.book import Chapter, KnowledgePoint
+from app.models.book import Chapter, KnowledgePoint, Scope
 from app.services.ai_client import chat_completion
+from app.services.teaching.anchor_validator import validate_anchors
 from app.services.teaching.prompts import (
     TUTOR_STATIC_RULES,
     build_tutor_context,
@@ -26,8 +34,18 @@ from app.services.teaching.prompts import (
 logger = logging.getLogger(__name__)
 
 
+# Fallback chunker bands (used only when the LLM plan fails to validate).
 SCOPE_MIN_KPS = 3
 SCOPE_MAX_KPS = 5
+
+# Neutral student block used when planning is done offline (parse stage).
+# The base plan is shared across all learners; personalized re-planning
+# is a session-time overlay that can be layered later.
+_NEUTRAL_STUDENT_BLOCK = (
+    "<student>\nThis is the base scope plan, computed before any single "
+    "learner opens the chapter. Treat the student as a motivated beginner "
+    "with no prior signal.\n</student>"
+)
 
 
 @dataclass
@@ -201,3 +219,229 @@ async def plan_scopes(
         sorted(dropped)[:10],
     )
     return validated
+
+
+# ── Parse-stage persistence ───────────────────────────────────
+
+def _kp_set_hash(kps: list[KnowledgePoint]) -> str:
+    """Deterministic hash of the KP id set. Used to flag stale Scope rows
+    when the chapter's KPs drift (e.g. after a re-parse)."""
+    joined = "|".join(sorted(str(k.id) for k in kps))
+    return hashlib.sha256(joined.encode("utf-8")).hexdigest()[:40]
+
+
+async def plan_and_persist_scopes_for_chapter(
+    db: AsyncSession,
+    chapter: Chapter,
+    book_title: str,
+    chapter_content: str,
+    kps: list[KnowledgePoint],
+    *,
+    language: str = "en",
+) -> list[Scope]:
+    """Parse-stage: run the LLM scope plan once, validate anchors against
+    the chapter HTML, and persist the result as `scopes` rows.
+
+    Idempotent per (chapter_id, kp-set-hash): if the existing Scope rows'
+    stored `plan_hash` already matches the current KP set, we skip.
+    Otherwise the chapter's old scopes are deleted and replaced.
+    """
+    if not kps:
+        return []
+
+    kp_hash = _kp_set_hash(kps)
+
+    existing = (await db.execute(
+        select(Scope).where(Scope.chapter_id == chapter.id).order_by(Scope.index)
+    )).scalars().all()
+    if existing and all((s.plan_hash or "") == kp_hash for s in existing):
+        logger.info(
+            "plan_and_persist_scopes_for_chapter: chapter=%s already planned (hash=%s, %d scopes), skipping",
+            chapter.id, kp_hash, len(existing),
+        )
+        return existing
+
+    # KP set changed — replan. Remove the old rows first so the upsert is clean.
+    if existing:
+        await db.execute(sa.delete(Scope).where(Scope.chapter_id == chapter.id))
+        await db.flush()
+
+    scope_plans = await plan_scopes(
+        chapter=chapter,
+        book_title=book_title,
+        chapter_content=chapter_content,
+        kps=kps,
+        student_block=_NEUTRAL_STUDENT_BLOCK,
+        language=language,
+    )
+
+    kp_by_id: dict[str, KnowledgePoint] = {str(k.id): k for k in kps}
+    rows: list[Scope] = []
+    for idx, plan in enumerate(scope_plans):
+        raw_anchors: list[str] = []
+        for kp_id in plan.kp_ids:
+            kp = kp_by_id.get(str(kp_id))
+            if kp is not None and (kp.source_anchor or "").strip():
+                raw_anchors.append(kp.source_anchor.strip())
+
+        final_anchors, repaired, unmatched = validate_anchors(raw_anchors, chapter_content)
+        scope = Scope(
+            chapter_id=chapter.id,
+            index=idx,
+            title=(plan.title or "Scope")[:200],
+            anchor_hint=(plan.anchor_hint or None),
+            kp_ids=list(plan.kp_ids),
+            source_anchors=final_anchors,
+            anchors_repaired=repaired,
+            anchors_unmatched=unmatched,
+            plan_model=settings.tutor_model,
+            plan_hash=kp_hash,
+        )
+        db.add(scope)
+        rows.append(scope)
+
+    await db.flush()
+
+    logger.info(
+        "plan_and_persist_scopes_for_chapter: chapter=%s scopes=%d anchors_repaired=%d anchors_unmatched=%d hash=%s",
+        chapter.id, len(rows),
+        sum(r.anchors_repaired for r in rows),
+        sum(r.anchors_unmatched for r in rows),
+        kp_hash,
+    )
+    return rows
+
+
+def scope_rows_to_plan_dicts(rows: list[Scope]) -> list[dict]:
+    """Hydrate prebuilt Scope rows into the JSONB shape StudySession
+    expects on `scope_plan`. The session machinery is unchanged —
+    `current_scope_index` still indexes this list."""
+    return [
+        {
+            "title": r.title,
+            "kp_ids": list(r.kp_ids or []),
+            "anchor_hint": r.anchor_hint or "",
+            "source_anchors": list(r.source_anchors or []),
+            "explanation_text": r.explanation_text,
+        }
+        for r in rows
+    ]
+
+
+async def load_scope_plan_for_chapter(
+    db: AsyncSession, chapter_id
+) -> list[dict] | None:
+    """Return the pre-built scope plan as wire dicts, or None if the
+    chapter has no Scope rows yet (caller should fall back to an
+    on-demand `plan_scopes` call)."""
+    result = await db.execute(
+        select(Scope).where(Scope.chapter_id == chapter_id).order_by(Scope.index)
+    )
+    rows = result.scalars().all()
+    if not rows:
+        return None
+    return scope_rows_to_plan_dicts(rows)
+
+
+# ── Pre-warmed EXPLAIN text ───────────────────────────────────
+#
+# The session's /advance endpoint already cache-short-circuits when a
+# scope's `explanation_text` is populated. By pre-computing that text at
+# parse time and loading it via `scope_rows_to_plan_dicts`, the very
+# first learner to hit a chapter sees zero-latency explanations instead
+# of waiting for a full stream. Opt in via `settings.prewarm_scope_explanations`
+# (off by default — adds one tutor LLM call per scope to parse cost).
+
+
+async def prewarm_scope_explanations(
+    db: AsyncSession,
+    chapter: Chapter,
+    book_title: str,
+    chapter_content: str,
+    kps: list[KnowledgePoint],
+    *,
+    language: str = "en",
+) -> int:
+    """Generate and persist `Scope.explanation_text` for every scope in
+    the chapter that doesn't have one yet. Returns the number written.
+    """
+    # Late imports: these pull in the full tutor prompt machinery which
+    # we want to avoid at module import time (prompts module loads big
+    # cached strings and touches models). Lazy keeps the planner import
+    # cheap for callers that only need scope planning.
+    from app.services.teaching.prompts import (
+        TUTOR_STATIC_RULES,
+        build_explain_scope_task,
+        build_task_block,
+        build_tutor_context,
+    )
+
+    rows = (await db.execute(
+        select(Scope).where(Scope.chapter_id == chapter.id).order_by(Scope.index)
+    )).scalars().all()
+    if not rows:
+        return 0
+
+    kp_by_id: dict[str, KnowledgePoint] = {str(k.id): k for k in kps}
+    kp_list_lines: list[str] = []
+    for kp in kps:
+        diff_label = "easy" if kp.difficulty <= 1 else "medium" if kp.difficulty <= 2 else "hard"
+        kp_list_lines.append(
+            f"- id={kp.id} [{diff_label}] {kp.concept}: {(kp.explanation or '')[:160]}"
+        )
+    kp_list_text = "\n".join(kp_list_lines) if kp_list_lines else "(none)"
+
+    context_text = build_tutor_context(
+        book_title, chapter.title, chapter_content,
+        knowledge_points_text=kp_list_text,
+        language=language,
+    )
+
+    written = 0
+    for scope_row in rows:
+        if scope_row.explanation_text:
+            continue
+        scope_kps = [
+            kp_by_id[str(kp_id)] for kp_id in (scope_row.kp_ids or [])
+            if str(kp_id) in kp_by_id
+        ]
+        if not scope_kps:
+            continue
+
+        task_text = build_task_block(
+            build_explain_scope_task(
+                scope_row.title,
+                [(str(kp.id), kp.concept, (kp.explanation or "")[:500]) for kp in scope_kps],
+            )
+        )
+        system_blocks = [
+            {"type": "text", "text": TUTOR_STATIC_RULES},
+            {"type": "text", "text": context_text,
+             "cache_control": {"type": "ephemeral", "ttl": "1h"}},
+            {"type": "text", "text": _NEUTRAL_STUDENT_BLOCK,
+             "cache_control": {"type": "ephemeral"}},
+            {"type": "text", "text": task_text},
+        ]
+        try:
+            text = await chat_completion(
+                messages=[{"role": "user", "content": "Deliver the explanation now."}],
+                max_tokens=4096,
+                model=settings.tutor_model,
+                caller="prewarm_scope_explain",
+                system=system_blocks,
+            )
+        except Exception as e:
+            logger.warning(
+                "prewarm_scope_explanations: chapter=%s scope=%d failed: %s",
+                chapter.id, scope_row.index, e,
+            )
+            continue
+        scope_row.explanation_text = text.strip() or None
+        written += 1
+
+    await db.flush()
+    logger.info(
+        "prewarm_scope_explanations: chapter=%s scopes=%d written=%d (existing cached=%d)",
+        chapter.id, len(rows), written, len(rows) - written,
+    )
+    return written

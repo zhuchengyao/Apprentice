@@ -1,0 +1,9 @@
+{
+  "id": "dependent_vectors_span_line",
+  "category": "linear_algebra",
+  "difficulty": 2,
+  "summary": "TWO_COLUMN linear dependence example. Left: RED v and GREEN w = -1.5 v on a NumberPlane, with ValueTrackers a and b driving the YELLOW sum a v + b w. A fixed grey line shows the one-dimensional span, and every sampled endpoint stays on it. Right: formulas w = -1.5 v and a v + b w = (a - 1.5 b) v with stacked live readouts for a, b, and c.",
+  "tags": ["linear_algebra", "linear_dependence", "span", "linearly_dependent", "value_tracker", "always_redraw"],
+  "apis": ["NumberPlane", "Line", "add_tip", "Dot", "ValueTracker", "always_redraw", "DecimalNumber", "MathTex", "Tex", "numpy"],
+  "source": "3b1b/_2016/eola/chapter2.py::LinearDependentVectors+WhenVectorsLineUp"
+}

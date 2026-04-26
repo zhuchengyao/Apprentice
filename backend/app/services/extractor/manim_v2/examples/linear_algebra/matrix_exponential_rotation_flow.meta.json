@@ -1,0 +1,9 @@
+{
+  "id": "matrix_exponential_rotation_flow",
+  "category": "linear_algebra",
+  "difficulty": 3,
+  "summary": "TWO_COLUMN matrix exponential example. Left: a YELLOW vector flows around a circle under the rotation generator J, with an ORANGE tangent velocity arrow. Right: the ODE x'(t)=Jx(t) and solution x(t)=e^{tJ}x(0) explain the continuous transformation.",
+  "tags": ["linear_algebra", "matrix_exponential", "linear_systems", "rotation", "ode", "value_tracker"],
+  "apis": ["NumberPlane", "Circle", "Line", "add_tip", "Dot", "ValueTracker", "always_redraw", "DecimalNumber", "MathTex", "Tex", "SurroundingRectangle", "Circumscribe", "numpy"],
+  "source": "3b1b/_2021/matrix_exp.py::CircularPhaseFlow+CircularFlowEvaluation+HowExampleLeadsToMatrixExponents"
+}

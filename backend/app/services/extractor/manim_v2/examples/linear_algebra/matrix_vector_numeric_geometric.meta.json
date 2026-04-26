@@ -1,0 +1,9 @@
+{
+  "id": "matrix_vector_numeric_geometric",
+  "category": "linear_algebra",
+  "difficulty": 2,
+  "summary": "TWO_COLUMN bridge between numeric multiplication and geometric transformation. Left: the original grid remains as a fixed reference while a semi-transparent moved grid and the YELLOW vector undergo ApplyMatrix by [[0,1],[-1,1]]. The same final arrow is labeled [2,1] in the original grid but [1,2] in the moved grid. Right: the numeric product explains why the original-coordinate output is [2,1].",
+  "tags": ["linear_algebra", "matrix_vector_multiplication", "linear_transformation", "geometry", "apply_matrix"],
+  "apis": ["NumberPlane", "Line", "add_tip", "Dot", "ApplyMatrix", "MathTex", "Tex", "RoundedRectangle", "Circumscribe", "numpy"],
+  "source": "3b1b/_2016/eola/chapter0.py::NumericVsGeometric+ExampleTransformation"
+}

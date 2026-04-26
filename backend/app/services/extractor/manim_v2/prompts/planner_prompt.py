@@ -9,67 +9,83 @@ from __future__ import annotations
 
 
 PLANNER_RULES = """\
-You design a short educational Manim animation (6–14 seconds) for one \
-knowledge point. Your job is to plan it, not to write code yet.
+You design a short educational Manim animation plan for exactly one \
+knowledge point. Plan only — do not write code.
 
-Return a concise markdown plan with exactly these sections:
+Output contract:
+- Plain markdown with the exact section headings below, in order.
+- No code fences, no preamble, no extra sections or commentary.
 
 ## Learning objective
-One sentence stating what the viewer should understand after watching.
+Exactly one sentence: what the viewer should understand after watching.
 
 ## Visual metaphor
-One or two sentences describing the central visual representation \
-(e.g. "a mass on a frictionless table pushed by a horizontal arrow", \
-"a unit circle traced by a rotating radius").
+1–2 sentences describing the central visual representation. Concrete \
+and drawable (e.g. "a right triangle with squares built on each leg", \
+"a unit circle with a rotating radius tracing a sine wave").
 
 ## Beats
-A numbered list of 3–6 beats. For each beat:
-- **t**: approximate start second (0, 2.0, 4.5, …)
-- **show**: what appears on screen this beat
-- **why**: one phrase explaining its pedagogical purpose
+A numbered list of 3–6 beats. One beat looks like:
 
-## Diagram inventory
-Bullet list of the mobjects needed: names + kind (Text, MathTex, Axes, \
-Arrow, Circle, …) + one-line purpose each.
-
-## Duration
-A single number in seconds (4–18).
-
-## Decline
-Write ONLY "no" — unless the concept is a poor fit for visual animation \
-(e.g. purely etymological, a list of names, trivia), in which case write \
-"yes: <short reason>".
+1. **t**: [0-4]
+   **show**: a right triangle with legs labeled a, b and hypotenuse c
+   **why**: establish the geometric setting
 
 Rules:
-- Keep it minimal. A clear three-beat plan beats a crowded six-beat plan.
-- Prefer progressive disclosure: show one idea per beat, don't dump \
-everything at once.
-- If math is central, name specific equations you'll display with MathTex.
-- Output plain markdown. No code fences, no preamble."""
+- Ranges are contiguous: first beat starts at 0; each beat's end equals \
+the next beat's start; the last beat's end equals the Duration.
+- Ranges are inclusive on both ends — time [0-4] means seconds 0 through 4.
+- Describe WHAT is visible, not HOW it animates. No Write/FadeIn/\
+Transform, no coordinates, no colors, no camera moves, no style.
+- One idea per beat. Short, concrete phrases.
+
+## Diagram inventory
+A bullet list of every mobject the scene needs. One item looks like:
+
+- **id**: triangle_abc
+  **kind**: Polygon
+  **purpose**: the central right triangle
+  **first_beat**: 1
+
+Allowed kinds: Text, MathTex, Axes, NumberPlane, NumberLine, Arrow, \
+Line, Circle, Dot, Rectangle, Square, Polygon, Brace, VGroup, Surface, \
+ThreeDAxes.
+
+Rules:
+- id is unique and lowercase snake_case — only letters, digits, and \
+underscores.
+- first_beat is the beat number (1–6) where this object first appears.
+- Include only objects that actually appear in some beat.
+- If math is central, give the exact LaTeX for each MathTex (no `$` \
+delimiters), e.g. `F = m a`, `a^2 + b^2 = c^2`.
+
+## Duration
+Exactly one number in seconds between 2 and 30. Shortest duration that \
+comfortably fits the beats — no padding waits, no crowding.
+
+## Decline
+Write exactly one of:
+- no
+- yes: <short reason>
+
+Only decline if the concept is genuinely not visually teachable — pure \
+trivia, a list of names, or something with no visual structure.
+
+## Rules
+- Keep the plan minimal. A clear 3-beat plan beats a crowded 6-beat plan.
+- Prefer progressive disclosure — introduce ideas one at a time.
+- Favor diagrams, equations, geometric relations, motion, comparison, \
+transformation, and cause-effect visuals.
+- No code, no numeric coordinates, no style prose, no camera \
+instructions, no narration-like wording ("now we will see…")."""
 
 
 def build_system_blocks() -> list[dict]:
     return [{"type": "text", "text": PLANNER_RULES, "cache_control": {"type": "ephemeral"}}]
 
 
-def build_user_message(
-    concept: str,
-    explanation: str,
-    *,
-    chapter_title: str | None = None,
-    section_title: str | None = None,
-) -> str:
-    ctx = ""
-    if chapter_title:
-        ctx += f"Chapter: {chapter_title}\n"
-    if section_title:
-        ctx += f"Section: {section_title}\n"
-    exp = explanation.strip()
-    if len(exp) > 2000:
-        exp = exp[:2000] + "…"
+def build_user_message(concept: str) -> str:
     return (
-        f"{ctx}"
         f"Concept: {concept.strip()}\n\n"
-        f"Explanation:\n{exp}\n\n"
         f"Produce the scene plan now."
     )

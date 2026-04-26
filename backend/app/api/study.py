@@ -18,6 +18,7 @@ import uuid
 from datetime import UTC, datetime
 
 from fastapi import APIRouter, Depends, HTTPException
+from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 from sqlalchemy import select, func, text, update
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -28,7 +29,7 @@ from app.config import settings
 from app.database import get_db
 from app.dependencies import get_current_user
 from app.i18n import effective_teaching_language, get_request_locale
-from app.models.book import Book, Chapter, KnowledgePoint
+from app.models.book import Book, Chapter, KnowledgePoint, Scope
 from app.models.study import (
     QuizAttempt,
     QuizQuestion,
@@ -66,7 +67,11 @@ from app.services.teaching.prompts import (
 )
 from app.services.learning.adaptive import choose_quiz_plan
 from app.services.teaching.quiz import generate_quiz_for_scope, scope_signature
-from app.services.teaching.study_planner import plan_scopes
+from app.services.teaching.study_planner import (
+    load_scope_plan_for_chapter,
+    plan_and_persist_scopes_for_chapter,
+    plan_scopes,
+)
 
 logger = logging.getLogger(__name__)
 
@@ -269,7 +274,8 @@ def _scope_view(
         title=scope.get("title", ""),
         anchor_hint=scope.get("anchor_hint", ""),
         kp_ids=kp_ids,
-        source_anchors=_anchors_for_scope(scope, kps_by_id),
+        source_anchors=list(scope.get("source_anchors") or [])
+        or _anchors_for_scope(scope, kps_by_id),
         kps=kp_views,
         explanation_text=scope.get("explanation_text") or None,
     )
@@ -490,15 +496,8 @@ async def start_or_resume_session(
             detail="Chapter has no knowledge points yet; try again after processing.",
         )
 
-    _, _, chapter_content = await load_chapter_context_for(book_id, chapter_id, db)
-    student_block = _render_student_block(current_user)
-
-    scope_plans = await plan_scopes(
-        chapter=chapter,
-        book_title=book.title,
-        chapter_content=chapter_content,
-        kps=all_kps,
-        student_block=student_block,
+    scope_plan_dicts = await _load_or_build_scope_plan(
+        db, chapter, book, all_kps,
         language=effective_teaching_language(
             current_user.preferred_language, request_locale
         ),
@@ -509,7 +508,7 @@ async def start_or_resume_session(
         book_id=book_id,
         chapter_id=chapter_id,
         phase=StudyPhase.read,
-        scope_plan=[p.to_dict() for p in scope_plans],
+        scope_plan=scope_plan_dicts,
         current_scope_index=0,
         current_question_index=0,
     )
@@ -529,19 +528,9 @@ async def _replan_session(
     language: str,
 ) -> StudySession:
     book = await db.get(Book, session.book_id)
-    _, _, chapter_content = await load_chapter_context_for(
-        session.book_id, session.chapter_id, db
+    session.scope_plan = await _load_or_build_scope_plan(
+        db, chapter, book, kps, language=language,
     )
-    student_block = _render_student_block(current_user)
-    scope_plans = await plan_scopes(
-        chapter=chapter,
-        book_title=book.title if book else "",
-        chapter_content=chapter_content,
-        kps=kps,
-        student_block=student_block,
-        language=language,
-    )
-    session.scope_plan = [p.to_dict() for p in scope_plans]
     session.phase = StudyPhase.read
     session.current_scope_index = 0
     session.current_question_index = 0
@@ -549,6 +538,43 @@ async def _replan_session(
     await db.commit()
     await db.refresh(session)
     return session
+
+
+async def _load_or_build_scope_plan(
+    db: AsyncSession,
+    chapter: Chapter,
+    book: Book | None,
+    kps: list[KnowledgePoint],
+    *,
+    language: str,
+) -> list[dict]:
+    """Prefer the parse-stage plan in the `scopes` table; fall back to an
+    on-demand plan if the chapter predates the offline step or the KP set
+    has drifted. Either way the return is the JSONB wire shape StudySession
+    stores on `scope_plan`."""
+    cached = await load_scope_plan_for_chapter(db, chapter.id)
+    if cached is not None:
+        cached_kp_ids = {str(kp_id) for scope in cached for kp_id in scope.get("kp_ids", [])}
+        if cached_kp_ids.issubset({str(k.id) for k in kps}):
+            return cached
+        logger.info(
+            "scope plan stale for chapter %s — rebuilding from parse-stage pipeline",
+            chapter.id,
+        )
+
+    # Idempotent re-plan: replaces any stale rows, commits new ones.
+    rows = await plan_and_persist_scopes_for_chapter(
+        db,
+        chapter,
+        book_title=(book.title if book else "") or "",
+        chapter_content=(await load_chapter_context_for(
+            chapter.book_id, chapter.id, db
+        ))[2],
+        kps=kps,
+        language=language,
+    )
+    from app.services.teaching.study_planner import scope_rows_to_plan_dicts
+    return scope_rows_to_plan_dicts(rows)
 
 
 def _render_student_block(user: User) -> str:
@@ -607,13 +633,17 @@ async def advance_to_explain(
     cached_text = (scope.get("explanation_text") or "").strip()
     cached_language = scope.get("explanation_language")
     if cached_text and (cached_language is None or cached_language == language):
+        if session.phase in (StudyPhase.read, StudyPhase.explain):
+            session.phase = StudyPhase.practice
+            await db.commit()
+
         async def cached_body():
             yield {"event": "token", "data": cached_text}
             yield {
                 "event": "done",
                 "data": json.dumps({
                     "content": cached_text,
-                    "next_phase": session.phase.value,
+                    "next_phase": StudyPhase.practice.value,
                     "cached": True,
                 }),
             }
@@ -743,6 +773,138 @@ async def advance_to_explain(
             }
 
     return EventSourceResponse(wrap_sse_errors("study_explain", body()))
+
+
+@router.post("/sessions/{session_id}/regen-explain")
+async def regen_explain_test(
+    session_id: str,
+    db: AsyncSession = Depends(get_db),
+    current_user: User = Depends(get_current_user),
+):
+    """TEST-ONLY: clear the cached explanation and kick off a Manim
+    regen for every KP in the current scope as a background task.
+
+    Returns 202 immediately after the cache clears commit. The heavy
+    work — plan/spec/code LLM calls + Manim renders (~1-3 minutes) —
+    runs in the background so the browser doesn't hold a long HTTP
+    connection that both Node and most browsers will silently drop.
+    The client refreshes when it wants to see the new animations; a
+    `GET /sessions/{id}` will show updated `illustration_video` fields.
+    """
+    # Late imports — this endpoint is flagged for removal and we don't
+    # want its dependencies polluting the module import graph.
+    from app.constants import ILLUSTRATION_CONCURRENCY, ILLUSTRATION_QUALITY
+    from app.services.extractor.manim_v2 import (
+        ManimInput,
+        generate_manim_batch,
+        log_manim_outcome,
+    )
+
+    session = await _load_session(session_id, current_user, db)
+    scope = _current_scope(session)
+    if scope is None:
+        raise HTTPException(status_code=409, detail="No active scope")
+    scope_idx = session.current_scope_index
+
+    all_kps = await get_chapter_knowledge_points(session.chapter_id, db)
+    kps_by_id = _kp_index_by_id(all_kps)
+    scope_kps = [
+        kps_by_id[str(k)] for k in scope.get("kp_ids", []) if str(k) in kps_by_id
+    ]
+    if not scope_kps:
+        raise HTTPException(status_code=409, detail="Scope has no resolvable KPs")
+
+    # ── Synchronous portion: clear caches + reset phase ─────────────
+    plan = list(session.scope_plan or [])
+    if 0 <= scope_idx < len(plan):
+        plan[scope_idx] = {
+            **plan[scope_idx],
+            "explanation_text": None,
+            "explanation_language": None,
+        }
+        session.scope_plan = plan
+        flag_modified(session, "scope_plan")
+
+    await db.execute(
+        update(Scope)
+        .where(Scope.chapter_id == session.chapter_id, Scope.index == scope_idx)
+        .values(explanation_text=None)
+    )
+
+    session.phase = StudyPhase.read
+    await db.commit()
+
+    # ── Async portion: regen animations in a fire-and-forget task ───
+    # We capture the inputs we need now because the request-scoped db
+    # session closes right after the response. The task owns its own
+    # engine + session lifecycle.
+    kp_snapshots: list[tuple[str, str]] = [
+        (str(kp.id), kp.concept or "")
+        for kp in scope_kps
+    ]
+    book_id_str = str(session.book_id)
+    chapter_id_str = str(session.chapter_id)
+    user_id_str = str(current_user.id)
+
+    async def _regen_in_background() -> None:
+        from sqlalchemy.ext.asyncio import async_sessionmaker, create_async_engine
+        from sqlalchemy.pool import NullPool
+        engine = create_async_engine(settings.database_url, poolclass=NullPool)
+        factory = async_sessionmaker(engine, expire_on_commit=False)
+        try:
+            inputs = [
+                ManimInput(
+                    concept=c[:300],
+                    kp_index=idx,
+                )
+                for idx, (_, c) in enumerate(kp_snapshots)
+            ]
+            with ai_user_context(user_id_str):
+                outcomes = await generate_manim_batch(
+                    inputs,
+                    concurrency=ILLUSTRATION_CONCURRENCY,
+                    quality=ILLUSTRATION_QUALITY,
+                )
+            async with factory() as bg_db:
+                ok = 0
+                for (kp_id, concept), outcome in zip(kp_snapshots, outcomes):
+                    if outcome.output_path is not None:
+                        await bg_db.execute(
+                            update(KnowledgePoint)
+                            .where(KnowledgePoint.id == uuid.UUID(kp_id))
+                            .values(illustration_video=outcome.output_path.name)
+                        )
+                        ok += 1
+                    log_manim_outcome(
+                        outcome,
+                        book_id=book_id_str,
+                        chapter_id=chapter_id_str,
+                        kp_id=kp_id,
+                        concept=concept,
+                    )
+                await bg_db.commit()
+                logger.info(
+                    "regen_explain_test: chapter=%s scope=%d kps=%d animations_ok=%d",
+                    chapter_id_str, scope_idx, len(kp_snapshots), ok,
+                )
+        except Exception as e:
+            logger.exception("regen_explain_test background task failed: %s", e)
+        finally:
+            await engine.dispose()
+
+    import asyncio as _asyncio
+    _asyncio.create_task(_regen_in_background())
+
+    return JSONResponse(
+        status_code=202,
+        content={
+            "ok": True,
+            "status": "regeneration_started",
+            "scope_index": scope_idx,
+            "kp_count": len(scope_kps),
+            "estimate_seconds": max(60, len(scope_kps) * 45),
+        },
+    )
 
 
 @router.get("/sessions/{session_id}/questions", response_model=QuestionsResponse)

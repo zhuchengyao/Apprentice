@@ -1,0 +1,9 @@
+{
+  "id": "linear_vs_nonlinear_grid",
+  "category": "linear_algebra",
+  "difficulty": 2,
+  "summary": "SIDE_BY_SIDE comparison of linear and nonlinear transformations. The left NumberPlane and highlighted diagonal line undergo an ApplyMatrix shear and the line remains straight. The right NumberPlane and matching diagonal undergo a sinusoidal ApplyFunction warp, visibly bending the line. A bottom formula states the linearity rule preserved by the linear map.",
+  "tags": ["linear_algebra", "linear_transformation", "nonlinear_transformation", "grid", "apply_matrix", "apply_function"],
+  "apis": ["NumberPlane", "Line", "ApplyMatrix", "ApplyFunction", "MathTex", "Tex", "SurroundingRectangle", "numpy"],
+  "source": "3b1b/_2015/matrix_as_transform_2d.py::ExamplesOfNonlinearTwoDimensionalTransformations"
+}

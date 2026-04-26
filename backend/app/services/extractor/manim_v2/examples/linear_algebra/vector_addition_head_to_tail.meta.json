@@ -1,0 +1,9 @@
+{
+  "id": "vector_addition_head_to_tail",
+  "category": "linear_algebra",
+  "difficulty": 1,
+  "summary": "TWO_COLUMN head-to-tail vector addition. Left: RED v and GREEN w start at the origin; a copy of w slides to the tip of v, and the PINK resultant v+w is drawn from the origin to the new endpoint. Right: component form confirms the same sum numerically.",
+  "tags": ["linear_algebra", "vectors", "vector_addition", "head_to_tail", "coordinates"],
+  "apis": ["NumberPlane", "Arrow", "Transform", "MathTex", "Tex", "SurroundingRectangle", "numpy"],
+  "source": "3b1b/_2016/eola/chapter1.py::VectorAddition+VectorAdditionNumerically"
+}

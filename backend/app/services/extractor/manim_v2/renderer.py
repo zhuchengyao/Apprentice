@@ -168,3 +168,72 @@ async def render(
         dest = dest_dir / f"manim_{uuid.uuid4().hex}.mp4"
         shutil.copy2(result.output_path, dest)
         return RenderResult(dest, "ok", None, None)
+
+
+# ── QC frame preview ──────────────────────────────────────────
+
+_LAST_FRAME_TIMEOUT_SEC = 60
+
+
+def _render_last_frame_sync(code: str, work_dir: Path) -> Path | None:
+    """Render only the last frame as a PNG. Uses manim's `-s` flag to
+    skip video encoding, so this is ~5-10× faster than a full render.
+    Returns the PNG path, or None on any failure.
+    """
+    work_dir.mkdir(parents=True, exist_ok=True)
+    scene_file = work_dir / "scene.py"
+    scene_file.write_text(code, encoding="utf-8")
+
+    # -ql -s => low quality, save last frame only, no video.
+    cmd = [
+        _resolve_manim_python(), "-m", "manim",
+        "-ql", "-s",
+        "--disable_caching",
+        "--format=png",
+        "--media_dir", str(work_dir / "media"),
+        str(scene_file),
+        SCENE_CLASS_NAME,
+    ]
+    try:
+        proc = subprocess.run(
+            cmd,
+            cwd=str(work_dir),
+            capture_output=True,
+            text=True,
+            timeout=_LAST_FRAME_TIMEOUT_SEC,
+        )
+    except subprocess.TimeoutExpired:
+        return None
+    if proc.returncode != 0:
+        return None
+
+    # Manim writes images to media/images/scene/Illustration.png (or similar).
+    images = work_dir / "media" / "images"
+    candidates = [p for p in images.rglob("*.png") if p.is_file()]
+    if not candidates:
+        return None
+    # Most recent file — defensive in case manim leaves multiple.
+    return max(candidates, key=lambda p: p.stat().st_mtime)
+
+
+async def render_last_frame(code: str) -> Path | None:
+    """Async wrapper: safety-check the code, render the last frame to a
+    persistent temp PNG, return the path. Caller is responsible for
+    cleaning up the returned file + its parent when done.
+
+    Returns None if the safety check or manim invocation fails.
+    """
+    if static_safety_check(code) is not None:
+        return None
+    # Persistent temp dir — we hand the PNG path to the QC caller, which
+    # feeds it to a vision LLM. The caller cleans up via shutil.rmtree.
+    work = Path(tempfile.mkdtemp(prefix="manim_qc_frame_"))
+    try:
+        png = await asyncio.to_thread(_render_last_frame_sync, code, work)
+        if png is None:
+            shutil.rmtree(work, ignore_errors=True)
+            return None
+        return png
+    except Exception:
+        shutil.rmtree(work, ignore_errors=True)
+        return None

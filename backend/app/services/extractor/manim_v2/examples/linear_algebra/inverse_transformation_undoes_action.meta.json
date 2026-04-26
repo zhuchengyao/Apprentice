@@ -1,0 +1,9 @@
+{
+  "id": "inverse_transformation_undoes_action",
+  "category": "linear_algebra",
+  "difficulty": 2,
+  "summary": "TWO_COLUMN inverse-transformation intuition. Left: a unit square and PINK vector x are sheared by A = [[1,1],[0,1]], producing a YELLOW output v. Applying A^{-1} then returns both the vector and the square to their starting positions. Right: A, A^{-1}, and the equation A x = v => x = A^{-1} v.",
+  "tags": ["linear_algebra", "inverse", "inverse_transformation", "linear_systems", "apply_matrix", "undo"],
+  "apis": ["NumberPlane", "Polygon", "Arrow", "ApplyMatrix", "MathTex", "Tex", "SurroundingRectangle", "numpy"],
+  "source": "3b1b/_2016/eola/chapter6.py::DescribeInverse+PlayInReverse"
+}
